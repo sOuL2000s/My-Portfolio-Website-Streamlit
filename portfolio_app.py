@@ -342,7 +342,7 @@ if choice == "Home":
             st.markdown(
                 """
                 <p>
-                    <a href="https://www.linkedin.com/in/souparno-paul-28a7524b/" target="_blank" style="margin-right: 15px;">
+                    <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" style="margin-right: 15px;">
                         <img src="https://img.icons8.com/color/48/000000/linkedin.png" style="width: 25px; height: 25px; vertical-align: middle;"> LinkedIn
                     </a>
                     <a href="https://github.com/sOuL2000s" target="_blank">
