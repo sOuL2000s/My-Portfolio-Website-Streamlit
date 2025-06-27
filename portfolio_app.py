@@ -333,7 +333,7 @@ if choice == "Home":
             st.title("Hi, I'm Souparna Paul 👋") # Updated Name
             st.subheader("A Creatively Passionate Python Based Software and Web Developer | Kolkata, India") # Updated Profession/Role and Field
             st.write("""
-                I'm a final-year B.Tech CSE student from Narula Institute of Technology, Kolkata.
+                I'm a Tech Enthusiast and Innovator from Madhyamgram, West Bengal.
                 I specialize in Python development, AI/ML, and full-stack web development using tools like Streamlit, Firebase, and React.
                 My strengths lie in building real-time, data-driven applications—as seen in projects like Crypto Prediction Maker Pro++, Smart Agritech Streamlit Dashboard, and my Tournament Manager WebApp.
                 I’m also passionate about applying machine learning to real-world problems like Phishing URL Detection, for which I won a Best Paper Award.
@@ -359,7 +359,7 @@ elif choice == "About Me":
         st.header("About Me")
         st.write(
             """
-            I am a final-year B.Tech CSE student from Narula Institute of Technology, Kolkata.
+            I have completed my B.Tech CSE student from Narula Institute of Technology, Kolkata.
             My journey in technology began with a strong interest in programming and problem-solving.
             Since then, I've honed my skills in various areas, including:
 
