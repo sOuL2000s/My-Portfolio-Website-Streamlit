@@ -450,8 +450,8 @@ elif choice == "Projects":
                 """, unsafe_allow_html=True
             )
 
-        # Project 3: Tournament Manager App
-        with st.expander("Tournament Manager App"):
+        # Project 3: Tournament Manager App (Streamlit)
+        with st.expander("Tournament Manager App (Streamlit)"):
             st.markdown(
                 """
                 **Description:** Built a real-time multi-sport tournament manager with a tabbed dashboard interface using Streamlit and Firestore.
@@ -499,6 +499,28 @@ elif choice == "Projects":
                 **Date:** June 2025
 
                 [GitHub Repository](https://github.com/sOuL2000s/smart-calculator-streamlit-app.git) | [Live Demo](https://smart-calculator-streamlit-app.onrender.com/)
+                """, unsafe_allow_html=True
+            )
+
+        # Project 5: Tournament Manager Full-Stack Web Application (New Project)
+        with st.expander("Tournament Manager Full-Stack Web Application"):
+            st.markdown(
+                """
+                **Description:** Developed a comprehensive full-stack web application for managing tournaments, including features for team registration, match scheduling, score updates, and leaderboard tracking.
+                Designed a user-friendly interface for seamless navigation and data input.
+                Implemented robust backend logic for data persistence and real-time updates.
+                Provided live demos for various tournament types to showcase functionality.
+                """, unsafe_allow_html=True
+            )
+            st.markdown("**Tools:**", unsafe_allow_html=True) # Separated tools heading
+            skill_list_project5 = ["React.js", "Node.js", "Express.js", "MongoDB", "JavaScript", "HTML", "CSS"] # Example tools, adjust as needed
+            skill_tags_html_project5 = "".join([f'<span class="skill-tag">{skill}</span>' for skill in skill_list_project5])
+            st.markdown(skill_tags_html_project5, unsafe_allow_html=True)
+            st.markdown(
+                """
+                **Date:** May 2025
+
+                [GitHub Repository](https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git) | [Live Demo](https://tournament-manager-website.netlify.app/)
                 """, unsafe_allow_html=True
             )
 
