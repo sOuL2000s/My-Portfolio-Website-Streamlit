@@ -1,3 +1,70 @@
+
+--- START FILE: combine_project.py ---
+
+import os
+
+def combine_files_to_single_file(root_dir, output_filename="combined_project_files.txt"):
+    """
+    Combines the content of all files in a directory into a single file,
+    excluding 'node_modules' directories and 'package-lock.json' files.
+
+    Args:
+        root_dir (str): The root directory of the project.
+        output_filename (str): The name of the output file.
+    """
+    combined_content = []
+    excluded_dirs = ['node_modules', '.git', '.vscode', '.idea', 'dist', 'build']
+    excluded_files = ['package-lock.json', 'yarn.lock', 'bun.lockb', '.env'] # Added .env as it might contain sensitive info
+
+    print(f"Starting to combine files from: {root_dir}")
+    print(f"Excluding directories: {excluded_dirs}")
+    print(f"Excluding files: {excluded_files}")
+
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        # Modify dirnames in-place to skip excluded directories
+        dirnames[:] = [d for d in dirnames if d not in excluded_dirs]
+
+        for filename in filenames:
+            if filename in excluded_files:
+                print(f"Skipping excluded file: {os.path.join(dirpath, filename)}")
+                continue
+
+            file_path = os.path.join(dirpath, filename)
+            # Make path relative to root_dir for the header
+            relative_file_path = os.path.relpath(file_path, root_dir)
+
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                combined_content.append(f"\n--- START FILE: {relative_file_path} ---\n\n")
+                combined_content.append(content)
+                combined_content.append(f"\n\n--- END FILE: {relative_file_path} ---\n")
+                print(f"Included file: {relative_file_path}")
+            except UnicodeDecodeError:
+                print(f"Skipping binary or undecodable file (UnicodeDecodeError): {relative_file_path}")
+            except Exception as e:
+                print(f"Error reading file {relative_file_path}: {e}")
+
+    output_path = os.path.join(root_dir, output_filename)
+    try:
+        with open(output_path, 'w', encoding='utf-8') as outfile:
+            outfile.write("".join(combined_content))
+        print(f"\nSuccessfully combined all files into: {output_path}")
+    except Exception as e:
+        print(f"Error writing output file {output_path}: {e}")
+
+if __name__ == "__main__":
+    # Get the current working directory where the script is run
+    # This assumes you run the script from your project's root directory
+    project_root = os.getcwd()
+    combine_files_to_single_file(project_root)
+
+
+--- END FILE: combine_project.py ---
+
+--- START FILE: portfolio_app.py ---
+
 import streamlit as st
 from PIL import Image
 
@@ -523,34 +590,6 @@ elif choice == "Projects":
                 [GitHub Repository](https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git) | [Live Demo](https://tournament-manager-website.netlify.app/)
                 """, unsafe_allow_html=True
             )
-                # Project: BTC Probo Predictor (Mobile Friendly)
-        with st.expander("BTC Probo Predictor (Mobile Friendly)"):
-            st.markdown(
-                """
-                **Description:** This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time.
-
-                **Key Features:**
-                * **Real-time Data Fetching:** Gathers OHLCV (Open, High, Low, Close, Volume) data for BTCUSDT from the Binance API, with data refreshed on an hourly interval.
-                * **Technical Indicator Analysis:** Calculates and displays key technical indicators such as RSI (14-period window) and EMA (20-period and 50-period windows). Provides insights into market trend (Uptrend/Downtrend) and RSI zone (Overbought, Oversold, Neutral).
-                * **Sentiment Analysis Integration:** Incorporates Bitcoin sentiment scores to provide a more holistic market view.
-                * **AI-Powered Prediction Engine:** Recommends a Probo vote (Yes/No) based on the target price, target time, current price, average delta per hour, projected price, and sentiment score.
-                * **Interactive Charting:** Visualizes BTC price data with candlestick charts, including EMA overlays, using Plotly for a clear and interactive user experience.
-                * **Telegram Notifications:** Sends automated Telegram alerts with prediction summaries, including target time, target price, current price, projected price, sentiment, and the recommended vote.
-                * **Mobile-Friendly Design:** Utilizes Streamlit with custom CSS to ensure a responsive and optimized user interface across various screen sizes.
-                """, unsafe_allow_html=True
-            )
-            st.markdown("**Tools:**", unsafe_allow_html=True) # Separated tools heading
-            skill_list_btc_probo = ["Python", "Streamlit", "Plotly", "Pandas", "Requests", "TA-Lib", "TextBlob", "Telegram Bot API"]
-            skill_tags_html_btc_probo = "".join([f'<span class="skill-tag">{skill}</span>' for skill in skill_list_btc_probo])
-            st.markdown(skill_tags_html_btc_probo, unsafe_allow_html=True)
-            st.markdown(
-                """
-                **Date:** July 2025
-
-                [GitHub Repository](https://github.com/sOuL2000s/simple-bitcoin-probo-predictor.git) | [Live Demo](https://simple-bitcoin-probo-predictor.netlify.app/)
-                """, unsafe_allow_html=True
-            )
-
 
         st.subheader("Team Projects")
 
@@ -661,3 +700,12 @@ elif choice == "Contact":
 st.markdown("---")
 st.write("© 2025 Souparna Paul. All rights reserved.")
 st.write("Built with ❤️ using Streamlit.")
+
+--- END FILE: portfolio_app.py ---
+
+--- START FILE: requirements.txt ---
+
+streamlit 
+Pillow
+
+--- END FILE: requirements.txt ---
