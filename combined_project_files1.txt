@@ -25,18 +25,23 @@
             --border-color-light: #e0e0e0;
             --shadow-color-light: rgba(0, 0, 0, 0.08);
 
-            /* Dark Mode Variables */
-            --bg-color-dark: #1a1a2e; /* Dark background */
-            --main-bg-dark: #16213e; /* Slightly lighter dark card */
+            /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
+            --bg-color-dark: #1a1a2e; /* Deep dark background */
+            --main-bg-dark: #16213e; /* Slightly lighter dark card background */
             --text-color-dark: #e0e0e0; /* Light gray text */
             --heading-color-dark: #f0f0f0; /* White headings */
             --link-color-dark: #8be9fd; /* Light blue/cyan accent */
-            --button-bg-color-dark: #6272a4;
-            --button-hover-bg-color-dark: #44475a;
-            --skill-tag-bg-dark: #44475a;
-            --skill-tag-border-dark: #3a476f;
-            --border-color-dark: #3a476f;
-            --shadow-color-dark: rgba(0, 0, 0, 0.3);
+            --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
+            --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
+            --skill-tag-bg-dark: #44475a; /* Darker gray for skill tags */
+            --skill-tag-border-dark: #3a476f; /* Darker border for skill tags */
+            --border-color-dark: #3a476f; /* Dark border color */
+            --shadow-color-dark: rgba(0, 0, 0, 0.3); /* Dark shadow color */
+
+            /* Navbar specific dark mode colors */
+            --navbar-bg-dark: #0f172a; /* Very dark blue for navbar */
+            --navbar-text-dark: #cbd5e1; /* Light gray for navbar links */
+            --navbar-hover-dark: #6366f1; /* Indigo for navbar link hover */
         }
 
         body {
@@ -280,7 +285,7 @@
                 box-shadow: 0 8px 15px rgba(0,0,0,0.1);
             }
             body.dark-mode .nav-links {
-                background-color: var(--main-bg-dark); /* Mobile nav background in dark mode */
+                background-color: var(--navbar-bg-dark); /* Mobile nav background in dark mode */
                 border-top: 1px solid var(--border-color-dark);
             }
             .nav-links.active {
@@ -318,13 +323,50 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Specific styling for Education and Achievement entries */
+        .education-entry, .achievement-entry {
+            background-color: var(--main-bg-light);
+            border: 1px solid var(--border-color-light);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .education-entry:hover, .achievement-entry:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .education-entry, body.dark-mode .achievement-entry {
+            background-color: var(--main-bg-dark);
+            border: 1px solid var(--border-color-dark);
+            box-shadow: 0 4px 10px var(--shadow-color-dark);
+        }
+
+        body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover {
+            box-shadow: 0 8px 20px var(--shadow-color-dark);
+        }
+
+        /* Icons for achievements */
+        .achievement-icon {
+            color: var(--link-color); /* Use accent color for icons */
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        body.dark-mode .achievement-icon {
+            color: var(--link-color-dark);
+        }
+
     </style>
 </head>
 <body class="transition-colors-shadow">
     <!-- Header/Navigation Bar -->
-    <header class="bg-white shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:bg-main-bg-dark dark:shadow-none">
+    <header class="bg-white shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:bg-navbar-bg-dark dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-link-color-dark">Souparna Paul</a>
+            <a href="#home" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-navbar-hover-dark">Souparna Paul</a>
             <div class="flex items-center space-x-6">
                 <!-- Dark Mode Toggle -->
                 <div id="darkModeToggle" class="relative">
@@ -332,19 +374,19 @@
                 </div>
 
                 <!-- Hamburger Menu for Mobile -->
-                <button id="hamburger" class="hamburger text-gray-800 focus:outline-none dark:text-text-color-dark">
+                <button id="hamburger" class="hamburger text-gray-800 focus:outline-none dark:text-navbar-text-dark">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
 
                 <!-- Navigation Links -->
                 <nav id="navLinks" class="nav-links hidden md:flex md:space-x-6">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">About Me</a>
-                    <a href="#skills" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Skills</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Projects</a>
-                    <a href="#education" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Education</a>
-                    <a href="#achievements" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Achievements</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-link-color-dark">Contact</a>
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">About Me</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Skills</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Projects</a>
+                    <a href="#education" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Education</a>
+                    <a href="#achievements" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Achievements</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Contact</a>
                 </nav>
             </div>
         </div>
@@ -678,23 +720,22 @@
         <!-- Education Section -->
         <section id="education" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Education</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-2">B.Tech CSE | Narula Institute of Technology, Kolkata | 2021-2025</h3>
+            <div class="space-y-4"> <!-- Reduced space-y for individual cards -->
+                <div class="education-entry">
+                    <h3 class="text-2xl font-semibold mb-2">B.Tech CSE | Narula Institute of Technology, Kolkata</h3>
+                    <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">2021-2025</p>
                     <ul class="list-disc list-inside text-lg leading-relaxed space-y-1 dark:text-text-color-dark">
                         <li>Relevant coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Machine Learning, Web Technologies</li>
                         <li>Thesis/Capstone Project: Phishing URL Detection (Awarded Best Paper)</li>
                     </ul>
                 </div>
-                <hr class="border-gray-300 dark:border-gray-600">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-2">Higher Secondary | Madhyamgram High School, Madhyamgram | 2019</h3>
-                    <p class="dark:text-text-color-dark"></p>
+                <div class="education-entry">
+                    <h3 class="text-2xl font-semibold mb-2">Higher Secondary | Madhyamgram High School, Madhyamgram</h3>
+                    <p class="text-lg leading-relaxed dark:text-text-color-dark">2019</p>
                 </div>
-                <hr class="border-gray-300 dark:border-gray-600">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-2">Secondary | Barasat Mahatma Gandhi Memorial High School, Barasat | 2017</h3>
-                    <p class="dark:text-text-color-dark"></p>
+                <div class="education-entry">
+                    <h3 class="text-2xl font-semibold mb-2">Secondary | Barasat Mahatma Gandhi Memorial High School, Barasat</h3>
+                    <p class="text-lg leading-relaxed dark:text-text-color-dark">2017</p>
                 </div>
             </div>
         </section>
@@ -702,11 +743,26 @@
         <!-- Achievements Section -->
         <section id="achievements" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Achievements</h2>
-            <ul class="list-disc list-inside text-lg leading-relaxed space-y-2 dark:text-text-color-dark">
-                <li><strong class="font-semibold">Research Paper, Best Paper Award:</strong> Recognized for "Phishing URL Detection Using ML" at the 2nd National Conference, RAICCIT 2025.</li>
-                <li><strong class="font-semibold">SIH Internal 2023:</strong> Participated in the Smart India Hackathon (SIH) Internal competition 2023 at Narula Institute of Technology, Kolkata, on "Real-Time Vehicle Tracking System."</li>
-                <li><strong class="font-semibold">Singing Contest:</strong> Secured 2nd place in a college singing contest, NiT Jewels, in April 2022.</li>
-            </ul>
+            <div class="space-y-4"> <!-- Reduced space-y for individual cards -->
+                <div class="achievement-entry flex items-start">
+                    <i class="fas fa-award achievement-icon"></i>
+                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
+                        <strong class="font-semibold">Research Paper, Best Paper Award:</strong> Recognized for "Phishing URL Detection Using ML" at the 2nd National Conference, RAICCIT 2025.
+                    </p>
+                </div>
+                <div class="achievement-entry flex items-start">
+                    <i class="fas fa-lightbulb achievement-icon"></i>
+                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
+                        <strong class="font-semibold">SIH Internal 2023:</strong> Participated in the Smart India Hackathon (SIH) Internal competition 2023 at Narula Institute of Technology, Kolkata, on "Real-Time Vehicle Tracking System."
+                    </p>
+                </div>
+                <div class="achievement-entry flex items-start">
+                    <i class="fas fa-microphone achievement-icon"></i>
+                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
+                        <strong class="font-semibold">Singing Contest:</strong> Secured 2nd place in a college singing contest, NiT Jewels, in April 2022.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <!-- Contact Section -->
@@ -730,7 +786,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-main-bg-dark">
+    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
         <div class="container mx-auto px-4">
             <p class="text-sm">&copy; 2025 Souparna Paul. All rights reserved.</p>
             <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
@@ -817,6 +873,6 @@
 </body>
 </html>
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 
-the navigation bar is not looking good in dark mode with white background and cyan texts, make it more attractive, try different color combo also make the education section and the achievements section more attractive 
+improve the ui/ux and css, use favicon for all the icons within this website and make it look so much attractive that nobody can look away.
