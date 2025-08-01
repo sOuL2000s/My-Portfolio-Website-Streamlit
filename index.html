@@ -9,8 +9,8 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons (Note: Favicons are for browser tabs, Font Awesome is for in-page icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Custom CSS for dark mode transition and scroll behavior */
@@ -20,32 +20,33 @@
             --main-bg-light: #ffffff; /* Pure white for cards */
             --text-color-light: #343a40; /* Dark charcoal for body text */
             --heading-color-light: #212529; /* Even darker for headings */
-            --link-color: #007bff; /* Vibrant blue for links */
-            --button-bg-color: #007bff; /* Vibrant blue for buttons */
-            --button-hover-bg-color: #0056b3; /* Darker blue on hover */
+            --primary-accent: #007bff; /* Vibrant blue for primary accent */
+            --primary-accent-darker: #0056b3; /* Darker blue for hover */
+            --secondary-accent: #6c757d; /* Muted gray for secondary */
             --skill-tag-bg: #e9ecef; /* Light gray for skill tags */
             --skill-tag-border: #dee2e6; /* Subtle border for skill tags */
             --border-color-light: #e0e0e0; /* Light border */
             --shadow-color-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
-            --navbar-bg-light: #ffffff; /* New: White for navbar in light mode */
+            --navbar-bg-light: #ffffff; /* White for navbar in light mode */
 
             /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
             --bg-color-dark: #121212; /* Deep dark background */
             --main-bg-dark: #1e1e1e; /* Slightly lighter dark card background */
             --text-color-dark: #e0e0e0; /* Light gray text */
             --heading-color-dark: #f8f9fa; /* White headings */
-            --link-color-dark: #8be9fd; /* Light blue/cyan accent */
+            --primary-accent-dark: #8be9fd; /* Light blue/cyan accent */
+            --primary-accent-dark-hover: #50fa7b; /* Green accent for hover */
+            --secondary-accent-dark: #9da3af; /* Lighter gray for secondary */
             --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
             --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
             --skill-tag-bg-dark: #343a40; /* Darker gray for skill tags */
             --skill-tag-border-dark: #495057; /* Darker border for skill tags */
             --border-color-dark: #3a476f; /* Dark border color */
             --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow color */
-
-            /* Navbar specific dark mode colors */
             --navbar-bg-dark: #1a1a1a; /* Very dark blue for navbar */
-            --navbar-text-dark: #f8f9fa; /* Light gray for navbar links */
-            --navbar-hover-dark: #8be9fd; /* Accent color for navbar link hover */
+
+            /* NEW: Variable for caret color */
+            --caret-color: var(--primary-accent); /* Default caret color (light mode) */
         }
 
         body {
@@ -59,6 +60,8 @@
         body.dark-mode {
             background-color: var(--bg-color-dark);
             color: var(--text-color-dark);
+            /* NEW: Override caret color for dark mode */
+            --caret-color: var(--primary-accent-dark);
         }
 
         /* General element transitions for dark mode */
@@ -97,11 +100,11 @@
 
         /* Links */
         a {
-            color: var(--link-color);
+            color: var(--primary-accent);
             transition: color 0.3s ease;
         }
         body.dark-mode a {
-            color: var(--link-color-dark);
+            color: var(--primary-accent-dark);
         }
         a:hover {
             filter: brightness(1.2);
@@ -110,7 +113,7 @@
 
         /* Buttons */
         .btn-primary {
-            background-color: var(--button-bg-color);
+            background-color: var(--primary-accent);
             color: white;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             border-radius: 9999px; /* Pill shape */
@@ -123,7 +126,7 @@
             overflow: hidden; /* For ripple effect */
         }
         .btn-primary:hover {
-            background-color: var(--button-hover-bg-color);
+            background-color: var(--primary-accent-darker);
             transform: translateY(-5px); /* More pronounced lift */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Even deeper shadow on hover */
         }
@@ -152,7 +155,7 @@
         .skill-tag:hover {
             transform: translateY(-3px); /* More pronounced lift */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
-            background-color: var(--link-color); /* Highlight on hover */
+            background-color: var(--primary-accent); /* Highlight on hover */
             color: white;
         }
         body.dark-mode .skill-tag {
@@ -161,7 +164,7 @@
             border: 1px solid var(--skill-tag-border-dark);
         }
         body.dark-mode .skill-tag:hover {
-            background-color: var(--link-color-dark);
+            background-color: var(--primary-accent-dark);
             color: #121212; /* Dark text on light hover for contrast */
         }
 
@@ -191,7 +194,13 @@
         body.dark-mode .project-card p, body.dark-mode .project-card ul li {
             color: var(--text-color-dark);
         }
-
+        .project-image {
+            border-radius: 0.75rem; /* Match card radius */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .project-image {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
         /* Contact Form */
         .form-input {
@@ -203,7 +212,7 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
         .form-input:focus {
-            border-color: var(--link-color);
+            border-color: var(--primary-accent);
             box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25); /* Larger, softer focus ring */
             background-color: var(--main-bg-light); /* White background on focus */
         }
@@ -217,7 +226,7 @@
             color: var(--text-color-dark);
         }
         body.dark-mode .form-input:focus {
-            border-color: var(--link-color-dark);
+            border-color: var(--primary-accent-dark);
             box-shadow: 0 0 0 4px rgba(139, 233, 253, 0.25);
             background-color: var(--main-bg-dark); /* Dark background on focus */
         }
@@ -283,79 +292,104 @@
             background-color: #2c3e50; /* Darker circle in dark mode */
         }
 
-        /* Hamburger menu */
+        /* Hamburger menu and Mobile Nav Overlay */
         .hamburger {
             display: none;
-            z-index: 20; /* Ensure it's above nav links when open */
-            padding: 0.5rem; /* Add padding for easier tapping */
-            border-radius: 0.5rem; /* Rounded corners */
+            z-index: 50; /* Ensure it's above everything */
+            padding: 0.5rem;
+            border-radius: 0.5rem;
             transition: background-color 0.3s ease;
         }
         .hamburger:hover {
-            background-color: rgba(0, 0, 0, 0.05); /* Subtle hover effect */
+            background-color: rgba(0, 0, 0, 0.05);
         }
         body.dark-mode .hamburger:hover {
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--navbar-bg-light); /* Fallback */
+            transform: translateX(100%); /* Start off-screen */
+            transition: transform 0.4s ease-out;
+            z-index: 40; /* Below hamburger, above content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(8px); /* For Safari */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent */
+        }
+        .mobile-nav-overlay.active {
+            transform: translateX(0); /* Slide in */
+        }
+        body.dark-mode .mobile-nav-overlay {
+            background-color: var(--navbar-bg-dark); /* Mobile nav background in dark mode */
+            box-shadow: -5px 0 15px var(--shadow-color-dark);
+            background-color: rgba(26, 26, 26, 0.9); /* Semi-transparent dark */
+        }
+
+        .mobile-nav-overlay .nav-links-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            text-align: center;
+        }
+        .mobile-nav-overlay .nav-links-mobile a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 0.75rem 0;
+            color: var(--heading-color-light); /* Adjusted for overlay */
+            border-bottom: 1px solid var(--border-color-light);
+        }
+        body.dark-mode .mobile-nav-overlay .nav-links-mobile a {
+            color: var(--heading-color-dark);
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .mobile-nav-overlay .nav-links-mobile a:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav-overlay .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--heading-color-light);
+        }
+        body.dark-mode .mobile-nav-overlay .close-btn {
+            color: var(--heading-color-dark);
+        }
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
             }
-            .nav-links {
+            .nav-links-desktop { /* Hide desktop links on mobile */
                 display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--main-bg-light); /* Mobile nav background */
-                position: absolute;
-                top: 72px; /* Adjust based on header height */
-                left: 0;
-                z-index: 10;
-                border-top: 1px solid var(--border-color-light);
-                padding-bottom: 1rem;
-                box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-                animation: slideDown 0.3s ease-out forwards; /* Slide down animation */
             }
-            body.dark-mode .nav-links {
-                background-color: var(--navbar-bg-dark); /* Mobile nav background in dark mode */
-                border-top: 1px solid var(--border-color-dark);
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links a {
-                padding: 1rem 1.5rem; /* More padding for touch targets */
-                border-bottom: 1px solid var(--border-color-light);
-                text-align: center; /* Center text */
-            }
-            body.dark-mode .nav-links a {
-                border-bottom: 1px solid var(--border-color-dark);
-            }
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-
-            @keyframes slideDown {
-                from {
-                    transform: translateY(-100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
+            body.mobile-menu-active {
+                overflow: hidden; /* Prevent scrolling when menu is open */
             }
         }
 
         /* Profile image animation */
         .profile-img {
             animation: float 3s ease-in-out infinite;
-            border-color: var(--link-color); /* Use accent color for border */
-            box-shadow: 0 0 0 6px var(--link-color), 0 10px 20px rgba(0,0,0,0.2); /* Double border effect */
+            border-color: var(--primary-accent); /* Use accent color for border */
+            box-shadow: 0 0 0 6px var(--primary-accent), 0 10px 20px rgba(0,0,0,0.2); /* Double border effect */
         }
         body.dark-mode .profile-img {
-            border-color: var(--link-color-dark);
-            box-shadow: 0 0 0 6px var(--link-color-dark), 0 10px 20px var(--shadow-color-dark);
+            border-color: var(--primary-accent-dark);
+            box-shadow: 0 0 0 6px var(--primary-accent-dark), 0 10px 20px var(--shadow-color-dark);
         }
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -402,19 +436,19 @@
 
         /* Icons for achievements */
         .achievement-icon {
-            color: var(--link-color); /* Use accent color for icons */
+            color: var(--primary-accent); /* Use accent color for icons */
             margin-right: 1rem; /* More space */
             font-size: 1.8rem; /* Larger icons */
             min-width: 1.8rem; /* Ensure consistent alignment */
         }
         body.dark-mode .achievement-icon {
-            color: var(--link-color-dark);
+            color: var(--primary-accent-dark);
         }
 
         /* Footer */
         footer {
             background-color: var(--navbar-bg-dark); /* Darker footer */
-            color: var(--navbar-text-dark);
+            color: var(--text-color-dark); /* Ensure text is visible in dark footer */
             padding: 2rem 0; /* More padding */
             box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* Inset shadow for depth */
         }
@@ -429,13 +463,113 @@
         body.dark-mode header {
             background-color: var(--navbar-bg-dark); /* Use variable for dark mode */
         }
+
+        /* Navbar active link highlighting */
+        .nav-links-desktop a.active, .nav-links-mobile a.active {
+            color: var(--primary-accent) !important; /* Force accent color */
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-links-mobile a.active {
+            color: var(--primary-accent-dark) !important;
+        }
+
+        /* Scroll-to-top button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease;
+            z-index: 30;
+        }
+        #scrollToTopBtn:hover {
+            background-color: var(--primary-accent-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        body.dark-mode #scrollToTopBtn {
+            background-color: var(--primary-accent-dark);
+        }
+        body.dark-mode #scrollToTopBtn:hover {
+            background-color: var(--primary-accent-dark-hover);
+        }
+        #scrollToTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero section specific styling */
+        .hero-section-bg {
+            background: linear-gradient(135deg, var(--bg-color-light) 0%, var(--main-bg-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        body.dark-mode .hero-section-bg {
+            background: linear-gradient(135deg, var(--bg-color-dark) 0%, var(--main-bg-dark) 100%);
+        }
+        .hero-section-bg::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at top left, var(--primary-accent) 0%, transparent 25%),
+                        radial-gradient(circle at bottom right, var(--secondary-accent) 0%, transparent 25%);
+            opacity: 0.05;
+            z-index: -1;
+            animation: rotateBackground 20s linear infinite;
+        }
+        body.dark-mode .hero-section-bg::before {
+            background: radial-gradient(circle at top left, var(--primary-accent-dark) 0%, transparent 25%),
+                        radial-gradient(circle at bottom right, var(--secondary-accent-dark) 0%, transparent 25%);
+            opacity: 0.1;
+        }
+        @keyframes rotateBackground {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Typewriter effect */
+        .typewriter-text {
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            display: inline-block;
+            vertical-align: bottom; /* Adjusts vertical alignment for underline */
+            min-height: 1.2em; /* Prevents text from jumping */
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            /* FIXED: Use the --caret-color variable here */
+            50% { border-color: var(--caret-color); }
+        }
+
     </style>
 </head>
-<body class="transition-colors-shadow">
+<body>
     <!-- Header/Navigation Bar -->
     <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-navbar-hover-dark">Souparna Paul</a>
+            <a href="#home" class="text-2xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-primary-accent-dark">Souparna Paul</a>
             <div class="flex items-center space-x-6">
                 <!-- Dark Mode Toggle -->
                 <div id="darkModeToggle" class="relative">
@@ -443,46 +577,71 @@
                 </div>
 
                 <!-- Hamburger Menu for Mobile -->
-                <button id="hamburger" class="hamburger text-gray-800 focus:outline-none dark:text-navbar-text-dark">
+                <button id="hamburger" class="hamburger text-gray-800 focus:outline-none dark:text-heading-color-dark">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
 
-                <!-- Navigation Links -->
-                <nav id="navLinks" class="nav-links hidden md:flex md:space-x-6">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">About Me</a>
-                    <a href="#skills" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Skills</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Projects</a>
-                    <a href="#education" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Education</a>
-                    <a href="#achievements" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Achievements</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-navbar-text-dark dark:hover:text-navbar-hover-dark">Contact</a>
+                <!-- Navigation Links (Desktop) -->
+                <nav id="navLinksDesktop" class="nav-links-desktop hidden md:flex md:space-x-6">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">About Me</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Skills</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Projects</a>
+                    <a href="#education" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Education</a>
+                    <a href="#achievements" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Achievements</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Contact</a>
                 </nav>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobileNavOverlay" class="mobile-nav-overlay">
+        <button id="closeMobileNav" class="close-btn"><i class="fas fa-times"></i></button>
+        <nav class="nav-links-mobile">
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
     <main class="container mx-auto px-4 py-8 md:py-12">
         <!-- Home Section -->
-        <section id="home" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow fade-in-section">
+        <section id="home" class="main-content-card hero-section-bg rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow fade-in-section">
             <div class="md:w-1/3 flex justify-center mb-6 md:mb-0 md:pr-8">
-                <!-- Placeholder for profile image -->
                 <img src="profile.png" alt="Souparna Paul" class="profile-img rounded-full w-48 h-48 object-cover transition-colors-shadow">
             </div>
             <div class="md:w-2/3">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">Hi, I'm Souparna Paul 👋</h1>
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-6 dark:text-text-color-dark">A Creatively Passionate Python Based Software and Web Developer | Kolkata, India</h2>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">
+                    Hi, I'm Souparna Paul <span class="wave-emoji">👋</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-6 dark:text-text-color-dark">
+                    <span class="typewriter-text">A Creatively Passionate Python Based Software and Web Developer | Kolkata, India</span>
+                </h2>
                 <p class="text-lg leading-relaxed mb-6 dark:text-text-color-dark">
                     I'm a Tech Enthusiast and Innovator from Madhyamgram, West Bengal.
                     I specialize in Python development, AI/ML, and full-stack web development using tools like Streamlit, Firebase, and React.
                     My strengths lie in building real-time, data-driven applications—as seen in projects like Crypto Prediction Maker Pro++, Smart Agritech Streamlit Dashboard, and my Tournament Manager WebApp.
                     I’m also passionate about applying machine learning to real-world problems like Phishing URL Detection, for which I won a Best Paper Award.
                 </p>
-                <div class="flex justify-center md:justify-start space-x-6 text-3xl">
-                    <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" class="hover:text-blue-700 transition-colors-shadow dark:hover:text-link-color-dark">
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                    <a href="https://docs.google.com/document/d/1vQjLq2rXmXyV0p_w_hZ9zY0d_c7c4c9d/edit?usp=sharing" target="_blank" class="btn-primary flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i> Download Resume
+                    </a>
+                </div>
+                <div class="flex justify-center md:justify-start space-x-6 text-3xl mt-4">
+                    <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-blue-700 transition-colors-shadow dark:hover:text-primary-accent-dark">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/sOuL2000s" target="_blank" class="hover:text-gray-900 transition-colors-shadow dark:hover:text-link-color-dark">
+                    <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-gray-900 transition-colors-shadow dark:hover:text-primary-accent-dark">
                         <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-red-600 transition-colors-shadow dark:hover:text-primary-accent-dark">
+                        <i class="fas fa-envelope"></i>
                     </a>
                 </div>
             </div>
@@ -492,9 +651,8 @@
         <section id="about" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">About Me</h2>
             <p class="text-lg leading-relaxed mb-4 dark:text-text-color-dark">
-                I have completed my B.Tech CSE student from Narula Institute of Technology, Kolkata.
-                My journey in technology began with a strong interest in programming and problem-solving.
-                Since then, I've honed my skills in various areas, including:
+                I am a B.Tech CSE student from Narula Institute of Technology, Kolkata, graduating in 2025.
+                My journey in technology began with a strong interest in programming and problem-solving, leading me to delve into various domains:
             </p>
             <ul class="list-disc list-inside text-lg leading-relaxed space-y-2 dark:text-text-color-dark">
                 <li><strong class="font-semibold">Python Development:</strong> Proficient in various Python libraries and frameworks for data science and web development.</li>
@@ -504,7 +662,7 @@
             </ul>
             <p class="text-lg leading-relaxed mt-4 dark:text-text-color-dark">
                 I thrive in environments that challenge me to learn and grow, and I am always eager to contribute to innovative projects.
-                My work includes projects like <strong class="font-semibold">Crypto Prediction Maker Pro++</strong>, <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, and a <strong class="font-semibold">Tournament Manager WebApp</strong>.
+                My work includes projects like <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, <strong class="font-semibold">BTC Probo Predictor</strong>, and a <strong class="font-semibold">Tournament Manager WebApp</strong>.
                 Additionally, my passion for applying machine learning to real-world problems led to a <strong class="font-semibold">Best Paper Award for Phishing URL Detection</strong>.
                 Outside of academics, I enjoy <strong class="font-semibold">Writing Stories</strong> and <strong class="font-semibold">Songs</strong>, <strong class="font-semibold">Singing</strong>, and <strong class="font-semibold">Meditating</strong>.
             </p>
@@ -515,7 +673,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Skills</h2>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Programming Languages</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Python</span>
                         <span class="skill-tag transition-colors-shadow">JavaScript</span>
@@ -526,7 +684,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Web Development</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-globe mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Web Development</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Streamlit</span>
                         <span class="skill-tag transition-colors-shadow">React</span>
@@ -537,7 +695,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Data Science & ML</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-brain mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Data Science & ML</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Pandas</span>
                         <span class="skill-tag transition-colors-shadow">NumPy</span>
@@ -549,7 +707,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Databases</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-database mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Databases</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Firebase-FireStore</span>
                         <span class="skill-tag transition-colors-shadow">MongoDB</span>
@@ -558,7 +716,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Tools & Platforms</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-tools mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Tools & Platforms</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Jupyter Notebooks</span>
                         <span class="skill-tag transition-colors-shadow">VS Code</span>
@@ -569,7 +727,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3">Soft Skills</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow">Problem-solving</span>
                         <span class="skill-tag transition-colors-shadow">Teamwork</span>
@@ -587,20 +745,12 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">My Projects</h2>
 
             <h3 class="text-2xl md:text-3xl font-bold mb-4">Individual Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 <!-- Project 1: Smart AgriTech Dashboard -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/007bff/FFFFFF?text=AgriTech+Dashboard" alt="Smart AgriTech Dashboard" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">Smart AgriTech Dashboard</h4>
-                    <p class="text-base mb-4">Built a unified AI-powered AgriTech dashboard for real-time crop monitoring, sensor visualization, and crop advisory. Integrated Firebase Realtime Database to fetch and display live farm sensor data (moisture, pH, NPK, temperature, etc.). Trained a TimeDistributed ANN (TDANN) for soil moisture prediction using recent sensor trends and crop-type embeddings. Enabled AI-based growth forecasts and actionable crop care tips tailored to 20+ Indian crops like Wheat, Rice, Maize, Mango, etc. Designed multi-tab responsive UI with Plotly trend charts, prediction widgets, and condition-based crop suggestions. Secured Firebase credentials using base64-encoded keys for Render compatibility and seamless cloud deployment. Included fallback handling for missing data, intelligent sensor parsing, and advice logic for sustainable farming.</p>
-                    <p class="font-semibold mb-2">Key Features:</p>
-                    <ul class="list-disc list-inside text-sm mb-4">
-                        <li><strong>Real-time Crop Monitoring:</strong> Unified dashboard for live visualization of farm sensor data (moisture, pH, NPK, temperature).</li>
-                        <li><strong>AI-Powered Crop Advisory:</strong> Provides growth forecasts and tailored crop care tips for 20+ Indian crops.</li>
-                        <li><strong>Soil Moisture Prediction:</strong> Utilizes TimeDistributed ANN (TDANN) for accurate soil moisture forecasting.</li>
-                        <li><strong>Firebase Integration:</strong> Seamlessly fetches and displays live data from Firebase Realtime Database.</li>
-                        <li><strong>Responsive UI & Plotly Charts:</strong> Multi-tab interface with interactive trend charts and prediction widgets.</li>
-                        <li><strong>Secure Deployment:</strong> Firebase credentials secured with base64 encoding for Render compatibility.</li>
-                    </ul>
+                    <p class="text-base mb-4 flex-grow">Built a unified AI-powered AgriTech dashboard for real-time crop monitoring, sensor visualization, and crop advisory. Integrated Firebase Realtime Database to fetch and display live farm sensor data (moisture, pH, NPK, temperature, etc.). Trained a TimeDistributed ANN (TDANN) for soil moisture prediction using recent sensor trends and crop-type embeddings. Enabled AI-based growth forecasts and actionable crop care tips tailored to 20+ Indian crops like Wheat, Rice, Maize, Mango, etc. Designed multi-tab responsive UI with Plotly trend charts, prediction widgets, and condition-based crop suggestions. Secured Firebase credentials using base64-encoded keys for Render compatibility and seamless cloud deployment. Included fallback handling for missing data, intelligent sensor parsing, and advice logic for sustainable farming.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
@@ -608,128 +758,80 @@
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TensorFlow</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Plotly</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Pandas</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">NumPy</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: June 2025</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://smart-agritech-dashbard.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://smart-agritech-dashbard.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 2: BTC Probo Predictor (Mobile Friendly) -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/4CAF50/FFFFFF?text=BTC+Predictor" alt="BTC Probo Predictor" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">BTC Probo Predictor (Mobile Friendly)</h4>
-                    <p class="text-base mb-4">
-                        This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time.
-                    </p>
-                    <p class="font-semibold mb-2">Key Features:</p>
-                    <ul class="list-disc list-inside text-sm mb-4">
-                        <li><strong>Real-time Data Fetching:</strong> Gathers OHLCV (Open, High, Low, Close, Volume) data for BTCUSDT from the Binance API, with data refreshed on an hourly interval.</li>
-                        <li><strong>Technical Indicator Analysis:</strong> Calculates and displays key technical indicators such as RSI (14-period window) and EMA (20-period and 50-period windows). Provides insights into market trend (Uptrend/Downtrend) and RSI zone (Overbought, Oversold, Neutral).</li>
-                        <li><strong>Sentiment Analysis Integration:</strong> Incorporates Bitcoin sentiment scores to provide a more holistic market view.</li>
-                        <li><strong>AI-Powered Prediction Engine:</strong> Recommends a Probo vote (Yes/No) based on the target price, target time, current price, average delta per hour, projected price, and sentiment score.</li>
-                        <li><strong>Interactive Charting:</strong> Visualizes BTC price data with candlestick charts, including EMA overlays, using Plotly for a clear and interactive user experience.</li>
-                        <li><strong>Telegram Notifications:</strong> Sends automated Telegram alerts with prediction summaries, including target time, target price, current price, projected price, sentiment, and the recommended vote.</li>
-                        <li><strong>Mobile-Friendly Design:</strong> Utilizes Streamlit with custom CSS to ensure a responsive and optimized user interface across various screen sizes.</li>
-                    </ul>
+                    <p class="text-base mb-4 flex-grow">This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time. Features include real-time data fetching from Binance API, technical indicator analysis (RSI, EMA), sentiment analysis integration, AI-powered prediction engine, interactive Plotly charts, and Telegram notifications for alerts. Designed with Streamlit and custom CSS for a responsive, mobile-friendly interface.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Streamlit</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Plotly</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Pandas</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Requests</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TA-Lib</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TextBlob</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Telegram Bot API</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: July 2025</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/html-probo-predictor-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://probo-crypto-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/html-probo-predictor-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://probo-crypto-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 3: MATHEMATICO - Special Mathematics Coaching Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/FFC107/FFFFFF?text=MATHEMATICO" alt="MATHEMATICO Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">MATHEMATICO - Special Mathematics Coaching Website</h4>
-                    <p class="text-base mb-4">
-                        Developed a comprehensive, responsive website for a mathematics coaching center, featuring dynamic content management via Firebase Firestore for admin-controlled updates.
-                    </p>
-                    <p class="font-semibold mb-2">Key Features:</p>
-                    <ul class="list-disc list-inside text-sm mb-4">
-                        <li><strong>Dynamic Content Management:</strong> Admin panel with Firebase authentication (email/password, Google Sign-in) for secure CRUD operations on courses, books, problems, gallery, and blog posts.</li>
-                        <li><strong>Course & Study Material Management:</strong> Admins can add, edit, and delete course details and recommended books.</li>
-                        <li><strong>Problem & Solution Repository:</strong> Categorized problems with solutions, manageable by admin.</li>
-                        <li><strong>Interactive Gallery:</strong> Upload and manage images with captions for events and achievements.</li>
-                        <li><strong>Blog/Articles Section:</strong> Admins can publish and manage blog posts with rich text content and images.</li>
-                        <li><strong>User Testimonials & Success Stories:</strong> Dedicated sections to showcase student feedback and achievements.</li>
-                        <li><strong>FAQ Section:</strong> Dynamically updated FAQs for common queries.</li>
-                        <li><strong>Theme Toggle:</strong> Dark mode/light mode switch for improved user experience.</li>
-                        <li><strong>Fully Responsive Design:</strong> Optimized for desktop, tablet, and mobile devices using Tailwind CSS.</li>
-                        <li><strong>Firebase Firestore Integration:</strong> Real-time data synchronization for all dynamic content.</li>
-                        <li><strong>Google Maps Integration:</strong> Embedded map for easy location finding.</li>
-                    </ul>
+                    <p class="text-base mb-4 flex-grow">Developed a comprehensive, responsive website for a mathematics coaching center, featuring dynamic content management via Firebase Firestore for admin-controlled updates. Key features include an admin panel with secure Firebase authentication for CRUD operations on courses, books, problems, gallery, and blog posts. It also includes dynamic FAQ, user testimonials, Google Maps integration, and a theme toggle for dark/light mode, all built with a fully responsive design using Tailwind CSS for an optimal user experience across devices.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">JavaScript</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Tailwind CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase Firestore</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase Auth</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: July 2025</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/mathematico-coaching-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://mathematico-special-coaching-center.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/mathematico-coaching-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://mathematico-special-coaching-center.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 4: Tournament Manager Full-Stack Web Application -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/20c997/FFFFFF?text=Tournament+Manager" alt="Tournament Manager Web App" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">Tournament Manager Full-Stack Web Application</h4>
-                    <p class="text-base mb-4">Developed a comprehensive full-stack web application for managing tournaments, including features for team registration, match scheduling, score updates, and leaderboard tracking. Designed a user-friendly interface for seamless navigation and data input. Implemented robust backend logic for data persistence and real-time updates. Provided live demos for various tournament types to showcase functionality.</p>
-                    <p class="font-semibold mb-2">Key Features:</p>
-                    <ul class="list-disc list-inside text-sm mb-4">
-                        <li><strong>Team Registration & Management:</strong> Allows users to register teams and manage their details.</li>
-                        <li><strong>Match Scheduling:</strong> Features for creating and managing tournament match schedules.</li>
-                        <li><strong>Real-time Score Updates:</strong> Enables live updates of match scores and results.</li>
-                        <li><strong>Leaderboard Tracking:</strong> Automatically updates and displays tournament leaderboards.</li>
-                        <li><strong>User-Friendly Interface:</strong> Intuitive design for seamless navigation and data entry.</li>
-                        <li><strong>Robust Backend:</strong> Implemented with Node.js and Express.js for efficient data handling.</li>
-                        <li><strong>MongoDB Integration:</strong> Utilizes MongoDB for flexible and scalable data storage.</li>
-                        <li><strong>React Frontend:</strong> Dynamic and responsive user interface built with React.js.</li>
-                    </ul>
+                    <p class="text-base mb-4 flex-grow">Developed a comprehensive full-stack web application for managing tournaments, including features for team registration, match scheduling, score updates, and leaderboard tracking. Designed a user-friendly interface for seamless navigation and data input. Implemented robust backend logic for data persistence and real-time updates. Provided live demos for various tournament types to showcase functionality.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">React.js</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Node.js</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Express.js</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">MongoDB</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">JavaScript</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: May 2025</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://tournament-manager-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://tournament-manager-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
             </div>
 
             <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4">Team Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 <!-- Team Project 1: Early Detection of Parkinson’s Disease Using ML -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/6F42C1/FFFFFF?text=Parkinson's+ML" alt="Early Detection of Parkinson’s Disease" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">Early Detection of Parkinson’s Disease Using ML</h4>
-                    <p class="text-base mb-4">
-                        This team project focused on the early detection of Parkinson's Disease using machine learning techniques. It involved the collaborative effort of a 6-member team.
-                        Organized and gathered essential resources for the project. Contributed to writing and developing the programming code. Managed a team of 6 members, ensuring smooth collaboration and task delegation. Assisted in the creation and design of the project presentation. Played a significant role in writing the research paper for the project.
-                    </p>
+                    <p class="text-base mb-4 flex-grow">This team project focused on the early detection of Parkinson's Disease using machine learning techniques. It involved a collaborative effort of a 6-member team, where I contributed to resource gathering, programming code development, team management, presentation design, and research paper writing.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
@@ -738,18 +840,16 @@
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2023</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/early-parkinsons-detection-ml.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/early-parkinsons-detection-ml.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
                     </div>
                 </div>
 
                 <!-- Team Project 2: Employee Management System Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/17A2B8/FFFFFF?text=Employee+Mgt" alt="Employee Management System" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">Employee Management System Website</h4>
-                    <p class="text-base mb-4">
-                        Developed a comprehensive Employee Management System Website with a team of 6 members.
-                        Gathered and organized resources for the project. Conducted research on website development best practices. Developed front-end and back-end code using Node.js, React.js, and Firebase Firestore. Deployed the website, ensuring functionality and accessibility. Managed a team of 6 members, coordinating tasks and facilitating collaboration.
-                    </p>
+                    <p class="text-base mb-4 flex-grow">Developed a comprehensive Employee Management System Website with a team of 6 members. My roles included gathering resources, research on best practices, full-stack development using Node.js, React.js, and Firebase Firestore, deployment, and team coordination to ensure functionality and accessibility.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Node.js</span>
@@ -758,29 +858,29 @@
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: January 2024 - June 2024</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/sOuL2000s/simple-employee-management-system.git" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://employee-management-system21.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-link-color-dark dark:hover:text-blue-400"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: Jan 2024 - June 2024</p>
+                    <div class="flex space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/simple-employee-management-system.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://employee-management-system21.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Team Project 3: Phishing URL Detection Using Machine Learning -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                    <img src="https://via.placeholder.com/400x250/FD7E14/FFFFFF?text=Phishing+Detection" alt="Phishing URL Detection" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3">Phishing URL Detection Using Machine Learning</h4>
-                    <p class="text-base mb-4">
-                        This team project focused on applying machine learning to real-world problems for phishing URL detection. This project was recognized with a <strong class="font-semibold">Best Paper Award</strong> (2nd National Conference, RAICCIT 2025).
-                    </p>
+                    <p class="text-base mb-4 flex-grow">This team project focused on applying machine learning to real-world problems for phishing URL detection. This project was recognized with a <strong class="font-semibold">Best Paper Award</strong> (2nd National Conference, RAICCIT 2025).</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TensorFlow</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Scikit-learn</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Data Analysis</span>
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
                     </div>
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2024</p>
-                    <!-- No GitHub or Live Demo link provided in source -->
+                    <div class="flex space-x-4 mt-auto">
+                        <!-- No GitHub or Live Demo link provided in source, keeping as is -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -788,7 +888,7 @@
         <!-- Education Section -->
         <section id="education" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Education</h2>
-            <div class="space-y-4"> <!-- Reduced space-y for individual cards -->
+            <div class="space-y-4">
                 <div class="education-entry">
                     <h3 class="text-2xl font-semibold mb-2">B.Tech CSE | Narula Institute of Technology, Kolkata</h3>
                     <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">2021-2025</p>
@@ -811,7 +911,7 @@
         <!-- Achievements Section -->
         <section id="achievements" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Achievements</h2>
-            <div class="space-y-4"> <!-- Reduced space-y for individual cards -->
+            <div class="space-y-4">
                 <div class="achievement-entry flex items-start">
                     <i class="fas fa-award achievement-icon"></i>
                     <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
@@ -842,6 +942,8 @@
 
             <form action="https://formsubmit.co/souparnopaulreborn@gmail.com" method="POST" class="max-w-xl mx-auto space-y-4">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://souparna-paul-portfolio.netlify.app/thanks.html"> <!-- Redirect to a thank you page -->
+
                 <input type="text" name="name" placeholder="Your Name" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow">
                 <input type="email" name="email" placeholder="Your Email" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow">
                 <textarea name="message" placeholder="Your Message" rows="6" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow"></textarea>
@@ -853,20 +955,38 @@
         </section>
     </main>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
         <div class="container mx-auto px-4">
-            <p class="text-sm">&copy; 2025 Souparna Paul. All rights reserved.</p>
+            <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
             <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
+            <div class="flex justify-center space-x-4 text-xl mt-3">
+                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const toggleCircle = darkModeToggle.querySelector('.toggle-circle');
 
-        // Function to apply/remove dark mode class
         const applyDarkMode = (isDark) => {
             if (isDark) {
                 document.body.classList.add('dark-mode');
@@ -877,31 +997,35 @@
             }
         };
 
-        // Check local storage for dark mode preference on load
         const savedDarkMode = localStorage.getItem('darkMode') === 'true';
         applyDarkMode(savedDarkMode);
 
-        // Toggle dark mode on click
         darkModeToggle.addEventListener('click', () => {
             const isCurrentlyDark = document.body.classList.contains('dark-mode');
             applyDarkMode(!isCurrentlyDark);
-            localStorage.setItem('darkMode', !isCurrentlyDark); // Save preference
+            localStorage.setItem('darkMode', !isCurrentlyDark);
         });
 
-        // Hamburger Menu Toggle
+        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const closeMobileNav = document.getElementById('closeMobileNav');
 
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            mobileNavOverlay.classList.add('active');
+            document.body.classList.add('mobile-menu-active'); // Prevent scroll
+        });
+
+        closeMobileNav.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('active');
+            document.body.classList.remove('mobile-menu-active');
         });
 
         // Close mobile menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
+        mobileNavOverlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
+                mobileNavOverlay.classList.remove('active');
+                document.body.classList.remove('mobile-menu-active');
             });
         });
 
@@ -909,10 +1033,20 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                if (targetElement) {
+                    // Calculate offset for sticky header
+                    const headerOffset = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerOffset - 20; // Added 20px padding
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -922,20 +1056,95 @@
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.1 // Adjust as needed
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    // observer.unobserve(entry.target); // Keep observing if you want to re-trigger on scroll back
+                } else {
+                    entry.target.classList.remove('is-visible'); // Remove class when out of view
                 }
             });
         }, observerOptions);
 
         fadeInSections.forEach(section => {
             observer.observe(section);
+        });
+
+        // Active Navbar Link on Scroll (Intersection Observer for Sections)
+        const sections = document.querySelectorAll('section');
+        const desktopNavLinks = document.querySelectorAll('#navLinksDesktop a');
+        const mobileNavLinks = document.querySelectorAll('.nav-links-mobile a');
+
+        const highlightActiveLink = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    desktopNavLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                     mobileNavLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        const sectionObserverOptions = {
+            root: null,
+            rootMargin: '-30% 0px -70% 0px', // Adjust this to control when the active state changes
+            threshold: 0 // Will trigger as soon as 1px of section is visible
+        };
+
+        const sectionObserver = new IntersectionObserver(highlightActiveLink, sectionObserverOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Typewriter Effect
+        const typewriterText = document.querySelector('.typewriter-text');
+        const textToType = "A Creatively Passionate Python Based Software and Web Developer | Kolkata, India"; // Original text
+
+        function typeWriter(element, text, i = 0) {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                setTimeout(() => typeWriter(element, text, i + 1), 50); // Typing speed
+            } else {
+                element.style.borderRight = 'none'; // Remove cursor after typing
+            }
+        }
+
+        if (typewriterText) {
+            typewriterText.textContent = ''; // Clear text before typing
+            typeWriter(typewriterText, textToType);
+        }
+
+        // Scroll to Top Button functionality
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px down
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         });
     </script>
 </body>

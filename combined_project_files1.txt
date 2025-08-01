@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Souparna Paul - Portfolio</title>
+    <!-- Favicon - Replace with your actual favicon.ico or .png -->
+    <link rel="icon" href="profile.png" type="image/png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome for icons (Note: Favicons are for browser tabs, Font Awesome is for in-page icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Custom CSS for dark mode transition and scroll behavior */
         :root {
-            --bg-color-light: #f4f7f6; /* Very light gray/off-white */
-            --main-bg-light: #ffffff; /* White */
-            --text-color-light: #34495e; /* Slightly darker blue-gray */
-            --heading-color-light: #2c3e50; /* Dark blue-gray */
-            --link-color: #3498db; /* Blue */
-            --button-bg-color: #3498db; /* Blue */
-            --button-hover-bg-color: #2980b9; /* Darker blue */
-            --skill-tag-bg: #ecf0f1; /* Light gray */
-            --skill-tag-border: #dcdcdc; /* Subtle border */
-            --border-color-light: #e0e0e0;
-            --shadow-color-light: rgba(0, 0, 0, 0.08);
+            /* Light Mode Variables - Refined for a softer, modern look */
+            --bg-color-light: #f8f9fa; /* Very light gray */
+            --main-bg-light: #ffffff; /* Pure white for cards */
+            --text-color-light: #343a40; /* Dark charcoal for body text */
+            --heading-color-light: #212529; /* Even darker for headings */
+            --link-color: #007bff; /* Vibrant blue for links */
+            --button-bg-color: #007bff; /* Vibrant blue for buttons */
+            --button-hover-bg-color: #0056b3; /* Darker blue on hover */
+            --skill-tag-bg: #e9ecef; /* Light gray for skill tags */
+            --skill-tag-border: #dee2e6; /* Subtle border for skill tags */
+            --border-color-light: #e0e0e0; /* Light border */
+            --shadow-color-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
+            --navbar-bg-light: #ffffff; /* New: White for navbar in light mode */
 
             /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
-            --bg-color-dark: #1a1a2e; /* Deep dark background */
-            --main-bg-dark: #16213e; /* Slightly lighter dark card background */
+            --bg-color-dark: #121212; /* Deep dark background */
+            --main-bg-dark: #1e1e1e; /* Slightly lighter dark card background */
             --text-color-dark: #e0e0e0; /* Light gray text */
-            --heading-color-dark: #f0f0f0; /* White headings */
+            --heading-color-dark: #f8f9fa; /* White headings */
             --link-color-dark: #8be9fd; /* Light blue/cyan accent */
             --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
             --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
-            --skill-tag-bg-dark: #44475a; /* Darker gray for skill tags */
-            --skill-tag-border-dark: #3a476f; /* Darker border for skill tags */
+            --skill-tag-bg-dark: #343a40; /* Darker gray for skill tags */
+            --skill-tag-border-dark: #495057; /* Darker border for skill tags */
             --border-color-dark: #3a476f; /* Dark border color */
-            --shadow-color-dark: rgba(0, 0, 0, 0.3); /* Dark shadow color */
+            --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow color */
 
             /* Navbar specific dark mode colors */
-            --navbar-bg-dark: #0f172a; /* Very dark blue for navbar */
-            --navbar-text-dark: #cbd5e1; /* Light gray for navbar links */
-            --navbar-hover-dark: #6366f1; /* Indigo for navbar link hover */
+            --navbar-bg-dark: #1a1a1a; /* Very dark blue for navbar */
+            --navbar-text-dark: #f8f9fa; /* Light gray for navbar links */
+            --navbar-hover-dark: #8be9fd; /* Accent color for navbar link hover */
         }
 
         body {
@@ -66,19 +70,21 @@
         .main-content-card {
             background-color: var(--main-bg-light);
             box-shadow: 0px 10px 30px var(--shadow-color-light);
-            border-radius: 1rem; /* More rounded */
+            border-radius: 1.5rem; /* Even more rounded */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid var(--border-color-light); /* Subtle border */
         }
         .main-content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 15px 40px var(--shadow-color-light);
+            transform: translateY(-8px); /* Increased lift */
+            box-shadow: 0px 20px 45px var(--shadow-color-light); /* Deeper shadow on hover */
         }
         body.dark-mode .main-content-card {
             background-color: var(--main-bg-dark);
             box-shadow: 0px 10px 30px var(--shadow-color-dark);
+            border: 1px solid var(--border-color-dark);
         }
         body.dark-mode .main-content-card:hover {
-            box-shadow: 0px 15px 40px var(--shadow-color-dark);
+            box-shadow: 0px 20px 45px var(--shadow-color-dark);
         }
 
         /* Headings */
@@ -99,6 +105,7 @@
         }
         a:hover {
             filter: brightness(1.2);
+            text-decoration: underline; /* Add underline on hover for clarity */
         }
 
         /* Buttons */
@@ -107,16 +114,22 @@
             color: white;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             border-radius: 9999px; /* Pill shape */
-            padding: 0.75rem 2rem;
+            padding: 0.85rem 2.2rem; /* Slightly larger padding */
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper initial shadow */
+            position: relative;
+            overflow: hidden; /* For ripple effect */
         }
         .btn-primary:hover {
             background-color: var(--button-hover-bg-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px); /* More pronounced lift */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Even deeper shadow on hover */
+        }
+        .btn-primary:active {
+            transform: translateY(-2px); /* Slight press effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         body.dark-mode .btn-primary {
             background-color: var(--button-bg-color-dark);
@@ -128,42 +141,48 @@
         /* Skill Tags */
         .skill-tag {
             background-color: var(--skill-tag-bg);
-            color: var(--text-color-light); /* Ensure skill tag text color adapts */
+            color: var(--text-color-light);
             border: 1px solid var(--skill-tag-border);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border-radius: 0.5rem; /* Slightly more rounded */
-            padding: 0.6rem 1rem;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); /* Slightly deeper shadow */
+            border-radius: 0.75rem; /* More rounded */
+            padding: 0.7rem 1.2rem; /* Slightly larger padding */
+            font-size: 0.95rem; /* Slightly larger font */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
         .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+            background-color: var(--link-color); /* Highlight on hover */
+            color: white;
         }
         body.dark-mode .skill-tag {
             background-color: var(--skill-tag-bg-dark);
-            color: var(--text-color-dark); /* Skill tag text color in dark mode */
+            color: var(--text-color-dark);
             border: 1px solid var(--skill-tag-border-dark);
+        }
+        body.dark-mode .skill-tag:hover {
+            background-color: var(--link-color-dark);
+            color: #121212; /* Dark text on light hover for contrast */
         }
 
         /* Project Card */
         .project-card {
             background-color: var(--main-bg-light);
             border: 1px solid var(--border-color-light);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Deeper initial shadow */
+            border-radius: 1.25rem; /* More rounded */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .project-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px); /* Increased lift */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Much deeper shadow on hover */
         }
         body.dark-mode .project-card {
             background-color: var(--main-bg-dark);
             border: 1px solid var(--border-color-dark);
         }
         body.dark-mode .project-card:hover {
-            box-shadow: 0 12px 25px var(--shadow-color-dark);
+            box-shadow: 0 15px 35px var(--shadow-color-dark);
         }
         /* Project card text color fix */
         .project-card p, .project-card ul li {
@@ -180,16 +199,17 @@
             border: 1px solid var(--skill-tag-border);
             color: var(--text-color-light);
             border-radius: 0.75rem; /* More rounded inputs */
-            padding: 0.8rem 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 0.9rem 1.2rem; /* Slightly more padding */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
         .form-input:focus {
             border-color: var(--link-color);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25); /* Larger, softer focus ring */
+            background-color: var(--main-bg-light); /* White background on focus */
         }
         .form-input::placeholder {
             color: var(--text-color-light);
-            opacity: 0.6;
+            opacity: 0.7; /* Slightly more visible placeholder */
         }
         body.dark-mode .form-input {
             background-color: var(--skill-tag-bg-dark);
@@ -198,36 +218,37 @@
         }
         body.dark-mode .form-input:focus {
             border-color: var(--link-color-dark);
-            box-shadow: 0 0 0 3px rgba(139, 233, 253, 0.3);
+            box-shadow: 0 0 0 4px rgba(139, 233, 253, 0.25);
+            background-color: var(--main-bg-dark); /* Dark background on focus */
         }
         body.dark-mode .form-input::placeholder {
             color: var(--text-color-dark);
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         /* Dark mode toggle */
         #darkModeToggle {
             cursor: pointer;
-            width: 50px; /* Wider toggle */
-            height: 26px; /* Taller toggle */
+            width: 55px; /* Wider toggle */
+            height: 28px; /* Taller toggle */
             background-color: #ccc;
-            border-radius: 13px;
+            border-radius: 14px;
             position: relative;
             transition: background-color 0.3s;
             display: flex;
             align-items: center;
             justify-content: space-around;
-            padding: 0 4px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+            padding: 0 5px;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.25); /* Deeper inset shadow */
         }
         #darkModeToggle.dark {
-            background-color: #667eea; /* Darker background for toggle in dark mode */
+            background-color: #4a5568; /* Darker background for toggle in dark mode */
         }
         #darkModeToggle::before { /* Sun icon */
             content: '☀️';
             position: absolute;
-            left: 5px;
-            font-size: 14px;
+            left: 6px; /* Adjusted position */
+            font-size: 15px;
             opacity: 1;
             transition: opacity 0.3s;
         }
@@ -235,10 +256,10 @@
             opacity: 0;
         }
         #darkModeToggle::after { /* Moon icon */
-            content: '🌕'; /* Changed to a more reliable moon emoji */
+            content: '🌙'; /* Changed to a more reliable moon emoji */
             position: absolute;
-            right: 5px;
-            font-size: 14px;
+            right: 6px; /* Adjusted position */
+            font-size: 15px;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -250,15 +271,15 @@
             position: absolute;
             top: 3px;
             left: 3px;
-            width: 20px;
-            height: 20px;
+            width: 22px; /* Slightly larger circle */
+            height: 22px;
             background-color: white;
             border-radius: 50%;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.35); /* Deeper shadow for circle */
         }
         #darkModeToggle.dark .toggle-circle {
-            transform: translateX(24px); /* Move further */
+            transform: translateX(27px); /* Move further */
             background-color: #2c3e50; /* Darker circle in dark mode */
         }
 
@@ -266,7 +287,17 @@
         .hamburger {
             display: none;
             z-index: 20; /* Ensure it's above nav links when open */
+            padding: 0.5rem; /* Add padding for easier tapping */
+            border-radius: 0.5rem; /* Rounded corners */
+            transition: background-color 0.3s ease;
         }
+        .hamburger:hover {
+            background-color: rgba(0, 0, 0, 0.05); /* Subtle hover effect */
+        }
+        body.dark-mode .hamburger:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
@@ -277,12 +308,13 @@
                 width: 100%;
                 background-color: var(--main-bg-light); /* Mobile nav background */
                 position: absolute;
-                top: 64px;
+                top: 72px; /* Adjust based on header height */
                 left: 0;
                 z-index: 10;
                 border-top: 1px solid var(--border-color-light);
                 padding-bottom: 1rem;
                 box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+                animation: slideDown 0.3s ease-out forwards; /* Slide down animation */
             }
             body.dark-mode .nav-links {
                 background-color: var(--navbar-bg-dark); /* Mobile nav background in dark mode */
@@ -292,8 +324,9 @@
                 display: flex;
             }
             .nav-links a {
-                padding: 0.75rem 1.5rem;
+                padding: 1rem 1.5rem; /* More padding for touch targets */
                 border-bottom: 1px solid var(--border-color-light);
+                text-align: center; /* Center text */
             }
             body.dark-mode .nav-links a {
                 border-bottom: 1px solid var(--border-color-dark);
@@ -301,23 +334,40 @@
             .nav-links a:last-child {
                 border-bottom: none;
             }
+
+            @keyframes slideDown {
+                from {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
         }
 
         /* Profile image animation */
         .profile-img {
             animation: float 3s ease-in-out infinite;
+            border-color: var(--link-color); /* Use accent color for border */
+            box-shadow: 0 0 0 6px var(--link-color), 0 10px 20px rgba(0,0,0,0.2); /* Double border effect */
+        }
+        body.dark-mode .profile-img {
+            border-color: var(--link-color-dark);
+            box-shadow: 0 0 0 6px var(--link-color-dark), 0 10px 20px var(--shadow-color-dark);
         }
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); } /* Increased float distance */
             100% { transform: translateY(0px); }
         }
 
         /* Section fade-in on scroll */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(30px); /* More pronounced slide-up */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother transition */
         }
         .fade-in-section.is-visible {
             opacity: 1;
@@ -328,43 +378,62 @@
         .education-entry, .achievement-entry {
             background-color: var(--main-bg-light);
             border: 1px solid var(--border-color-light);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem; /* More rounded */
+            padding: 1.8rem; /* More padding */
+            margin-bottom: 1.25rem; /* Slightly more space */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06); /* Softer shadow */
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .education-entry:hover, .achievement-entry:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px); /* More lift */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Deeper shadow on hover */
         }
 
         body.dark-mode .education-entry, body.dark-mode .achievement-entry {
             background-color: var(--main-bg-dark);
             border: 1px solid var(--border-color-dark);
-            box-shadow: 0 4px 10px var(--shadow-color-dark);
+            box-shadow: 0 5px 12px var(--shadow-color-dark);
         }
 
         body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover {
-            box-shadow: 0 8px 20px var(--shadow-color-dark);
+            box-shadow: 0 10px 25px var(--shadow-color-dark);
         }
 
         /* Icons for achievements */
         .achievement-icon {
             color: var(--link-color); /* Use accent color for icons */
-            margin-right: 0.75rem;
-            font-size: 1.5rem;
+            margin-right: 1rem; /* More space */
+            font-size: 1.8rem; /* Larger icons */
+            min-width: 1.8rem; /* Ensure consistent alignment */
         }
         body.dark-mode .achievement-icon {
             color: var(--link-color-dark);
         }
 
+        /* Footer */
+        footer {
+            background-color: var(--navbar-bg-dark); /* Darker footer */
+            color: var(--navbar-text-dark);
+            padding: 2rem 0; /* More padding */
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* Inset shadow for depth */
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Header background styling */
+        header {
+            background-color: var(--navbar-bg-light); /* Use variable for light mode */
+        }
+        body.dark-mode header {
+            background-color: var(--navbar-bg-dark); /* Use variable for dark mode */
+        }
     </style>
 </head>
 <body class="transition-colors-shadow">
     <!-- Header/Navigation Bar -->
-    <header class="bg-white shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:bg-navbar-bg-dark dark:shadow-none">
+    <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-navbar-hover-dark">Souparna Paul</a>
             <div class="flex items-center space-x-6">
@@ -397,7 +466,7 @@
         <section id="home" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow fade-in-section">
             <div class="md:w-1/3 flex justify-center mb-6 md:mb-0 md:pr-8">
                 <!-- Placeholder for profile image -->
-                <img src="profile.png" alt="Souparna Paul" class="profile-img rounded-full w-48 h-48 object-cover border-4 border-white shadow-lg transition-colors-shadow">
+                <img src="profile.png" alt="Souparna Paul" class="profile-img rounded-full w-48 h-48 object-cover transition-colors-shadow">
             </div>
             <div class="md:w-2/3">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">Hi, I'm Souparna Paul 👋</h1>
@@ -598,7 +667,6 @@
                         <li><strong>Blog/Articles Section:</strong> Admins can publish and manage blog posts with rich text content and images.</li>
                         <li><strong>User Testimonials & Success Stories:</strong> Dedicated sections to showcase student feedback and achievements.</li>
                         <li><strong>FAQ Section:</strong> Dynamically updated FAQs for common queries.</li>
-                        <li><strong>Contact Form Integration:</strong> Seamlessly integrated with Google Forms for inquiries.</li>
                         <li><strong>Theme Toggle:</strong> Dark mode/light mode switch for improved user experience.</li>
                         <li><strong>Fully Responsive Design:</strong> Optimized for desktop, tablet, and mobile devices using Tailwind CSS.</li>
                         <li><strong>Firebase Firestore Integration:</strong> Real-time data synchronization for all dynamic content.</li>
@@ -873,6 +941,6 @@
 </body>
 </html>
 
------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 
-improve the ui/ux and css, use favicon for all the icons within this website and make it look so much attractive that nobody can look away.
+improve this website visually and make it more responsive. include more and more features here.
