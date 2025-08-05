@@ -55,6 +55,7 @@
             color: var(--text-color-light);
             transition: background-color 0.4s ease, color 0.4s ease;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* GLOBAL FIX: Prevent horizontal scrollbar caused by any rogue elements */
         }
 
         body.dark-mode {
@@ -93,6 +94,9 @@
         /* Headings */
         h1, h2, h3, h4, h5, h6 {
             color: var(--heading-color-light);
+            /* These are now applied via Tailwind's 'break-words' class directly in HTML where needed for Project titles */
+            /* word-break: break-word; */
+            /* overflow-wrap: break-word; */
         }
         body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
             color: var(--heading-color-dark);
@@ -151,6 +155,9 @@
             padding: 0.7rem 1.2rem; /* Slightly larger padding */
             font-size: 0.95rem; /* Slightly larger font */
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            /* These are now applied via Tailwind's 'break-words' class directly in HTML where needed */
+            /* word-break: break-word; */
+            /* overflow-wrap: break-word; */
         }
         .skill-tag:hover {
             transform: translateY(-3px); /* More pronounced lift */
@@ -175,6 +182,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Deeper initial shadow */
             border-radius: 1.25rem; /* More rounded */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Added min-width-0 utility directly in HTML for each card */
         }
         .project-card:hover {
             transform: translateY(-10px); /* Increased lift */
@@ -188,15 +196,22 @@
             box-shadow: 0 15px 35px var(--shadow-color-dark);
         }
         /* Project card text color fix */
-        .project-card p, .project-card ul li {
+        .project-card p,
+        .project-card ul li {
             color: var(--text-color-light);
+            /* These are now applied via Tailwind's 'break-words' class directly in HTML where needed */
+            /* word-break: break-word; */
+            /* overflow-wrap: break-word; */
         }
-        body.dark-mode .project-card p, body.dark-mode .project-card ul li {
+        body.dark-mode .project-card p,
+        body.dark-mode .project-card ul li {
             color: var(--text-color-dark);
         }
         .project-image {
             border-radius: 0.75rem; /* Match card radius */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 100%; /* Ensure images never overflow their container */
+            height: auto;   /* Maintain aspect ratio */
         }
         body.dark-mode .project-image {
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -546,7 +561,7 @@
         /* Typewriter effect */
         .typewriter-text {
             border-right: 2px solid;
-            white-space: nowrap;
+            white-space: nowrap; /* Default for larger screens */
             overflow: hidden;
             animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
             display: inline-block;
@@ -559,10 +574,20 @@
         }
         @keyframes blink-caret {
             from, to { border-color: transparent }
-            /* FIXED: Use the --caret-color variable here */
             50% { border-color: var(--caret-color); }
         }
 
+        /* Responsive adjustments for typewriter text on small screens */
+        @media (max-width: 639px) { /* Targets screens smaller than 'sm' breakpoint */
+            .typewriter-text {
+                white-space: normal; /* Allow text to wrap */
+                overflow: visible; /* Ensure wrapped text is visible */
+                animation: none; /* Disable the typing animation */
+                border-right: none; /* Remove the blinking caret */
+                width: auto; /* Remove width constraint from animation */
+                display: block; /* Change to block to allow full width and wrapping */
+            }
+        }
     </style>
 </head>
 <body>
@@ -611,15 +636,18 @@
 
     <main class="container mx-auto px-4 py-8 md:py-12">
         <!-- Home Section -->
-        <section id="home" class="main-content-card hero-section-bg rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow fade-in-section">
+        <!-- MODIFIED: Removed fade-in-section class to ensure it's always visible on load -->
+        <section id="home" class="main-content-card hero-section-bg rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow">
             <div class="md:w-1/3 flex justify-center mb-6 md:mb-0 md:pr-8">
-                <img src="profile.png" alt="Souparna Paul" class="profile-img rounded-full w-48 h-48 object-cover transition-colors-shadow">
+                <!-- MODIFIED: Adjusted profile image size for mobile responsiveness -->
+                <img src="profile.png" alt="Souparna Paul" class="profile-img rounded-full w-32 h-32 sm:w-48 sm:h-48 object-cover transition-colors-shadow">
             </div>
             <div class="md:w-2/3">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">
                     Hi, I'm Souparna Paul <span class="wave-emoji">👋</span>
                 </h1>
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-6 dark:text-text-color-dark">
+                <!-- MODIFIED: Adjusted typewriter text font size for mobile responsiveness -->
+                <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-6 dark:text-text-color-dark">
                     <span class="typewriter-text">A Creatively Passionate Python Based Software and Web Developer | Kolkata, India</span>
                 </h2>
                 <p class="text-lg leading-relaxed mb-6 dark:text-text-color-dark">
@@ -675,66 +703,66 @@
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Python</span>
-                        <span class="skill-tag transition-colors-shadow">JavaScript</span>
-                        <span class="skill-tag transition-colors-shadow">SQL</span>
-                        <span class="skill-tag transition-colors-shadow">C</span>
-                        <span class="skill-tag transition-colors-shadow">Java</span>
-                        <span class="skill-tag transition-colors-shadow">C++</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Python</span>
+                        <span class="skill-tag transition-colors-shadow break-words">JavaScript</span>
+                        <span class="skill-tag transition-colors-shadow break-words">SQL</span>
+                        <span class="skill-tag transition-colors-shadow break-words">C</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Java</span>
+                        <span class="skill-tag transition-colors-shadow break-words">C++</span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-globe mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Web Development</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Streamlit</span>
-                        <span class="skill-tag transition-colors-shadow">React</span>
-                        <span class="skill-tag transition-colors-shadow">HTML</span>
-                        <span class="skill-tag transition-colors-shadow">CSS</span>
-                        <span class="skill-tag transition-colors-shadow">Render</span>
-                        <span class="skill-tag transition-colors-shadow">Django</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Streamlit</span>
+                        <span class="skill-tag transition-colors-shadow break-words">React</span>
+                        <span class="skill-tag transition-colors-shadow break-words">HTML</span>
+                        <span class="skill-tag transition-colors-shadow break-words">CSS</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Render</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Django</span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-brain mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Data Science & ML</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Pandas</span>
-                        <span class="skill-tag transition-colors-shadow">NumPy</span>
-                        <span class="skill-tag transition-colors-shadow">Scikit-learn</span>
-                        <span class="skill-tag transition-colors-shadow">TensorFlow</span>
-                        <span class="skill-tag transition-colors-shadow">PyTorch</span>
-                        <span class="skill-tag transition-colors-shadow">Data Visualization</span>
-                        <span class="skill-tag transition-colors-shadow">Statistical Analysis</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Pandas</span>
+                        <span class="skill-tag transition-colors-shadow break-words">NumPy</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Scikit-learn</span>
+                        <span class="skill-tag transition-colors-shadow break-words">TensorFlow</span>
+                        <span class="skill-tag transition-colors-shadow break-words">PyTorch</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Data Visualization</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Statistical Analysis</span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-database mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Databases</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Firebase-FireStore</span>
-                        <span class="skill-tag transition-colors-shadow">MongoDB</span>
-                        <span class="skill-tag transition-colors-shadow">MySQL</span>
-                        <span class="skill-tag transition-colors-shadow">SQLite</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Firebase-FireStore</span>
+                        <span class="skill-tag transition-colors-shadow break-words">MongoDB</span>
+                        <span class="skill-tag transition-colors-shadow break-words">MySQL</span>
+                        <span class="skill-tag transition-colors-shadow break-words">SQLite</span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-tools mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Tools & Platforms</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Jupyter Notebooks</span>
-                        <span class="skill-tag transition-colors-shadow">VS Code</span>
-                        <span class="skill-tag transition-colors-shadow">Colab</span>
-                        <span class="skill-tag transition-colors-shadow">Power BI</span>
-                        <span class="skill-tag transition-colors-shadow">Excel</span>
-                        <span class="skill-tag transition-colors-shadow">GitHub</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Jupyter Notebooks</span>
+                        <span class="skill-tag transition-colors-shadow break-words">VS Code</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Colab</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Power BI</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Excel</span>
+                        <span class="skill-tag transition-colors-shadow break-words">GitHub</span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow">Problem-solving</span>
-                        <span class="skill-tag transition-colors-shadow">Teamwork</span>
-                        <span class="skill-tag transition-colors-shadow">Communication</span>
-                        <span class="skill-tag transition-colors-shadow">Adaptability</span>
-                        <span class="skill-tag transition-colors-shadow">Leadership</span>
-                        <span class="skill-tag transition-colors-shadow">Ability To Learn</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Problem-solving</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Teamwork</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Communication</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Adaptability</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Leadership</span>
+                        <span class="skill-tag transition-colors-shadow break-words">Ability To Learn</span>
                     </div>
                 </div>
             </div>
@@ -748,157 +776,157 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
 
                 <!-- Project 1: Python Syllabus Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="python.png" alt="Python Syllabus Website" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Python Syllabus Website</h4>
-                    <p class="text-base mb-4 flex-grow">An interactive and comprehensive Python syllabus website designed to guide beginners through core Python concepts. Features a structured curriculum from basic syntax to advanced topics like OOP and data structures, interactive code examples, and a user-friendly interface for easy navigation and learning. Perfect for self-paced study or as a supplementary resource for Python courses.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Python Syllabus Website</h4>
+                    <p class="text-base mb-4 flex-grow break-words">An interactive and comprehensive Python syllabus website designed to guide beginners through core Python concepts. Features a structured curriculum from basic syntax to advanced topics like OOP and data structures, interactive code examples, and a user-friendly interface for easy navigation and learning. Perfect for self-paced study or as a supplementary resource for Python courses.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">JavaScript</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">JavaScript</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2024</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/python-syllabus-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://python-syllabus-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/python-syllabus-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://python-syllabus-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 2: BTC Probo Predictor (Mobile Friendly) -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="probo.PNG" alt="BTC Probo Predictor" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">BTC Probo Predictor (Mobile Friendly)</h4>
-                    <p class="text-base mb-4 flex-grow">This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time. Features include real-time data fetching from Binance API, technical indicator analysis (RSI, EMA), sentiment analysis integration, AI-powered prediction engine, interactive Plotly charts, and Telegram notifications for alerts. Designed with Streamlit and custom CSS for a responsive, mobile-friendly interface.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">BTC Probo Predictor (Mobile Friendly)</h4>
+                    <p class="text-base mb-4 flex-grow break-words">This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time. Features include real-time data fetching from Binance API, technical indicator analysis (RSI, EMA), sentiment analysis integration, AI-powered prediction engine, interactive Plotly charts, and Telegram notifications for alerts. Designed with Streamlit and custom CSS for a responsive, mobile-friendly interface.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Streamlit</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Plotly</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Pandas</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Binance API</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Plotly</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Pandas</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Binance API</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: July 2025</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/html-probo-predictor-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://probo-crypto-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: July 2025</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/html-probo-predictor-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://probo-crypto-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 3: Smart AgriTech Dashboard -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="agritech.PNG" alt="Smart AgriTech Dashboard" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Smart AgriTech Dashboard</h4>
-                    <p class="text-base mb-4 flex-grow">Built a unified AI-powered AgriTech dashboard for real-time crop monitoring, sensor visualization, and crop advisory. Integrated Firebase Realtime Database to fetch and display live farm sensor data (moisture, pH, NPK, temperature, etc.). Trained a TimeDistributed ANN (TDANN) for soil moisture prediction using recent sensor trends and crop-type embeddings. Enabled AI-based growth forecasts and actionable crop care tips tailored to 20+ Indian crops like Wheat, Rice, Maize, Mango, etc. Designed multi-tab responsive UI with Plotly trend charts, prediction widgets, and condition-based crop suggestions. Secured Firebase credentials using base64-encoded keys for Render compatibility and seamless cloud deployment. Included fallback handling for missing data, intelligent sensor parsing, and advice logic for sustainable farming.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Smart AgriTech Dashboard</h4>
+                    <p class="text-base mb-4 flex-grow break-words">Built a unified AI-powered AgriTech dashboard for real-time crop monitoring, sensor visualization, and crop advisory. Integrated Firebase Realtime Database to fetch and display live farm sensor data (moisture, pH, NPK, temperature, etc.). Trained a TimeDistributed ANN (TDANN) for soil moisture prediction using recent sensor trends and crop-type embeddings. Enabled AI-based growth forecasts and actionable crop care tips tailored to 20+ Indian crops like Wheat, Rice, Maize, Mango, etc. Designed multi-tab responsive UI with Plotly trend charts, prediction widgets, and condition-based crop suggestions. Secured Firebase credentials using base64-encoded keys for Render compatibility and seamless cloud deployment. Included fallback handling for missing data, intelligent sensor parsing, and advice logic for sustainable farming.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Streamlit</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TensorFlow</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Plotly</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">TensorFlow</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Firebase</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Plotly</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: June 2025</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://smart-agritech-dashbard.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: June 2025</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://smart-agritech-dashbard.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 4: MATHEMATICO - Special Mathematics Coaching Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="mathematico.PNG" alt="MATHEMATICO Website" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">MATHEMATICO - Special Mathematics Coaching Website</h4>
-                    <p class="text-base mb-4 flex-grow">Developed a comprehensive, responsive website for a mathematics coaching center, featuring dynamic content management via Firebase Firestore for admin-controlled updates. Key features include an admin panel with secure Firebase authentication for CRUD operations on courses, books, problems, gallery, and blog posts. It also includes dynamic FAQ, user testimonials, Google Maps integration, and a theme toggle for dark/light mode, all built with a fully responsive design using Tailwind CSS for an optimal user experience across devices.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">MATHEMATICO - Special Mathematics Coaching Website</h4>
+                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive, responsive website for a mathematics coaching center, featuring dynamic content management via Firebase Firestore for admin-controlled updates. Key features include an admin panel with secure Firebase authentication for CRUD operations on courses, books, problems, gallery, and blog posts. It also includes dynamic FAQ, user testimonials, Google Maps integration, and a theme toggle for dark/light mode, all built with a fully responsive design using Tailwind CSS for an optimal user experience across devices.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">JavaScript</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Tailwind CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">JavaScript</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Tailwind CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Firebase</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: July 2025</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/mathematico-coaching-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://mathematico-special-coaching-center.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: July 2025</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/mathematico-coaching-website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://mathematico-special-coaching-center.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 5: Tournament Manager Full-Stack Web Application -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="tournament.PNG" alt="Tournament Manager Web App" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Tournament Manager Full-Stack Web Application</h4>
-                    <p class="text-base mb-4 flex-grow">Developed a comprehensive full-stack web application for managing diverse tournaments (e.g., Cricket, Football). Features include intuitive team registration, automated match scheduling, real-time score updates, and dynamic leaderboard tracking. Designed a user-friendly frontend with React.js and a robust backend using Node.js/Express.js, powered by MongoDB for data persistence, ensuring seamless data management and real-time responsiveness for various tournament formats.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Tournament Manager Full-Stack Web Application</h4>
+                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive full-stack web application for managing diverse tournaments (e.g., Cricket, Football). Features include intuitive team registration, automated match scheduling, real-time score updates, and dynamic leaderboard tracking. Designed a user-friendly frontend with React.js and a robust backend using Node.js/Express.js, powered by MongoDB for data persistence, ensuring seamless data management and real-time responsiveness for various tournament formats.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">React.js</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Node.js</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Express.js</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">MongoDB</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">React.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Node.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Express.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">MongoDB</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: May 2025</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://tournament-manager-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: May 2025</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://tournament-manager-website.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 6: My Personal Portfolio Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="portfolio.PNG" alt="Personal Portfolio Website" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">My Personal Portfolio Website</h4>
-                    <p class="text-base mb-4 flex-grow">This is my personal portfolio website, meticulously designed and developed to showcase my skills, projects, and educational background. Built with a focus on modern web standards, responsive design, and an intuitive user experience. Features include a dynamic dark/light mode toggle, smooth scrolling navigation, animated section reveals on scroll, and an integrated contact form. This project serves as a direct demonstration of my proficiency in front-end development, responsive CSS styling (Tailwind CSS), and interactive JavaScript.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">My Personal Portfolio Website</h4>
+                    <p class="text-base mb-4 flex-grow break-words">This is my personal portfolio website, meticulously designed and developed to showcase my skills, projects, and educational background. Built with a focus on modern web standards, responsive design, and an intuitive user experience. Features include a dynamic dark/light mode toggle, smooth scrolling navigation, animated section reveals on scroll, and an integrated contact form. This project serves as a direct demonstration of my proficiency in front-end development, responsive CSS styling (Tailwind CSS), and interactive JavaScript.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Tailwind CSS</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">JavaScript</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Tailwind CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">JavaScript</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2024 (Ongoing)</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/My-Portfolio-Website-Streamlit.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://souparna-paul-portfolio.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: 2024 (Ongoing)</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/My-Portfolio-Website-Streamlit.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://souparna-paul-portfolio.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Project 7: Dream11 AI Team Predictor -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="dream11.PNG" alt="Dream11 AI Team Predictor" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Dream11 AI Team Predictor</h4>
-                    <p class="text-base mb-4 flex-grow">An AI-powered web application for predicting optimal fantasy cricket teams (e.g., Dream11). Users can select players and leverage the integrated AI model to generate highly probable winning team combinations. The application features real-time data fetching for player statistics, a sophisticated predictive engine based on historical player performance and match conditions, and a user-friendly interface built with Streamlit for easy team building and analysis. Aimed at helping fantasy sports enthusiasts make data-driven decisions.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Dream11 AI Team Predictor</h4>
+                    <p class="text-base mb-4 flex-grow break-words">An AI-powered web application for predicting optimal fantasy cricket teams (e.g., Dream11). Users can select players and leverage the integrated AI model to generate highly probable winning team combinations. The application features real-time data fetching for player statistics, a sophisticated predictive engine based on historical player performance and match conditions, and a user-friendly interface built with Streamlit for easy team building and analysis. Aimed at helping fantasy sports enthusiasts make data-driven decisions.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Streamlit</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Pandas</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Pandas</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2024</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/dream11-team-predictor-ai.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://dream11-ai-team-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/dream11-team-predictor-ai.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://dream11-ai-team-predictor.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- NEW Project: Mystic Vision AI Standalone Chatbot -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <!-- Placeholder image. Replace 'chatbot_ai.png' with an actual image for the project. -->
                     <img src="mystic.PNG" alt="Mystic Vision AI Chatbot" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Mystic Vision AI Standalone Chatbot</h4>
-                    <p class="text-base mb-4 flex-grow">The 'Mystic Vision AI Standalone Chatbot' is an intuitive and engaging conversational AI application designed to offer insights and interactive dialogue. Developed using Python and Streamlit, this chatbot provides a seamless user experience, allowing users to ask questions and receive thoughtful, contextually relevant responses. It leverages advanced Natural Language Processing (NLP) techniques and AI models to understand diverse queries and simulate intelligent conversation. Its standalone nature ensures easy deployment and accessibility, making it a versatile tool for various interactive communication needs, all within a user-friendly web interface.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Mystic Vision AI Standalone Chatbot</h4>
+                    <p class="text-base mb-4 flex-grow break-words">The 'Mystic Vision AI Standalone Chatbot' is an intuitive and engaging conversational AI application designed to offer insights and interactive dialogue. Developed using Python and Streamlit, this chatbot provides a seamless user experience, allowing users to ask questions and receive thoughtful, contextually relevant responses. It leverages advanced Natural Language Processing (NLP) techniques and AI models to understand diverse queries and simulate intelligent conversation. Its standalone nature ensures easy deployment and accessibility, making it a versatile tool for various interactive communication needs, all within a user-friendly web interface.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Streamlit</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Natural Language Processing (NLP)</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Natural Language Processing (NLP)</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: July 2024</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://mystic-vision-ai-standalone-chatbot.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: July 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://mystic-vision-ai-standalone-chatbot.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
@@ -907,57 +935,57 @@
             <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4">Team Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 <!-- Team Project 1: Early Detection of Parkinson’s Disease Using ML -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="parkinson's.png" alt="Early Detection of Parkinson’s Disease" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Early Detection of Parkinson’s Disease Using ML</h4>
-                    <p class="text-base mb-4 flex-grow">This team project focused on the early detection of Parkinson's Disease using machine learning techniques. It involved a collaborative effort of a 6-member team, where I contributed to resource gathering, programming code development, team management, presentation design, and research paper writing.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Early Detection of Parkinson’s Disease Using ML</h4>
+                    <p class="text-base mb-4 flex-grow break-words">This team project focused on the early detection of Parkinson's Disease using machine learning techniques. It involved a collaborative effort of a 6-member team, where I contributed to resource gathering, programming code development, team management, presentation design, and research paper writing.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Scikit-learn</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Pandas</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Scikit-learn</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Pandas</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2023</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/early-parkinsons-detection-ml.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: 2023</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/early-parkinsons-detection-ml.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
                     </div>
                 </div>
 
                 <!-- Team Project 2: Employee Management System Website -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="ems.PNG" alt="Employee Management System" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Employee Management System Website</h4>
-                    <p class="text-base mb-4 flex-grow">Developed a comprehensive Employee Management System Website with a team of 6 members. My roles included gathering resources, research on best practices, full-stack development using Node.js, React.js, and Firebase Firestore, deployment, and team coordination to ensure functionality and accessibility.</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Employee Management System Website</h4>
+                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive Employee Management System Website with a team of 6 members. My roles included gathering resources, research on best practices, full-stack development using Node.js, React.js, and Firebase Firestore, deployment, and team coordination to ensure functionality and accessibility.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Node.js</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">React.js</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Firebase Firestore</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">HTML</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Node.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">React.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Firebase Firestore</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: Jan 2024 - June 2024</p>
-                    <div class="flex space-x-4 mt-auto">
-                        <a href="https://github.com/sOuL2000s/simple-employee-management-system.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://employee-management-system21.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: Jan 2024 - June 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/simple-employee-management-system.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://employee-management-system21.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
                 <!-- Team Project 3: Phishing URL Detection Using Machine Learning -->
-                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col">
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="phishing.png" alt="Phishing URL Detection" class="project-image w-full h-48 object-cover mb-4">
-                    <h4 class="text-xl font-semibold mb-3">Phishing URL Detection Using Machine Learning</h4>
-                    <p class="text-base mb-4 flex-grow">This team project focused on applying machine learning to real-world problems for phishing URL detection. This project was recognized with a <strong class="font-semibold">Best Paper Award</strong> (2nd National Conference, RAICCIT 2025).</p>
+                    <h4 class="text-xl font-semibold mb-3 break-words">Phishing URL Detection Using Machine Learning</h4>
+                    <p class="text-base mb-4 flex-grow break-words">This team project focused on applying machine learning to real-world problems for phishing URL detection. This project was recognized with a <strong class="font-semibold">Best Paper Award</strong> (2nd National Conference, RAICCIT 2025).</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Python</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">TensorFlow</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Scikit-learn</span>
-                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium">Machine Learning</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">TensorFlow</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Scikit-learn</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark">Date: 2024</p>
-                    <div class="flex space-x-4 mt-auto">
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
                         <!-- No GitHub or Live Demo link provided in source, keeping as is -->
                     </div>
                 </div>
@@ -1134,17 +1162,20 @@
 
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.1 // Adjust as needed
+            // MODIFIED: More generous rootMargin to trigger earlier
+            rootMargin: '0px 0px -50px 0px', // Triggers when element is 50px from the bottom of the viewport
+            threshold: 0.01 // Trigger as soon as 1% of the element is visible
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // observer.unobserve(entry.target); // Keep observing if you want to re-trigger on scroll back
+                    // OPTIONAL: unobserve if you only want the animation to run once
+                    // observer.unobserve(entry.target);
                 } else {
-                    entry.target.classList.remove('is-visible'); // Remove class when out of view
+                    // OPTIONAL: remove class if you want it to fade out when scrolled away
+                    // entry.target.classList.remove('is-visible');
                 }
             });
         }, observerOptions);
@@ -1190,9 +1221,9 @@
             sectionObserver.observe(section);
         });
 
-        // Typewriter Effect
-        const typewriterText = document.querySelector('.typewriter-text');
-        const textToType = "A Creatively Passionate Python Based Software and Web Developer | Kolkata, India"; // Original text
+        // Typewriter Effect - Adjusted for mobile responsiveness
+        const typewriterTextElement = document.querySelector('.typewriter-text');
+        const textToType = "A Creatively Passionate Python Based Software and Web Developer | Kolkata, India";
 
         function typeWriter(element, text, i = 0) {
             if (i < text.length) {
@@ -1203,10 +1234,35 @@
             }
         }
 
-        if (typewriterText) {
-            typewriterText.textContent = ''; // Clear text before typing
-            typeWriter(typewriterText, textToType);
-        }
+        const applyTypewriterEffect = () => {
+            if (!typewriterTextElement) return;
+
+            const isMobile = window.matchMedia('(max-width: 639px)').matches; // Corresponds to Tailwind's 'sm' breakpoint
+
+            if (isMobile) {
+                typewriterTextElement.textContent = textToType; // Show full text immediately
+                typewriterTextElement.style.borderRight = 'none'; // Ensure no blinking caret
+                // The CSS @media query will handle `animation: none; white-space: normal;`
+            } else {
+                // Only run typing animation if not already animated and on desktop
+                if (typewriterTextElement.textContent !== textToType || typewriterTextElement.style.borderRight === 'none') {
+                    typewriterTextElement.textContent = ''; // Clear text before typing
+                    typewriterTextElement.style.removeProperty('border-right'); // Ensure caret can appear
+                    typeWriter(typewriterTextElement, textToType); // Run typing animation for larger screens
+                }
+            }
+        };
+
+        // Apply on initial load
+        applyTypewriterEffect();
+
+        // Re-apply if screen size changes (e.g., rotating tablet or resizing desktop window)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(applyTypewriterEffect, 200); // Debounce for performance
+        });
+
 
         // Scroll to Top Button functionality
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
