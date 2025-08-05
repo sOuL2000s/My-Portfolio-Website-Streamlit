@@ -625,8 +625,8 @@
                 <p class="text-lg leading-relaxed mb-6 dark:text-text-color-dark">
                     I'm a Tech Enthusiast and Innovator from Madhyamgram, West Bengal.
                     I specialize in Python development, AI/ML, and full-stack web development using tools like Streamlit, Firebase, and React.
-                    My strengths lie in building real-time, data-driven applications—as seen in projects like Crypto Prediction Maker Pro++, Smart Agritech Streamlit Dashboard, and my Tournament Manager WebApp.
-                    I’m also passionate about applying machine learning to real-world problems like Phishing URL Detection, for which I won a Best Paper Award.
+                    My strengths lie in building diverse and impactful applications, ranging from real-time, data-driven dashboards to robust full-stack web solutions. This is showcased in projects like my <strong class="font-semibold">BTC Probo Predictor</strong>, <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, and the <strong class="font-semibold">Tournament Manager Full-Stack Web Application</strong>.
+                    I’m also passionate about applying machine learning to real-world problems, as demonstrated by my <strong class="font-semibold">Phishing URL Detection</strong> project, for which I won a Best Paper Award.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                     <a href="https://docs.google.com/document/d/1vQjLq2rXmXyV0p_w_hZ9zY0d_c7c4c9d/edit?usp=sharing" target="_blank" class="btn-primary flex items-center justify-center">
@@ -1209,6 +1209,11 @@
 </body>
 </html>
 
------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
-You: I'm a Tech Enthusiast and Innovator from Madhyamgram, West Bengal. I specialize in Python development, AI/ML, and full-stack web development using tools like Streamlit, Firebase, and React. My strengths lie in building real-time, data-driven applications—as seen in projects like Crypto Prediction Maker Pro++, Smart Agritech Streamlit Dashboard, and my Tournament Manager WebApp. I’m also passionate about applying machine learning to real-world problems like Phishing URL Detection, for which I won a Best Paper Award. (change this to fit with current projects)
+do the following and send me the full updated code: 
+
+I want you to add a new individual project. And I'll only provide you the website link of that project and the GitHub link of that project, so. All you have to do is that. Add that project into the portfolio and. Write it and shape it in your own way. Can I do that?
+
+website link : https://mystic-vision-ai-standalone-chatbot.netlify.app/
+github link : https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git
