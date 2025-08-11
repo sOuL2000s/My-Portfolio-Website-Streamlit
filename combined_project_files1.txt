@@ -309,17 +309,50 @@
 
         /* Hamburger menu and Mobile Nav Overlay */
         .hamburger {
-            display: none;
-            z-index: 50; /* Ensure it's above everything */
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
+            display: none; /* Hidden by default for desktop */
+            z-index: 50;
+            cursor: pointer; /* Explicitly show pointer cursor */
+            /* Add transform for subtle press effect on click */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
         }
-        .hamburger:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+
+        /* Styles applied ONLY when hamburger is visible (on mobile/smaller screens) */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex; /* Make it a flex container to center the icon */
+                align-items: center; /* Vertically center the icon */
+                justify-content: center; /* Horizontally center the icon */
+                width: 48px;   /* Fixed width for a square/circle */
+                height: 48px;  /* Fixed height for a square/circle */
+                border-radius: 50%; /* Make it circular */
+                background-color: var(--main-bg-light); /* Background for light mode */
+                border: 1px solid var(--border-color-light); /* Border for light mode */
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Soft shadow for definition */
+            }
+            .hamburger:hover {
+                background-color: var(--skill-tag-bg); /* Use a slightly different background on hover */
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Deeper shadow on hover */
+                transform: translateY(-2px); /* Subtle lift on hover */
+            }
+            .hamburger:active {
+                transform: translateY(0px); /* Press effect on click */
+                box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Softer shadow on active */
+            }
+        }
+
+        /* Dark mode specific overrides for the hamburger button */
+        body.dark-mode .hamburger {
+            background-color: var(--skill-tag-bg-dark); /* Darker background in dark mode */
+            border: 1px solid var(--skill-tag-border-dark); /* Darker border in dark mode */
+            box-shadow: 0 2px 8px var(--shadow-color-dark); /* Shadow in dark mode */
         }
         body.dark-mode .hamburger:hover {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: var(--button-hover-bg-color-dark); /* Dark mode hover background */
+            border-color: var(--primary-accent-dark); /* Highlight border on hover */
+            box-shadow: 0 4px 12px var(--shadow-color-dark); /* Deeper shadow on hover */
+        }
+        body.dark-mode .hamburger:active {
+            background-color: var(--button-bg-color-dark); /* Match press effect to button style */
         }
 
         /* Mobile Nav Overlay */
@@ -1287,6 +1320,8 @@
 
 -------------------------------------------------------------------------------
 
-how to do the following : 
+include two more version links of the mystic vision ai here 
 
-improve the visiblity of the hamburger button in dark mode.
+the current demo link is of the full version.
+https://mystic-vision-ai-lite.netlify.app/ - this is lite version 
+https://mystic-vision-ai-basic.netlify.app/ - this is the basic/origin version 
