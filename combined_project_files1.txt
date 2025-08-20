@@ -959,7 +959,9 @@
                     <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: July 2024</p>
                     <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
                         <a href="https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
-                        <a href="https://mystic-vision-ai-standalone-chatbot.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                        <a href="https://mystic-vision-ai-standalone-chatbot.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Full)</a>
+                        <a href="https://mystic-vision-ai-lite.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Lite)</a>
+                        <a href="https://mystic-vision-ai-basic.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Basic)</a>
                     </div>
                 </div>
 
@@ -1318,10 +1320,12 @@
 </body>
 </html>
 
--------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
-include two more version links of the mystic vision ai here 
+i'm sharing with you my new two projects' website link and github link, include them in my individual projects please.
 
-the current demo link is of the full version.
-https://mystic-vision-ai-lite.netlify.app/ - this is lite version 
-https://mystic-vision-ai-basic.netlify.app/ - this is the basic/origin version 
+https://metier-institute-your-path-to-success.netlify.app/
+https://github.com/sOuL2000s/Metier-Institute-Full-Stack-Website.git
+
+https://astromaestro-ai.netlify.app/
+https://github.com/sOuL2000s/AstroMaestro-AI.git
