@@ -943,9 +943,8 @@
                     </div>
                 </div>
 
-                <!-- NEW Project: Mystic Vision AI Standalone Chatbot -->
+                <!-- Project 8: Mystic Vision AI Standalone Chatbot -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- Placeholder image. Replace 'chatbot_ai.png' with an actual image for the project. -->
                     <img src="mystic.PNG" alt="Mystic Vision AI Chatbot" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Mystic Vision AI Standalone Chatbot</h4>
                     <p class="text-base mb-4 flex-grow break-words">The 'Mystic Vision AI Standalone Chatbot' is an intuitive and engaging conversational AI application designed to offer insights and interactive dialogue. Developed using Python and Streamlit, this chatbot provides a seamless user experience, allowing users to ask questions and receive thoughtful, contextually relevant responses. It leverages advanced Natural Language Processing (NLP) techniques and AI models to understand diverse queries and simulate intelligent conversation. Its standalone nature ensures easy deployment and accessibility, making it a versatile tool for various interactive communication needs, all within a user-friendly web interface.</p>
@@ -962,6 +961,47 @@
                         <a href="https://mystic-vision-ai-standalone-chatbot.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Full)</a>
                         <a href="https://mystic-vision-ai-lite.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Lite)</a>
                         <a href="https://mystic-vision-ai-basic.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo (Basic)</a>
+                    </div>
+                </div>
+
+                <!-- NEW Project 9: Metier Institute - Full-Stack Website -->
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
+                    <!-- IMPORTANT: Replace 'metier.PNG' with your actual image path for this project. -->
+                    <img src="metier.PNG" alt="Metier Institute Website" class="project-image w-full h-48 object-cover mb-4">
+                    <h4 class="text-xl font-semibold mb-3 break-words">Metier Institute - Full-Stack Website</h4>
+                    <p class="text-base mb-4 flex-grow break-words">A comprehensive, responsive full-stack website developed for an educational institute. It features robust content management, user authentication, detailed course listings, and administrative functionalities. Built to provide a dynamic online presence and streamline operations, this project ensures an optimal user experience and easy content updates through a scalable architecture.</p>
+                    <p class="font-semibold mb-2">Tools:</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">React.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Node.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Express.js</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">MongoDB</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Firebase</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: August 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Metier-Institute-Full-Stack-Website.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://metier-institute-your-path-to-success.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- NEW Project 10: AstroMaestro AI - Personalized Vedic Astrology -->
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
+                    <!-- IMPORTANT: Replace 'astromaestro.PNG' with your actual image path for this project. -->
+                    <img src="astromaestro.PNG" alt="AstroMaestro AI" class="project-image w-full h-48 object-cover mb-4">
+                    <h4 class="text-xl font-semibold mb-3 break-words">AstroMaestro AI - Personalized Vedic Astrology</h4>
+                    <p class="text-base mb-4 flex-grow break-words">An innovative AI-powered application designed to provide personalized Vedic astrology insights. Users can input their birth details to receive detailed astrological readings, predictions, and guidance, interpreted by an intelligent AI system. This project aims to make traditional astrological wisdom accessible and engaging through modern technology, offering a unique and insightful user experience within a streamlined interface.</p>
+                    <p class="font-semibold mb-2">Tools:</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Natural Language Processing (NLP)</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: August 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/AstroMaestro-AI.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://astromaestro-ai.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
                     </div>
                 </div>
 
@@ -1322,10 +1362,7 @@
 
 ----------------------------------------------------------------------------------------
 
-i'm sharing with you my new two projects' website link and github link, include them in my individual projects please.
+i'm sharing with you my new project's website link and github link, include it in my individual projects please.
 
-https://metier-institute-your-path-to-success.netlify.app/
-https://github.com/sOuL2000s/Metier-Institute-Full-Stack-Website.git
-
-https://astromaestro-ai.netlify.app/
-https://github.com/sOuL2000s/AstroMaestro-AI.git
+https://multi-game-hub-website.netlify.app/
+https://github.com/sOuL2000s/Multi-game-HUB-Website.git
