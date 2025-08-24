@@ -1024,6 +1024,26 @@
                     </div>
                 </div>
 
+                <!-- NEW Project 12: Mystic Vision - Meditation Companion App -->
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
+                    <img src="meditation-companion-app.png" alt="Mystic Vision - Meditation Companion App" class="project-image w-full h-48 object-cover mb-4">
+                    <h4 class="text-xl font-semibold mb-3 break-words">Mystic Vision - Meditation Companion App</h4>
+                    <p class="text-base mb-4 flex-grow break-words">An AI-powered web application designed as a personal meditation companion. It offers guided meditations, mood tracking, and personalized recommendations to enhance mindfulness and well-being. Built with Python and Streamlit, the app leverages Natural Language Processing (NLP) to understand user input and machine learning to adapt recommendations, providing a calm and interactive experience for users to find inner peace.</p>
+                    <p class="font-semibold mb-2">Tools:</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Streamlit</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Natural Language Processing (NLP)</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Machine Learning</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: August 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Meditation-Companion-App.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <a href="https://mysticvision-meditation-companion-app.netlify.app/" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
+                    </div>
+                </div>
+
+
             </div>
 
             <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4">Team Projects</h3>
@@ -1224,11 +1244,30 @@
 
         // Close mobile menu when a link is clicked
         mobileNavOverlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function (e) {
+                // Check if the link points to a section within the current page
+                if (this.hash && document.querySelector(this.hash)) {
+                    e.preventDefault(); // Prevent default only if it's an internal anchor link
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Calculate offset for sticky header
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                        const offsetPosition = elementPosition - headerOffset - 20; // Added 20px padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
                 mobileNavOverlay.classList.remove('active');
                 document.body.classList.remove('mobile-menu-active');
             });
         });
+
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
