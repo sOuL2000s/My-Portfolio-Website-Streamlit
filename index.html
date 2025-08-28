@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souparna Paul - Portfolio</title>
+    <title>Souparna Paul - AI & Full-Stack Developer Portfolio</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications. Explore projects like BTC Probo Predictor, Smart Agritech, and Tournament Manager.">
+    <meta name="keywords" content="Souparna Paul, portfolio, AI developer, full-stack developer, Python, Machine Learning, Streamlit, React, Firebase, web development, Kolkata, India, software developer, data science, projects, resume">
+    <meta property="og:title" content="Souparna Paul - AI & Full-Stack Developer Portfolio">
+    <meta property="og:description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications.">
+    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
+    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/"> <!-- Replace with your live site URL -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
+
     <!-- Favicon - Replace with your actual favicon.ico or .png -->
     <link rel="icon" href="profile.png" type="image/png">
     <!-- Tailwind CSS CDN -->
@@ -624,6 +634,8 @@
     </style>
 </head>
 <body>
+    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
+
     <!-- Header/Navigation Bar -->
     <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -655,7 +667,7 @@
 
     <!-- Mobile Navigation Overlay -->
     <div id="mobileNavOverlay" class="mobile-nav-overlay">
-        <button id="closeMobileNav" class="close-btn"><i class="fas fa-times"></i></button>
+        <button id="closeMobileNav" class="close-btn" aria-label="Close mobile navigation"><i class="fas fa-times"></i></button>
         <nav class="nav-links-mobile">
             <a href="#home">Home</a>
             <a href="#about">About Me</a>
@@ -692,6 +704,9 @@
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                     <a href="Souparna_Paul_Latest_Resume.pdf" target="_blank" class="btn-primary flex items-center justify-center">
                         <i class="fas fa-download mr-2"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn-primary flex items-center justify-center bg-gray-600 hover:bg-gray-700 dark:bg-secondary-accent-dark dark:hover:bg-button-hover-bg-color-dark">
+                        <i class="fas fa-envelope mr-2"></i> Contact Me
                     </a>
                 </div>
                 <div class="flex justify-center md:justify-start space-x-6 text-3xl mt-4">
@@ -734,7 +749,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Skills</h2>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-laptop-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow break-words">Python</span>
                         <span class="skill-tag transition-colors-shadow break-words">JavaScript</span>
@@ -788,7 +803,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users-line mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow break-words">Problem-solving</span>
                         <span class="skill-tag transition-colors-shadow break-words">Teamwork</span>
@@ -812,7 +827,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="python.png" alt="Python Syllabus Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Python Syllabus Website</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An interactive and comprehensive Python syllabus website designed to guide beginners through core Python concepts. Features a structured curriculum from basic syntax to advanced topics like OOP and data structures, interactive code examples, and a user-friendly interface for easy navigation and learning. Perfect for self-paced study or as a supplementary resource for Python courses.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A structured and interactive Python learning portal covering everything from basics to advanced OOP concepts. Designed for beginners, it features a clean UI, embedded code examples, and a syllabus-like roadmap for self-paced learning.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
@@ -830,7 +845,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="probo.PNG" alt="BTC Probo Predictor" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">BTC Probo Predictor (Mobile Friendly)</h4>
-                    <p class="text-base mb-4 flex-grow break-words">This AI-powered application provides predictions for Probo BTC events, optimized for mobile use. It leverages real-time market data and technical analysis to recommend a "vote" (Yes/No) on Bitcoin price movements against a target price at a specific future time. Features include real-time data fetching from Binance API, technical indicator analysis (RSI, EMA), sentiment analysis integration, AI-powered prediction engine, interactive Plotly charts, and Telegram notifications for alerts. Designed with Streamlit and custom CSS for a responsive, mobile-friendly interface.</p>
+                    <p class="text-base mb-4 flex-grow break-words">An AI-driven Bitcoin price predictor that compares real-time market values with user targets. Uses Binance API for live data, integrates sentiment analysis, and visualizes predictions with Plotly for traders & Probo enthusiasts.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -850,7 +865,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="agritech.PNG" alt="Smart AgriTech Dashboard" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Smart AgriTech Dashboard</h4>
-                    <p class="text-base mb-4 flex-grow break-words">Built a unified AI-powered AgriTech dashboard for real-time crop monitoring, sensor visualization, and crop advisory. Integrated Firebase Realtime Database to fetch and display live farm sensor data (moisture, pH, NPK, temperature, etc.). Trained a TimeDistributed ANN (TDANN) for soil moisture prediction using recent sensor trends and crop-type embeddings. Enabled AI-based growth forecasts and actionable crop care tips tailored to 20+ Indian crops like Wheat, Rice, Maize, Mango, etc. Designed multi-tab responsive UI with Plotly trend charts, prediction widgets, and condition-based crop suggestions. Secured Firebase credentials using base64-encoded keys for Render compatibility and seamless cloud deployment. Included fallback handling for missing data, intelligent sensor parsing, and advice logic for sustainable farming.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A next-gen farming assistant that monitors soil, weather, and crop data in real time. Implements AI-powered time-series forecasting for soil moisture and provides personalized crop recommendations.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -870,7 +885,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="mathematico.PNG" alt="MATHEMATICO Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">MATHEMATICO - Special Mathematics Coaching Website</h4>
-                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive, responsive website for a mathematics coaching center, featuring dynamic content management via Firebase Firestore for admin-controlled updates. Key features include an admin panel with secure Firebase authentication for CRUD operations on courses, books, problems, gallery, and blog posts. It also includes dynamic FAQ, user testimonials, Google Maps integration, and a theme toggle for dark/light mode, all built with a fully responsive design using Tailwind CSS for an optimal user experience across devices.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A modern coaching institute website with dynamic course management, testimonials, gallery, blog system, and Google Maps integration. Features dark/light themes and admin-controlled CMS for easy content updates.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
@@ -890,7 +905,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="tournament.PNG" alt="Tournament Manager Web App" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Tournament Manager Full-Stack Web Application</h4>
-                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive full-stack web application for managing diverse tournaments (e.g., Cricket, Football). Features include intuitive team registration, automated match scheduling, real-time score updates, and dynamic leaderboard tracking. Designed a user-friendly frontend with React.js and a robust backend using Node.js/Express.js, powered by MongoDB for data persistence, ensuring seamless data management and real-time responsiveness for various tournament formats.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A full-stack app to manage cricket/football tournaments with automated fixtures, live score updates, and leaderboard generation. Streamlines sports event management for organizers and players.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">React.js</span>
@@ -909,7 +924,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="portfolio.PNG" alt="Personal Portfolio Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">My Personal Portfolio Website</h4>
-                    <p class="text-base mb-4 flex-grow break-words">This is my personal portfolio website, meticulously designed and developed to showcase my skills, projects, and educational background. Built with a focus on modern web standards, responsive design, and an intuitive user experience. Features include a dynamic dark/light mode toggle, smooth scrolling navigation, animated section reveals on scroll, and an integrated contact form. This project serves as a direct demonstration of my proficiency in front-end development, responsive CSS styling (Tailwind CSS), and interactive JavaScript.</p>
+                    <p class="text-base mb-4 flex-grow break-words">Your personal portfolio showcasing skills, projects, and achievements. Features responsive design, smooth scroll navigation, and theme switching for an engaging user experience.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
@@ -928,7 +943,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="dream11.PNG" alt="Dream11 AI Team Predictor" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Dream11 AI Team Predictor</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An AI-powered web application for predicting optimal fantasy cricket teams (e.g., Dream11). Users can select players and leverage the integrated AI model to generate highly probable winning team combinations. The application features real-time data fetching for player statistics, a sophisticated predictive engine based on historical player performance and match conditions, and a user-friendly interface built with Streamlit for easy team building and analysis. Aimed at helping fantasy sports enthusiasts make data-driven decisions.</p>
+                    <p class="text-base mb-4 flex-grow break-words">An AI-powered fantasy cricket assistant that suggests optimal Dream11 teams using match data, player performance, and ML predictions. Built for fantasy sports fans who want an edge in team selection.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -947,7 +962,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="mystic.PNG" alt="Mystic Vision AI Chatbot" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Mystic Vision AI Standalone Chatbot</h4>
-                    <p class="text-base mb-4 flex-grow break-words">The 'Mystic Vision AI Standalone Chatbot' is an intuitive and engaging conversational AI application designed to offer insights and interactive dialogue. Developed using Python and Streamlit, this chatbot provides a seamless user experience, allowing users to ask questions and receive thoughtful, contextually relevant responses. It leverages advanced Natural Language Processing (NLP) techniques and AI models to understand diverse queries and simulate intelligent conversation. Its standalone nature ensures easy deployment and accessibility, making it a versatile tool for various interactive communication needs, all within a user-friendly web interface.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A customizable AI chatbot with multiple deployment versions (basic, mini, lite, and standalone). Offers conversational intelligence with NLP, packaged in sleek Streamlit UIs.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -967,7 +982,6 @@
 
                 <!-- NEW Project 9: Metier Institute - Full-Stack Website -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'metier.PNG' with your actual image path for this project. -->
                     <img src="metier.PNG" alt="Metier Institute Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Metier Institute - Full-Stack Website</h4>
                     <p class="text-base mb-4 flex-grow break-words">A comprehensive, responsive full-stack website developed for an educational institute. It features robust content management, user authentication, detailed course listings, and administrative functionalities. Built to provide a dynamic online presence and streamline operations, this project ensures an optimal user experience and easy content updates through a scalable architecture.</p>
@@ -988,10 +1002,9 @@
 
                 <!-- NEW Project 10: AstroMaestro AI - Personalized Vedic Astrology -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'astromaestro.PNG' with your actual image path for this project. -->
                     <img src="astromaestro.PNG" alt="AstroMaestro AI" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">AstroMaestro AI - Personalized Vedic Astrology</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An innovative AI-powered application designed to provide personalized Vedic astrology insights. Users can input their birth details to receive detailed astrological readings, predictions, and guidance, interpreted by an intelligent AI system. This project aims to make traditional astrological wisdom accessible and engaging through modern technology, offering a unique and insightful user experience within a streamlined interface.</p>
+                    <p class="text-base mb-4 flex-grow break-words">An AI-powered astrology app that generates personalized Vedic insights based on user inputs. Blends tradition with modern NLP/ML to create a digital astrology experience.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -1008,10 +1021,9 @@
 
                 <!-- NEW Project 11: Multi-Game HUB Website -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Please replace 'multi-game-hub.PNG' with your actual image path for this project. -->
                     <img src="multi-game-hub.PNG" alt="Multi-Game HUB Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Multi-Game HUB Website</h4>
-                    <p class="text-base mb-4 flex-grow break-words">A dynamic and engaging web platform designed to host a collection of classic and modern mini-games. This project features a user-friendly interface for easy game selection, smooth gameplay experience, and responsive design for accessibility across various devices. It serves as a central hub for entertainment, showcasing proficiency in front-end development, interactive JavaScript, and creative game integration.</p>
+                    <p class="text-base mb-4 flex-grow break-words">An online hub for mini-games in a single portal with interactive design and smooth gameplay. Perfect showcase of JavaScript-based game development.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
@@ -1029,7 +1041,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="meditation-companion-app.png" alt="Yogify - Meditation Companion App" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Yogify - Meditation Companion App</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An AI-powered web application designed as a personal meditation companion. It offers guided meditations, mood tracking, and personalized recommendations to enhance mindfulness and well-being. Built with Python and Streamlit, the app leverages Natural Language Processing (NLP) to understand user input and machine learning to adapt recommendations, providing a calm and interactive experience for users to find inner peace.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A wellness app that guides meditation, tracks mood, and suggests mindfulness practices using AI personalization. Designed to improve mental health and focus.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -1046,10 +1058,9 @@
 
                 <!-- NEW Project 13: Cosmic Chat AI - Simple AI Chatbot -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'cosmic-chat-ai.PNG' with your actual image path for this project. -->
                     <img src="cosmic.png" alt="Cosmic Chat AI - Simple AI Chatbot" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Cosmic Chat AI - Simple AI Chatbot</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An intuitive and engaging chatbot developed to provide insights and interactive dialogue. Built with HTML, Tailwind CSS, and JavaScript, it leverages advanced NLP techniques and AI models (via an external API like Gemini) to understand diverse queries and simulate intelligent conversation. Features include dark/light mode, file uploads (handled client-side for display), and dynamic chat history, offering a seamless and user-friendly web interface.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A lightweight AI chatbot integrated with Gemini API. Includes file upload support, dark/light mode, and a Tailwind CSS powered UI for sleek interactions.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
@@ -1070,7 +1081,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="journal-ai.PNG" alt="The Journal AI - Personal AI Journaling App" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">The Journal AI - Personal AI Journaling App</h4>
-                    <p class="text-base mb-4 flex-grow break-words">An AI-powered journaling application designed to help users process thoughts, track moods, and gain self-awareness. It leverages Natural Language Processing (NLP) to analyze journal entries, providing personalized insights, summaries, and guided prompts. Built with Python and Streamlit, this app offers a secure and interactive space for reflective writing and mental well-being support.</p>
+                    <p class="text-base mb-4 flex-grow break-words">An AI journaling assistant that analyzes daily entries, provides summaries, tracks moods, and suggests prompts for self-reflection.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -1094,7 +1105,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="parkinson's.png" alt="Early Detection of Parkinson’s Disease" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Early Detection of Parkinson’s Disease Using ML</h4>
-                    <p class="text-base mb-4 flex-grow break-words">This team project focused on the early detection of Parkinson's Disease using machine learning techniques. It involved a collaborative effort of a 6-member team, where I contributed to resource gathering, programming code development, team management, presentation design, and research paper writing.</p>
+                    <p class="text-base mb-4 flex-grow break-words">Machine learning model to detect early-stage Parkinson’s disease using biomedical voice and motion data. Aimed at aiding medical research with predictive healthcare.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
@@ -1112,7 +1123,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="ems.PNG" alt="Employee Management System" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Employee Management System Website</h4>
-                    <p class="text-base mb-4 flex-grow break-words">Developed a comprehensive Employee Management System Website with a team of 6 members. My roles included gathering resources, research on best practices, full-stack development using Node.js, React.js, and Firebase Firestore, deployment, and team coordination to ensure functionality and accessibility.</p>
+                    <p class="text-base mb-4 flex-grow break-words">A web-based employee portal with role-based authentication, HR workflows, and real-time database integration. Helps companies streamline workforce management.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Node.js</span>
@@ -1132,7 +1143,7 @@
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
                     <img src="phishing.png" alt="Phishing URL Detection" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Phishing URL Detection Using Machine Learning</h4>
-                    <p class="text-base mb-4 flex-grow break-words">This team project focused on applying machine learning to real-world problems for phishing URL detection. This project was recognized with a <strong class="font-semibold">Best Paper Award</strong> (2nd National Conference, RAICCIT 2025).</p>
+                    <p class="text-base mb-4 flex-grow break-words">Machine learning model to detect early-stage Parkinson’s disease using biomedical voice and motion data. Aimed at aiding medical research with predictive healthcare.</p>
                     <p class="font-semibold mb-2">Tools:</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Python</span>
