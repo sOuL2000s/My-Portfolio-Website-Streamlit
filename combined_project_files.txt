@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souparna Paul - Portfolio</title>
+    <title>Souparna Paul - AI & Full-Stack Developer Portfolio</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications. Explore projects like BTC Probo Predictor, Smart Agritech, and Tournament Manager.">
+    <meta name="keywords" content="Souparna Paul, portfolio, AI developer, full-stack developer, Python, Machine Learning, Streamlit, React, Firebase, web development, Kolkata, India, software developer, data science, projects, resume">
+    <meta property="og:title" content="Souparna Paul - AI & Full-Stack Developer Portfolio">
+    <meta property="og:description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications.">
+    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
+    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/"> <!-- Replace with your live site URL -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
+
     <!-- Favicon - Replace with your actual favicon.ico or .png -->
     <link rel="icon" href="profile.png" type="image/png">
     <!-- Tailwind CSS CDN -->
@@ -624,6 +634,8 @@
     </style>
 </head>
 <body>
+    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
+
     <!-- Header/Navigation Bar -->
     <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -655,7 +667,7 @@
 
     <!-- Mobile Navigation Overlay -->
     <div id="mobileNavOverlay" class="mobile-nav-overlay">
-        <button id="closeMobileNav" class="close-btn"><i class="fas fa-times"></i></button>
+        <button id="closeMobileNav" class="close-btn" aria-label="Close mobile navigation"><i class="fas fa-times"></i></button>
         <nav class="nav-links-mobile">
             <a href="#home">Home</a>
             <a href="#about">About Me</a>
@@ -692,6 +704,9 @@
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                     <a href="Souparna_Paul_Latest_Resume.pdf" target="_blank" class="btn-primary flex items-center justify-center">
                         <i class="fas fa-download mr-2"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn-primary flex items-center justify-center bg-gray-600 hover:bg-gray-700 dark:bg-secondary-accent-dark dark:hover:bg-button-hover-bg-color-dark">
+                        <i class="fas fa-envelope mr-2"></i> Contact Me
                     </a>
                 </div>
                 <div class="flex justify-center md:justify-start space-x-6 text-3xl mt-4">
@@ -734,7 +749,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Skills</h2>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-laptop-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow break-words">Python</span>
                         <span class="skill-tag transition-colors-shadow break-words">JavaScript</span>
@@ -788,7 +803,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
+                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users-line mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-tag transition-colors-shadow break-words">Problem-solving</span>
                         <span class="skill-tag transition-colors-shadow break-words">Teamwork</span>
@@ -967,7 +982,6 @@
 
                 <!-- NEW Project 9: Metier Institute - Full-Stack Website -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'metier.PNG' with your actual image path for this project. -->
                     <img src="metier.PNG" alt="Metier Institute Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Metier Institute - Full-Stack Website</h4>
                     <p class="text-base mb-4 flex-grow break-words">A comprehensive, responsive full-stack website developed for an educational institute. It features robust content management, user authentication, detailed course listings, and administrative functionalities. Built to provide a dynamic online presence and streamline operations, this project ensures an optimal user experience and easy content updates through a scalable architecture.</p>
@@ -988,7 +1002,6 @@
 
                 <!-- NEW Project 10: AstroMaestro AI - Personalized Vedic Astrology -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'astromaestro.PNG' with your actual image path for this project. -->
                     <img src="astromaestro.PNG" alt="AstroMaestro AI" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">AstroMaestro AI - Personalized Vedic Astrology</h4>
                     <p class="text-base mb-4 flex-grow break-words">An AI-powered astrology app that generates personalized Vedic insights based on user inputs. Blends tradition with modern NLP/ML to create a digital astrology experience.</p>
@@ -1008,7 +1021,6 @@
 
                 <!-- NEW Project 11: Multi-Game HUB Website -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Please replace 'multi-game-hub.PNG' with your actual image path for this project. -->
                     <img src="multi-game-hub.PNG" alt="Multi-Game HUB Website" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Multi-Game HUB Website</h4>
                     <p class="text-base mb-4 flex-grow break-words">An online hub for mini-games in a single portal with interactive design and smooth gameplay. Perfect showcase of JavaScript-based game development.</p>
@@ -1046,7 +1058,6 @@
 
                 <!-- NEW Project 13: Cosmic Chat AI - Simple AI Chatbot -->
                 <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
-                    <!-- IMPORTANT: Replace 'cosmic-chat-ai.PNG' with your actual image path for this project. -->
                     <img src="cosmic.png" alt="Cosmic Chat AI - Simple AI Chatbot" class="project-image w-full h-48 object-cover mb-4">
                     <h4 class="text-xl font-semibold mb-3 break-words">Cosmic Chat AI - Simple AI Chatbot</h4>
                     <p class="text-base mb-4 flex-grow break-words">A lightweight AI chatbot integrated with Gemini API. Includes file upload support, dark/light mode, and a Tailwind CSS powered UI for sleek interactions.</p>
@@ -1460,45 +1471,37 @@
 </body>
 </html>
 
--------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
-You are helping me redesign my portfolio website hosted at https://souparna-paul-portfolio.netlify.app/. 
-The site is built using HTML, Tailwind CSS, and JavaScript. 
-I want you to improve it without removing any existing functionality, but by enhancing the design, layout, and user experience.
+You are given my personal portfolio website hosted at https://souparna-paul-portfolio.netlify.app/
+.
+I want you to update the website by adding a new project to the “Projects” or “Work” section while keeping the same design style, responsiveness, and formatting.
 
-Here’s what you need to implement:
+The new project details are:
 
-🎨 UI / Design
-1. Add a short tagline under my name in the hero section (e.g., “AI & Full-Stack Developer | Turning Ideas into Scalable Products”).
-2. Add CTA buttons like “Download Resume” and “Contact Me” in the hero section.
-3. Make the navigation bar sticky and highlight the active section while scrolling.
-4. Redesign project cards:
-   - Each card should include a project screenshot or preview image.
-   - Use consistent layout: Title, Screenshot, 2–3 line description, and GitHub + Demo buttons with icons.
-   - Add hover animations for interactivity.
-5. About Me section:
-   - Add a profile image or avatar.
-   - Highlight key skills in bold or badges.
-6. Skills section:
-   - Replace plain text with logo icons (React, Python, TensorFlow, Firebase, etc.).
-   - Organize skills by categories: Frontend, Backend, AI/ML, Tools.
-7. Contact section:
-   - Add a working contact form (Name, Email, Message) integrated with EmailJS or Formspree.
-   - Replace plain links with clickable social icons for LinkedIn, GitHub, etc.
+Project Title: Simple Tournament Manager App
 
-🧭 Content Flow
-1. Shorten project descriptions to 2–3 lines max and include bullet features.
-2. Add a new section for Achievements (e.g., “Best Paper Award at RAICCIT 2025”).
-3. Optionally add a Testimonials/Collaborations section for credibility.
+Description:
+A lightweight web app to create and manage tournaments with ease. Users can add teams, schedule matches, and track results seamlessly. Built with simplicity and usability in mind, this app is perfect for small competitions or casual tournaments.
 
-⚙️ Technical Enhancements
-1. Add a dark/light theme toggle.
-2. Add smooth scroll animations for sections and fade-in/hover animations for project cards.
-3. Add SEO meta tags (title, description, og:image) for better search engine visibility.
-4. Optimize all images/screenshots for faster loading.
+Tech Stack: HTML, CSS, JavaScript
 
-🚀 Bonus (Optional)
-- Add a blog section where I can post short technical write-ups.
-- Add a project filter system (AI, Web, Full-Stack, Research).
+GitHub Repository: https://github.com/sOuL2000s/Simple-Tournament-Manager-App.git
 
-Make sure the code is clean, responsive, and production-ready. Do not remove any existing content — only enhance and restructure based on the above points.
+Live Demo: https://simple-tournament-manager-app.netlify.app/
+
+🔹 Instructions for modification:
+
+Follow the existing design structure of my portfolio (fonts, colors, layout, animations).
+
+Add this project in the Projects/Portfolio section with:
+
+Project title
+
+Short description (2–3 lines max for card view, longer on detailed view if exists)
+
+Buttons/links for GitHub and Live Demo
+
+Ensure the new addition looks consistent with the other projects (same hover effects, alignment, spacing, etc.).
+
+The website should remain fully responsive across desktop, tablet, and mobile.
