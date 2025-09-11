@@ -1245,6 +1245,43 @@
                     </div>
                 </div>
 
+                <!-- NEW PROJECT 22: Community Notice Board -->
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
+                    <img src="community-notice-board.png" alt="Community Notice Board" class="project-image w-full h-48 object-cover mb-4">
+                    <h4 class="text-xl font-semibold mb-3 break-words">Community Notice Board</h4>
+                    <p class="text-base mb-4 flex-grow break-words">A lightweight web application designed to centralize community announcements, events, and urgent notices, replacing fragmented communication channels like WhatsApp or Facebook groups. It provides authorized administrators with a structured platform to share information effectively.</p>
+                    <p class="font-semibold mb-2">Tools:</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">JavaScript</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: October 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Community-Notice-Board.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <!-- Live Demo link is not provided for this project. -->
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 23: Lost & Found Tracker Web Application -->
+                <div class="project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0">
+                    <img src="lost-found-tracker.png" alt="Lost & Found Tracker Web Application" class="project-image w-full h-48 object-cover mb-4">
+                    <h4 class="text-xl font-semibold mb-3 break-words">Lost & Found Tracker Web Application</h4>
+                    <p class="text-base mb-4 flex-grow break-words">A web application designed to help individuals report and search for lost or found items efficiently. It provides a central, accessible platform with filtering capabilities by location, category, and item type, streamlining the process of reuniting owners with their belongings.</p>
+                    <p class="font-semibold mb-2">Tools:</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">HTML</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">CSS</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">JavaScript</span>
+                        <span class="skill-tag rounded-md px-3 py-1 text-xs font-medium break-words">Firebase</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 dark:text-text-color-dark break-words">Date: October 2024</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
+                        <a href="https://github.com/sOuL2000s/Lost-Found-Tracker-Web-Application.git" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
+                        <!-- Live Demo link is not provided for this project. -->
+                    </div>
+                </div>
+
             </div>
 
             <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4">Team Projects</h3>
@@ -1619,13 +1656,20 @@
 </body>
 </html>
 
-----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
-I'm sharing with you the GitHub link, and the problem that's solved by the website with you. Now all you'll have to do is add this under my individual projects. Thank you.
+do the following and send me the copy paste ready code : 
 
-https://github.com/sOuL2000s/Community-Notice-Board.git
+make it more pleasing to the eyes of the viewer.
+the viewer should see whatever that he is looking for in a person from that person's portfolio so make it handy and to the point.
+change the look and feel of the website so that evrything is decluttered and at the same time nothing(i mean info) is compromised.
+let the user smoothly navigate through the website(in both mobile and computer).
+change the contact form to send evrything written on the form to be automatically sent as an email to me without showing them an email interface at all, clicking send message will directly send me an email with all the contact form content without relying on formsubmit.
+give all the tasks same importance/priority.
+make the website look and appear professional so that everyone gets what they were looking for as a to the point way but also leave an option to expand to know more/learn more/the full detail which will be the complete explanation/ fully descriptive view.
+make this website a multipage website only for the sections that require their separate dedicated page.
+make the navigation bar a floating assistant type of thing which guides you all along the way.
+add the read more button in every appropriate place.
+one last thing while the read more is not clicked make a good summary of it all make them to the point and when read more is clicked show them a differently phrased spread out overlay modal about them/ especially projects.
 
-Community Notice Board
-
-Problem: Small communities often rely on fragmented WhatsApp or Facebook groups, leading to messy communication.
-Solution: Build a lightweight web application where authorized administrators can post announcements, events, and urgent notices in a structured manner.
+ecb461f4-b2cd-4200-8ca4-c2d72b566de5
