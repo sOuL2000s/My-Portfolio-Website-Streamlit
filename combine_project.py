@@ -11,7 +11,7 @@ def combine_files_to_single_file(root_dir, output_filename="combined_project_fil
     """
     combined_content = []
     excluded_dirs = ['node_modules', '.git', '.vscode', '.idea', 'dist', 'build']
-    excluded_files = ['package-lock.json', 'yarn.lock', 'bun.lockb', '.env'] # Added .env as it might contain sensitive info
+    excluded_files = ['portfolio_app.py','1.txt','combined_project.py','package-lock.json', 'yarn.lock', 'bun.lockb', '.env'] # Added .env as it might contain sensitive info
 
     print(f"Starting to combine files from: {root_dir}")
     print(f"Excluding directories: {excluded_dirs}")

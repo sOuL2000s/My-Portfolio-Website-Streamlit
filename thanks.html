@@ -17,204 +17,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Shared variables from main CSS for theme consistency */
-        :root {
-            --bg-color-light: #f8f9fa;
-            --main-bg-light: #ffffff;
-            --text-color-light: #343a40;
-            --heading-color-light: #212529;
-            --primary-accent: #007bff;
-            --primary-accent-darker: #0056b3;
-            --navbar-bg-dark: #121212;
-
-            --bg-color-dark: #1a1a1a;
-            --main-bg-dark: #2c2c2c;
-            --text-color-dark: #e0e0e0;
-            --heading-color-dark: #f8f9fa;
-            --primary-accent-dark: #8be9fd;
-            --primary-accent-dark-hover: #50fa7b;
-            --button-bg-color-dark: #6272a4;
-            --button-hover-bg-color-dark: #44475a;
-            --border-color-light: #e0e0e0;
-            --border-color-dark: #444444;
-            --shadow-color-light: rgba(0, 0, 0, 0.08);
-            --shadow-color-dark: rgba(0, 0, 0, 0.4);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color-light);
-            color: var(--text-color-light);
-            display: flex;
-            flex-direction: column; /* Allow header/footer */
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-        body.dark-mode {
-            background-color: var(--bg-color-dark);
-            color: var(--text-color-dark);
-        }
-
-        /* Reusing main-content-card style for consistency */
-        .main-content-card {
-            background-color: var(--main-bg-light);
-            box-shadow: 0px 10px 30px var(--shadow-color-light);
-            border-radius: 1.5rem;
-            border: 1px solid var(--border-color-light);
-            padding: 3rem;
-            max-width: 600px;
-            margin: 1rem;
-            animation: fadeIn 1s ease-out;
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        body.dark-mode .main-content-card {
-            background-color: var(--main-bg-dark);
-            box-shadow: 0px 10px 30px var(--shadow-color-dark);
-            border: 1px solid var(--border-color-dark);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .btn-primary {
-            background-color: var(--primary-accent);
-            color: white;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            border-radius: 9999px;
-            padding: 0.85rem 2.2rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-        .btn-primary:hover {
-            background-color: var(--primary-accent-darker);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        body.dark-mode .btn-primary {
-            background-color: var(--button-bg-color-dark);
-        }
-        body.dark-mode .btn-primary:hover {
-            background-color: var(--button-hover-bg-color-dark);
-        }
-
-        /* Footer styling for consistency */
-        footer {
-            background-color: var(--navbar-bg-dark); /* Darker footer */
-            color: var(--text-color-dark); /* Ensure text is visible in dark footer */
-            padding: 2rem 0; /* More padding */
-            box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* Inset shadow for depth */
-            width: 100%; /* Full width */
-            margin-top: auto; /* Push to bottom */
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-        footer a {
-            color: var(--text-color-dark); /* Default link color in footer */
-            transition: color 0.3s ease;
-        }
-        footer a:hover {
-            color: var(--primary-accent-dark); /* Accent hover */
-        }
-
-        /* Dark Mode Toggle (copied from main CSS) */
-        #darkModeToggle {
-            cursor: pointer;
-            width: 55px; /* Wider toggle */
-            height: 28px; /* Taller toggle */
-            background-color: #ccc;
-            border-radius: 14px;
-            position: relative;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 0 5px;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.25); /* Deeper inset shadow */
-            margin-left: auto; /* Push to right */
-            margin-bottom: 1.5rem; /* Space from content */
-        }
-        #darkModeToggle.dark {
-            background-color: #4a5568; /* Darker background for toggle in dark mode */
-        }
-        #darkModeToggle::before { /* Sun icon */
-            content: '☀️';
-            position: absolute;
-            left: 6px; /* Adjusted position */
-            font-size: 15px;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
-        #darkModeToggle.dark::before {
-            opacity: 0;
-        }
-        #darkModeToggle::after { /* Moon icon */
-            content: '🌙'; /* Changed to a more reliable moon emoji */
-            position: absolute;
-            right: 6px; /* Adjusted position */
-            font-size: 15px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        #darkModeToggle.dark::after {
-            opacity: 1;
-        }
-        #darkModeToggle .toggle-circle {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 22px; /* Slightly larger circle */
-            height: 22px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease-in-out, background-color 0.3s;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.35); /* Deeper shadow for circle */
-        }
-        #darkModeToggle.dark .toggle-circle {
-            transform: translateX(27px); /* Move further */
-            background-color: #2c3e50; /* Darker circle in dark mode */
-        }
-
-        /* Main content styling */
-        .thank-you-container {
-            flex-grow: 1; /* Allow content to push footer down */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 0;
-            width: 100%;
-        }
-        h1 {
-            color: var(--heading-color-light);
-            transition: color 0.4s ease;
-        }
-        body.dark-mode h1 {
-            color: var(--heading-color-dark);
-        }
-        .text-blue-500 {
-            color: var(--primary-accent);
-        }
-        body.dark-mode .text-blue-500 {
-            color: var(--primary-accent-dark);
-        }
-    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-    <div id="darkModeToggle" class="relative">
+    <div id="darkModeToggle" class="relative hidden">
         <div class="toggle-circle"></div>
     </div>
     <div class="thank-you-container">
@@ -248,32 +55,13 @@
         </div>
     </footer>
 
+    <!-- Shared Scripts -->
+    <script src="static/js/scripts.js" defer></script>
+    <!-- Page-specific Scripts -->
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Dark Mode Toggle (Copied for thanks.html for consistency)
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const toggleCircle = darkModeToggle.querySelector('.toggle-circle');
-
-        const applyDarkMode = (isDark) => {
-            if (isDark) {
-                document.body.classList.add('dark-mode');
-                darkModeToggle.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                darkModeToggle.classList.remove('dark');
-            }
-        };
-
-        const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-        applyDarkMode(savedDarkMode);
-
-        darkModeToggle.addEventListener('click', () => {
-            const isCurrentlyDark = document.body.classList.contains('dark-mode');
-            applyDarkMode(!isCurrentlyDark);
-            localStorage.setItem('darkMode', !isCurrentlyDark);
-        });
+        // The Dark Mode Toggle for this specific page (which was at the top of the body)
+        // is now hidden with `hidden` class in its HTML.
+        // The core dark mode logic is in scripts.js and will still correctly apply the theme.
     </script>
 </body>
 </html>

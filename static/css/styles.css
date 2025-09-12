@@ -1,0 +1,665 @@
+/* Custom CSS for dark mode transition and scroll behavior */
+:root {
+    /* Light Mode Variables - Refined for a softer, modern look */
+    --bg-color-light: #f8f9fa; /* Very light gray */
+    --main-bg-light: #ffffff; /* Pure white for cards */
+    --text-color-light: #343a40; /* Dark charcoal for body text */
+    --heading-color-light: #212529; /* Even darker for headings */
+    --primary-accent: #007bff; /* Vibrant blue for primary accent */
+    --primary-accent-darker: #0056b3; /* Darker blue for hover */
+    --secondary-accent: #6c757d; /* Muted gray for secondary */
+    --skill-tag-bg: #e9ecef; /* Light gray for skill tags */
+    --skill-tag-border: #dee2e6; /* Subtle border for skill tags */
+    --border-color-light: #e0e0e0; /* Light border */
+    --shadow-color-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
+    --navbar-bg-light: #ffffff; /* White for navbar in light mode */
+
+    /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
+    --bg-color-dark: #1a1a1a; /* Deep dark background */
+    --main-bg-dark: #2c2c2c; /* Slightly lighter dark card background */
+    --text-color-dark: #e0e0e0; /* Light gray text */
+    --heading-color-dark: #f8f9fa; /* White headings */
+    --primary-accent-dark: #8be9fd; /* Light blue/cyan accent */
+    --primary-accent-dark-hover: #50fa7b; /* Green accent for hover */
+    --secondary-accent-dark: #9da3af; /* Lighter gray for secondary */
+    --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
+    --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
+    --skill-tag-bg-dark: #3a3a3a; /* Darker gray for skill tags */
+    --skill-tag-border-dark: #495057; /* Darker border for skill tags */
+    --border-color-dark: #444444; /* Dark border color */
+    --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow color */
+    --navbar-bg-dark: #121212; /* Very dark blue for navbar */
+
+    /* NEW: Variable for caret color */
+    --caret-color: var(--primary-accent); /* Default caret color (light mode) */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* GLOBAL FIX: Prevent horizontal scrollbar caused by any rogue elements */
+    line-height: 1.7; /* Adjusted for better readability */
+}
+
+@media (max-width: 767px) { /* Apply padding only on mobile */
+    body {
+        padding-bottom: 4rem; /* Height of the mobile fixed nav */
+    }
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    /* NEW: Override caret color for dark mode */
+    --caret-color: var(--primary-accent-dark);
+}
+
+/* Prevent scrolling when modal is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* General element transitions for dark mode */
+.transition-colors-shadow {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Main content area styling */
+.main-content-card {
+    background-color: var(--main-bg-light);
+    box-shadow: 0px 10px 30px var(--shadow-color-light);
+    border-radius: 1.5rem; /* Even more rounded */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid var(--border-color-light); /* Subtle border */
+}
+.main-content-card:hover {
+    transform: translateY(-5px) scale(1.01); /* More subtle lift, slight scale */
+    box-shadow: 0px 10px 25px var(--shadow-color-light); /* Softer shadow on hover */
+    border-color: var(--primary-accent); /* Accent border on hover */
+}
+body.dark-mode .main-content-card {
+    background-color: var(--main-bg-dark);
+    box-shadow: 0px 10px 30px var(--shadow-color-dark);
+    border: 1px solid var(--border-color-dark);
+}
+body.dark-mode .main-content-card:hover {
+    box-shadow: 0px 10px 25px var(--shadow-color-dark);
+    border-color: var(--primary-accent-dark); /* Accent border on hover */
+}
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color-light);
+    letter-spacing: -0.02em; /* Slightly tighter letter-spacing */
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+    color: var(--heading-color-dark);
+}
+
+/* Links */
+a {
+    color: var(--primary-accent);
+    transition: color 0.3s ease;
+}
+body.dark-mode a {
+    color: var(--primary-accent-dark);
+}
+a:hover {
+    filter: brightness(1.2);
+    text-decoration: underline; /* Add underline on hover for clarity */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-accent);
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.85rem 2.2rem; /* Slightly larger padding */
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper initial shadow */
+    position: relative;
+    overflow: hidden; /* For ripple effect */
+}
+.btn-primary:hover {
+    background-color: var(--primary-accent-darker);
+    transform: translateY(-3px) scale(1.01); /* More pronounced lift + scale */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Even deeper shadow on hover */
+}
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.99); /* Slight press effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .btn-primary {
+    background-color: var(--button-bg-color-dark);
+}
+body.dark-mode .btn-primary:hover {
+    background-color: var(--button-hover-bg-color-dark);
+}
+
+/* Skill Tags */
+.skill-tag {
+    display: inline-block; /* Ensure tags respect margin/padding correctly */
+    background-color: var(--skill-tag-bg);
+    color: var(--text-color-light);
+    border: 1px solid var(--skill-tag-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); /* Slightly deeper shadow */
+    border-radius: 0.75rem; /* More rounded */
+    padding: 0.7rem 1.2rem; /* Slightly larger padding */
+    font-size: 0.95rem; /* Slightly larger font */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.skill-tag:hover {
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift + scale */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+    background-color: var(--primary-accent); /* Highlight on hover */
+    color: white;
+}
+body.dark-mode .skill-tag {
+    background-color: var(--skill-tag-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--skill-tag-border-dark);
+}
+body.dark-mode .skill-tag:hover {
+    background-color: var(--primary-accent-dark);
+    color: #121212; /* Dark text on light hover for contrast */
+}
+
+/* Project Card */
+.project-card {
+    background-color: var(--main-bg-light);
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Deeper initial shadow */
+    border-radius: 1.25rem; /* More rounded */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+}
+.project-card:hover {
+    transform: translateY(-5px) scale(1.01); /* More subtle lift + scale */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+    border-color: var(--primary-accent); /* Accent border on hover */
+}
+body.dark-mode .project-card {
+    background-color: var(--main-bg-dark);
+    border: 1px solid var(--border-color-dark);
+}
+body.dark-mode .project-card:hover {
+    box-shadow: 0 10px 25px var(--shadow-color-dark);
+    border-color: var(--primary-accent-dark); /* Accent border on hover */
+}
+/* Project card text color fix */
+.project-card p,
+.project-card ul li {
+    color: var(--text-color-light);
+}
+body.dark-mode .project-card p,
+body.dark-mode .project-card ul li {
+    color: var(--text-color-dark);
+}
+.project-image {
+    border-radius: 0.75rem; /* Match card radius */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 100%; /* Ensure images never overflow their container */
+    height: 12rem; /* Fixed height for consistency */
+    object-fit: cover; /* Cover the area, crop if necessary */
+    margin-bottom: 1rem;
+}
+body.dark-mode .project-image {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Contact Form */
+.form-input {
+    background-color: var(--skill-tag-bg);
+    border: 1px solid var(--skill-tag-border);
+    color: var(--text-color-light);
+    border-radius: 0.75rem;
+    padding: 0.9rem 1.2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.form-input:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+    background-color: var(--main-bg-light);
+}
+.form-input::placeholder {
+    color: var(--text-color-light);
+    opacity: 0.7;
+}
+body.dark-mode .form-input {
+    background-color: var(--skill-tag-bg-dark);
+    border: 1px solid var(--skill-tag-border-dark);
+    color: var(--text-color-dark);
+}
+body.dark-mode .form-input:focus {
+    border-color: var(--primary-accent-dark);
+    box-shadow: 0 0 0 4px rgba(139, 233, 253, 0.25);
+    background-color: var(--main-bg-dark);
+}
+body.dark-mode .form-input::placeholder {
+    color: var(--text-color-dark);
+    opacity: 0.7;
+}
+
+/* Dark mode toggle */
+#darkModeToggle {
+    cursor: pointer;
+    width: 55px; /* Wider toggle */
+    height: 28px; /* Taller toggle */
+    background-color: #ccc;
+    border-radius: 14px;
+    position: relative;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.25); /* Deeper inset shadow */
+}
+#darkModeToggle.dark {
+    background-color: #4a5568; /* Darker background for toggle in dark mode */
+}
+#darkModeToggle::before { /* Sun icon */
+    content: '☀️';
+    position: absolute;
+    left: 6px; /* Adjusted position */
+    font-size: 15px;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+#darkModeToggle.dark::before {
+    opacity: 0;
+}
+#darkModeToggle::after { /* Moon icon */
+    content: '🌙'; /* Changed to a more reliable moon emoji */
+    position: absolute;
+    right: 6px; /* Adjusted position */
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+#darkModeToggle.dark::after {
+    opacity: 1;
+}
+#darkModeToggle .toggle-circle {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px; /* Slightly larger circle */
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.35); /* Deeper shadow for circle */
+}
+#darkModeToggle.dark .toggle-circle {
+    transform: translateX(27px); /* Move further */
+    background-color: #2c3e50; /* Darker circle in dark mode */
+}
+
+/* Profile image animation */
+.profile-img {
+    animation: float 3s ease-in-out infinite;
+    border-color: var(--primary-accent); /* Use accent color for border */
+    box-shadow: 0 0 0 6px var(--primary-accent), 0 10px 20px rgba(0,0,0,0.2); /* Double border effect */
+}
+body.dark-mode .profile-img {
+    border-color: var(--primary-accent-dark);
+    box-shadow: 0 0 0 6px var(--primary-accent-dark), 0 10px 20px var(--shadow-color-dark);
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); } /* Increased float distance */
+    100% { transform: translateY(0px); }
+}
+
+/* Section fade-in on scroll */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px); /* More pronounced slide-up */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother transition */
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific styling for Education and Achievement entries */
+.education-entry, .achievement-entry {
+    background-color: var(--main-bg-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 1rem; /* More rounded */
+    padding: 1.8rem; /* More padding */
+    margin-bottom: 1.25rem; /* Slightly more space */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.education-entry:hover, .achievement-entry:hover {
+    transform: translateY(-5px); /* More lift */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Deeper shadow on hover */
+    border-color: var(--primary-accent); /* Accent border on hover */
+}
+
+body.dark-mode .education-entry, body.dark-mode .achievement-entry {
+    background-color: var(--main-bg-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: 0 5px 12px var(--shadow-color-dark);
+}
+
+body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover {
+    box-shadow: 0 10px 25px var(--shadow-color-dark);
+    border-color: var(--primary-accent-dark); /* Accent border on hover */
+}
+
+/* Icons for achievements */
+.achievement-icon {
+    color: var(--primary-accent); /* Use accent color for icons */
+    margin-right: 1rem; /* More space */
+    font-size: 1.8rem; /* Larger icons */
+    min-width: 1.8rem; /* Ensure consistent alignment */
+}
+body.dark-mode .achievement-icon {
+    color: var(--primary-accent-dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--navbar-bg-dark); /* Darker footer */
+    color: var(--text-color-dark); /* Ensure text is visible in dark footer */
+    padding: 2rem 0; /* More padding */
+    box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* Inset shadow for depth */
+}
+footer p {
+    margin-bottom: 0.5rem;
+}
+/* Consistent footer social icon hover colors */
+footer a.hover\:text-red-600 { /* Target specific mailto to override */
+    color: var(--text-color-dark); /* Reset base color for consistency */
+}
+footer a:hover {
+    color: var(--primary-accent-dark) !important; /* Force accent color on hover for all footer links */
+}
+
+/* Header background styling */
+header {
+    background-color: var(--navbar-bg-light); /* Use variable for light mode */
+}
+body.dark-mode header {
+    background-color: var(--navbar-bg-dark); /* Use variable for dark mode */
+}
+
+/* Navbar active link highlighting */
+.nav-links-desktop a.active, .nav-item.active-nav-link { /* Adjusted for new mobile nav */
+    color: var(--primary-accent) !important; /* Force accent color */
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-item.active-nav-link {
+    color: var(--primary-accent-dark) !important;
+}
+
+/* Scroll-to-top button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--primary-accent);
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease;
+    z-index: 30;
+}
+#scrollToTopBtn:hover {
+    background-color: var(--primary-accent-darker);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+body.dark-mode #scrollToTopBtn {
+    background-color: var(--primary-accent-dark);
+}
+body.dark-mode #scrollToTopBtn:hover {
+    background-color: var(--primary-accent-dark-hover);
+}
+#scrollToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hero section specific styling */
+.hero-section-bg {
+    background: linear-gradient(135deg, var(--bg-color-light) 0%, var(--main-bg-light) 100%);
+    position: relative;
+    overflow: hidden;
+}
+body.dark-mode .hero-section-bg {
+    background: linear-gradient(135deg, var(--bg-color-dark) 0%, var(--main-bg-dark) 100%);
+}
+.hero-section-bg::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at top left, var(--primary-accent) 0%, transparent 25%),
+                radial-gradient(circle at bottom right, var(--secondary-accent) 0%, transparent 25%);
+    opacity: 0.05;
+    z-index: -1;
+    animation: rotateBackground 20s linear infinite;
+}
+body.dark-mode .hero-section-bg::before {
+    background: radial-gradient(circle at top left, var(--primary-accent-dark) 0%, transparent 25%),
+                radial-gradient(circle at bottom right, var(--secondary-accent-dark) 0%, transparent 25%);
+    opacity: 0.1;
+}
+@keyframes rotateBackground {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Typewriter effect */
+.typewriter-text {
+    border-right: 2px solid;
+    white-space: nowrap; /* Default for larger screens */
+    overflow: hidden;
+    animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+    display: inline-block;
+    vertical-align: bottom; /* Adjusts vertical alignment for underline */
+    min-height: 1.2em; /* Prevents text from jumping */
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--caret-color); }
+}
+
+/* Responsive adjustments for typewriter text on small screens */
+@media (max-width: 639px) { /* Targets screens smaller than 'sm' breakpoint */
+    .typewriter-text {
+        white-space: normal; /* Allow text to wrap */
+        overflow: visible; /* Ensure wrapped text is visible */
+        animation: none; /* Disable the typing animation */
+        border-right: none; /* Remove the blinking caret */
+        width: auto; /* Remove width constraint from animation */
+        display: block; /* Change to block to allow full width and wrapping */
+    }
+}
+
+/* Expandable content styling */
+.expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out; /* Smooth slide-down animation */
+}
+
+.expanded-content.show {
+    max-height: 1000px; /* Arbitrarily large value to allow full content to show */
+    transition: max-height 0.7s ease-in;
+}
+
+.read-more-btn {
+    background-color: var(--skill-tag-bg);
+    color: var(--text-color-light);
+    border: 1px solid var(--skill-tag-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.read-more-btn:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    border-color: var(--primary-accent);
+}
+body.dark-mode .read-more-btn {
+    background-color: var(--skill-tag-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--skill-tag-border-dark);
+}
+body.dark-mode .read-more-btn:hover {
+    background-color: var(--primary-accent-dark);
+    color: #121212;
+    border-color: var(--primary-accent-dark);
+}
+
+/* Project Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--main-bg-light);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    max-width: 900px;
+    max-height: 90vh; /* Max height to allow scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 10px 30px var(--shadow-color-light);
+}
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+body.dark-mode .modal-content {
+    background-color: var(--main-bg-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: 0 10px 30px var(--shadow-color-dark);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+}
+.modal-close-btn:hover {
+    color: var(--primary-accent);
+}
+body.dark-mode .modal-close-btn {
+    color: var(--text-color-dark);
+}
+body.dark-mode .modal-close-btn:hover {
+    color: var(--primary-accent-dark);
+}
+
+.modal-image {
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    max-height: 250px;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+body.dark-mode .modal-image {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.modal-links a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    margin-right: 1rem;
+}
+.modal-links a:last-child {
+    margin-right: 0;
+}
+/* Ensure text wraps correctly */
+.project-card .short-summary, .project-card .full-description p,
+#projectModal .modal-project-description {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Toast Message for Contact Form */
+.toast-message {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745; /* Green for success */
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 100;
+    text-align: center;
+    min-width: 250px;
+}
+.toast-message.error {
+    background-color: #dc3545; /* Red for error */
+}
+.toast-message.show {
+    opacity: 1;
+    visibility: visible;
+}
