@@ -1,20 +1,3 @@
-AI: Okay, I'll add the new "Guitar Chord Finder" project to your `projects.html` file.
-
-I'll insert it into the `individual` projects section of the `projectsData` array with the following details:
-
-*   **ID**: `guitar-chord-finder`
-*   **Type**: `individual`
-*   **Title**: `Guitar Chord Finder`
-*   **Image**: `guitar-chord-finder.png` (You'll need to ensure an image with this filename is placed in your project's root directory or `assets/images` if you have such a folder.)
-*   **Short Description**: `An interactive web app for finding and visualizing guitar chords.`
-*   **Full Description**: `An interactive web application designed to help guitarists easily find and visualize chords. Users can select a root note and chord type, and the application will display the corresponding chord diagram, notes, and various voicings. This project demonstrates dynamic content generation, musical theory implementation, and a user-friendly interface for learning and referencing guitar chords.`
-*   **Tools**: `HTML`, `CSS`, `JavaScript`
-*   **Tags**: `web-dev`, `javascript`
-*   **Date**: `November 2024` (I've estimated a recent date; feel free to adjust this.)
-*   **GitHub**: `https://github.com/sOuL2000s/guitar-chord-finder.git`
-*   **Live Demo**: `https://guitar-chord-finder.netlify.app/`
-
-Here are the updated files:
 
 --- START FILE: contact.html ---
 
@@ -1387,6 +1370,7 @@ Here are the updated files:
 </body>
 </html>
 
+
 --- END FILE: projects.html ---
 
 --- START FILE: README.md ---
@@ -2274,3 +2258,10 @@ scrollToTopBtn.addEventListener("click", () => {
 });
 
 --- END FILE: static\js\scripts.js ---
+
+________________________________________________________________________________________________________ 
+
+add the following under my individual projects : 
+
+https://github.com/sOuL2000s/YouTube-Video-to-Shorts-Converter.git
+https://youtube-video-to-shorts-converter.onrender.com/
