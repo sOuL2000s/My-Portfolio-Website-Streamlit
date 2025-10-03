@@ -1,4 +1,5 @@
-AI: --- START FILE: contact.html ---
+
+--- START FILE: contact.html ---
 
 <!DOCTYPE html>
 <html lang="en">
@@ -2291,3 +2292,12 @@ scrollToTopBtn.addEventListener("click", () => {
 });
 
 --- END FILE: static\js\scripts.js ---
+
+-----------------------------------------------------------------------------------------------------------
+
+add a new individual project : 
+
+https://github.com/sOuL2000s/2048-Ultimate-Multi-Themed.git
+https://2048-ultimate-multi-themed.netlify.app/
+
+after adding send me the changed files only nothing else.
