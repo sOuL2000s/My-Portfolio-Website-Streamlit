@@ -1,5 +1,4 @@
-
---- START FILE: contact.html ---
+AI: --- START FILE: contact.html ---
 
 <!DOCTYPE html>
 <html lang="en">
@@ -827,6 +826,32 @@
         const projectsData = [
             // Individual Projects
             {
+                id: 'the-auction-game',
+                type: 'individual',
+                title: 'The Auction Game',
+                image: 'the-auction-game.png', // NOTE: Please add 'the-auction-game.png' to your project's root directory for the image to display.
+                shortDescription: 'An interactive full-stack web game where players bid to win items in real-time.',
+                fullDescription: 'The Auction Game is a real-time, interactive full-stack web application that simulates a live auction experience. Players can join ongoing auctions, place bids, and compete to win virtual items. The game features real-time updates for bids and auction status, user authentication, and a dynamic leaderboard. It\'s built with modern web technologies, providing a engaging and competitive environment for players to test their bidding strategies.',
+                tools: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'HTML', 'CSS', 'JavaScript'],
+                tags: ['full-stack', 'web-dev', 'javascript', 'node', 'socket.io'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/The-Auction-Game.git',
+                livedemo: 'https://the-auction-game.onrender.com/'
+            },
+            {
+                id: 'youtube-shorts-converter',
+                type: 'individual',
+                title: 'YouTube Video to Shorts Converter',
+                image: 'youtube-shorts.png', // NOTE: Please add 'youtube-shorts.png' to your project's root directory for the image to display.
+                shortDescription: 'A web application to convert long YouTube videos into engaging short clips for social media.',
+                fullDescription: 'This powerful web application streamlines content creation by allowing users to easily convert lengthy YouTube videos into concise, engaging short-form content. Users simply input a YouTube video URL, and the application leverages video processing techniques to extract key segments suitable for platforms like YouTube Shorts, TikTok, or Instagram Reels. It aims to help content creators quickly repurpose existing videos, enhance audience engagement, and expand their reach across various social media channels.',
+                tools: ['Python', 'Flask', 'FFmpeg', 'HTML', 'CSS', 'JavaScript'],
+                tags: ['python', 'web-dev', 'full-stack'],
+                date: 'November 2024',
+                github: 'https://github.com/sOuL2000s/YouTube-Video-to-Shorts-Converter.git',
+                livedemo: 'https://youtube-video-to-shorts-converter.onrender.com/'
+            },
+            {
                 id: 'guitar-chord-finder',
                 type: 'individual',
                 title: 'Guitar Chord Finder',
@@ -1265,6 +1290,14 @@
                 if (filter === 'team') return project.type === 'team';
                 return project.tags && project.tags.includes(filter);
             });
+
+            // Sort projects by date in descending order (most recent first)
+            filteredProjects.sort((a, b) => {
+                const dateA = new Date(a.date.replace(/ \(.*\)/, '')); // Remove parenthetical info for date parsing
+                const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
+                return dateB - dateA; // Descending order
+            });
+
 
             filteredProjects.forEach(project => {
                 const card = createProjectCard(project);
@@ -2258,10 +2291,3 @@ scrollToTopBtn.addEventListener("click", () => {
 });
 
 --- END FILE: static\js\scripts.js ---
-
-________________________________________________________________________________________________________ 
-
-add the following under my individual projects : 
-
-https://github.com/sOuL2000s/YouTube-Video-to-Shorts-Converter.git
-https://youtube-video-to-shorts-converter.onrender.com/
