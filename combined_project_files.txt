@@ -1,667 +1,3 @@
-
---- START FILE: contact.html ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souparna Paul - Contact Me</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Contact Souparna Paul for collaborations, job opportunities, or general inquiries. AI & Full-Stack Developer based in Kolkata.">
-    <meta name="keywords" content="Souparna Paul contact, contact AI developer, contact full-stack developer, hire Souparna Paul, collaboration, job opportunities, email Souparna Paul">
-    <meta property="og:title" content="Souparna Paul - Contact Me">
-    <meta property="og:description" content="Contact Souparna Paul for collaborations, job opportunities, or general inquiries.">
-    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/contact.html"> <!-- Replace with your live site URL -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-
-    <!-- Favicon - Replace with your actual favicon.ico or .png -->
-    <link rel="icon" href="profile.png" type="image/png">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
-
-    <!-- Header/Navigation Bar -->
-    <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-primary-accent-dark">Souparna Paul</a>
-            <div class="flex items-center space-x-6">
-                <!-- Dark Mode Toggle (Desktop) -->
-                <div id="darkModeToggle" class="relative hidden md:flex">
-                    <div class="toggle-circle"></div>
-                </div>
-
-                <!-- Navigation Links (Desktop) -->
-                <nav id="navLinksDesktop" class="nav-links-desktop hidden md:flex md:space-x-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Home</a>
-                    <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Projects</a>
-                    <a href="education-achievements.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Education & Achievements</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8 md:py-12">
-        <!-- Contact Section -->
-        <section id="contact" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Get In Touch!</h2>
-            <p class="text-lg leading-relaxed mb-6 text-center dark:text-text-color-dark">
-                Feel free to reach out to me for collaborations, job opportunities, or just a chat! I'm always open to new connections.
-            </p>
-
-            <form id="contactForm" method="POST" class="max-w-xl mx-auto space-y-4">
-                <!-- IMPORTANT: Replace YOUR_WEB3FORMS_ACCESS_KEY with your actual access key from Web3Forms.com -->
-                <!-- Sign up at Web3Forms (it's free) to get your key: https://web3forms.com/ -->
-                <input type="hidden" name="access_key" value="ecb461f4-b2cd-4200-8ca4-c2d72b566de5">
-                <input type="hidden" name="subject" value="New Contact from Portfolio Website">
-                <input type="hidden" name="redirect" value="https://souparna-paul-portfolio.netlify.app/thanks.html">
-                <input type="hidden" name="from_name" value="Portfolio Contact Form">
-
-                <input type="text" name="name" placeholder="Your Name" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow">
-                <input type="email" name="email" placeholder="Your Email" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow">
-                <textarea name="message" placeholder="Your Message" rows="6" required class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow"></textarea>
-                <button type="submit" class="btn-primary w-full py-3 rounded-md font-bold text-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Send Message</button>
-            </form>
-            <p class="text-center text-lg mt-6 dark:text-text-color-dark">
-                Alternatively, you can email me directly at: <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md text-gray-800 dark:text-gray-200 transition-colors-shadow">souparnopaulreborn@gmail.com</code>
-            </p>
-        </section>
-    </main>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Mobile Fixed Bottom Navigation -->
-    <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
-        <div class="flex justify-around items-center h-16">
-            <a href="index.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-home text-xl"></i>
-                <span class="mt-1">Home</span>
-            </a>
-            <a href="projects.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-code text-xl"></i>
-                <span class="mt-1">Projects</span>
-            </a>
-            <a href="education-achievements.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-graduation-cap text-xl"></i>
-                <span class="mt-1">Edu & Ach</span>
-            </a>
-            <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-envelope text-xl"></i>
-                <span class="mt-1">Contact</span>
-            </a>
-            <!-- Dark Mode Toggle moved here for mobile -->
-            <button id="mobileDarkModeToggle" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark focus:outline-none transition-colors">
-                <i class="fas fa-moon text-xl dark:hidden"></i>
-                <i class="fas fa-sun text-xl hidden dark:block"></i>
-                <span class="mt-1">Theme</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
-        <div class="container mx-auto px-4">
-            <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
-            <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
-            <div class="flex justify-center space-x-4 text-xl mt-3">
-                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Shared Scripts -->
-    <script src="static/js/scripts.js" defer></script>
-    <!-- Page-specific Scripts -->
-    <script>
-        // Handle Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        if(contactForm) { // Ensure form exists before attaching listener
-            contactForm.addEventListener('submit', async function (e) {
-                e.preventDefault(); // Prevent default form submission
-
-                const formButton = contactForm.querySelector('button[type="submit"]');
-                formButton.disabled = true; // Disable button to prevent multiple submissions
-                formButton.textContent = 'Sending...';
-
-                const formData = new FormData(this);
-                const object = {};
-                formData.forEach((value, key) => {
-                    object[key] = value;
-                });
-                const json = JSON.stringify(object);
-
-                try {
-                    const response = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: json
-                    });
-
-                    const result = await response.json();
-
-                    if (result.success) {
-                        console.log('Form submission successful:', result);
-                        // Redirect to the thanks page as specified in the hidden input
-                        window.location.href = this.querySelector('input[name="redirect"]').value;
-                    } else {
-                        console.error('Form submission failed:', result);
-                        alert('There was an error sending your message. Please try again or email me directly.');
-                    }
-                } catch (error) {
-                    console.error('Network or unexpected error:', error);
-                    alert('A network error occurred. Please try again or email me directly.');
-                } finally {
-                    formButton.disabled = false;
-                    formButton.textContent = 'Send Message';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
-
---- END FILE: contact.html ---
-
---- START FILE: education-achievements.html ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souparna Paul - Education & Achievements</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Souparna Paul's academic background and professional achievements. B.Tech CSE from Narula Institute of Technology, research paper awards, and hackathon participation.">
-    <meta name="keywords" content="Souparna Paul education, Souparna Paul achievements, B.Tech CSE, Narula Institute of Technology, research paper award, Smart India Hackathon, SIH, college achievements, academic background">
-    <meta property="og:title" content="Souparna Paul - Education & Achievements">
-    <meta property="og:description" content="Souparna Paul's academic background and professional achievements.">
-    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/education-achievements.html"> <!-- Replace with your live site URL -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-
-    <!-- Favicon - Replace with your actual favicon.ico or .png -->
-    <link rel="icon" href="profile.png" type="image/png">
-
-    <!-- Preconnect for Google Fonts to improve loading speed -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
-
-    <!-- Header/Navigation Bar -->
-    <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-primary-accent-dark">Souparna Paul</a>
-            <div class="flex items-center space-x-6">
-                <!-- Dark Mode Toggle (Desktop) -->
-                <div id="darkModeToggle" class="relative hidden md:flex">
-                    <div class="toggle-circle"></div>
-                </div>
-
-                <!-- Navigation Links (Desktop) -->
-                <nav id="navLinksDesktop" class="nav-links-desktop hidden md:flex md:space-x-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Home</a>
-                    <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Projects</a>
-                    <a href="education-achievements.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Education & Achievements</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8 md:py-12">
-        <!-- Education Section -->
-        <section id="education" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Education</h2>
-            <div class="space-y-4">
-                <div class="education-entry">
-                    <h3 class="text-2xl font-semibold mb-2">B.Tech CSE | Narula Institute of Technology, Kolkata</h3>
-                    <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">2021-2025</p>
-                    <ul class="list-disc list-inside text-lg leading-relaxed space-y-1 dark:text-text-color-dark">
-                        <li>Relevant coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Machine Learning, Web Technologies</li>
-                        <li>Thesis/Capstone Project: Phishing URL Detection (Awarded Best Paper)</li>
-                    </ul>
-                </div>
-                <div class="education-entry">
-                    <h3 class="text-2xl font-semibold mb-2">Higher Secondary | Madhyamgram High School, Madhyamgram</h3>
-                    <p class="text-lg leading-relaxed dark:text-text-color-dark">2019</p>
-                </div>
-                <div class="education-entry">
-                    <h3 class="text-2xl font-semibold mb-2">Secondary | Barasat Mahatma Gandhi Memorial High School, Barasat</h3>
-                    <p class="text-lg leading-relaxed dark:text-text-color-dark">2017</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Achievements</h2>
-            <div class="space-y-4">
-                <div class="achievement-entry flex items-start">
-                    <i class="fas fa-award achievement-icon"></i>
-                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
-                        <strong class="font-semibold">Research Paper, Best Paper Award:</strong> Recognized for "Phishing URL Detection Using ML" at the 2nd National Conference, RAICCIT 2025.
-                    </p>
-                </div>
-                <div class="achievement-entry flex items-start">
-                    <i class="fas fa-lightbulb achievement-icon"></i>
-                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
-                        <strong class="font-semibold">SIH Internal 2023:</strong> Participated in the Smart India Hackathon (SIH) Internal competition 2023 at Narula Institute of Technology, Kolkata, on "Real-Time Vehicle Tracking System."
-                    </p>
-                </div>
-                <div class="achievement-entry flex items-start">
-                    <i class="fas fa-microphone achievement-icon"></i>
-                    <p class="text-lg leading-relaxed flex-1 dark:text-text-color-dark">
-                        <strong class="font-semibold">Singing Contest:</strong> Secured 2nd place in a college singing contest, NiT Jewels, in April 2022.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Mobile Fixed Bottom Navigation -->
-    <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
-        <div class="flex justify-around items-center h-16">
-            <a href="index.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-home text-xl"></i>
-                <span class="mt-1">Home</span>
-            </a>
-            <a href="projects.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-code text-xl"></i>
-                <span class="mt-1">Projects</span>
-            </a>
-            <a href="education-achievements.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-graduation-cap text-xl"></i>
-                <span class="mt-1">Edu & Ach</span>
-            </a>
-            <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-envelope text-xl"></i>
-                <span class="mt-1">Contact</span>
-            </a>
-            <!-- Dark Mode Toggle moved here for mobile -->
-            <button id="mobileDarkModeToggle" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark focus:outline-none transition-colors">
-                <i class="fas fa-moon text-xl dark:hidden"></i>
-                <i class="fas fa-sun text-xl hidden dark:block"></i>
-                <span class="mt-1">Theme</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
-        <div class="container mx-auto px-4">
-            <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
-            <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
-            <div class="flex justify-center space-x-4 text-xl mt-3">
-                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Shared Scripts -->
-    <script src="static/js/scripts.js" defer></script>
-    <!-- Page-specific Scripts (None for this page) -->
-</body>
-</html>
-
---- END FILE: education-achievements.html ---
-
---- START FILE: index.html ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souparna Paul - AI & Full-Stack Developer Portfolio</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications. Explore projects like BTC Probo Predictor, Smart Agritech, and Tournament Manager.">
-    <meta name="keywords" content="Souparna Paul, portfolio, AI developer, full-stack developer, Python, Machine Learning, Streamlit, React, Firebase, web development, Kolkata, India, software developer, data science, projects, resume">
-    <meta property="og:title" content="Souparna Paul - AI & Full-Stack Developer Portfolio">
-    <meta property="og:description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications.">
-    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/"> <!-- Replace with your live site URL -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-
-    <!-- Favicon - Replace with your actual favicon.ico or .png -->
-    <link rel="icon" href="profile.png" type="image/png">
-    
-    <!-- Preconnect for Google Fonts to improve loading speed -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
-
-    <!-- Header/Navigation Bar -->
-    <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors-shadow dark:text-heading-color-dark dark:hover:text-primary-accent-dark">Souparna Paul</a>
-            <div class="flex items-center space-x-6">
-                <!-- Dark Mode Toggle (Desktop) -->
-                <div id="darkModeToggle" class="relative hidden md:flex">
-                    <div class="toggle-circle"></div>
-                </div>
-
-                <!-- Navigation Links (Desktop) -->
-                <nav id="navLinksDesktop" class="nav-links-desktop hidden md:flex md:space-x-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Home</a>
-                    <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Projects</a>
-                    <a href="education-achievements.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Education & Achievements</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8 md:py-12">
-        <!-- Home Section -->
-        <section id="home" class="main-content-card hero-section-bg rounded-xl p-6 md:p-10 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left transition-colors-shadow">
-            <div class="md:w-1/3 flex justify-center mb-6 md:mb-0 md:pr-8">
-                <img src="profile.png" alt="Souparna Paul" loading="lazy" class="profile-img rounded-full w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-cover transition-colors-shadow">
-            </div>
-            <div class="md:w-2/3">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">
-                    Hi, I'm Souparna Paul <span class="wave-emoji">👋</span>
-                </h1>
-                <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-6 dark:text-text-color-dark">
-                    <span class="typewriter-text">AI & Full-Stack Developer | Python, ML, Web | Kolkata, India</span>
-                </h2>
-                <p class="text-lg leading-relaxed mb-6 dark:text-text-color-dark">
-                    I'm a Tech Enthusiast and Innovator from Madhyamgram, West Bengal.
-                    I specialize in Python development, AI/ML, and full-stack web development using tools like Streamlit, Firebase, and React.
-                    My strengths lie in building diverse and impactful applications, ranging from real-time, data-driven dashboards to robust full-stack web solutions. This is showcased in projects like my <strong class="font-semibold">BTC Probo Predictor</strong>, <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, and the <strong class="font-semibold">Tournament Manager Full-Stack Web Application</strong>.
-                    I’m also passionate about applying machine learning to real-world problems, as demonstrated by my <strong class="font-semibold">Phishing URL Detection</strong> project, for which I won a Best Paper Award.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-                    <a href="Souparna_Paul_Latest_Resume.pdf" target="_blank" download class="btn-primary flex items-center justify-center">
-                        <i class="fas fa-download mr-2"></i> Download Resume
-                    </a>
-                    <a href="contact.html" class="btn-primary flex items-center justify-center bg-gray-600 hover:bg-gray-700 dark:bg-secondary-accent-dark dark:hover:bg-button-hover-bg-color-dark">
-                        <i class="fas fa-envelope mr-2"></i> Contact Me
-                    </a>
-                </div>
-                <div class="flex justify-center md:justify-start space-x-6 text-3xl mt-4">
-                    <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-blue-700 transition-colors-shadow dark:hover:text-primary-accent-dark">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-gray-900 transition-colors-shadow dark:hover:text-primary-accent-dark">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-red-600 transition-colors-shadow dark:hover:text-primary-accent-dark">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Me Section (Concise with Read More) -->
-        <section id="about" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">About Me</h2>
-            <div class="about-me-content dark:text-text-color-dark">
-                <p class="text-lg leading-relaxed mb-4">
-                    I am a B.Tech CSE student from Narula Institute of Technology, Kolkata, graduating in 2025.
-                    My journey in technology began with a strong interest in programming and problem-solving, leading me to delve into Python development, AI/ML, and full-stack web development.
-                    I focus on building data-driven applications, highlighted by my <strong class="font-semibold">BTC Probo Predictor</strong>, <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, and a <strong class="font-semibold">Tournament Manager Full-Stack Web Application</strong>.
-                    I’m also passionate about applying machine learning to real-world problems, as demonstrated by my <strong class="font-semibold">Phishing URL Detection</strong> project, for which I won a Best Paper Award.
-                </p>
-                <!-- Expanded content for About Me -->
-                <div id="aboutMore" class="expanded-content">
-                    <p class="text-lg leading-relaxed mb-4">
-                        My strengths lie in building diverse and impactful applications, ranging from real-time dashboards to robust full-stack web solutions.
-                        I am proficient in various Python libraries and frameworks for data science and web development and experienced in developing and deploying machine learning models for real-world applications. I'm skilled in building interactive web applications using Streamlit, Firebase, and React.
-                        Additionally, my passion for applying machine learning to real-world problems led to a <strong class="font-semibold">Best Paper Award for Phishing URL Detection</strong>.
-                    </p>
-                    <p class="text-lg leading-relaxed mt-4">
-                        I thrive in environments that challenge me to learn and grow, and I am always eager to contribute to innovative projects.
-                        Outside of academics, I enjoy <strong class="font-semibold">Writing Stories</strong> and <strong class="font-semibold">Songs</strong>, <strong class="font-semibold">Singing</strong>, and <strong class="font-semibold">Meditating</strong>.
-                    </p>
-                </div>
-                <button id="toggleAbout" class="read-more-btn mt-4">Read More</button>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Skills</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-laptop-code mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Programming Languages</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Python</span>
-                        <span class="skill-tag transition-colors-shadow break-words">JavaScript</span>
-                        <span class="skill-tag transition-colors-shadow break-words">SQL</span>
-                        <span class="skill-tag transition-colors-shadow break-words">C</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Java</span>
-                        <span class="skill-tag transition-colors-shadow break-words">C++</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-globe mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Web Development</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Streamlit</span>
-                        <span class="skill-tag transition-colors-shadow break-words">React</span>
-                        <span class="skill-tag transition-colors-shadow break-words">HTML</span>
-                        <span class="skill-tag transition-colors-shadow break-words">CSS</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Render</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Django</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-brain mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Data Science & ML</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Pandas</span>
-                        <span class="skill-tag transition-colors-shadow break-words">NumPy</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Scikit-learn</span>
-                        <span class="skill-tag transition-colors-shadow break-words">TensorFlow</span>
-                        <span class="skill-tag transition-colors-shadow break-words">PyTorch</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Data Visualization</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Statistical Analysis</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-database mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Databases</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Firebase-FireStore</span>
-                        <span class="skill-tag transition-colors-shadow break-words">MongoDB</span>
-                        <span class="skill-tag transition-colors-shadow break-words">MySQL</span>
-                        <span class="skill-tag transition-colors-shadow break-words">SQLite</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-tools mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Tools & Platforms</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Jupyter Notebooks</span>
-                        <span class="skill-tag transition-colors-shadow break-words">VS Code</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Colab</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Power BI</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Excel</span>
-                        <span class="skill-tag transition-colors-shadow break-words">GitHub</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center"><i class="fas fa-users-line mr-3 text-primary-accent dark:text-primary-accent-dark"></i>Soft Skills</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag transition-colors-shadow break-words">Problem-solving</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Teamwork</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Communication</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Adaptability</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Leadership</span>
-                        <span class="skill-tag transition-colors-shadow break-words">Ability To Learn</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Mobile Fixed Bottom Navigation -->
-    <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
-        <div class="flex justify-around items-center h-16">
-            <a href="index.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-home text-xl"></i>
-                <span class="mt-1">Home</span>
-            </a>
-            <a href="projects.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-code text-xl"></i>
-                <span class="mt-1">Projects</span>
-            </a>
-            <a href="education-achievements.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-graduation-cap text-xl"></i>
-                <span class="mt-1">Edu & Ach</span>
-            </a>
-            <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
-                <i class="fas fa-envelope text-xl"></i>
-                <span class="mt-1">Contact</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
-        <div class="container mx-auto px-4">
-            <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
-            <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
-            <div class="flex justify-center space-x-4 text-xl mt-3">
-                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Shared Scripts -->
-    <script src="static/js/scripts.js" defer></script>
-    <!-- Page-specific Scripts -->
-    <script>
-        // Typewriter Effect - Adjusted for mobile responsiveness
-        const typewriterTextElement = document.querySelector('.typewriter-text');
-        const textToType = "AI & Full-Stack Developer | Python, ML, Web | Kolkata, India"; // Updated text
-
-        function typeWriter(element, text, i = 0) {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                setTimeout(() => typeWriter(element, text, i + 1), 50); // Typing speed
-            } else {
-                element.style.borderRight = 'none'; // Remove cursor after typing
-            }
-        }
-
-        const applyTypewriterEffect = () => {
-            if (!typewriterTextElement) return;
-
-            const isMobile = window.matchMedia('(max-width: 639px)').matches; // Corresponds to Tailwind's 'sm' breakpoint
-
-            if (isMobile) {
-                typewriterTextElement.textContent = textToType; // Show full text immediately
-                typewriterTextElement.style.borderRight = 'none'; // Ensure no blinking caret
-            } else {
-                // Only re-type if content is different or caret is missing
-                if (typewriterTextElement.textContent !== textToType || typewriterTextElement.style.borderRight === 'none') {
-                    typewriterTextElement.textContent = ''; // Clear text before typing
-                    typewriterTextElement.style.removeProperty('border-right'); // Ensure caret can appear
-                    typeWriter(typewriterTextElement, textToType); // Run typing animation for larger screens
-                }
-            }
-        };
-
-        // Apply on initial load
-        document.addEventListener('DOMContentLoaded', applyTypewriterEffect);
-
-        // Re-apply if screen size changes (e.g., rotating tablet or resizing desktop window)
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(applyTypewriterEffect, 200); // Debounce for performance
-        });
-
-        // Toggle "About Me" section on index.html
-        const toggleAboutButton = document.getElementById('toggleAbout');
-        const aboutMoreContent = document.getElementById('aboutMore');
-
-        if(toggleAboutButton && aboutMoreContent) { // Check if elements exist on this page
-            toggleAboutButton.addEventListener('click', () => {
-                const isExpanded = aboutMoreContent.classList.toggle('show');
-                toggleAboutButton.textContent = isExpanded ? 'Show Less' : 'Read More';
-            });
-        }
-    </script>
-</body>
-</html>
-
---- END FILE: index.html ---
-
---- START FILE: projects.html ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -827,19 +163,6 @@
         const projectsData = [
             // Individual Projects
             {
-                id: 'the-auction-game',
-                type: 'individual',
-                title: 'The Auction Game',
-                image: 'the-auction-game.png', // NOTE: Please add 'the-auction-game.png' to your project's root directory for the image to display.
-                shortDescription: 'An interactive full-stack web game where players bid to win items in real-time.',
-                fullDescription: 'The Auction Game is a real-time, interactive full-stack web application that simulates a live auction experience. Players can join ongoing auctions, place bids, and compete to win virtual items. The game features real-time updates for bids and auction status, user authentication, and a dynamic leaderboard. It\'s built with modern web technologies, providing a engaging and competitive environment for players to test their bidding strategies.',
-                tools: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'HTML', 'CSS', 'JavaScript'],
-                tags: ['full-stack', 'web-dev', 'javascript', 'node', 'socket.io'],
-                date: 'December 2024',
-                github: 'https://github.com/sOuL2000s/The-Auction-Game.git',
-                livedemo: 'https://the-auction-game.onrender.com/'
-            },
-            {
                 id: 'youtube-shorts-converter',
                 type: 'individual',
                 title: 'YouTube Video to Shorts Converter',
@@ -851,6 +174,19 @@
                 date: 'November 2024',
                 github: 'https://github.com/sOuL2000s/YouTube-Video-to-Shorts-Converter.git',
                 livedemo: 'https://youtube-video-to-shorts-converter.onrender.com/'
+            },
+            {
+                id: '2048-ultimate-multi-themed',
+                type: 'individual',
+                title: '2048 Ultimate - Multi-Themed Game',
+                image: '2048-ultimate.png', // NOTE: Please add '2048-ultimate.png' to your project's root directory for the image to display.
+                shortDescription: 'A modern, multi-themed 2048 game with customizable UI and score tracking.',
+                fullDescription: '"2048 Ultimate - Multi-Themed Game" is a reimagined version of the classic 2048 puzzle game, offering a highly customizable and engaging experience. This web-based game features multiple distinct themes, allowing players to personalize their visual experience. It includes robust local storage for high score tracking, ensuring competitive play across sessions. The intuitive gameplay mechanics and smooth transitions provide an addictive and enjoyable puzzle experience for all ages.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
+                tags: ['web-dev', 'javascript', 'game'],
+                date: 'November 2024',
+                github: 'https://github.com/sOuL2000s/2048-Ultimate-Multi-Themed.git',
+                livedemo: 'https://2048-ultimate-multi-themed.netlify.app/'
             },
             {
                 id: 'guitar-chord-finder',
@@ -879,175 +215,6 @@
                 livedemo: 'https://imdb-movie-randomizer.netlify.app/'
             },
             {
-                id: 'study-buddy-ai',
-                type: 'individual',
-                title: 'Study Buddy AI - Intelligent Learning Companion',
-                image: 'study-buddy-ai.png', // Ensure this image exists in your project
-                shortDescription: 'AI-powered learning app with voice chat, multi-theming, and contextual text analysis for any topic.',
-                fullDescription: 'Study Buddy AI is an innovative, Progressive Web Application (PWA) designed as your intelligent learning companion. It integrates advanced Web Speech APIs for seamless voice input (speech-to-text) and dictation (text-to-speech), offering a dynamic chat experience. Key features include robust chat history management, versatile file attachments (images, text, PDFs, etc.), and a unique "Conversation Mode" that allows for natural, voice-only interactions with a customizable AI personality and voice. The core "Study Helper" functionality guides users to search for topics on Google, then paste relevant content directly into the chat for the AI to analyze and explain, making complex subjects easily understandable. With multiple vibrant themes (including \'Celestial Horizon\', \'Verdant Calm\', \'Cybernetic Pulse\', etc.) and PWA support, Study Buddy AI provides a personalized and accessible learning environment.',
-                tools: ['JavaScript', 'HTML', 'CSS', 'Gemini API', 'Web Speech API', 'Local Storage', 'Marked.js', 'PWA'],
-                tags: ['ai-ml', 'web-dev', 'full-stack', 'javascript'],
-                date: '2024',
-                github: 'https://github.com/sOuL2000s/Study-Buddy-AI.git',
-                livedemo: 'https://study-buddy-ai-studyhelper.netlify.app/'
-            },
-            {
-                id: 'i-prompt-you-ai-prompt-engineer',
-                type: 'individual',
-                title: 'I Prompt You - AI Prompt Engineer',
-                image: 'i-prompt-you.png', // Ensure this image exists in your project
-                shortDescription: 'AI-powered tool to craft perfect prompts for other AI models from diverse inputs.',
-                fullDescription: '\"I Prompt You\" is an intelligent AI Prompt Engineer tool designed to help users craft optimal prompts for other AI models. Users can describe their desired output through text input, voice dictation (Speech Recognition), or by uploading various file types including text and images, enabling multimodal input. The application processes these diverse inputs, leveraging the Gemini API to analyze context and generate a well-structured, clear, and highly effective prompt. It also features a convenient prompt history, allowing users to save, load, and manage their generated prompts, ensuring they can efficiently refine and reuse their best AI instructions. This tool streamlines the prompt engineering process, making advanced AI interactions more accessible and precise.',
-                tools: ['JavaScript', 'HTML', 'CSS', 'Gemini API', 'Web Speech API', 'Local Storage'],
-                tags: ['ai-ml', 'web-dev', 'full-stack', 'javascript'],
-                date: '2025',
-                github: 'https://github.com/sOuL2000s/I-Prompt-You-AI-Prompt-Engineer.git',
-                livedemo: 'https://i-prompt-you-ai-prompt-engineer.netlify.app/'
-            },
-            {
-                id: 'ai-text-beautifier',
-                type: 'individual',
-                title: 'AI Text Beautifier & Chatbot',
-                image: 'beautifier-ai.png',
-                shortDescription: 'AI web app for text beautification & real-time chatbot with Gemini API.',
-                fullDescription: 'An innovative AI-powered web application that offers intelligent text beautification and real-time conversational capabilities. It transforms plain text into elegantly formatted Markdown using the Gemini API, ensuring professional and readable output. The application boasts dynamic theme selection (dark/light mode), Progressive Web App (PWA) support for an app-like experience, and an integrated chatbot with voice input and file attachment functionalities. This project demonstrates a blend of utility and advanced AI interaction within a sleek, user-friendly interface.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP', 'Web Speech API', 'Marked.js', 'PWA', 'Local Storage'],
-                tags: ['ai-ml', 'web-dev'],
-                date: 'September 2024',
-                github: 'https://github.com/sOuL2000s/AI-Text-Beautifier.git',
-                livedemo: 'https://ai-text-beautifier.netlify.app/'
-            },
-            {
-                id: 'small-ai-v2',
-                type: 'individual',
-                title: 'Small AI v2 - Multi-Themed AI Chatbot',
-                image: 'small-ai-v2.PNG',
-                shortDescription: 'Advanced, multi-themed AI chatbot with Gemini API, PWA, voice input.',
-                fullDescription: 'An advanced, multi-themed AI chat assistant, \'Small AI v2,\' that significantly enhances the original \'Small AI - Big Vision\' with expanded features and a refined user experience. Integrating the Gemini API, it provides a sleek, responsive UI with comprehensive markdown support, dynamic dark/light themes, voice input capabilities, and support for file attachments. A key improvement is the comprehensive chat session management system, allowing users to save, load, and manage multiple conversations. This version also offers Progressive Web App (PWA) capabilities, providing a native app-like experience directly from the browser.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP', 'Web Speech API', 'Marked.js', 'Local Storage', 'PWA'],
-                tags: ['ai-ml', 'web-dev'],
-                date: 'October 2024 (v2 Update)',
-                github: 'https://github.com/sOuL2000s/SMALL-AI-v2.git',
-                livedemo: 'https://small-ai-big-vision-v2.netlify.app/'
-            },
-            {
-                id: 'tournament-manager-fullstack',
-                type: 'individual',
-                title: 'Tournament Manager Full-Stack Web Application',
-                image: 'tournament.PNG',
-                shortDescription: 'Full-stack app managing tournaments with automated fixtures and live scores.',
-                fullDescription: 'A robust full-stack web application designed to efficiently manage cricket and football tournaments. The system automates fixture generation, provides real-time live score updates, and automatically calculates and generates leaderboards. This application significantly streamlines the entire sports event management process for organizers and offers a transparent, engaging experience for players and fans.',
-                tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
-                tags: ['full-stack', 'react', 'web-dev'],
-                date: 'May 2025',
-                github: 'https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git',
-                livedemo: 'https://tournament-manager-website.netlify.app/'
-            },
-            {
-                id: 'metier-institute',
-                type: 'individual',
-                title: 'Metier Institute - Full-Stack Website',
-                image: 'metier.PNG',
-                shortDescription: 'Full-stack website for an educational institute with CMS and auth.',
-                fullDescription: 'A comprehensive, responsive full-stack website developed specifically for an educational institute. It features robust content management capabilities, secure user authentication systems, detailed course listings with flexible categorization, and a suite of administrative functionalities for efficient school management. Built to provide a dynamic online presence and streamline institutional operations, this project ensures an optimal user experience and easy content updates through a scalable architecture designed for growth.',
-                tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
-                tags: ['full-stack', 'react', 'web-dev'],
-                date: 'August 2024',
-                github: 'https://github.com/sOuL2000s/Metier-Institute-Full-Stack-Website.git',
-                livedemo: 'https://metier-institute-your-path-to-success.netlify.app/'
-            },
-            {
-                id: 'smart-agritech',
-                type: 'individual',
-                title: 'Smart AgriTech Dashboard',
-                image: 'agritech.PNG',
-                shortDescription: 'AI-powered farming assistant monitoring soil, weather, and crops.',
-                fullDescription: 'A sophisticated, next-generation farming assistant implemented as a Streamlit dashboard. It offers real-time monitoring of crucial agricultural data including soil conditions, weather patterns, and crop health. The system employs AI-powered time-series forecasting to predict soil moisture levels and provides farmers with personalized, data-driven crop recommendations, optimizing yield and resource management.',
-                tools: ['Python', 'Streamlit', 'TensorFlow', 'Firebase', 'Plotly'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'June 2025',
-                github: 'https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git',
-                livedemo: 'https://smart-agritech-dashbard.netlify.app/'
-            },
-            {
-                id: 'btc-probo',
-                type: 'individual',
-                title: 'BTC Probo Predictor (Mobile Friendly)',
-                image: 'probo.PNG',
-                shortDescription: 'AI Bitcoin price predictor with real-time data & sentiment analysis.',
-                fullDescription: 'An AI-driven Bitcoin price prediction application designed with a mobile-friendly interface. This tool actively compares real-time market values from the Binance API with user-defined target prices. It integrates sentiment analysis for a more nuanced prediction and visualizes complex data with interactive Plotly charts, making it an invaluable resource for both cryptocurrency traders and enthusiasts of platforms like Probo.',
-                tools: ['Python', 'Streamlit', 'Plotly', 'Pandas', 'Binance API'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'July 2025',
-                github: 'https://github.com/sOuL2000s/html-probo-predictor-website.git',
-                livedemo: 'https://probo-crypto-predictor.netlify.app/'
-            },
-            {
-                id: 'astromaestro-ai',
-                type: 'individual',
-                title: 'AstroMaestro AI - Personalized Vedic Astrology',
-                image: 'astromaestro.PNG',
-                shortDescription: 'AI astrology app for personalized Vedic insights using NLP/ML.',
-                fullDescription: 'An innovative AI-powered astrology application that generates personalized Vedic insights based on comprehensive user input. This project uniquely blends traditional astrological wisdom with modern Natural Language Processing (NLP) and Machine Learning (ML) techniques to create a nuanced and digital astrology experience. Users receive tailored readings, predictions, and guidance, making ancient practices accessible through cutting-edge technology.',
-                tools: ['Python', 'Streamlit', 'Machine Learning', 'Natural Language Processing (NLP)'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'August 2024',
-                github: 'https://github.com/sOuL2000s/AstroMaestro-AI.git',
-                livedemo: 'https://astromaestro-ai.netlify.app/'
-            },
-            {
-                id: 'journal-ai',
-                type: 'individual',
-                title: 'The Journal AI - Personal AI Journaling App',
-                image: 'journal-ai.PNG',
-                shortDescription: 'AI journaling app for entry analysis, mood tracking, and self-reflection prompts.',
-                fullDescription: 'A personal AI journaling assistant designed to revolutionize self-reflection and mood tracking. This application intelligently analyzes daily journal entries, provides concise summaries of content and themes, tracks mood fluctuations over time, and offers personalized prompts to encourage deeper introspection. Leveraging advanced AI and Large Language Models (LLM), \'The Journal AI\' transforms a simple journaling practice into a powerful tool for personal growth and mental well-being.',
-                tools: ['Python', 'Streamlit', 'Natural Language Processing (NLP)', 'Machine Learning', 'AI/LLM'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'August 2024',
-                github: 'https://github.com/sOuL2000s/The-Journal-AI.git',
-                livedemo: 'https://the-journal-ai.netlify.app/'
-            },
-            {
-                id: 'dream11-ai-predictor',
-                type: 'individual',
-                title: 'Dream11 AI Team Predictor',
-                image: 'dream11.PNG',
-                shortDescription: 'AI fantasy cricket assistant for optimal Dream11 team suggestions.',
-                fullDescription: 'An intelligent, AI-powered fantasy cricket assistant designed to give users a competitive edge in Dream11. This application utilizes sophisticated machine learning algorithms to analyze extensive match data, evaluate individual player performance statistics, and generate highly optimized team suggestions. It\'s built for fantasy sports enthusiasts seeking data-driven insights for strategic team selection.',
-                tools: ['Python', 'Streamlit', 'Pandas', 'Machine Learning'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: '2024',
-                github: 'https://github.com/sOuL2000s/dream11-team-predictor-ai.git',
-                livedemo: 'https://dream11-ai-team-predictor.netlify.app/'
-            },
-            {
-                id: 'ai-shape-shifter',
-                type: 'individual',
-                title: 'AI Shape Shifter Website',
-                image: 'ai-shape-shifter.PNG',
-                shortDescription: 'AI-powered website builder with chatbot interaction and real-time customization.',
-                fullDescription: 'An innovative AI-powered website builder that redefines web page creation. Users interact with an intelligent chatbot to instantly generate and customize web page elements and layouts. This dynamic platform features local storage capabilities for saving ongoing changes, robust dynamic section management, and real-time style updates, offering a highly interactive and intuitive experience for building and modifying web content on the fly.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Gemini API'],
-                tags: ['ai-ml', 'web-dev'],
-                date: '2023',
-                github: 'https://github.com/sOuL2000s/AI-Shape-Shifter-Website.git',
-                livedemo: 'https://ai-shape-shifter-website.netlify.app/'
-            },
-            {
-                id: 'mystic-vision-chatbot',
-                type: 'individual',
-                title: 'Mystic Vision AI Standalone Chatbot',
-                image: 'mystic.PNG',
-                shortDescription: 'Customizable AI chatbot with NLP, offered in multiple versions.',
-                fullDescription: 'A highly customizable AI chatbot offered in multiple deployment versions, including basic, mini, lite, and a standalone full version. This chatbot is built with advanced Natural Language Processing (NLP) capabilities, enabling sophisticated conversational intelligence. Each version is packaged with a sleek and intuitive Streamlit user interface, providing a refined and engaging interaction experience.',
-                tools: ['Python', 'Streamlit', 'Natural Language Processing (NLP)', 'Machine Learning'],
-                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'July 2024',
-                github: 'https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git',
-                livedemo: 'https://mystic-vision-ai-standalone-chatbot.netlify.app/'
-            },
-            {
                 id: 'excel-exporter-extension',
                 type: 'individual',
                 title: 'Excel Exporter Browser Extension',
@@ -1059,45 +226,6 @@
                 date: 'September 2024',
                 github: 'https://github.com/sOuL2000s/Excel-Exporter-Browser-Extension.git',
                 livedemo: null // No live demo for browser extension
-            },
-            {
-                id: 'portfolio-website',
-                type: 'individual',
-                title: 'My Personal Portfolio Website',
-                image: 'portfolio.PNG',
-                shortDescription: 'Showcasing skills, projects, and achievements with responsive design.',
-                fullDescription: 'This is my personal portfolio website, a dynamic platform built to showcase my diverse skills, impactful projects, and notable achievements as an AI & Full-Stack Developer. It features a fully responsive design, ensuring optimal viewing across all devices, smooth scroll navigation for an intuitive user experience, and a flexible theme-switching functionality (light/dark mode) to cater to user preferences, all contributing to an engaging and professional online presence.',
-                tools: ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript'],
-                tags: ['web-dev'],
-                date: '2024 (Ongoing)',
-                github: 'https://github.com/sOuL2000s/My-Portfolio-Website-Streamlit.git',
-                livedemo: 'https://souparna-paul-portfolio.netlify.app/'
-            },
-            {
-                id: 'creative-recording-studio',
-                type: 'individual',
-                title: 'Creative Recording Studio Website',
-                image: 'creative-recording-studio.png', // Ensure this image exists in your project
-                shortDescription: 'Modern, responsive website for a recording studio showcasing services and portfolio.',
-                fullDescription: 'A sleek, responsive website designed for a creative recording studio. It features sections for studio services, equipment, artist portfolio, testimonials, and contact information. The design emphasizes a modern aesthetic, ease of navigation, and a strong visual appeal to attract potential clients, providing a comprehensive online presence for the studio.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
-                tags: ['web-dev'],
-                date: 'October 2024',
-                github: 'https://github.com/sOuL2000s/Creative-Recording-Studio.git',
-                livedemo: 'https://creative-recording-studio.netlify.app/'
-            },
-            {
-                id: 'mathematico',
-                type: 'individual',
-                title: 'MATHEMATICO - Special Mathematics Coaching Website',
-                image: 'mathematico.PNG',
-                shortDescription: 'Modern coaching site with dynamic courses, blog, and admin CMS.',
-                fullDescription: 'A modern and feature-rich website for a mathematics coaching institute. This platform boasts dynamic course management capabilities, allowing for easy updates and scheduling. It includes sections for testimonials, a comprehensive gallery, and an engaging blog system. Integrated with Google Maps for location services and featuring both dark/light themes, the website is built with an admin-controlled Content Management System (CMS) for effortless content updates, providing a seamless experience for students and administrators alike.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Firebase'],
-                tags: ['web-dev', 'full-stack'],
-                date: 'July 2025',
-                github: 'https://github.com/sOuL2000s/mathematico-coaching-website.git',
-                livedemo: 'https://mathematico-special-coaching-center.netlify.app/'
             },
             {
                 id: 'football-tournament-hub',
@@ -1113,43 +241,17 @@
                 livedemo: 'https://the-winner-challenge-tournament-hub.netlify.app/'
             },
             {
-                id: 'python-syllabus',
+                id: 'ai-text-beautifier',
                 type: 'individual',
-                title: 'Python Syllabus Website',
-                image: 'python.png',
-                shortDescription: 'An interactive Python learning portal from basics to advanced OOP.',
-                fullDescription: 'A structured and interactive Python learning portal designed for beginners. It covers everything from fundamental programming concepts to advanced Object-Oriented Programming (OOP) principles. The website features a clean user interface, embedded code examples for hands-on practice, and a clear, syllabus-like roadmap to guide users through self-paced learning, making complex topics accessible and engaging.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Python'],
-                tags: ['web-dev', 'python'],
-                date: '2024',
-                github: 'https://github.com/sOuL2000s/python-syllabus-website.git',
-                livedemo: 'https://python-syllabus-website.netlify.app/'
-            },
-            {
-                id: 'multi-game-hub',
-                type: 'individual',
-                title: 'Multi-Game HUB Website',
-                image: 'multi-game-hub.PNG',
-                shortDescription: 'Online hub for mini-games with interactive design and smooth gameplay.',
-                fullDescription: 'An engaging online hub designed to centralize multiple mini-games within a single, interactive portal. This website showcases creative JavaScript-based game development with smooth gameplay and a user-friendly interface. It provides a fun, accessible platform for users to enjoy various casual games without needing to navigate between different sites, demonstrating proficiency in front-end game integration and web design.',
-                tools: ['HTML', 'CSS', 'JavaScript'],
-                tags: ['web-dev'],
-                date: 'August 2024',
-                github: 'https://github.com/sOuL2000s/Multi-game-HUB-Website.git',
-                livedemo: 'https://multi-game-hub-website.netlify.app/'
-            },
-            {
-                id: 'cosmic-chat-ai',
-                type: 'individual',
-                title: 'Cosmic Chat AI - Simple AI Chatbot',
-                image: 'cosmic.png',
-                shortDescription: 'Lightweight AI chatbot with Gemini API, file upload, dark/light mode.',
-                fullDescription: 'A lightweight and user-friendly AI chatbot, \'Cosmic Chat AI,\' seamlessly integrated with the Gemini API for advanced conversational capabilities. This application features comprehensive file upload support, allowing users to interact with the AI using various document types. It offers both dark and light modes for personalized viewing, all presented within a sleek user interface powered by Tailwind CSS, ensuring a modern and intuitive interaction.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'AI/NLP', 'Gemini API'],
+                title: 'AI Text Beautifier & Chatbot',
+                image: 'beautifier-ai.png',
+                shortDescription: 'AI web app for text beautification & real-time chatbot with Gemini API.',
+                fullDescription: 'An innovative AI-powered web application that offers intelligent text beautification and real-time conversational capabilities. It transforms plain text into elegantly formatted Markdown using the Gemini API, ensuring professional and readable output. The application boasts dynamic theme selection (dark/light mode), Progressive Web App (PWA) support for an app-like experience, and an integrated chatbot with voice input and file attachment functionalities. This project demonstrates a blend of utility and advanced AI interaction within a sleek, user-friendly interface.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP', 'Web Speech API', 'Marked.js', 'PWA', 'Local Storage'],
                 tags: ['ai-ml', 'web-dev'],
-                date: 'December 2023',
-                github: 'https://github.com/sOuL2000s/Cosmic-Chat-AI-simple-ai-chatbot-.git',
-                livedemo: 'https://cosmic-chat-ai-simple-ai-chatbot.netlify.app/'
+                date: 'September 2024',
+                github: 'https://github.com/sOuL2000s/AI-Text-Beautifier.git',
+                livedemo: 'https://ai-text-beautifier.netlify.app/'
             },
             {
                 id: 'simple-tournament-manager',
@@ -1191,6 +293,84 @@
                 livedemo: null
             },
             {
+                id: 'creative-recording-studio',
+                type: 'individual',
+                title: 'Creative Recording Studio Website',
+                image: 'creative-recording-studio.png', // Ensure this image exists in your project
+                shortDescription: 'Modern, responsive website for a recording studio showcasing services and portfolio.',
+                fullDescription: 'A sleek, responsive website designed for a creative recording studio. It features sections for studio services, equipment, artist portfolio, testimonials, and contact information. The design emphasizes a modern aesthetic, ease of navigation, and a strong visual appeal to attract potential clients, providing a comprehensive online presence for the studio.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
+                tags: ['web-dev'],
+                date: 'October 2024',
+                github: 'https://github.com/sOuL2000s/Creative-Recording-Studio.git',
+                livedemo: 'https://creative-recording-studio.netlify.app/'
+            },
+            {
+                id: 'small-ai-v2',
+                type: 'individual',
+                title: 'Small AI v2 - Multi-Themed AI Chatbot',
+                image: 'small-ai-v2.PNG',
+                shortDescription: 'Advanced, multi-themed AI chatbot with Gemini API, PWA, voice input.',
+                fullDescription: 'An advanced, multi-themed AI chat assistant, \'Small AI v2,\' that significantly enhances the original \'Small AI - Big Vision\' with expanded features and a refined user experience. Integrating the Gemini API, it provides a sleek, responsive UI with comprehensive markdown support, dynamic dark/light themes, voice input capabilities, and support for file attachments. A key improvement is the comprehensive chat session management system, allowing users to save, load, and manage multiple conversations. This version also offers Progressive Web App (PWA) capabilities, providing a native app-like experience directly from the browser.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP', 'Web Speech API', 'Marked.js', 'Local Storage', 'PWA'],
+                tags: ['ai-ml', 'web-dev'],
+                date: 'October 2024 (v2 Update)',
+                github: 'https://github.com/sOuL2000s/SMALL-AI-v2.git',
+                livedemo: 'https://small-ai-big-vision-v2.netlify.app/'
+            },
+            {
+                id: 'study-buddy-ai',
+                type: 'individual',
+                title: 'Study Buddy AI - Intelligent Learning Companion',
+                image: 'study-buddy-ai.png', // Ensure this image exists in your project
+                shortDescription: 'AI-powered learning app with voice chat, multi-theming, and contextual text analysis for any topic.',
+                fullDescription: 'Study Buddy AI is an innovative, Progressive Web Application (PWA) designed as your intelligent learning companion. It integrates advanced Web Speech APIs for seamless voice input (speech-to-text) and dictation (text-to-speech), offering a dynamic chat experience. Key features include robust chat history management, versatile file attachments (images, text, PDFs, etc.), and a unique "Conversation Mode" that allows for natural, voice-only interactions with a customizable AI personality and voice. The core "Study Helper" functionality guides users to search for topics on Google, then paste relevant content directly into the chat for the AI to analyze and explain, making complex subjects easily understandable. With multiple vibrant themes (including \'Celestial Horizon\', \'Verdant Calm\', \'Cybernetic Pulse\', etc.) and PWA support, Study Buddy AI provides a personalized and accessible learning environment.',
+                tools: ['JavaScript', 'HTML', 'CSS', 'Gemini API', 'Web Speech API', 'Local Storage', 'Marked.js', 'PWA'],
+                tags: ['ai-ml', 'web-dev', 'full-stack', 'javascript'],
+                date: '2024',
+                github: 'https://github.com/sOuL2000s/Study-Buddy-AI.git',
+                livedemo: 'https://study-buddy-ai-studyhelper.netlify.app/'
+            },
+            {
+                id: 'multi-game-hub',
+                type: 'individual',
+                title: 'Multi-Game HUB Website',
+                image: 'multi-game-hub.PNG',
+                shortDescription: 'Online hub for mini-games with interactive design and smooth gameplay.',
+                fullDescription: 'An engaging online hub designed to centralize multiple mini-games within a single, interactive portal. This website showcases creative JavaScript-based game development with smooth gameplay and a user-friendly interface. It provides a fun, accessible platform for users to enjoy various casual games without needing to navigate between different sites, demonstrating proficiency in front-end game integration and web design.',
+                tools: ['HTML', 'CSS', 'JavaScript'],
+                tags: ['web-dev'],
+                date: 'August 2024',
+                github: 'https://github.com/sOuL2000s/Multi-game-HUB-Website.git',
+                livedemo: 'https://multi-game-hub-website.netlify.app/'
+            },
+            {
+                id: 'astromaestro-ai',
+                type: 'individual',
+                title: 'AstroMaestro AI - Personalized Vedic Astrology',
+                image: 'astromaestro.PNG',
+                shortDescription: 'AI astrology app for personalized Vedic insights using NLP/ML.',
+                fullDescription: 'An innovative AI-powered astrology application that generates personalized Vedic insights based on comprehensive user input. This project uniquely blends traditional astrological wisdom with modern Natural Language Processing (NLP) and Machine Learning (ML) techniques to create a nuanced and digital astrology experience. Users receive tailored readings, predictions, and guidance, making ancient practices accessible through cutting-edge technology.',
+                tools: ['Python', 'Streamlit', 'Machine Learning', 'Natural Language Processing (NLP)'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'August 2024',
+                github: 'https://github.com/sOuL2000s/AstroMaestro-AI.git',
+                livedemo: 'https://astromaestro-ai.netlify.app/'
+            },
+            {
+                id: 'journal-ai',
+                type: 'individual',
+                title: 'The Journal AI - Personal AI Journaling App',
+                image: 'journal-ai.PNG',
+                shortDescription: 'AI journaling app for entry analysis, mood tracking, and self-reflection prompts.',
+                fullDescription: 'A personal AI journaling assistant designed to revolutionize self-reflection and mood tracking. This application intelligently analyzes daily journal entries, provides concise summaries of content and themes, tracks mood fluctuations over time, and offers personalized prompts to encourage deeper introspection. Leveraging advanced AI and Large Language Models (LLM), \'The Journal AI\' transforms a simple journaling practice into a powerful tool for personal growth and mental well-being.',
+                tools: ['Python', 'Streamlit', 'Natural Language Processing (NLP)', 'Machine Learning', 'AI/LLM'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'August 2024',
+                github: 'https://github.com/sOuL2000s/The-Journal-AI.git',
+                livedemo: 'https://the-journal-ai.netlify.app/'
+            },
+            {
                 id: 'meditation-companion',
                 type: 'individual',
                 title: 'Yogify - Meditation Companion App',
@@ -1202,6 +382,175 @@
                 date: 'August 2024',
                 github: 'https://github.com/sOuL2000s/Meditation-Companion-App.git',
                 livedemo: 'https://mysticvision-meditation-companion-app.netlify.app/'
+            },
+            {
+                id: 'metier-institute',
+                type: 'individual',
+                title: 'Metier Institute - Full-Stack Website',
+                image: 'metier.PNG',
+                shortDescription: 'Full-stack website for an educational institute with CMS and auth.',
+                fullDescription: 'A comprehensive, responsive full-stack website developed specifically for an educational institute. It features robust content management capabilities, secure user authentication systems, detailed course listings with flexible categorization, and a suite of administrative functionalities for efficient school management. Built to provide a dynamic online presence and streamline institutional operations, this project ensures an optimal user experience and easy content updates through a scalable architecture designed for growth.',
+                tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
+                tags: ['full-stack', 'react', 'web-dev'],
+                date: 'August 2024',
+                github: 'https://github.com/sOuL2000s/Metier-Institute-Full-Stack-Website.git',
+                livedemo: 'https://metier-institute-your-path-to-success.netlify.app/'
+            },
+            {
+                id: 'mystic-vision-chatbot',
+                type: 'individual',
+                title: 'Mystic Vision AI Standalone Chatbot',
+                image: 'mystic.PNG',
+                shortDescription: 'Customizable AI chatbot with NLP, offered in multiple versions.',
+                fullDescription: 'A highly customizable AI chatbot offered in multiple deployment versions, including basic, mini, lite, and a standalone full version. This chatbot is built with advanced Natural Language Processing (NLP) capabilities, enabling sophisticated conversational intelligence. Each version is packaged with a sleek and intuitive Streamlit user interface, providing a refined and engaging interaction experience.',
+                tools: ['Python', 'Streamlit', 'Natural Language Processing (NLP)', 'Machine Learning'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'July 2024',
+                github: 'https://github.com/sOuL2000s/Mystic-Vision-AI-Standalone-Chatbot.git',
+                livedemo: 'https://mystic-vision-ai-standalone-chatbot.netlify.app/'
+            },
+            {
+                id: 'mathematico',
+                type: 'individual',
+                title: 'MATHEMATICO - Special Mathematics Coaching Website',
+                image: 'mathematico.PNG',
+                shortDescription: 'Modern coaching site with dynamic courses, blog, and admin CMS.',
+                fullDescription: 'A modern and feature-rich website for a mathematics coaching institute. This platform boasts dynamic course management capabilities, allowing for easy updates and scheduling. It includes sections for testimonials, a comprehensive gallery, and an engaging blog system. Integrated with Google Maps for location services and featuring both dark/light themes, the website is built with an admin-controlled Content Management System (CMS) for effortless content updates, providing a seamless experience for students and administrators alike.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Firebase'],
+                tags: ['web-dev', 'full-stack'],
+                date: 'July 2025',
+                github: 'https://github.com/sOuL2000s/mathematico-coaching-website.git',
+                livedemo: 'https://mathematico-special-coaching-center.netlify.app/'
+            },
+            {
+                id: 'btc-probo',
+                type: 'individual',
+                title: 'BTC Probo Predictor (Mobile Friendly)',
+                image: 'probo.PNG',
+                shortDescription: 'AI Bitcoin price predictor with real-time data & sentiment analysis.',
+                fullDescription: 'An AI-driven Bitcoin price prediction application designed with a mobile-friendly interface. This tool actively compares real-time market values from the Binance API with user-defined target prices. It integrates sentiment analysis for a more nuanced prediction and visualizes complex data with interactive Plotly charts, making it an invaluable resource for both cryptocurrency traders and enthusiasts of platforms like Probo.',
+                tools: ['Python', 'Streamlit', 'Plotly', 'Pandas', 'Binance API'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'July 2025',
+                github: 'https://github.com/sOuL2000s/html-probo-predictor-website.git',
+                livedemo: 'https://probo-crypto-predictor.netlify.app/'
+            },
+            {
+                id: 'smart-agritech',
+                type: 'individual',
+                title: 'Smart AgriTech Dashboard',
+                image: 'agritech.PNG',
+                shortDescription: 'AI-powered farming assistant monitoring soil, weather, and crops.',
+                fullDescription: 'A sophisticated, next-generation farming assistant implemented as a Streamlit dashboard. It offers real-time monitoring of crucial agricultural data including soil conditions, weather patterns, and crop health. The system employs AI-powered time-series forecasting to predict soil moisture levels and provides farmers with personalized, data-driven crop recommendations, optimizing yield and resource management.',
+                tools: ['Python', 'Streamlit', 'TensorFlow', 'Firebase', 'Plotly'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'June 2025',
+                github: 'https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git',
+                livedemo: 'https://smart-agritech-dashbard.netlify.app/'
+            },
+            {
+                id: 'tournament-manager-fullstack',
+                type: 'individual',
+                title: 'Tournament Manager Full-Stack Web Application',
+                image: 'tournament.PNG',
+                shortDescription: 'Full-stack app managing tournaments with automated fixtures and live scores.',
+                fullDescription: 'A robust full-stack web application designed to efficiently manage cricket and football tournaments. The system automates fixture generation, provides real-time live score updates, and automatically calculates and generates leaderboards. This application significantly streamlines the entire sports event management process for organizers and offers a transparent, engaging experience for players and fans.',
+                tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+                tags: ['full-stack', 'react', 'web-dev'],
+                date: 'May 2025',
+                github: 'https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git',
+                livedemo: 'https://tournament-manager-website.netlify.app/'
+            },
+            {
+                id: 'i-prompt-you-ai-prompt-engineer',
+                type: 'individual',
+                title: 'I Prompt You - AI Prompt Engineer',
+                image: 'i-prompt-you.png', // Ensure this image exists in your project
+                shortDescription: 'AI-powered tool to craft perfect prompts for other AI models from diverse inputs.',
+                fullDescription: '\"I Prompt You\" is an intelligent AI Prompt Engineer tool designed to help users craft optimal prompts for other AI models. Users can describe their desired output through text input, voice dictation (Speech Recognition), or by uploading various file types including text and images, enabling multimodal input. The application processes these diverse inputs, leveraging the Gemini API to analyze context and generate a well-structured, clear, and highly effective prompt. It also features a convenient prompt history, allowing users to save, load, and manage their generated prompts, ensuring they can efficiently refine and reuse their best AI instructions. This tool streamlines the prompt engineering process, making advanced AI interactions more accessible and precise.',
+                tools: ['JavaScript', 'HTML', 'CSS', 'Gemini API', 'Web Speech API', 'Local Storage'],
+                tags: ['ai-ml', 'web-dev', 'full-stack', 'javascript'],
+                date: '2025',
+                github: 'https://github.com/sOuL2000s/I-Prompt-You-AI-Prompt-Engineer.git',
+                livedemo: 'https://i-prompt-you-ai-prompt-engineer.netlify.app/'
+            },
+            {
+                id: 'the-auction-game',
+                type: 'individual',
+                title: 'The Auction Game',
+                image: 'the-auction-game.png', // NOTE: Please add 'the-auction-game.png' to your project's root directory for the image to display.
+                shortDescription: 'An interactive full-stack web game where players bid to win items in real-time.',
+                fullDescription: 'The Auction Game is a real-time, interactive full-stack web application that simulates a live auction experience. Players can join ongoing auctions, place bids, and compete to win virtual items. The game features real-time updates for bids and auction status, user authentication, and a dynamic leaderboard. It\'s built with modern web technologies, providing a engaging and competitive environment for players to test their bidding strategies.',
+                tools: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'HTML', 'CSS', 'JavaScript'],
+                tags: ['full-stack', 'web-dev', 'javascript', 'node', 'socket.io'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/The-Auction-Game.git',
+                livedemo: 'https://the-auction-game.onrender.com/'
+            },
+            {
+                id: 'dream11-ai-predictor',
+                type: 'individual',
+                title: 'Dream11 AI Team Predictor',
+                image: 'dream11.PNG',
+                shortDescription: 'AI fantasy cricket assistant for optimal Dream11 team suggestions.',
+                fullDescription: 'An intelligent, AI-powered fantasy cricket assistant designed to give users a competitive edge in Dream11. This application utilizes sophisticated machine learning algorithms to analyze extensive match data, evaluate individual player performance statistics, and generate highly optimized team suggestions. It\'s built for fantasy sports enthusiasts seeking data-driven insights for strategic team selection.',
+                tools: ['Python', 'Streamlit', 'Pandas', 'Machine Learning'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: '2024',
+                github: 'https://github.com/sOuL2000s/dream11-team-predictor-ai.git',
+                livedemo: 'https://dream11-ai-team-predictor.netlify.app/'
+            },
+            {
+                id: 'portfolio-website',
+                type: 'individual',
+                title: 'My Personal Portfolio Website',
+                image: 'portfolio.PNG',
+                shortDescription: 'Showcasing skills, projects, and achievements with responsive design.',
+                fullDescription: 'This is my personal portfolio website, a dynamic platform built to showcase my diverse skills, impactful projects, and notable achievements as an AI & Full-Stack Developer. It features a fully responsive design, ensuring optimal viewing across all devices, smooth scroll navigation for an intuitive user experience, and a flexible theme-switching functionality (light/dark mode) to cater to user preferences, all contributing to an engaging and professional online presence.',
+                tools: ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript'],
+                tags: ['web-dev'],
+                date: '2024 (Ongoing)',
+                github: 'https://github.com/sOuL2000s/My-Portfolio-Website-Streamlit.git',
+                livedemo: 'https://souparna-paul-portfolio.netlify.app/'
+            },
+            {
+                id: 'python-syllabus',
+                type: 'individual',
+                title: 'Python Syllabus Website',
+                image: 'python.png',
+                shortDescription: 'An interactive Python learning portal from basics to advanced OOP.',
+                fullDescription: 'A structured and interactive Python learning portal designed for beginners. It covers everything from fundamental programming concepts to advanced Object-Oriented Programming (OOP) principles. The website features a clean user interface, embedded code examples for hands-on practice, and a clear, syllabus-like roadmap to guide users through self-paced learning, making complex topics accessible and engaging.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Python'],
+                tags: ['web-dev', 'python'],
+                date: '2024',
+                github: 'https://github.com/sOuL2000s/python-syllabus-website.git',
+                livedemo: 'https://python-syllabus-website.netlify.app/'
+            },
+            {
+                id: 'ai-shape-shifter',
+                type: 'individual',
+                title: 'AI Shape Shifter Website',
+                image: 'ai-shape-shifter.PNG',
+                shortDescription: 'AI-powered website builder with chatbot interaction and real-time customization.',
+                fullDescription: 'An innovative AI-powered website builder that redefines web page creation. Users interact with an intelligent chatbot to instantly generate and customize web page elements and layouts. This dynamic platform features local storage capabilities for saving ongoing changes, robust dynamic section management, and real-time style updates, offering a highly interactive and intuitive experience for building and modifying web content on the fly.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Gemini API'],
+                tags: ['ai-ml', 'web-dev'],
+                date: '2023',
+                github: 'https://github.com/sOuL2000s/AI-Shape-Shifter-Website.git',
+                livedemo: 'https://ai-shape-shifter-website.netlify.app/'
+            },
+            {
+                id: 'cosmic-chat-ai',
+                type: 'individual',
+                title: 'Cosmic Chat AI - Simple AI Chatbot',
+                image: 'cosmic.png',
+                shortDescription: 'Lightweight AI chatbot with Gemini API, file upload, dark/light mode.',
+                fullDescription: 'A lightweight and user-friendly AI chatbot, \'Cosmic Chat AI,\' seamlessly integrated with the Gemini API for advanced conversational capabilities. This application features comprehensive file upload support, allowing users to interact with the AI using various document types. It offers both dark and light modes for personalized viewing, all presented within a sleek user interface powered by Tailwind CSS, ensuring a modern and intuitive interaction.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'AI/NLP', 'Gemini API'],
+                tags: ['ai-ml', 'web-dev'],
+                date: 'December 2023',
+                github: 'https://github.com/sOuL2000s/Cosmic-Chat-AI-simple-ai-chatbot-.git',
+                livedemo: 'https://cosmic-chat-ai-simple-ai-chatbot.netlify.app/'
             },
             {
                 id: 'small-ai-big-vision',
@@ -1404,900 +753,9 @@
 </body>
 </html>
 
-
---- END FILE: projects.html ---
-
---- START FILE: README.md ---
-
-Website : https://souparna-paul-portfolio.netlify.app/
-
---- END FILE: README.md ---
-
---- START FILE: thanks.html ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You! - Souparna Paul</title>
-    <!-- Favicon -->
-    <link rel="icon" href="profile.png" type="image/png">
-
-    <!-- Preconnect for Google Fonts to improve loading speed -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <div id="darkModeToggle" class="relative hidden">
-        <div class="toggle-circle"></div>
-    </div>
-    <div class="thank-you-container">
-        <div class="main-content-card">
-            <h1 class="text-4xl font-extrabold mb-4">Thank You! <i class="far fa-smile-beam text-blue-500"></i></h1>
-            <p class="text-lg leading-relaxed mb-6">
-                Your message has been successfully sent. I appreciate you taking the time to reach out and will get back to you as soon as possible.
-            </p>
-            <a href="index.html" class="btn-primary">
-                <i class="fas fa-home mr-2"></i> Go to Home
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
-        <div class="container mx-auto px-4">
-            <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
-            <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
-            <div class="flex justify-center space-x-4 text-xl mt-3">
-                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Shared Scripts -->
-    <script src="static/js/scripts.js" defer></script>
-    <!-- Page-specific Scripts -->
-    <script>
-        // The Dark Mode Toggle for this specific page (which was at the top of the body)
-        // is now hidden with `hidden` class in its HTML.
-        // The core dark mode logic is in scripts.js and will still correctly apply the theme.
-    </script>
-</body>
-</html>
-
---- END FILE: thanks.html ---
-
---- START FILE: static\css\styles.css ---
-
-/* Custom CSS for dark mode transition and scroll behavior */
-:root {
-    /* Light Mode Variables - Refined for a softer, modern look */
-    --bg-color-light: #f8f9fa; /* Very light gray */
-    --main-bg-light: #ffffff; /* Pure white for cards */
-    --text-color-light: #343a40; /* Dark charcoal for body text */
-    --heading-color-light: #212529; /* Even darker for headings */
-    --primary-accent: #007bff; /* Vibrant blue for primary accent */
-    --primary-accent-darker: #0056b3; /* Darker blue for hover */
-    --secondary-accent: #6c757d; /* Muted gray for secondary */
-    --skill-tag-bg: #e9ecef; /* Light gray for skill tags */
-    --skill-tag-border: #dee2e6; /* Subtle border for skill tags */
-    --border-color-light: #e0e0e0; /* Light border */
-    --shadow-color-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
-    --navbar-bg-light: #ffffff; /* White for navbar in light mode */
-
-    /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
-    --bg-color-dark: #1a1a1a; /* Deep dark background */
-    --main-bg-dark: #2c2c2c; /* Slightly lighter dark card background */
-    --text-color-dark: #e0e0e0; /* Light gray text */
-    --heading-color-dark: #f8f9fa; /* White headings */
-    --primary-accent-dark: #8be9fd; /* Light blue/cyan accent */
-    --primary-accent-dark-hover: #50fa7b; /* Green accent for hover */
-    --secondary-accent-dark: #9da3af; /* Lighter gray for secondary */
-    --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
-    --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
-    --skill-tag-bg-dark: #3a3a3a; /* Darker gray for skill tags */
-    --skill-tag-border-dark: #495057; /* Darker border for skill tags */
-    --border-color-dark: #444444; /* Dark border color */
-    --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow color */
-    --navbar-bg-dark: #121212; /* Very dark blue for navbar */
-
-    /* NEW: Variable for caret color */
-    --caret-color: var(--primary-accent); /* Default caret color (light mode) */
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-    transition: background-color 0.4s ease, color 0.4s ease;
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* GLOBAL FIX: Prevent horizontal scrollbar caused by any rogue elements */
-    line-height: 1.7; /* Adjusted for better readability */
-}
-
-@media (max-width: 767px) { /* Apply padding only on mobile */
-    body {
-        padding-bottom: 4rem; /* Height of the mobile fixed nav */
-    }
-}
-
-body.dark-mode {
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
-    /* NEW: Override caret color for dark mode */
-    --caret-color: var(--primary-accent-dark);
-}
-
-/* Prevent scrolling when modal is open */
-body.no-scroll {
-    overflow: hidden;
-}
-
-/* General element transitions for dark mode */
-.transition-colors-shadow {
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Main content area styling */
-.main-content-card {
-    background-color: var(--main-bg-light);
-    box-shadow: 0px 10px 30px var(--shadow-color-light);
-    border-radius: 1.5rem; /* Even more rounded */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border: 1px solid var(--border-color-light); /* Subtle border */
-}
-.main-content-card:hover {
-    transform: translateY(-5px) scale(1.01); /* More subtle lift, slight scale */
-    box-shadow: 0px 10px 25px var(--shadow-color-light); /* Softer shadow on hover */
-    border-color: var(--primary-accent); /* Accent border on hover */
-}
-body.dark-mode .main-content-card {
-    background-color: var(--main-bg-dark);
-    box-shadow: 0px 10px 30px var(--shadow-color-dark);
-    border: 1px solid var(--border-color-dark);
-}
-body.dark-mode .main-content-card:hover {
-    box-shadow: 0px 10px 25px var(--shadow-color-dark);
-    border-color: var(--primary-accent-dark); /* Accent border on hover */
-}
-
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--heading-color-light);
-    letter-spacing: -0.02em; /* Slightly tighter letter-spacing */
-}
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
-    color: var(--heading-color-dark);
-}
-
-/* Links */
-a {
-    color: var(--primary-accent);
-    transition: color 0.3s ease;
-}
-body.dark-mode a {
-    color: var(--primary-accent-dark);
-}
-a:hover {
-    filter: brightness(1.2);
-    text-decoration: underline; /* Add underline on hover for clarity */
-}
-
-/* Buttons */
-.btn-primary {
-    background-color: var(--primary-accent);
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    border-radius: 9999px; /* Pill shape */
-    padding: 0.85rem 2.2rem; /* Slightly larger padding */
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper initial shadow */
-    position: relative;
-    overflow: hidden; /* For ripple effect */
-}
-.btn-primary:hover {
-    background-color: var(--primary-accent-darker);
-    transform: translateY(-3px) scale(1.01); /* More pronounced lift + scale */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Even deeper shadow on hover */
-}
-.btn-primary:active {
-    transform: translateY(-1px) scale(0.99); /* Slight press effect */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-body.dark-mode .btn-primary {
-    background-color: var(--button-bg-color-dark);
-}
-body.dark-mode .btn-primary:hover {
-    background-color: var(--button-hover-bg-color-dark);
-}
-
-/* Skill Tags */
-.skill-tag {
-    display: inline-block; /* Ensure tags respect margin/padding correctly */
-    background-color: var(--skill-tag-bg);
-    color: var(--text-color-light);
-    border: 1px solid var(--skill-tag-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); /* Slightly deeper shadow */
-    border-radius: 0.75rem; /* More rounded */
-    padding: 0.7rem 1.2rem; /* Slightly larger padding */
-    font-size: 0.95rem; /* Slightly larger font */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-.skill-tag:hover {
-    transform: translateY(-3px) scale(1.02); /* More pronounced lift + scale */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
-    background-color: var(--primary-accent); /* Highlight on hover */
-    color: white;
-}
-body.dark-mode .skill-tag {
-    background-color: var(--skill-tag-bg-dark);
-    color: var(--text-color-dark);
-    border: 1px solid var(--skill-tag-border-dark);
-}
-body.dark-mode .skill-tag:hover {
-    background-color: var(--primary-accent-dark);
-    color: #121212; /* Dark text on light hover for contrast */
-}
-
-/* Project Card */
-.project-card {
-    background-color: var(--main-bg-light);
-    border: 1px solid var(--border-color-light);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Deeper initial shadow */
-    border-radius: 1.25rem; /* More rounded */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease;
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack children vertically */
-}
-.project-card:hover {
-    transform: translateY(-5px) scale(1.01); /* More subtle lift + scale */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
-    border-color: var(--primary-accent); /* Accent border on hover */
-}
-body.dark-mode .project-card {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-}
-body.dark-mode .project-card:hover {
-    box-shadow: 0 10px 25px var(--shadow-color-dark);
-    border-color: var(--primary-accent-dark); /* Accent border on hover */
-}
-/* Project card text color fix */
-.project-card p,
-.project-card ul li {
-    color: var(--text-color-light);
-}
-body.dark-mode .project-card p,
-body.dark-mode .project-card ul li {
-    color: var(--text-color-dark);
-}
-.project-image {
-    border-radius: 0.75rem; /* Match card radius */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 100%; /* Ensure images never overflow their container */
-    height: 12rem; /* Fixed height for consistency */
-    object-fit: cover; /* Cover the area, crop if necessary */
-    margin-bottom: 1rem;
-}
-body.dark-mode .project-image {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* Contact Form */
-.form-input {
-    background-color: var(--skill-tag-bg);
-    border: 1px solid var(--skill-tag-border);
-    color: var(--text-color-light);
-    border-radius: 0.75rem;
-    padding: 0.9rem 1.2rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-.form-input:focus {
-    border-color: var(--primary-accent);
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
-    background-color: var(--main-bg-light);
-}
-.form-input::placeholder {
-    color: var(--text-color-light);
-    opacity: 0.7;
-}
-body.dark-mode .form-input {
-    background-color: var(--skill-tag-bg-dark);
-    border: 1px solid var(--skill-tag-border-dark);
-    color: var(--text-color-dark);
-}
-body.dark-mode .form-input:focus {
-    border-color: var(--primary-accent-dark);
-    box-shadow: 0 0 0 4px rgba(139, 233, 253, 0.25);
-    background-color: var(--main-bg-dark);
-}
-body.dark-mode .form-input::placeholder {
-    color: var(--text-color-dark);
-    opacity: 0.7;
-}
-
-/* Dark mode toggle */
-#darkModeToggle {
-    cursor: pointer;
-    width: 55px; /* Wider toggle */
-    height: 28px; /* Taller toggle */
-    background-color: #ccc;
-    border-radius: 14px;
-    position: relative;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 5px;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.25); /* Deeper inset shadow */
-}
-#darkModeToggle.dark {
-    background-color: #4a5568; /* Darker background for toggle in dark mode */
-}
-#darkModeToggle::before { /* Sun icon */
-    content: '☀️';
-    position: absolute;
-    left: 6px; /* Adjusted position */
-    font-size: 15px;
-    opacity: 1;
-    transition: opacity 0.3s;
-}
-#darkModeToggle.dark::before {
-    opacity: 0;
-}
-#darkModeToggle::after { /* Moon icon */
-    content: '🌙'; /* Changed to a more reliable moon emoji */
-    position: absolute;
-    right: 6px; /* Adjusted position */
-    font-size: 15px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-#darkModeToggle.dark::after {
-    opacity: 1;
-}
-#darkModeToggle .toggle-circle {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 22px; /* Slightly larger circle */
-    height: 22px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out, background-color 0.3s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.35); /* Deeper shadow for circle */
-}
-#darkModeToggle.dark .toggle-circle {
-    transform: translateX(27px); /* Move further */
-    background-color: #2c3e50; /* Darker circle in dark mode */
-}
-
-/* Profile image animation */
-.profile-img {
-    animation: float 3s ease-in-out infinite;
-    border-color: var(--primary-accent); /* Use accent color for border */
-    box-shadow: 0 0 0 6px var(--primary-accent), 0 10px 20px rgba(0,0,0,0.2); /* Double border effect */
-}
-body.dark-mode .profile-img {
-    border-color: var(--primary-accent-dark);
-    box-shadow: 0 0 0 6px var(--primary-accent-dark), 0 10px 20px var(--shadow-color-dark);
-}
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); } /* Increased float distance */
-    100% { transform: translateY(0px); }
-}
-
-/* Section fade-in on scroll */
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(30px); /* More pronounced slide-up */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother transition */
-}
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Specific styling for Education and Achievement entries */
-.education-entry, .achievement-entry {
-    background-color: var(--main-bg-light);
-    border: 1px solid var(--border-color-light);
-    border-radius: 1rem; /* More rounded */
-    padding: 1.8rem; /* More padding */
-    margin-bottom: 1.25rem; /* Slightly more space */
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06); /* Softer shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.education-entry:hover, .achievement-entry:hover {
-    transform: translateY(-5px); /* More lift */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Deeper shadow on hover */
-    border-color: var(--primary-accent); /* Accent border on hover */
-}
-
-body.dark-mode .education-entry, body.dark-mode .achievement-entry {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-    box-shadow: 0 5px 12px var(--shadow-color-dark);
-}
-
-body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover {
-    box-shadow: 0 10px 25px var(--shadow-color-dark);
-    border-color: var(--primary-accent-dark); /* Accent border on hover */
-}
-
-/* Icons for achievements */
-.achievement-icon {
-    color: var(--primary-accent); /* Use accent color for icons */
-    margin-right: 1rem; /* More space */
-    font-size: 1.8rem; /* Larger icons */
-    min-width: 1.8rem; /* Ensure consistent alignment */
-}
-body.dark-mode .achievement-icon {
-    color: var(--primary-accent-dark);
-}
-
-/* Footer */
-footer {
-    background-color: var(--navbar-bg-dark); /* Darker footer */
-    color: var(--text-color-dark); /* Ensure text is visible in dark footer */
-    padding: 2rem 0; /* More padding */
-    box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* Inset shadow for depth */
-}
-footer p {
-    margin-bottom: 0.5rem;
-}
-/* Consistent footer social icon hover colors */
-footer a.hover\:text-red-600 { /* Target specific mailto to override */
-    color: var(--text-color-dark); /* Reset base color for consistency */
-}
-footer a:hover {
-    color: var(--primary-accent-dark) !important; /* Force accent color on hover for all footer links */
-}
-
-/* Header background styling */
-header {
-    background-color: var(--navbar-bg-light); /* Use variable for light mode */
-}
-body.dark-mode header {
-    background-color: var(--navbar-bg-dark); /* Use variable for dark mode */
-}
-
-/* Navbar active link highlighting */
-.nav-links-desktop a.active, .nav-item.active-nav-link { /* Adjusted for new mobile nav */
-    color: var(--primary-accent) !important; /* Force accent color */
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-item.active-nav-link {
-    color: var(--primary-accent-dark) !important;
-}
-
-/* Scroll-to-top button */
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: var(--primary-accent);
-    color: white;
-    padding: 1rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease;
-    z-index: 30;
-}
-#scrollToTopBtn:hover {
-    background-color: var(--primary-accent-darker);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-body.dark-mode #scrollToTopBtn {
-    background-color: var(--primary-accent-dark);
-}
-body.dark-mode #scrollToTopBtn:hover {
-    background-color: var(--primary-accent-dark-hover);
-}
-#scrollToTopBtn.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Hero section specific styling */
-.hero-section-bg {
-    background: linear-gradient(135deg, var(--bg-color-light) 0%, var(--main-bg-light) 100%);
-    position: relative;
-    overflow: hidden;
-}
-body.dark-mode .hero-section-bg {
-    background: linear-gradient(135deg, var(--bg-color-dark) 0%, var(--main-bg-dark) 100%);
-}
-.hero-section-bg::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: -20%;
-    width: 140%;
-    height: 140%;
-    background: radial-gradient(circle at top left, var(--primary-accent) 0%, transparent 25%),
-                radial-gradient(circle at bottom right, var(--secondary-accent) 0%, transparent 25%);
-    opacity: 0.05;
-    z-index: -1;
-    animation: rotateBackground 20s linear infinite;
-}
-body.dark-mode .hero-section-bg::before {
-    background: radial-gradient(circle at top left, var(--primary-accent-dark) 0%, transparent 25%),
-                radial-gradient(circle at bottom right, var(--secondary-accent-dark) 0%, transparent 25%);
-    opacity: 0.1;
-}
-@keyframes rotateBackground {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Typewriter effect */
-.typewriter-text {
-    border-right: 2px solid;
-    white-space: nowrap; /* Default for larger screens */
-    overflow: hidden;
-    animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
-    display: inline-block;
-    vertical-align: bottom; /* Adjusts vertical alignment for underline */
-    min-height: 1.2em; /* Prevents text from jumping */
-}
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--caret-color); }
-}
-
-/* Responsive adjustments for typewriter text on small screens */
-@media (max-width: 639px) { /* Targets screens smaller than 'sm' breakpoint */
-    .typewriter-text {
-        white-space: normal; /* Allow text to wrap */
-        overflow: visible; /* Ensure wrapped text is visible */
-        animation: none; /* Disable the typing animation */
-        border-right: none; /* Remove the blinking caret */
-        width: auto; /* Remove width constraint from animation */
-        display: block; /* Change to block to allow full width and wrapping */
-    }
-}
-
-/* Expandable content styling */
-.expanded-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out; /* Smooth slide-down animation */
-}
-
-.expanded-content.show {
-    max-height: 1000px; /* Arbitrarily large value to allow full content to show */
-    transition: max-height 0.7s ease-in;
-}
-
-.read-more-btn {
-    background-color: var(--skill-tag-bg);
-    color: var(--text-color-light);
-    border: 1px solid var(--skill-tag-border);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-.read-more-btn:hover {
-    background-color: var(--primary-accent);
-    color: white;
-    border-color: var(--primary-accent);
-}
-body.dark-mode .read-more-btn {
-    background-color: var(--skill-tag-bg-dark);
-    color: var(--text-color-dark);
-    border: 1px solid var(--skill-tag-border-dark);
-}
-body.dark-mode .read-more-btn:hover {
-    background-color: var(--primary-accent-dark);
-    color: #121212;
-    border-color: var(--primary-accent-dark);
-}
-
-/* Project Modal Styles */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background-color: var(--main-bg-light);
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    max-width: 900px;
-    max-height: 90vh; /* Max height to allow scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    position: relative;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    border: 1px solid var(--border-color-light);
-    box-shadow: 0 10px 30px var(--shadow-color-light);
-}
-.modal-overlay.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-body.dark-mode .modal-content {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-    box-shadow: 0 10px 30px var(--shadow-color-dark);
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1.25rem;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--text-color-light);
-    transition: color 0.3s ease;
-}
-.modal-close-btn:hover {
-    color: var(--primary-accent);
-}
-body.dark-mode .modal-close-btn {
-    color: var(--text-color-dark);
-}
-body.dark-mode .modal-close-btn:hover {
-    color: var(--primary-accent-dark);
-}
-
-.modal-image {
-    border-radius: 0.75rem;
-    margin-bottom: 1.5rem;
-    max-height: 250px;
-    width: 100%;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-body.dark-mode .modal-image {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-.modal-links a {
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
-    margin-right: 1rem;
-}
-.modal-links a:last-child {
-    margin-right: 0;
-}
-/* Ensure text wraps correctly */
-.project-card .short-summary, .project-card .full-description p,
-#projectModal .modal-project-description {
-    word-break: break-word;
-    overflow-wrap: break-word;
-}
-
-/* Toast Message for Contact Form */
-.toast-message {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #28a745; /* Green for success */
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 100;
-    text-align: center;
-    min-width: 250px;
-}
-.toast-message.error {
-    background-color: #dc3545; /* Red for error */
-}
-.toast-message.show {
-    opacity: 1;
-    visibility: visible;
-}
-
---- END FILE: static\css\styles.css ---
-
---- START FILE: static\js\scripts.js ---
-
-// Shared JavaScript for portfolio website
-
-// Set current year in footer
-document.addEventListener('DOMContentLoaded', () => {
-    const currentYearElement = document.getElementById('currentYear');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
-});
-
-// Dark Mode Toggle Logic
-const darkModeToggle = document.getElementById('darkModeToggle'); // Desktop header toggle
-const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle'); // Mobile fixed nav toggle
-
-const applyDarkMode = (isDark) => {
-    if (isDark) {
-        document.body.classList.add('dark-mode');
-        if (darkModeToggle) darkModeToggle.classList.add('dark');
-    } else {
-        document.body.classList.remove('dark-mode');
-        if (darkModeToggle) darkModeToggle.classList.remove('dark');
-    }
-};
-
-// Apply saved dark mode preference on load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    applyDarkMode(savedDarkMode);
-});
-
-// Event listener for desktop dark mode toggle
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-        const isCurrentlyDark = document.body.classList.contains('dark-mode');
-        applyDarkMode(!isCurrentlyDark);
-        localStorage.setItem('darkMode', !isCurrentlyDark);
-    });
-}
-
-// Event listener for mobile dark mode toggle
-if (mobileDarkModeToggle) {
-    mobileDarkModeToggle.addEventListener('click', () => {
-        const isCurrentlyDark = document.body.classList.contains('dark-mode');
-        applyDarkMode(!isCurrentlyDark);
-        localStorage.setItem('darkMode', !isCurrentlyDark);
-    });
-}
-
-
-// Smooth scrolling for internal anchor links (excluding multi-page navigation)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const currentFileName = window.location.pathname.split("/").pop();
-        if (currentFileName === "index.html" || currentFileName === "" || currentFileName === "education-achievements.html") {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const headerOffset = document.querySelector('header').offsetHeight;
-                const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerOffset - 20;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    });
-});
-
-// Intersection Observer for fade-in effect
-const fadeInSections = document.querySelectorAll('.fade-in-section');
-const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -50px 0px',
-    threshold: 0.01
-};
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            // observer.unobserve(entry.target); // Uncomment to animate only once
-        } else {
-            // entry.target.classList.remove('is-visible'); // Uncomment to re-animate on scroll
-        }
-    });
-}, observerOptions);
-fadeInSections.forEach(section => {
-    observer.observe(section);
-});
-
-// Highlight active navigation link based on current page
-const setActiveNav = () => {
-    const path = window.location.pathname.split("/").pop(); // Get filename
-    const desktopNavLinks = document.querySelectorAll('#navLinksDesktop a');
-    const mobileNavItems = document.querySelectorAll('#mobileFixedNav .nav-item'); // New selector for mobile
-
-    [...desktopNavLinks, ...mobileNavItems].forEach(link => {
-        link.classList.remove('active'); // For desktop nav links
-        link.classList.remove('active-nav-link'); // For mobile nav items
-
-        let linkPath = link.getAttribute('href');
-        if (linkPath) { // Check if href exists
-            linkPath = linkPath.split("/").pop();
-
-            if (linkPath === path || (path === "" && linkPath === "index.html")) {
-                link.classList.add('active'); // Applies to both desktop and mobile for consistent styling
-                link.classList.add('active-nav-link'); // Specific for mobile bottom nav
-            }
-        }
-    });
-};
-document.addEventListener('DOMContentLoaded', setActiveNav); // Run on page load
-
-
-// Scroll to Top Button functionality
-const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        scrollToTopBtn.classList.add("show");
-    } else {
-        scrollToTopBtn.classList.remove("show");
-    }
-});
-
-scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
---- END FILE: static\js\scripts.js ---
-
------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------
 
 add a new individual project : 
 
-https://github.com/sOuL2000s/2048-Ultimate-Multi-Themed.git
-https://2048-ultimate-multi-themed.netlify.app/
-
-after adding send me the changed files only nothing else.
+https://github.com/sOuL2000s/The-Ultimate-Coder.git
+https://the-ultimate-coder-ai-coding-assist.netlify.app/
