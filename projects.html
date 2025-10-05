@@ -99,6 +99,11 @@
                 <a id="modal-github-link" href="#" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fab fa-github mr-1"></i>GitHub</a>
                 <a id="modal-livedemo-link" href="#" target="_blank" class="text-blue-600 hover:underline dark:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover flex items-center break-words"><i class="fas fa-external-link-alt mr-1"></i>Live Demo</a>
             </div>
+            <!-- Modal Navigation Buttons -->
+            <div class="modal-nav flex justify-between items-center mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 transition-colors-shadow">
+                <button id="modal-prev-btn" class="btn-primary-small" aria-label="Previous Project"><i class="fas fa-chevron-left mr-2"></i> Previous</button>
+                <button id="modal-next-btn" class="btn-primary-small" aria-label="Next Project">Next <i class="fas fa-chevron-right ml-2"></i></button>
+            </div>
         </div>
     </div>
 
@@ -621,6 +626,10 @@
             }
         ];
 
+        // Global variables to store current index and filtered project list for modal navigation
+        let currentModalProjectIndex = -1;
+        let currentlyFilteredProjects = [];
+
         // Function to create a project card HTML element
         function createProjectCard(project) {
             const card = document.createElement('div');
@@ -631,8 +640,12 @@
                 <img src="${project.image}" alt="${project.title}" loading="lazy" class="project-image">
                 <h4 class="text-xl font-semibold mb-3 break-words">${project.title}</h4>
                 <p class="short-summary text-base mb-2 flex-grow break-words">${project.shortDescription}</p>
-                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-auto">
-                    <button class="read-more-btn toggle-project-details w-full" data-project-id="${project.id}">Show Details</button>
+                <div class="project-card-actions flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 transition-colors-shadow">
+                    <button class="btn-secondary-small toggle-project-details" data-project-id="${project.id}">Details</button>
+                    <div class="flex space-x-3 text-xl">
+                        ${project.github ? `<a href="${project.github}" target="_blank" aria-label="GitHub" class="project-action-icon"><i class="fab fa-github"></i></a>` : ''}
+                        ${project.livedemo ? `<a href="${project.livedemo}" target="_blank" aria-label="Live Demo" class="project-action-icon"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                    </div>
                 </div>
             `;
             return card;
@@ -648,21 +661,23 @@
             individualGrid.innerHTML = ''; // Clear existing content
             teamGrid.innerHTML = ''; // Clear existing content
 
-            const filteredProjects = projectsData.filter(project => {
+            let tempFilteredProjects = projectsData.filter(project => {
                 if (filter === 'all') return true;
                 if (filter === 'team') return project.type === 'team';
+                // Check if any of the project's tags match the filter
                 return project.tags && project.tags.includes(filter);
             });
 
             // Sort projects by date in descending order (most recent first)
-            filteredProjects.sort((a, b) => {
+            tempFilteredProjects.sort((a, b) => {
                 const dateA = new Date(a.date.replace(/ \(.*\)/, '')); // Remove parenthetical info for date parsing
                 const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
                 return dateB - dateA; // Descending order
             });
 
+            currentlyFilteredProjects = tempFilteredProjects; // Update global variable with the filtered and sorted list
 
-            filteredProjects.forEach(project => {
+            currentlyFilteredProjects.forEach(project => {
                 const card = createProjectCard(project);
                 if (project.type === 'individual') {
                     individualGrid.appendChild(card);
@@ -675,7 +690,7 @@
             document.querySelectorAll('.toggle-project-details').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const projectId = e.target.dataset.projectId;
-                    const project = projectsData.find(p => p.id === projectId);
+                    const project = currentlyFilteredProjects.find(p => p.id === projectId);
                     if (project) {
                         openProjectModal(project);
                     }
@@ -710,6 +725,9 @@
         const modalDate = document.getElementById('modal-project-date');
         const modalGithubLink = document.getElementById('modal-github-link');
         const modalLivedemoLink = document.getElementById('modal-livedemo-link');
+        const modalPrevBtn = document.getElementById('modal-prev-btn');
+        const modalNextBtn = document.getElementById('modal-next-btn');
+
 
         function openProjectModal(projectData) {
             modalImage.src = projectData.image;
@@ -720,7 +738,7 @@
 
             // Clear previous tools
             modalTools.innerHTML = '';
-            projectData.tools.forEach(tool => { // Iterate array directly
+            projectData.tools.forEach(tool => {
                 const span = document.createElement('span');
                 span.className = 'skill-tag rounded-md px-3 py-1 text-xs font-medium break-words';
                 span.textContent = tool;
@@ -739,6 +757,27 @@
                 modalLivedemoLink.style.display = 'flex';
             } else {
                 modalLivedemoLink.style.display = 'none';
+            }
+
+            // Update navigation buttons visibility/state
+            currentModalProjectIndex = currentlyFilteredProjects.findIndex(p => p.id === projectData.id);
+
+            if (currentModalProjectIndex > 0) {
+                modalPrevBtn.style.display = 'flex';
+                modalPrevBtn.onclick = () => {
+                    openProjectModal(currentlyFilteredProjects[currentModalProjectIndex - 1]);
+                };
+            } else {
+                modalPrevBtn.style.display = 'none';
+            }
+
+            if (currentModalProjectIndex < currentlyFilteredProjects.length - 1) {
+                modalNextBtn.style.display = 'flex';
+                modalNextBtn.onclick = () => {
+                    openProjectModal(currentlyFilteredProjects[currentModalProjectIndex + 1]);
+                };
+            } else {
+                modalNextBtn.style.display = 'none';
             }
 
             projectModal.classList.add('show');

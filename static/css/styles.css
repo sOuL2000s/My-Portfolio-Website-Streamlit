@@ -663,3 +663,85 @@ body.dark-mode .modal-image {
     opacity: 1;
     visibility: visible;
 }
+
+/* NEW: Small button style for modal nav and project card details */
+.btn-secondary-small, .btn-primary-small {
+    background-color: var(--skill-tag-bg);
+    color: var(--text-color-light);
+    border: 1px solid var(--skill-tag-border);
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: inline-flex; /* Ensure icon and text align */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+.btn-secondary-small:hover, .btn-primary-small:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    border-color: var(--primary-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .btn-secondary-small, body.dark-mode .btn-primary-small {
+    background-color: var(--skill-tag-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--skill-tag-border-dark);
+}
+body.dark-mode .btn-secondary-small:hover, body.dark-mode .btn-primary-small:hover {
+    background-color: var(--primary-accent-dark);
+    color: #121212;
+    border-color: var(--primary-accent-dark);
+}
+
+/* Specific primary-small for modal nav (if different primary color is desired) */
+.btn-primary-small {
+    background-color: var(--primary-accent);
+    color: white;
+    border-color: var(--primary-accent);
+}
+.btn-primary-small:hover {
+    background-color: var(--primary-accent-darker);
+    border-color: var(--primary-accent-darker);
+}
+body.dark-mode .btn-primary-small {
+    background-color: var(--primary-accent-dark);
+    color: #121212; /* Dark text on light accent */
+    border-color: var(--primary-accent-dark);
+}
+body.dark-mode .btn-primary-small:hover {
+    background-color: var(--primary-accent-dark-hover);
+    border-color: var(--primary-accent-dark-hover);
+    color: #121212;
+}
+
+/* NEW: Project card action icons (GitHub/Live Demo on card) */
+.project-card-actions {
+    /* Ensures this area transitions colors properly */
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+}
+.project-action-icon {
+    color: var(--text-color-light); /* Default icon color */
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* Align icons properly */
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem; /* Larger touch target */
+    height: 2.5rem;
+    border-radius: 50%;
+}
+.project-action-icon:hover {
+    color: var(--primary-accent); /* Accent color on hover */
+    transform: translateY(-2px) scale(1.1); /* Subtle lift and scale */
+    text-decoration: none; /* No underline on icon hover */
+}
+body.dark-mode .project-action-icon {
+    color: var(--text-color-dark);
+}
+body.dark-mode .project-action-icon:hover {
+    color: var(--primary-accent-dark);
+}
