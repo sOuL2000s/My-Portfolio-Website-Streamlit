@@ -130,7 +130,7 @@
             <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
                 <i class="fas fa-envelope text-xl"></i>
                 <span class="mt-1">Contact</span>
-            </a>
+            </a
             <!-- Dark Mode Toggle moved here for mobile -->
             <button id="mobileDarkModeToggle" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark focus:outline-none transition-colors">
                 <i class="fas fa-moon text-xl dark:hidden"></i>
@@ -167,6 +167,19 @@
 
         const projectsData = [
             // Individual Projects
+            {
+                id: 'cricket-match-simulator',
+                type: 'individual',
+                title: 'Cricket Match Simulator',
+                image: 'cricket-match-simulator.png', // NOTE: Please add 'cricket-match-simulator.png' to your project's root directory for the image to display.
+                shortDescription: 'An interactive web-based simulator for cricket matches with dynamic scoring.',
+                fullDescription: 'An engaging and interactive web-based application that simulates cricket matches. This project allows users to set up a match between two teams, track live scores, visualize innings progression, and experience the dynamics of a cricket game through a user-friendly interface. It features real-time score updates, overs progression, wicket tracking, and basic match statistics, providing a fun and accessible way to enjoy a virtual cricket game.',
+                tools: ['HTML', 'CSS', 'JavaScript'],
+                tags: ['web-dev', 'javascript', 'game'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/cricket-match-simulator.git',
+                livedemo: 'https://cricket-match-simulator.netlify.app/'
+            },
             {
                 id: 'the-ultimate-coder-ai-coding-assistant',
                 type: 'individual',
@@ -809,5 +822,5 @@
 
 here add a new individual project for : 
 
-https://github.com/sOuL2000s/cricket-match-simulator.git
-https://cricket-match-simulator.netlify.app/
+https://github.com/sOuL2000s/simple-tetris-game.git
+https://simple-tetris-game-static.netlify.app/
