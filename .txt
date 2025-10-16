@@ -168,6 +168,19 @@
         const projectsData = [
             // Individual Projects
             {
+                id: 'ai-podcaster-assistant',
+                type: 'individual',
+                title: 'AI Podcaster Assistant',
+                image: 'ai-podcaster-assistant.png', // NOTE: Please add 'ai-podcaster-assistant.png' to your project's root directory for the image to display.
+                shortDescription: 'AI-powered tool for podcasters to assist with script generation, content ideas, and editing.',
+                fullDescription: 'An innovative AI-powered assistant designed to streamline the podcast creation process. This tool helps podcasters at every stage, from generating compelling script ideas and outlines to transcribing audio, editing content, and optimizing for audience engagement. Leveraging advanced Natural Language Processing (NLP) and Large Language Models (LLM), it aims to significantly reduce manual effort, enhance creativity, and improve the overall quality and efficiency of podcast production.',
+                tools: ['Python', 'Streamlit', 'AI/LLM', 'Natural Language Processing (NLP)'],
+                tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/AI-Podcaster-Assistant.git',
+                livedemo: 'https://ai-podcaster-assistant.netlify.app/'
+            },
+            {
                 id: 'simple-tetris-game',
                 type: 'individual',
                 title: 'Simple Tetris Game',
@@ -462,7 +475,7 @@
                 fullDescription: 'A modern and feature-rich website for a mathematics coaching institute. This platform boasts dynamic course management capabilities, allowing for easy updates and scheduling. It includes sections for testimonials, a comprehensive gallery, and an engaging blog system. Integrated with Google Maps for location services and featuring both dark/light themes, the website is built with an admin-controlled Content Management System (CMS) for effortless content updates, providing a seamless experience for students and administrators alike.',
                 tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Firebase'],
                 tags: ['web-dev', 'full-stack'],
-                date: 'July 2025',
+                date: 'July 2025', // Consider updating this date to a past or more realistic recent date if it's already built
                 github: 'https://github.com/sOuL2000s/mathematico-coaching-website.git',
                 livedemo: 'https://mathematico-special-coaching-center.netlify.app/'
             },
@@ -475,7 +488,7 @@
                 fullDescription: 'An AI-driven Bitcoin price prediction application designed with a mobile-friendly interface. This tool actively compares real-time market values from the Binance API with user-defined target prices. It integrates sentiment analysis for a more nuanced prediction and visualizes complex data with interactive Plotly charts, making it an invaluable resource for both cryptocurrency traders and enthusiasts of platforms like Probo.',
                 tools: ['Python', 'Streamlit', 'Plotly', 'Pandas', 'Binance API'],
                 tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'July 2025',
+                date: 'July 2025', // Consider updating this date to a past or more realistic recent date if it's already built
                 github: 'https://github.com/sOuL2000s/html-probo-predictor-website.git',
                 livedemo: 'https://probo-crypto-predictor.netlify.app/'
             },
@@ -488,7 +501,7 @@
                 fullDescription: 'A sophisticated, next-generation farming assistant implemented as a Streamlit dashboard. It offers real-time monitoring of crucial agricultural data including soil conditions, weather patterns, and crop health. The system employs AI-powered time-series forecasting to predict soil moisture levels and provides farmers with personalized, data-driven crop recommendations, optimizing yield and resource management.',
                 tools: ['Python', 'Streamlit', 'TensorFlow', 'Firebase', 'Plotly'],
                 tags: ['ai-ml', 'python', 'streamlit', 'web-dev'],
-                date: 'June 2025',
+                date: 'June 2025', // Consider updating this date to a past or more realistic recent date if it's already built
                 github: 'https://github.com/sOuL2000s/Smart-AgriTech-Streamlit-Dashbard.git',
                 livedemo: 'https://smart-agritech-dashbard.netlify.app/'
             },
@@ -501,7 +514,7 @@
                 fullDescription: 'A robust full-stack web application designed to efficiently manage cricket and football tournaments. The system automates fixture generation, provides real-time live score updates, and automatically calculates and generates leaderboards. This application significantly streamlines the entire sports event management process for organizers and offers a transparent, engaging experience for players and fans.',
                 tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
                 tags: ['full-stack', 'react', 'web-dev'],
-                date: 'May 2025',
+                date: 'May 2025', // Consider updating this date to a past or more realistic recent date if it's already built
                 github: 'https://github.com/sOuL2000s/tournament-manager-FULL-STACK.git',
                 livedemo: 'https://tournament-manager-website.netlify.app/'
             },
@@ -514,7 +527,7 @@
                 fullDescription: '\"I Prompt You\" is an intelligent AI Prompt Engineer tool designed to help users craft optimal prompts for other AI models. Users can describe their desired output through text input, voice dictation (Speech Recognition), or by uploading various file types including text and images, enabling multimodal input. The application processes these diverse inputs, leveraging the Gemini API to analyze context and generate a well-structured, clear, and highly effective prompt. It also features a convenient prompt history, allowing users to save, load, and manage their generated prompts, ensuring they can efficiently refine and reuse their best AI instructions. This tool streamlines the prompt engineering process, making advanced AI interactions more accessible and precise.',
                 tools: ['JavaScript', 'HTML', 'CSS', 'Gemini API', 'Web Speech API', 'Local Storage'],
                 tags: ['ai-ml', 'web-dev', 'full-stack', 'javascript'],
-                date: '2025',
+                date: '2025', // Consider updating this date to a past or more realistic recent date if it's already built
                 github: 'https://github.com/sOuL2000s/I-Prompt-You-AI-Prompt-Engineer.git',
                 livedemo: 'https://i-prompt-you-ai-prompt-engineer.netlify.app/'
             },
@@ -835,5 +848,5 @@
 
 here add a new individual project for : 
 
-https://github.com/sOuL2000s/AI-Podcaster-Assistant.git
-https://ai-podcaster-assistant.netlify.app/
+https://github.com/sOuL2000s/My-Dear-Diary.git
+https://my-dear-digital-diary.netlify.app/
