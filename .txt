@@ -168,6 +168,19 @@
         const projectsData = [
             // Individual Projects
             {
+                id: 'my-dear-diary-digital-journal',
+                type: 'individual',
+                title: 'My Dear Diary - Digital Journal',
+                image: 'my-dear-diary.png', // NOTE: Please add 'my-dear-diary.png' to your project's root directory for the image to display.
+                shortDescription: 'A private digital journaling web app for daily reflections and mood tracking.',
+                fullDescription: 'A secure and intuitive digital journaling web application designed for personal reflection and mood tracking. This platform allows users to record their thoughts, experiences, and emotions in a private space. Key features include organized entry management, date-based navigation, and a user-friendly interface to encourage consistent journaling. It serves as a personal companion for self-awareness and mental well-being.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
+                tags: ['web-dev', 'javascript'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/My-Dear-Diary.git',
+                livedemo: 'https://my-dear-digital-diary.netlify.app/'
+            },
+            {
                 id: 'ai-podcaster-assistant',
                 type: 'individual',
                 title: 'AI Podcaster Assistant',
@@ -205,6 +218,19 @@
                 date: 'December 2024',
                 github: 'https://github.com/sOuL2000s/cricket-match-simulator.git',
                 livedemo: 'https://cricket-match-simulator.netlify.app/'
+            },
+            {
+                id: 'the-auction-game',
+                type: 'individual',
+                title: 'The Auction Game',
+                image: 'the-auction-game.png', // NOTE: Please add 'the-auction-game.png' to your project's root directory for the image to display.
+                shortDescription: 'An interactive full-stack web game where players bid to win items in real-time.',
+                fullDescription: 'The Auction Game is a real-time, interactive full-stack web application that simulates a live auction experience. Players can join ongoing auctions, place bids, and compete to win virtual items. The game features real-time updates for bids and auction status, user authentication, and a dynamic leaderboard. It\'s built with modern web technologies, providing a engaging and competitive environment for players to test their bidding strategies.',
+                tools: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'HTML', 'CSS', 'JavaScript'],
+                tags: ['full-stack', 'web-dev', 'javascript', 'node', 'socket.io'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/The-Auction-Game.git',
+                livedemo: 'https://the-auction-game.onrender.com/'
             },
             {
                 id: 'the-ultimate-coder-ai-coding-assistant',
@@ -532,19 +558,6 @@
                 livedemo: 'https://i-prompt-you-ai-prompt-engineer.netlify.app/'
             },
             {
-                id: 'the-auction-game',
-                type: 'individual',
-                title: 'The Auction Game',
-                image: 'the-auction-game.png', // NOTE: Please add 'the-auction-game.png' to your project's root directory for the image to display.
-                shortDescription: 'An interactive full-stack web game where players bid to win items in real-time.',
-                fullDescription: 'The Auction Game is a real-time, interactive full-stack web application that simulates a live auction experience. Players can join ongoing auctions, place bids, and compete to win virtual items. The game features real-time updates for bids and auction status, user authentication, and a dynamic leaderboard. It\'s built with modern web technologies, providing a engaging and competitive environment for players to test their bidding strategies.',
-                tools: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'HTML', 'CSS', 'JavaScript'],
-                tags: ['full-stack', 'web-dev', 'javascript', 'node', 'socket.io'],
-                date: 'December 2024',
-                github: 'https://github.com/sOuL2000s/The-Auction-Game.git',
-                livedemo: 'https://the-auction-game.onrender.com/'
-            },
-            {
                 id: 'dream11-ai-predictor',
                 type: 'individual',
                 title: 'Dream11 AI Team Predictor',
@@ -848,5 +861,7 @@
 
 here add a new individual project for : 
 
-https://github.com/sOuL2000s/My-Dear-Diary.git
-https://my-dear-digital-diary.netlify.app/
+https://github.com/sOuL2000s/The-Auction-Game.git
+https://ai-auctioneer-game.onrender.com
+
+notice this github  project already exists but this a different variant.
