@@ -88,6 +88,9 @@
                     <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-gray-900 transition-colors-shadow dark:hover:text-primary-accent-dark">
                         <i class="fab fa-github"></i>
                     </a>
+                    <a href="https://www.youtube.com/c/SouparnoPaulOfficial" target="_blank" aria-label="YouTube" class="hover:text-red-700 transition-colors-shadow dark:hover:text-primary-accent-dark">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                     <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-red-600 transition-colors-shadow dark:hover:text-primary-accent-dark">
                         <i class="fas fa-envelope"></i>
                     </a>
@@ -100,7 +103,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">About Me</h2>
             <div class="about-me-content dark:text-text-color-dark">
                 <p class="text-lg leading-relaxed mb-4">
-                    I am a B.Tech CSE student from Narula Institute of Technology, Kolkata, graduating in 2025.
+                    I have successfully completed my B.Tech CSE from Narula Institute of Technology, Kolkata, in 2025, and am now pursuing my M.Tech in CSE at the same institute.
                     My journey in technology began with a strong interest in programming and problem-solving, leading me to delve into Python development, AI/ML, and full-stack web development.
                     I focus on building data-driven applications, highlighted by my <strong class="font-semibold">BTC Probo Predictor</strong>, <strong class="font-semibold">Smart Agritech Streamlit Dashboard</strong>, and a <strong class="font-semibold">Tournament Manager Full-Stack Web Application</strong>.
                     I’m also passionate about applying machine learning to real-world problems, as demonstrated by my <strong class="font-semibold">Phishing URL Detection</strong> project, for which I won a Best Paper Award.
@@ -199,6 +202,22 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Site Assistant Floating Button (NEW) -->
+    <button id="siteAssistantBtn" aria-label="Explore Projects">
+        <i class="fas fa-th-list"></i> <!-- Using a list icon for project navigation -->
+    </button>
+
+    <!-- Site Assistant Project List Modal (NEW) -->
+    <div id="siteAssistantModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="site-assistant-modal-title">
+        <div class="site-assistant-modal-content transition-colors-shadow">
+            <button class="site-assistant-modal-close-btn" aria-label="Close project list"><i class="fas fa-times"></i></button>
+            <h3 id="site-assistant-modal-title" class="text-3xl md:text-4xl font-bold mb-6 text-center dark:text-heading-color-dark">Explore Projects</h3>
+            <div id="site-assistant-project-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Project list items will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Fixed Bottom Navigation -->
     <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
         <div class="flex justify-around items-center h-16">
@@ -232,6 +251,9 @@
                 </a>
                 <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/c/SouparnoPaulOfficial" target="_blank" aria-label="YouTube" class="hover:text-red-700 dark:hover:text-primary-accent-dark-hover">
+                    <i class="fab fa-youtube"></i>
                 </a>
                 <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fas fa-envelope"></i>

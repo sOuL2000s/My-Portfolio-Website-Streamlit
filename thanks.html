@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You! - Souparna Paul</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Thank you for contacting Souparna Paul. Your message has been sent successfully.">
+    <meta name="robots" content="noindex, follow"> <!-- Prevent search engines from indexing this thank you page directly -->
     <!-- Favicon -->
     <link rel="icon" href="profile.png" type="image/png">
 
@@ -21,20 +24,71 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-    <div id="darkModeToggle" class="relative hidden">
-        <div class="toggle-circle"></div>
-    </div>
-    <div class="thank-you-container">
+    <main class="thank-you-container">
         <div class="main-content-card">
-            <h1 class="text-4xl font-extrabold mb-4">Thank You! <i class="far fa-smile-beam text-blue-500"></i></h1>
-            <p class="text-lg leading-relaxed mb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-center">Thank You! <i class="far fa-smile-beam text-blue-500 animate-pulse-emoji"></i></h1>
+            <p class="text-lg md:text-xl leading-relaxed mb-6 text-center dark:text-text-color-dark">
                 Your message has been successfully sent. I appreciate you taking the time to reach out and will get back to you as soon as possible.
             </p>
-            <a href="index.html" class="btn-primary">
-                <i class="fas fa-home mr-2"></i> Go to Home
-            </a>
+            <div class="flex justify-center">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home mr-2"></i> Go to Home
+                </a>
+            </div>
+            <p class="text-sm mt-4 text-center text-gray-500 dark:text-gray-400">
+                You will be redirected automatically in <span id="countdown">30</span> seconds.
+            </p>
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Site Assistant Floating Button (NEW) -->
+    <button id="siteAssistantBtn" aria-label="Explore Projects">
+        <i class="fas fa-th-list"></i> <!-- Using a list icon for project navigation -->
+    </button>
+
+    <!-- Site Assistant Project List Modal (NEW) -->
+    <div id="siteAssistantModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="site-assistant-modal-title">
+        <div class="site-assistant-modal-content transition-colors-shadow">
+            <button class="site-assistant-modal-close-btn" aria-label="Close project list"><i class="fas fa-times"></i></button>
+            <h3 id="site-assistant-modal-title" class="text-3xl md:text-4xl font-bold mb-6 text-center dark:text-heading-color-dark">Explore Projects</h3>
+            <div id="site-assistant-project-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Project list items will be dynamically inserted here by JavaScript -->
+            </div>
         </div>
     </div>
+
+    <!-- Mobile Fixed Bottom Navigation -->
+    <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
+        <div class="flex justify-around items-center h-16">
+            <a href="index.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
+                <i class="fas fa-home text-xl"></i>
+                <span class="mt-1">Home</span>
+            </a>
+            <a href="projects.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
+                <i class="fas fa-code text-xl"></i>
+                <span class="mt-1">Projects</span>
+            </a>
+            <a href="education-achievements.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
+                <i class="fas fa-graduation-cap text-xl"></i>
+                <span class="mt-1">Edu & Ach</span>
+            </a>
+            <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
+                <i class="fas fa-envelope text-xl"></i>
+                <span class="mt-1">Contact</span>
+            </a>
+            <!-- Dark Mode Toggle moved here for mobile -->
+            <button id="mobileDarkModeToggle" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark focus:outline-none transition-colors">
+                <i class="fas fa-moon text-xl dark:hidden"></i>
+                <i class="fas fa-sun text-xl hidden dark:block"></i>
+                <span class="mt-1">Theme</span>
+            </button>
+        </div>
+    </nav>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center transition-colors-shadow dark:bg-navbar-bg-dark">
@@ -42,13 +96,16 @@
             <p class="text-sm">&copy; <span id="currentYear"></span> Souparna Paul. All rights reserved.</p>
             <p class="text-sm">Built with ❤️ using HTML, Tailwind CSS, and JavaScript.</p>
             <div class="flex justify-center space-x-4 text-xl mt-3">
-                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/souparno-paul-28a75524b/" target="_blank" aria-label="LinkedIn" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email">
+                <a href="https://www.youtube.com/c/SouparnoPaulOfficial" target="_blank" aria-label="YouTube" class="hover:text-red-700 dark:hover:text-primary-accent-dark-hover">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -59,9 +116,20 @@
     <script src="static/js/scripts.js" defer></script>
     <!-- Page-specific Scripts -->
     <script>
-        // The Dark Mode Toggle for this specific page (which was at the top of the body)
-        // is now hidden with `hidden` class in its HTML.
-        // The core dark mode logic is in scripts.js and will still correctly apply the theme.
+        // Automatic redirection after a delay
+        let countdownElement = document.getElementById('countdown');
+        let countdown = 30;
+
+        const intervalId = setInterval(() => {
+            countdown--;
+            if (countdownElement) {
+                countdownElement.textContent = countdown;
+            }
+            if (countdown <= 0) {
+                clearInterval(intervalId);
+                window.location.href = 'index.html'; // Redirect to home page
+            }
+        }, 1000);
     </script>
 </body>
 </html>

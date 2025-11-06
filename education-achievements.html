@@ -60,8 +60,16 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Education</h2>
             <div class="space-y-4">
                 <div class="education-entry">
+                    <h3 class="text-2xl font-semibold mb-2">M.Tech CSE | Narula Institute of Technology, Kolkata</h3>
+                    <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">Currently Pursuing</p>
+                    <ul class="list-disc list-inside text-lg leading-relaxed space-y-1 dark:text-text-color-dark">
+                        <li>Specialization: Advanced AI/ML, Data Science, Full-Stack Development</li>
+                        <li>Research Focus: Optimizing ML models for real-world applications, AI-driven web solutions</li>
+                    </ul>
+                </div>
+                <div class="education-entry">
                     <h3 class="text-2xl font-semibold mb-2">B.Tech CSE | Narula Institute of Technology, Kolkata</h3>
-                    <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">2021-2025</p>
+                    <p class="text-lg leading-relaxed dark:text-text-color-dark mb-2">2021-2025 (Completed)</p>
                     <ul class="list-disc list-inside text-lg leading-relaxed space-y-1 dark:text-text-color-dark">
                         <li>Relevant coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Machine Learning, Web Technologies</li>
                         <li>Thesis/Capstone Project: Phishing URL Detection (Awarded Best Paper)</li>
@@ -109,6 +117,22 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Site Assistant Floating Button (NEW) -->
+    <button id="siteAssistantBtn" aria-label="Explore Projects">
+        <i class="fas fa-th-list"></i> <!-- Using a list icon for project navigation -->
+    </button>
+
+    <!-- Site Assistant Project List Modal (NEW) -->
+    <div id="siteAssistantModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="site-assistant-modal-title">
+        <div class="site-assistant-modal-content transition-colors-shadow">
+            <button class="site-assistant-modal-close-btn" aria-label="Close project list"><i class="fas fa-times"></i></button>
+            <h3 id="site-assistant-modal-title" class="text-3xl md:text-4xl font-bold mb-6 text-center dark:text-heading-color-dark">Explore Projects</h3>
+            <div id="site-assistant-project-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Project list items will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Fixed Bottom Navigation -->
     <nav id="mobileFixedNav" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg md:hidden z-50 transition-colors-shadow border-t dark:border-gray-700">
         <div class="flex justify-around items-center h-16">
@@ -148,6 +172,9 @@
                 </a>
                 <a href="https://github.com/sOuL2000s" target="_blank" aria-label="GitHub" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/c/SouparnoPaulOfficial" target="_blank" aria-label="YouTube" class="hover:text-red-700 dark:hover:text-primary-accent-dark-hover">
+                    <i class="fab fa-youtube"></i>
                 </a>
                 <a href="mailto:souparnopaulreborn@gmail.com" aria-label="Email" class="hover:text-primary-accent-dark dark:hover:text-primary-accent-dark-hover">
                     <i class="fas fa-envelope"></i>
