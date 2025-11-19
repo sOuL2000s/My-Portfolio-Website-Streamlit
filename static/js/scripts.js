@@ -3,6 +3,19 @@
 const projectsData = [
             // Individual Projects
             {
+                id: 'ultimate-notepad',
+                type: 'individual',
+                title: 'Ultimate Notepad',
+                image: 'ultimate-notepad.png', // NOTE: Please add 'ultimate-notepad.png' to your project's root directory.
+                shortDescription: 'A feature-rich digital notepad with automatic saving via Local Storage.',
+                fullDescription: 'The Ultimate Notepad is a versatile web-based text editor that functions like a powerful, persistent digital notepad. It uses Local Storage to ensure notes are automatically saved and remain accessible across browser sessions. Key features include real-time text manipulation, dynamic styling options (font, size, color), and a clean, responsive interface, making it perfect for quick notes, drafting, or journaling without needing an account.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
+                tags: ['web-dev', 'javascript'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/Ultimate-Notepad.git',
+                livedemo: 'https://ultimate-notepad.netlify.app/'
+            },
+            {
                 id: 'my-dear-diary-digital-journal',
                 type: 'individual',
                 title: 'My Dear Diary - Digital Journal',
