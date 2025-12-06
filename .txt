@@ -2223,6 +2223,19 @@ body.dark-mode .project-action-icon:hover {
 const projectsData = [
             // Individual Projects
             {
+                id: '100-infinite-time-waster-games',
+                type: 'individual',
+                title: '100 Infinite Time Waster Games HUB',
+                image: '100-games.png', // NOTE: Please add '100-games.png' to your project's root directory.
+                shortDescription: 'A massive hub of 100 simple, addictive "time waster" mini-games built with vanilla JavaScript.',
+                fullDescription: 'A massive collection of 100 diverse, lightweight mini-games housed in a single web application, designed for quick, addictive distraction. Built entirely with vanilla JavaScript, HTML, and CSS, this project showcases rapid development, efficient game integration, and front-end proficiency in managing a large catalog of interactive content within a clean, single-page interface.',
+                tools: ['HTML', 'CSS', 'JavaScript'],
+                tags: ['web-dev', 'javascript', 'game'],
+                date: 'December 2024 (Early)',
+                github: 'https://github.com/sOuL2000s/100-infinite-time-waster-games.git',
+                livedemo: 'https://100-infinite-time-waster-games.netlify.app/'
+            },
+            {
                 id: 'ultimate-notepad',
                 type: 'individual',
                 title: 'Ultimate Notepad',
@@ -2986,5 +2999,5 @@ scrollToTopBtn.addEventListener("click", () => {
 
 ----------------------------------
 add the following project to my individual projects : 
-https://github.com/sOuL2000s/100-infinite-time-waster-games.git
-https://100-infinite-time-waster-games.netlify.app/
+https://github.com/sOuL2000s/big-ai.git
+https://big-ai-chatbot.netlify.app/

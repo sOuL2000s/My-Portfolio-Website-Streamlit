@@ -483,6 +483,21 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/AI-Shape-Shifter-Website.git',
                 livedemo: 'https://ai-shape-shifter-website.netlify.app/'
             },
+            // --- NEW PROJECT INSERTED HERE ---
+            {
+                id: 'big-ai-chatbot',
+                type: 'individual',
+                title: 'BIG AI - The Advanced Chatbot',
+                image: 'big-ai.png', // NOTE: Please add 'big-ai.png' to your project's root directory.
+                shortDescription: 'Advanced AI chatbot utilizing Gemini API for comprehensive conversations and rich markdown support.',
+                fullDescription: 'An advanced, highly responsive AI chat assistant utilizing the Gemini API to deliver comprehensive, rich-text conversations. It features a modern user interface powered by Tailwind CSS, supports comprehensive markdown rendering, and is designed for complex, multi-turn interactions, making it an ideal tool for professional assistance and detailed queries.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP'],
+                tags: ['ai-ml', 'web-dev'],
+                date: 'January 2024',
+                github: 'https://github.com/sOuL2000s/big-ai.git',
+                livedemo: 'https://big-ai-chatbot.netlify.app/'
+            },
+            // --- END NEW PROJECT ---
             {
                 id: 'cosmic-chat-ai',
                 type: 'individual',
