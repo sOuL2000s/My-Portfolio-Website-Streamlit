@@ -198,17 +198,30 @@ const projectsData = [
                 livedemo: 'https://the-winner-challenge-tournament-hub.netlify.app/'
             },
             {
-                id: 'ai-text-beautifier',
-                type: 'individual',
-                title: 'AI Text Beautifier & Chatbot',
-                image: 'beautifier-ai.png',
-                shortDescription: 'AI web app for text beautification & real-time chatbot with Gemini API.',
-                fullDescription: 'An innovative AI-powered web application that offers intelligent text beautification and real-time conversational capabilities. It transforms plain text into elegantly formatted Markdown using the Gemini API, ensuring professional and readable output. The application boasts dynamic theme selection (dark/light mode), Progressive Web App (PWA) support for an app-like experience, and an integrated chatbot with voice input and file attachment functionalities. This project demonstrates a blend of utility and advanced AI interaction within a sleek, user-friendly interface.',
-                tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Gemini API', 'AI/NLP', 'Web Speech API', 'Marked.js', 'PWA', 'Local Storage'],
-                tags: ['ai-ml', 'web-dev'],
-                date: 'September 2024',
-                github: 'https://github.com/sOuL2000s/AI-Text-Beautifier.git',
-                livedemo: 'https://ai-text-beautifier.netlify.app/'
+                "id": "zenwrite-markdown-studio",
+                "type": "individual",
+                "title": "ZenWrite: Customizable Markdown Studio",
+                "image": "zenwrite-studio.png",
+                "shortDescription": "A highly customizable, feature-rich Markdown editor with real-time preview, 10+ themes, custom fonts, and robust multi-format export capabilities.",
+                "fullDescription": "ZenWrite is a powerful single-page application (SPA) designed to provide an optimal Markdown writing environment. It features a seamless split-screen view with scroll synchronization between the editor and the rendered output. The application is highly flexible, allowing users to select from over 10 built-in themes (e.g., Dark, Sepia, Solarized) and choose custom content fonts. Advanced rendering features include syntax highlighting for code blocks (via Highlight.js) and complex mathematical notation (via KaTeX). It offers robust file handling, supporting text import and export in multiple formats including Markdown, HTML, Plain Text, and structured data formats like JSON, XML, and YAML, alongside a print-optimized PDF export.",
+                "tools": [
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "marked.js",
+                    "highlight.js",
+                    "KaTeX",
+                    "Local Storage"
+                ],
+                "tags": [
+                    "web-dev",
+                    "productivity",
+                    "utility",
+                    "customization"
+                ],
+                "date": "October 2025",
+                "github": "https://github.com/sOuL2000s/AI-Text-Beautifier.git",
+                "livedemo": "https://zenwrite-custom-markdown-studio.netlify.app/"
             },
             {
                 id: 'simple-tournament-manager',
