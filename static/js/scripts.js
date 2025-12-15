@@ -132,21 +132,6 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/YouTube-Video-to-Shorts-Converter.git',
                 livedemo: 'https://youtube-video-to-shorts-converter.onrender.com/'
             },
-            // --- NEW PROJECT INSERTED HERE ---
-            {
-                id: 'youtube-downloader-playlist',
-                type: 'individual',
-                title: 'YouTube Video/Playlist Downloader',
-                image: 'youtube-downloader.png', // NOTE: Please add 'youtube-downloader.png' to your project's root directory.
-                shortDescription: 'Full-stack web application to download single YouTube videos or entire playlists efficiently.',
-                fullDescription: 'A robust, full-stack web application designed for downloading YouTube content. Users can input a single video URL or a complete playlist URL, and the application handles the processing and download link generation. Built using Python and the Flask framework for the backend, it utilizes powerful libraries (like yt-dlp) to efficiently fetch, process, and deliver large batches of content. This project showcases proficiency in handling asynchronous tasks, backend services, and deployment (e.g., on Render).',
-                tools: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript', 'yt-dlp'],
-                tags: ['full-stack', 'python', 'web-dev', 'utility'],
-                date: 'November 2024 (Late)',
-                github: 'https://github.com/sOuL2000s/YouTube-Video-or-Playlist-Downloader.git',
-                livedemo: 'https://youtube-video-or-playlist-downloader.onrender.com/'
-            },
-            // --- END NEW PROJECT ---
             {
                 id: '2048-ultimate-multi-themed',
                 type: 'individual',
@@ -511,7 +496,7 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/AI-Shape-Shifter-Website.git',
                 livedemo: 'https://ai-shape-shifter-website.netlify.app/'
             },
-            // --- NEW PROJECT INSERTED HERE (BIG AI) ---
+            // --- NEW PROJECT INSERTED HERE ---
             {
                 id: 'big-ai-chatbot',
                 type: 'individual',
@@ -525,7 +510,7 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/big-ai.git',
                 livedemo: 'https://big-ai-chatbot.netlify.app/'
             },
-            // --- END NEW PROJECT (BIG AI) ---
+            // --- END NEW PROJECT ---
             {
                 id: 'cosmic-chat-ai',
                 type: 'individual',
