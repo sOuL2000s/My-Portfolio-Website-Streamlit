@@ -41,6 +41,21 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/My-Dear-Diary.git',
                 livedemo: 'https://my-dear-digital-diary.netlify.app/'
             },
+            // --- NEW PROJECT INSERTED HERE ---
+            {
+                id: 'research-analyzer',
+                type: 'individual',
+                title: 'Research Paper Analyzer & Summarizer',
+                image: 'research-analyzer.png', // NOTE: Please add 'research-analyzer.png' to your project\'s root directory.
+                shortDescription: 'AI tool for summarizing and extracting key insights from academic research papers.',
+                fullDescription: 'A powerful full-stack web application designed to assist academics and researchers by automatically analyzing and summarizing large research papers and documents (PDF, DOCX). Leveraging advanced Natural Language Processing (NLP) and Large Language Models (LLM) via a secure backend, the tool extracts key findings, methodologies, and conclusions, significantly reducing reading time. It provides a structured, searchable interface for managing complex literature reviews.',
+                tools: ['Python', 'Flask', 'AI/LLM', 'Natural Language Processing (NLP)', 'HTML', 'CSS', 'JavaScript'],
+                tags: ['ai-ml', 'python', 'web-dev', 'full-stack'],
+                date: 'December 2024 (Late)',
+                github: 'https://github.com/sOuL2000s/research-analyzer.git',
+                livedemo: 'https://research-analyzer-web.onrender.com/'
+            },
+            // --- END NEW PROJECT ---
             {
                 id: 'ai-auctioneer-game', // New unique ID
                 type: 'individual',

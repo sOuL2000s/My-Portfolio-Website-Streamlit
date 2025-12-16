@@ -2999,5 +2999,5 @@ scrollToTopBtn.addEventListener("click", () => {
 
 ----------------------------------
 add the following project to my individual projects : 
-https://github.com/sOuL2000s/big-ai.git
-https://big-ai-chatbot.netlify.app/
+https://github.com/sOuL2000s/research-analyzer.git
+https://research-analyzer-web.onrender.com/
