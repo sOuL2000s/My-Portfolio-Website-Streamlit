@@ -41,7 +41,6 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/My-Dear-Diary.git',
                 livedemo: 'https://my-dear-digital-diary.netlify.app/'
             },
-            // --- NEW PROJECT INSERTED HERE ---
             {
                 id: 'research-analyzer',
                 type: 'individual',
@@ -54,6 +53,20 @@ const projectsData = [
                 date: 'December 2024 (Late)',
                 github: 'https://github.com/sOuL2000s/research-analyzer.git',
                 livedemo: 'https://research-analyzer-web.onrender.com/'
+            },
+            // --- NEW PROJECT INSERTED HERE ---
+            {
+                id: 'anandayoga-meditation-centre',
+                type: 'individual',
+                title: 'AnandaYog - Meditation Centre Full-Stack',
+                image: 'anandayoga-meditation-centre.png', // NOTE: Please add 'anandayoga-meditation-centre.png' to your project\'s root directory.
+                shortDescription: 'Comprehensive full-stack platform for a meditation center with booking, user profiles, and admin management.',
+                fullDescription: 'A comprehensive, full-stack web application developed for the AnandaYog Meditation Centre. This platform offers secure user authentication, course catalog management, class booking capabilities, and personalized user profiles. It includes a robust admin dashboard for managing schedules, user data, and content. Built using the MERN stack (MongoDB, Express, React, Node.js), it provides a seamless, dynamic, and responsive experience for both the center staff and their patrons.',
+                tools: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JavaScript', 'Full-Stack'],
+                tags: ['full-stack', 'react', 'web-dev'],
+                date: 'December 2024',
+                github: 'https://github.com/sOuL2000s/AnandaYog-Meditation-Centre-fullSTACK.git',
+                livedemo: 'https://ananda-yog-meditation-centre.vercel.app/'
             },
             // --- END NEW PROJECT ---
             {
@@ -511,7 +524,6 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/AI-Shape-Shifter-Website.git',
                 livedemo: 'https://ai-shape-shifter-website.netlify.app/'
             },
-            // --- NEW PROJECT INSERTED HERE ---
             {
                 id: 'big-ai-chatbot',
                 type: 'individual',
@@ -525,7 +537,6 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/big-ai.git',
                 livedemo: 'https://big-ai-chatbot.netlify.app/'
             },
-            // --- END NEW PROJECT ---
             {
                 id: 'cosmic-chat-ai',
                 type: 'individual',
