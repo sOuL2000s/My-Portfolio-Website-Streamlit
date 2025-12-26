@@ -173,6 +173,21 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/2048-Ultimate-Multi-Themed.git',
                 livedemo: 'https://2048-ultimate-multi-themed.netlify.app/'
             },
+            // --- NEW PROJECT ADDED HERE ---
+            {
+                id: 'mini-arcade-vanillajs-games',
+                type: 'individual',
+                title: 'Mini Arcade Mania - VanillaJS Games',
+                image: 'mini-arcade-mania.png', // NOTE: Please add 'mini-arcade-mania.png' to your project\'s root directory.
+                shortDescription: 'A curated arcade of classic mini-games built entirely with vanilla JavaScript.',
+                fullDescription: 'A collection of classic arcade mini-games developed solely using vanilla JavaScript, HTML, and CSS. This project focuses on implementing fundamental game mechanics, state management, and smooth user interaction without relying on external libraries or frameworks. It serves as a dedicated hub for quick, nostalgia-driven gameplay, demonstrating proficiency in core front-end game development.',
+                tools: ['HTML', 'CSS', 'JavaScript'],
+                tags: ['web-dev', 'javascript', 'game'],
+                date: 'November 2024',
+                github: 'https://github.com/sOuL2000s/mini-arcade-vanillajs-games.git',
+                livedemo: 'https://mini-arcade-mania.netlify.app/'
+            },
+            // --- END NEW PROJECT ADDED HERE ---
             {
                 id: 'guitar-chord-finder',
                 type: 'individual',
