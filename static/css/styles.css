@@ -970,3 +970,67 @@ body.dark-mode .project-action-icon {
 body.dark-mode .project-action-icon:hover {
     color: var(--primary-accent-dark);
 }
+
+/* --- New Styles for Search and Suggestions (Added for projects.html enhancement) --- */
+
+/* Style for the suggestion list items */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid var(--border-color-light);
+    white-space: normal; /* Allow text to wrap if necessary */
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: var(--skill-tag-bg); /* Use light background for hover */
+}
+body.dark-mode .suggestion-item:hover {
+    background-color: var(--skill-tag-bg-dark); /* Use darker background for hover */
+}
+
+.suggestion-item-image {
+    min-width: 40px; /* Fixed size */
+    max-width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.suggestion-item-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--heading-color-light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body.dark-mode .suggestion-item-title {
+    color: var(--heading-color-dark);
+}
+
+.suggestion-item-description {
+    font-size: 0.85rem;
+    color: var(--text-color-light);
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body.dark-mode .suggestion-item-description {
+    color: var(--text-color-dark);
+}
+
+/* Ensure the search input uses standard form styles */
+#projectSearchInput {
+    /* Override tailwind default padding if necessary for consistency */
+    padding: 0.9rem 1.2rem;
+}

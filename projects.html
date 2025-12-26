@@ -59,6 +59,16 @@
         <section id="projects" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">My Projects</h2>
 
+            <!-- NEW: Search Bar and Suggestions Container -->
+            <div class="mb-8 max-w-2xl mx-auto relative">
+                <input type="text" id="projectSearchInput" placeholder="Search projects by title, tool, or keyword..." 
+                    class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow !py-3 !px-4" autocomplete="off">
+                <!-- Search Suggestions Dropdown -->
+                <div id="searchSuggestions" class="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 rounded-md shadow-xl border border-gray-200 dark:border-gray-700 max-h-80 overflow-y-auto hidden">
+                    <!-- Suggestions will be injected here -->
+                </div>
+            </div>
+
             <!-- Project Filter Buttons -->
             <div class="mb-8 flex flex-wrap gap-3 justify-center md:justify-start">
                 <button class="filter-btn skill-tag active" data-filter="all">All</button>
@@ -71,12 +81,12 @@
                 <button class="filter-btn skill-tag" data-filter="team">Team Projects</button>
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Individual Projects</h3>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4" id="individualProjectsHeader">Individual Projects</h3>
             <div id="individual-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 <!-- Project cards will be dynamically inserted here -->
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4">Team Projects</h3>
+            <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4" id="teamProjectsHeader">Team Projects</h3>
             <div id="team-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 <!-- Team project cards will be dynamically inserted here -->
             </div>
@@ -182,19 +192,19 @@
     <script src="static/js/scripts.js" defer></script>
     <!-- Page-specific Scripts -->
     <script>
-        // --- Project Data and Modal Logic (Specific to projects.html) ---
-
+        // --- Project Data Access ---
+        // projectsData is defined in scripts.js and should be globally available here.
         
-
         // Global variables to store current index and filtered project list for modal navigation
         let currentModalProjectIndex = -1;
         let currentlyFilteredProjects = [];
 
-        // Function to create a project card HTML element
+        // Function to create a project card HTML element (Slightly modified to include 'all' tag)
         function createProjectCard(project) {
             const card = document.createElement('div');
+            // Ensure every card has the 'all' tag for the default filter
             card.className = 'project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0';
-            card.dataset.tags = project.tags.join(' '); // Add tags for filtering
+            card.dataset.tags = project.tags.join(' ') + ' all'; 
 
             card.innerHTML = `
                 ${project.livedemo ? `<a href="${project.livedemo}" target="_blank" aria-label="Live demo of ${project.title}" class="block">` : ''}
@@ -213,34 +223,56 @@
             return card;
         }
 
-        // Function to render projects into their respective grids on the projects.html page
-        function renderProjects() {
+        // Function to render projects based on a filter or search results
+        function renderProjects(projectsToRender) {
             const individualGrid = document.getElementById('individual-projects-grid');
             const teamGrid = document.getElementById('team-projects-grid');
-
+            const individualHeader = document.getElementById('individualProjectsHeader');
+            const teamHeader = document.getElementById('teamProjectsHeader');
+            
             if (!individualGrid || !teamGrid) return;
 
-            individualGrid.innerHTML = ''; // Clear existing content
-            teamGrid.innerHTML = ''; // Clear existing content
+            individualGrid.innerHTML = '';
+            teamGrid.innerHTML = '';
 
             // Sort projects by date in descending order (most recent first)
-            const sortedProjects = [...projectsData].sort((a, b) => {
-                const dateA = new Date(a.date.replace(/ \(.*\)/, '')); // Remove parenthetical info for date parsing
+            const sortedProjects = [...projectsToRender].sort((a, b) => {
+                const dateA = new Date(a.date.replace(/ \(.*\)/, ''));
                 const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
-                return dateB - dateA; // Descending order
+                return dateB - dateA;
             });
 
-            // Populate currentlyFilteredProjects for modal navigation
             currentlyFilteredProjects = sortedProjects;
+            
+            if (currentlyFilteredProjects.length === 0) {
+                individualGrid.innerHTML = '<p class="text-lg text-center col-span-full py-10 dark:text-text-color-dark">No projects match your current criteria.</p>';
+                individualHeader.style.display = 'none';
+                teamHeader.style.display = 'none';
+                return;
+            }
+            
+            individualHeader.style.display = 'block';
+            teamHeader.style.display = 'block';
 
-            sortedProjects.forEach(project => { // Loop through sortedProjects directly
+
+            let hasIndividual = false;
+            let hasTeam = false;
+
+            sortedProjects.forEach(project => {
                 const card = createProjectCard(project);
                 if (project.type === 'individual') {
                     individualGrid.appendChild(card);
+                    hasIndividual = true;
                 } else if (project.type === 'team') {
                     teamGrid.appendChild(card);
+                    hasTeam = true;
                 }
             });
+            
+            // Show/Hide headers based on filtered content
+            individualHeader.style.display = hasIndividual ? 'block' : 'none';
+            teamHeader.style.display = hasTeam ? 'block' : 'none';
+
 
             // Re-attach event listeners for dynamically created buttons
             document.querySelectorAll('.toggle-project-details').forEach(button => {
@@ -254,17 +286,154 @@
             });
         }
 
+
+        // --- 1. Filtering Logic (Fix) ---
+
+        function handleFiltering(filterTag) {
+            // Clear search input if filtering
+            document.getElementById('projectSearchInput').value = '';
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.filter-btn[data-filter="${filterTag}"]`).classList.add('active');
+
+            let filtered;
+            if (filterTag === 'all') {
+                filtered = projectsData;
+            } else {
+                filtered = projectsData.filter(project => project.tags.includes(filterTag));
+            }
+            
+            renderProjects(filtered);
+        }
+
+
+        // --- 2. Search Logic and Suggestions (New Feature) ---
+
+        const projectSearchInput = document.getElementById('projectSearchInput');
+        const searchSuggestionsContainer = document.getElementById('searchSuggestions');
+        const MIN_SEARCH_LENGTH = 1; 
+
+        function getSearchMatches(query) {
+            if (!query) return [];
+            const lowerQuery = query.toLowerCase();
+            
+            return projectsData.filter(project => 
+                // Search across multiple fields
+                project.title.toLowerCase().includes(lowerQuery) ||
+                (project.shortDescription && project.shortDescription.toLowerCase().includes(lowerQuery)) ||
+                (project.fullDescription && project.fullDescription.toLowerCase().includes(lowerQuery)) ||
+                project.tools.some(tool => tool.toLowerCase().includes(lowerQuery)) ||
+                project.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
+            ).slice(0, 10); // Limit suggestions to 10
+        }
+
+        function renderSuggestions(matches) {
+            searchSuggestionsContainer.innerHTML = '';
+            
+            if (matches.length === 0) {
+                searchSuggestionsContainer.innerHTML = `
+                    <div class="p-4 text-center dark:text-text-color-dark">No matching projects found.</div>
+                `;
+                searchSuggestionsContainer.classList.remove('hidden');
+                return;
+            }
+
+            matches.forEach(project => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.className = 'suggestion-item';
+                
+                // When a suggestion is clicked, execute the full search and render projects
+                suggestionItem.addEventListener('click', () => {
+                    // Set the search input to the project title
+                    projectSearchInput.value = project.title;
+                    // Execute the filter/render using the full match list
+                    handleSearchExecution(project.title);
+                });
+
+                suggestionItem.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="suggestion-item-image">
+                    <div class="flex flex-col min-w-0">
+                        <div class="suggestion-item-title">${project.title}</div>
+                        <div class="suggestion-item-description">${project.shortDescription || project.type}</div>
+                    </div>
+                `;
+                searchSuggestionsContainer.appendChild(suggestionItem);
+            });
+
+            searchSuggestionsContainer.classList.remove('hidden');
+        }
+
+        function handleSearchInput() {
+            const query = projectSearchInput.value.trim();
+            if (query.length >= MIN_SEARCH_LENGTH) {
+                const matches = getSearchMatches(query);
+                renderSuggestions(matches);
+            } else {
+                searchSuggestionsContainer.classList.add('hidden');
+            }
+        }
+        
+        function handleSearchExecution(query) {
+            // Clear active filter button state
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.filter-btn[data-filter="all"]`).classList.add('active'); // Re-activate 'All' filter
+
+            const matchedProjects = getSearchMatches(query);
+            renderProjects(matchedProjects);
+            
+            // Hide suggestions dropdown
+            searchSuggestionsContainer.classList.add('hidden');
+        }
+
+
+        // --- 3. Initialization and Modal Logic ---
+
         document.addEventListener('DOMContentLoaded', () => {
-            renderProjects(); // Call on page load
+            if (typeof projectsData !== 'undefined') {
+                renderProjects(projectsData);
+            }
+            
+            // Attach filtering listeners
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    handleFiltering(e.target.dataset.filter);
+                });
+            });
 
+            // Attach search listeners
+            if (projectSearchInput) {
+                projectSearchInput.addEventListener('input', handleSearchInput);
+                
+                // Search execution upon pressing Enter
+                projectSearchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleSearchExecution(projectSearchInput.value.trim());
+                    }
+                });
+            }
 
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (projectSearchInput && searchSuggestionsContainer && 
+                    !projectSearchInput.contains(e.target) && 
+                    !searchSuggestionsContainer.contains(e.target)) 
+                {
+                    searchSuggestionsContainer.classList.add('hidden');
+                }
+            });
+            
+            // Re-show suggestions if user focuses back on input
+            if (projectSearchInput) {
+                projectSearchInput.addEventListener('focus', handleSearchInput);
+            }
         });
-
 
         // Project Modal Logic
         const projectModal = document.getElementById('projectModal');
         const modalCloseBtn = projectModal.querySelector('.modal-close-btn');
-
         const modalImage = document.getElementById('modal-project-image');
         const modalTitle = document.getElementById('modal-project-title');
         const modalDescription = document.getElementById('modal-project-description');
@@ -280,10 +449,9 @@
             modalImage.src = projectData.image;
             modalImage.alt = projectData.title;
             modalTitle.textContent = projectData.title;
-            modalDescription.textContent = projectData.fullDescription; // Use full description
+            modalDescription.textContent = projectData.fullDescription;
             modalDate.textContent = projectData.date;
 
-            // Clear previous tools
             modalTools.innerHTML = '';
             projectData.tools.forEach(tool => {
                 const span = document.createElement('span');
@@ -292,7 +460,6 @@
                 modalTools.appendChild(span);
             });
 
-            // Set links, hide if not present
             if (projectData.github) {
                 modalGithubLink.href = projectData.github;
                 modalGithubLink.style.display = 'flex';
@@ -306,9 +473,9 @@
                 modalLivedemoLink.style.display = 'none';
             }
 
-            // Update navigation buttons visibility/state
             currentModalProjectIndex = currentlyFilteredProjects.findIndex(p => p.id === projectData.id);
 
+            // Previous Button
             if (currentModalProjectIndex > 0) {
                 modalPrevBtn.style.display = 'flex';
                 modalPrevBtn.onclick = () => {
@@ -318,6 +485,7 @@
                 modalPrevBtn.style.display = 'none';
             }
 
+            // Next Button
             if (currentModalProjectIndex < currentlyFilteredProjects.length - 1) {
                 modalNextBtn.style.display = 'flex';
                 modalNextBtn.onclick = () => {
@@ -329,7 +497,7 @@
 
             projectModal.classList.add('show');
             document.body.classList.add('no-scroll');
-            projectModal.focus(); // Set focus to the modal for accessibility
+            projectModal.focus();
         }
 
         function closeProjectModal() {
@@ -339,7 +507,7 @@
 
         modalCloseBtn.addEventListener('click', closeProjectModal);
         projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) { // Only close if clicking on the overlay itself
+            if (e.target === projectModal) {
                 closeProjectModal();
             }
         });
