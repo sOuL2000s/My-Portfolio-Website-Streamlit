@@ -61,8 +61,14 @@
 
             <!-- NEW: Search Bar and Suggestions Container -->
             <div class="mb-8 max-w-2xl mx-auto relative">
-                <input type="text" id="projectSearchInput" placeholder="Search projects by title, tool, or keyword..." 
-                    class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow !py-3 !px-4" autocomplete="off">
+                <div class="relative">
+                    <input type="text" id="projectSearchInput" placeholder="Search projects by title, tool, or keyword..." 
+                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow !py-3 !px-4 pr-12" autocomplete="off">
+                    <!-- NEW CLEAR BUTTON -->
+                    <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
+                        <i class="fas fa-times-circle text-xl"></i>
+                    </button>
+                </div>
                 <!-- Search Suggestions Dropdown -->
                 <div id="searchSuggestions" class="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 rounded-md shadow-xl border border-gray-200 dark:border-gray-700 max-h-80 overflow-y-auto hidden">
                     <!-- Suggestions will be injected here -->
@@ -291,7 +297,10 @@
 
         function handleFiltering(filterTag) {
             // Clear search input if filtering
-            document.getElementById('projectSearchInput').value = '';
+            if (projectSearchInput) {
+                projectSearchInput.value = '';
+                if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+            }
             document.getElementById('searchSuggestions').classList.add('hidden');
             
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -313,6 +322,8 @@
 
         const projectSearchInput = document.getElementById('projectSearchInput');
         const searchSuggestionsContainer = document.getElementById('searchSuggestions');
+        // NEW REFERENCE
+        const clearSearchBtn = document.getElementById('clearSearchBtn'); 
         const MIN_SEARCH_LENGTH = 1; 
 
         function getSearchMatches(query) {
@@ -364,9 +375,30 @@
 
             searchSuggestionsContainer.classList.remove('hidden');
         }
+        
+        // NEW FUNCTION: Handle clearing the search
+        function handleClearSearch() {
+            if (!projectSearchInput) return;
+            projectSearchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            searchSuggestionsContainer.classList.add('hidden');
+            
+            // Re-render all projects and reset filters (robust reset)
+            handleFiltering('all'); 
+        }
 
         function handleSearchInput() {
             const query = projectSearchInput.value.trim();
+            
+            // Manage clear button visibility (NEW)
+            if (clearSearchBtn) {
+                if (query.length > 0) {
+                    clearSearchBtn.classList.remove('hidden');
+                } else {
+                    clearSearchBtn.classList.add('hidden');
+                }
+            }
+            
             if (query.length >= MIN_SEARCH_LENGTH) {
                 const matches = getSearchMatches(query);
                 renderSuggestions(matches);
@@ -413,13 +445,24 @@
                         handleSearchExecution(projectSearchInput.value.trim());
                     }
                 });
+                
+                // Attach clear button listener (NEW)
+                if (clearSearchBtn) {
+                    clearSearchBtn.addEventListener('click', handleClearSearch);
+                    
+                    // Initial check for clear button visibility
+                    if (projectSearchInput.value.trim().length > 0) {
+                        clearSearchBtn.classList.remove('hidden');
+                    }
+                }
             }
 
             // Hide suggestions when clicking outside
             document.addEventListener('click', (e) => {
                 if (projectSearchInput && searchSuggestionsContainer && 
                     !projectSearchInput.contains(e.target) && 
-                    !searchSuggestionsContainer.contains(e.target)) 
+                    !searchSuggestionsContainer.contains(e.target) &&
+                    (!clearSearchBtn || !clearSearchBtn.contains(e.target))) // Check clear button too
                 {
                     searchSuggestionsContainer.classList.add('hidden');
                 }
