@@ -16,6 +16,19 @@ const projectsData = [
                 livedemo: 'https://100-infinite-time-waster-games.netlify.app/'
             },
             {
+                id: 'numerology-calculator',
+                type: 'individual',
+                title: 'Numerology Calculator',
+                image: 'numerology-calculator.png', // NOTE: Please add 'numerology-calculator.png' to your project\'s root directory.
+                shortDescription: 'A web application that calculates and explains personal numerology (Life Path, Destiny, etc.).',
+                fullDescription: 'A dedicated web application that calculates core numerological numbers, such as Life Path Number, Destiny Number (Expression), and Soul Urge Number, based on the user\'s full name and birth date. Built primarily with front-end technologies, the project focuses on implementing accurate, complex mathematical logic to derive these numbers and displaying clear, interpretative results. The application features a clean interface, making the abstract concepts of numerology accessible and engaging.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Mathematical Logic'],
+                tags: ['web-dev', 'javascript', 'utility'],
+                date: 'December 2024 (Early)',
+                github: 'https://github.com/sOuL2000s/numerology-calculator.git',
+                livedemo: 'https://numerology-calculator-bay.vercel.app/'
+            },
+            {
                 id: 'ultimate-notepad',
                 type: 'individual',
                 title: 'Ultimate Notepad',
