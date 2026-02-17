@@ -81,6 +81,19 @@ const projectsData = [
                 github: 'https://github.com/sOuL2000s/AnandaYog-Meditation-Centre-fullSTACK.git',
                 livedemo: 'https://ananda-yog-meditation-centre.vercel.app/'
             },
+            {
+                id: 'the-great-dictator-tts-reader',
+                type: 'individual',
+                title: 'The Great Dictator (Text-to-Speech) Engine',
+                image: 'the-great-dictator-tts.png', // NOTE: Please add 'the-great-dictator-tts.png' to your project\'s root directory.
+                shortDescription: 'A client-side web application for robust text-to-speech (TTS) synthesis and dictation using the Web Speech API.',
+                fullDescription: 'A specialized single-page web application built entirely on the client-side to function as a powerful dictation and text-to-speech (TTS) engine. Utilizing the native Web Speech API, the application allows users to input text and have it read aloud. Key features include the ability to play, pause, and adjust speech parameters (voice, rate, pitch) directly in the browser without relying on any backend server or external API. The project focuses on utilizing modern browser APIs to create an accessible reading experience, demonstrating proficiency in client-side media and speech synthesis integration.',
+                tools: ['HTML', 'CSS', 'JavaScript', 'Web Speech API'],
+                tags: ['web-dev', 'javascript', 'utility'],
+                date: 'December 2024 (Late)',
+                github: 'https://github.com/sOuL2000s/The-Great-Dictator-TTS-ClientSIDE-.git',
+                livedemo: 'https://the-great-dictator-reading-proudly.netlify.app/'
+            },
             // --- END NEW PROJECT ---
             {
                 id: 'ai-auctioneer-game', // New unique ID
