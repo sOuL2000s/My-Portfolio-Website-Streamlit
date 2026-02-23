@@ -666,9 +666,11 @@ const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle'); //
 
 const applyDarkMode = (isDark) => {
     if (isDark) {
+        document.documentElement.classList.add('dark-mode'); // Apply to html for global styles like scrollbars
         document.body.classList.add('dark-mode');
         if (darkModeToggle) darkModeToggle.classList.add('dark');
     } else {
+        document.documentElement.classList.remove('dark-mode');
         document.body.classList.remove('dark-mode');
         if (darkModeToggle) darkModeToggle.classList.remove('dark');
     }
@@ -676,7 +678,8 @@ const applyDarkMode = (isDark) => {
 
 // Apply saved dark mode preference on load
 document.addEventListener('DOMContentLoaded', () => {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    // Default to dark mode if no preference is saved (localStorage returns null)
+    const savedDarkMode = localStorage.getItem('darkMode') !== 'false';
     applyDarkMode(savedDarkMode);
     populateSiteAssistantProjects(); // Populate for the site assistant modal
 });

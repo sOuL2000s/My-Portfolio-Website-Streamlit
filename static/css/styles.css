@@ -1,37 +1,38 @@
 /* Custom CSS for dark mode transition and scroll behavior */
 :root {
-    /* Light Mode Variables - Refined for a softer, modern look */
-    --bg-color-light: #f8f9fa; /* Very light gray */
-    --main-bg-light: #ffffff; /* Pure white for cards */
-    --text-color-light: #343a40; /* Dark charcoal for body text */
-    --heading-color-light: #212529; /* Even darker for headings */
-    --primary-accent: #007bff; /* Vibrant blue for primary accent */
-    --primary-accent-darker: #0056b3; /* Darker blue for hover */
-    --secondary-accent: #6c757d; /* Muted gray for secondary */
-    --skill-tag-bg: #e9ecef; /* Light gray for skill tags */
-    --skill-tag-border: #dee2e6; /* Subtle border for skill tags */
-    --border-color-light: #e0e0e0; /* Light border */
-    --shadow-color-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
-    --navbar-bg-light: #ffffff; /* White for navbar in light mode */
+    /* Light Mode Variables - Improved Contrast & Sophistication */
+    --bg-color-light: #f8fafc; /* Slate 50: Clean, subtle grey-blue background */
+    --main-bg-light: #ffffff;
+    --text-color-light: #475569; /* Slate 600: Softer, more professional text */
+    --heading-color-light: #0f172a; /* Slate 900: Deep, high-contrast headings */
+    --primary-accent: #2563eb; /* Blue 600: More vibrant blue */
+    --primary-accent-darker: #1d4ed8; 
+    --secondary-accent: #6366f1; /* Indigo: Adds a complementary sophisticated tone */
+    --skill-tag-bg: #f1f5f9;
+    --skill-tag-border: #e2e8f0;
+    --border-color-light: #cbd5e1; /* Slate 300: Defined borders reduce the "all-white" feel */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 15px -3px rgba(148, 163, 184, 0.2);
+    --shadow-color-light: rgba(148, 163, 184, 0.15);
+    --navbar-bg-light: rgba(255, 255, 255, 0.9); /* Subtle glassmorphism */
 
-    /* Dark Mode Variables - Adjusted for better contrast and aesthetics */
-    --bg-color-dark: #1a1a1a; /* Deep dark background */
-    --main-bg-dark: #2c2c2c; /* Slightly lighter dark card background */
-    --text-color-dark: #e0e0e0; /* Light gray text */
-    --heading-color-dark: #f8f9fa; /* White headings */
-    --primary-accent-dark: #8be9fd; /* Light blue/cyan accent */
-    --primary-accent-dark-hover: #50fa7b; /* Green accent for hover */
-    --secondary-accent-dark: #9da3af; /* Lighter gray for secondary */
-    --button-bg-color-dark: #6272a4; /* Muted blue for buttons */
-    --button-hover-bg-color-dark: #44475a; /* Darker muted blue for button hover */
-    --skill-tag-bg-dark: #3a3a3a; /* Darker gray for skill tags */
-    --skill-tag-border-dark: #495057; /* Darker border for skill tags */
-    --border-color-dark: #444444; /* Dark border color */
-    --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow color */
-    --navbar-bg-dark: #121212; /* Very dark blue for navbar */
+    /* Dark Mode Variables */
+    --bg-color-dark: #0f172a;
+    --main-bg-dark: #1e293b;
+    --text-color-dark: #cbd5e1;
+    --heading-color-dark: #f1f5f9;
+    --primary-accent-dark: #60a5fa;
+    --primary-accent-dark-hover: #34d399;
+    --secondary-accent-dark: #94a3b8;
+    --button-bg-color-dark: #334155;
+    --button-hover-bg-color-dark: #475569;
+    --skill-tag-bg-dark: #334155;
+    --skill-tag-border-dark: #475569;
+    --border-color-dark: #334155;
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --navbar-bg-dark: #0f172a;
 
-    /* NEW: Variable for caret color */
-    --caret-color: var(--primary-accent); /* Default caret color (light mode) */
+    --caret-color: var(--primary-accent);
 }
 
 body {
@@ -40,8 +41,9 @@ body {
     color: var(--text-color-light);
     transition: background-color 0.4s ease, color 0.4s ease;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* GLOBAL FIX: Prevent horizontal scrollbar caused by any rogue elements */
-    line-height: 1.7; /* Adjusted for better readability */
+    overflow-x: hidden;
+    overflow-y: auto; /* Explicitly ensure vertical scroll */
+    line-height: 1.6; /* More compact reading */
 }
 
 @media (max-width: 767px) { /* Apply padding only on mobile */
@@ -57,6 +59,57 @@ body.dark-mode {
     --caret-color: var(--primary-accent-dark);
 }
 
+/* Custom Scrollbar Styling - Standardized and forced visibility */
+::-webkit-scrollbar {
+    width: 12px; /* Slightly wider for better visibility */
+    height: 12px;
+    display: block !important;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-accent);
+    border-radius: 10px;
+    border: 3px solid var(--bg-color-light);
+    min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-accent-darker);
+}
+
+/* Webkit Scrollbar Dark Mode */
+.dark-mode ::-webkit-scrollbar-track {
+    background: var(--bg-color-dark);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--primary-accent-dark);
+    border: 3px solid var(--bg-color-dark);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-accent-dark-hover);
+}
+
+/* For Firefox & Standards - Applied to HTML for global scrollbar */
+html {
+    scrollbar-width: auto; /* Better visibility for main scrollbar */
+    scrollbar-color: var(--primary-accent) var(--bg-color-light);
+}
+
+html.dark-mode {
+    scrollbar-color: var(--primary-accent-dark) var(--bg-color-dark);
+}
+
+/* Internal scrolls still use thin for space efficiency */
+* {
+    scrollbar-width: thin;
+}
+
 /* Prevent scrolling when modal is open */
 body.no-scroll {
     overflow: hidden;
@@ -67,13 +120,20 @@ body.no-scroll {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Main content area styling */
+/* Main content area styling - Compact */
 .main-content-card {
     background-color: var(--main-bg-light);
-    box-shadow: 0px 10px 30px var(--shadow-color-light);
-    border-radius: 1.5rem; /* Even more rounded */
+    box-shadow: var(--shadow-sm);
+    border-radius: 1rem;
+    padding: 1.25rem; /* Further reduced for compactness */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border: 1px solid var(--border-color-light); /* Subtle border */
+    border: 1px solid var(--border-color-light);
+}
+
+@media (max-width: 639px) {
+    .main-content-card {
+        padding: 1rem;
+    }
 }
 .main-content-card:hover {
     transform: translateY(-5px) scale(1.01); /* More subtle lift, slight scale */
@@ -96,6 +156,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color-light);
     letter-spacing: -0.02em; /* Slightly tighter letter-spacing */
 }
+
+@media (max-width: 639px) {
+    h1 { font-size: 1.5rem !important; line-height: 1.2 !important; }
+    h2 { font-size: 1.25rem !important; line-height: 1.2 !important; }
+    h3 { font-size: 1.1rem !important; line-height: 1.2 !important; }
+}
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
     color: var(--heading-color-dark);
 }
@@ -113,19 +179,20 @@ a:hover {
     text-decoration: underline; /* Add underline on hover for clarity */
 }
 
-/* Buttons */
+/* Buttons - Refined & Compact */
 .btn-primary {
     background-color: var(--primary-accent);
     color: white;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    border-radius: 9999px; /* Pill shape */
-    padding: 0.85rem 2.2rem; /* Slightly larger padding */
+    border-radius: 0.5rem; /* More modern, less pill-like */
+    padding: 0.5rem 1.5rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper initial shadow */
+    font-size: 0.9rem;
+    text-transform: none; /* Removed uppercase */
+    letter-spacing: normal; /* Removed letter-spacing */
+    box-shadow: var(--shadow-sm);
     position: relative;
-    overflow: hidden; /* For ripple effect */
+    overflow: hidden;
 }
 .btn-primary:hover {
     background-color: var(--primary-accent-darker);
@@ -145,15 +212,22 @@ body.dark-mode .btn-primary:hover {
 
 /* Skill Tags */
 .skill-tag {
-    display: inline-block; /* Ensure tags respect margin/padding correctly */
+    display: inline-block;
     background-color: var(--skill-tag-bg);
     color: var(--text-color-light);
     border: 1px solid var(--skill-tag-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); /* Slightly deeper shadow */
-    border-radius: 0.75rem; /* More rounded */
-    padding: 0.7rem 1.2rem; /* Slightly larger padding */
-    font-size: 0.95rem; /* Slightly larger font */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border-radius: 0.5rem; /* Slightly less rounded for tighter fit */
+    padding: 0.4rem 0.8rem; /* Reduced padding */
+    font-size: 0.85rem; /* Reduced font size */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 639px) {
+    .skill-tag {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.65rem;
+    }
 }
 .skill-tag:hover {
     transform: translateY(-3px) scale(1.02); /* More pronounced lift + scale */
@@ -175,11 +249,19 @@ body.dark-mode .skill-tag:hover {
 .project-card {
     background-color: var(--main-bg-light);
     border: 1px solid var(--border-color-light);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Deeper initial shadow */
-    border-radius: 1.25rem; /* More rounded */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    padding: 1rem !important; /* Force tight padding */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease;
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack children vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 639px) {
+    .project-card h4 { font-size: 0.9rem !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; }
+    .project-card .short-summary { font-size: 0.75rem !important; margin-bottom: 0.25rem !important; line-height: 1.3 !important; }
+    .project-card { padding: 0.5rem !important; }
+    .project-card .project-card-actions { padding-top: 0.5rem !important; }
 }
 .project-card:hover {
     transform: translateY(-5px) scale(1.01); /* More subtle lift + scale */
@@ -204,12 +286,19 @@ body.dark-mode .project-card ul li {
     color: var(--text-color-dark);
 }
 .project-image {
-    border-radius: 0.75rem; /* Match card radius */
+    border-radius: 0.75rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 100%; /* Ensure images never overflow their container */
-    height: 12rem; /* Fixed height for consistency */
-    object-fit: cover; /* Cover the area, crop if necessary */
-    margin-bottom: 1rem;
+    max-width: 100%;
+    height: 10rem; /* Reduced desktop height */
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+}
+
+@media (max-width: 639px) {
+    .project-image {
+        height: 5.5rem; /* Drastic reduction for 2-column view */
+        margin-bottom: 0.5rem;
+    }
 }
 body.dark-mode .project-image {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -332,15 +421,38 @@ body.dark-mode .profile-img {
     transform: translateY(0);
 }
 
-/* Specific styling for Education and Achievement entries */
-.education-entry, .achievement-entry {
-    background-color: var(--main-bg-light);
+/* COMPACT GRID FOR REDUCED SCROLLING */
+.compact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .compact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Specific styling for Education, Achievement and Experience entries - Compact */
+.education-entry, .achievement-entry, .experience-entry {
+    background-color: #f8fafc; /* Slate 50 background to stand out from white cards */
     border: 1px solid var(--border-color-light);
-    border-radius: 1rem; /* More rounded */
-    padding: 1.8rem; /* More padding */
-    margin-bottom: 1.25rem; /* Slightly more space */
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06); /* Softer shadow */
+    border-left: 4px solid var(--primary-accent); /* Visual indicator */
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 639px) {
+    .education-entry, .achievement-entry, .experience-entry {
+        padding: 0.6rem;
+        margin-bottom: 0.5rem;
+        border-left-width: 2px;
+    }
 }
 
 .education-entry:hover, .achievement-entry:hover {
@@ -349,15 +461,19 @@ body.dark-mode .profile-img {
     border-color: var(--primary-accent); /* Accent border on hover */
 }
 
-body.dark-mode .education-entry, body.dark-mode .achievement-entry {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-    box-shadow: 0 5px 12px var(--shadow-color-dark);
+body.dark-mode .education-entry, body.dark-mode .achievement-entry, body.dark-mode .experience-entry {
+    background-color: rgba(30, 41, 59, 0.4); /* Slightly more transparent for depth */
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-left: 4px solid var(--primary-accent-dark); /* Ensure explicit border-left in dark mode */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover {
-    box-shadow: 0 10px 25px var(--shadow-color-dark);
-    border-color: var(--primary-accent-dark); /* Accent border on hover */
+body.dark-mode .education-entry:hover, body.dark-mode .achievement-entry:hover, body.dark-mode .experience-entry:hover {
+    background-color: rgba(30, 41, 59, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(96, 165, 250, 0.3);
+    border-left-color: var(--primary-accent-dark-hover); /* Vibrant green-ish accent on hover */
+    transform: translateX(5px) translateY(-5px); /* Added slight horizontal slide on hover */
 }
 
 /* Icons for achievements */
@@ -669,11 +785,19 @@ body.dark-mode .site-assistant-project-item:hover {
     }
 }
 
-/* Hero section specific styling */
+/* Hero section specific styling - Compact */
 .hero-section-bg {
-    background: linear-gradient(135deg, var(--bg-color-light) 0%, var(--main-bg-light) 100%);
+    background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%); /* Stronger gradient for visual separation */
     position: relative;
     overflow: hidden;
+    padding: 1.5rem 1rem !important; /* Even more compact */
+}
+
+@media (max-width: 639px) {
+    .hero-section-bg {
+        padding: 1rem 0.75rem !important;
+    }
+    .hero-section-bg p { font-size: 0.9rem !important; line-height: 1.4 !important; }
 }
 body.dark-mode .hero-section-bg {
     background: linear-gradient(135deg, var(--bg-color-dark) 0%, var(--main-bg-dark) 100%);
@@ -899,6 +1023,14 @@ body.dark-mode .modal-image {
     font-weight: 500;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 639px) {
+    .btn-secondary-small, .btn-primary-small {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
     display: inline-flex; /* Ensure icon and text align */
     align-items: center;
@@ -959,6 +1091,14 @@ body.dark-mode .btn-primary-small:hover {
     height: 2.5rem;
     border-radius: 50%;
 }
+
+@media (max-width: 639px) {
+    .project-action-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.9rem;
+    }
+}
 .project-action-icon:hover {
     color: var(--primary-accent); /* Accent color on hover */
     transform: translateY(-2px) scale(1.1); /* Subtle lift and scale */
@@ -1003,6 +1143,17 @@ body.dark-mode .suggestion-item:hover {
     border-radius: 6px;
     margin-right: 1rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 639px) {
+    .suggestion-item-image {
+        min-width: 30px;
+        max-width: 30px;
+        height: 30px;
+        margin-right: 0.5rem;
+    }
+    .suggestion-item-title { font-size: 0.85rem; }
+    .suggestion-item-description { font-size: 0.7rem; }
 }
 
 .suggestion-item-title {

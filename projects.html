@@ -47,7 +47,7 @@
                 <nav id="navLinksDesktop" class="nav-links-desktop hidden md:flex md:space-x-6">
                     <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Home</a>
                     <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Projects</a>
-                    <a href="education-achievements.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Education & Achievements</a>
+                    <a href="education-achievements.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Experience & Edu</a>
                     <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors-shadow dark:text-text-color-dark dark:hover:text-primary-accent-dark">Contact</a>
                 </nav>
             </div>
@@ -60,13 +60,13 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">My Projects</h2>
 
             <!-- NEW: Search Bar and Suggestions Container -->
-            <div class="mb-8 max-w-2xl mx-auto relative">
+            <div class="mb-6 md:mb-8 max-w-2xl mx-auto relative">
                 <div class="relative">
-                    <input type="text" id="projectSearchInput" placeholder="Search projects by title, tool, or keyword..." 
-                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow !py-3 !px-4 pr-12" autocomplete="off">
+                    <input type="text" id="projectSearchInput" placeholder="Search projects..." 
+                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off">
                     <!-- NEW CLEAR BUTTON -->
-                    <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
-                        <i class="fas fa-times-circle text-xl"></i>
+                    <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 md:mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
+                        <i class="fas fa-times-circle text-lg md:text-xl"></i>
                     </button>
                 </div>
                 <!-- Search Suggestions Dropdown -->
@@ -87,13 +87,13 @@
                 <button class="filter-btn skill-tag" data-filter="team">Team Projects</button>
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold mb-4" id="individualProjectsHeader">Individual Projects</h3>
-            <div id="individual-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <h3 class="text-xl md:text-3xl font-bold mb-3 md:mb-4" id="individualProjectsHeader">Individual Projects</h3>
+            <div id="individual-projects-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
                 <!-- Project cards will be dynamically inserted here -->
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold mt-10 mb-4" id="teamProjectsHeader">Team Projects</h3>
-            <div id="team-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <h3 class="text-xl md:text-3xl font-bold mt-8 md:mt-10 mb-3 md:mb-4" id="teamProjectsHeader">Team Projects</h3>
+            <div id="team-projects-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
                 <!-- Team project cards will be dynamically inserted here -->
             </div>
         </section>
@@ -157,7 +157,7 @@
             </a>
             <a href="education-achievements.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
                 <i class="fas fa-graduation-cap text-xl"></i>
-                <span class="mt-1">Edu & Ach</span>
+                <span class="mt-1">Exp & Edu</span>
             </a>
             <a href="contact.html" class="nav-item flex flex-col items-center text-xs px-2 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-primary-accent-dark transition-colors">
                 <i class="fas fa-envelope text-xl"></i>
