@@ -3,6 +3,20 @@
 const projectsData = [
             // Individual Projects
             {
+                id: 'soulvision-all-in-one',
+                type: 'individual',
+                featured: true,
+                title: '✨ sOuLViSiON ✨ - The Ultimate Digital Sanctuary',
+                image: 'soulvision.png', 
+                shortDescription: 'The Ultimate All-in-One Digital Sanctuary featuring AI assistants, markdown notes, music player, and more.',
+                fullDescription: 'sOuLViSiON is an immersive, high-performance digital workspace. It integrates sOuLAI (multi-model AI with auto-key rotation), sOuLNOTES (Markdown/LaTeX vault with instant sync), sOuLPLAY (Vinyl-aesthetic music player with pro equalizer), and sOuLCRICKET (a deep hand-cricket simulator). Built with a focus on digital minimalism and performance, it leverages MongoDB for cloud persistence and features a seamless, client-side first architecture.',
+                tools: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Node.js', 'MongoDB', 'Gemini AI', 'Google Auth'],
+                tags: ['full-stack', 'ai-ml', 'web-dev', 'javascript', 'node'],
+                date: 'December 2024 (Featured)',
+                github: 'https://github.com/sOuL2000s/sOuLViSiON.git',
+                livedemo: 'https://soulvision-all-in-one.vercel.app/'
+            },
+            {
                 id: '100-infinite-time-waster-games',
                 type: 'individual',
                 title: '100 Infinite Time Waster Games HUB',
@@ -781,8 +795,10 @@ const populateSiteAssistantProjects = () => {
 
     siteAssistantProjectList.innerHTML = ''; // Clear previous list
 
-    // Sort projects by date descending (most recent first)
+    // Sort projects: Featured first, then by date descending
     const sortedProjects = [...projectsData].sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
         const dateA = new Date(a.date.replace(/ \(.*\)/, ''));
         const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
         return dateB - dateA;

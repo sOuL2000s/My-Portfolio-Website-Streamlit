@@ -258,8 +258,25 @@ body.dark-mode .skill-tag:hover {
 }
 
 @media (max-width: 639px) {
-    .project-card h4 { font-size: 0.9rem !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; }
-    .project-card .short-summary { font-size: 0.75rem !important; margin-bottom: 0.25rem !important; line-height: 1.3 !important; }
+    .project-card h4 { 
+        font-size: 0.9rem !important; 
+        margin-bottom: 0.25rem !important; 
+        line-height: 1.2 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit title to 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.4em; /* Ensure consistent title height */
+    }
+    .project-card .short-summary { 
+        font-size: 0.75rem !important; 
+        margin-bottom: 0.25rem !important; 
+        line-height: 1.3 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit summary to 3 lines on mobile */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
     .project-card { padding: 0.5rem !important; }
     .project-card .project-card-actions { padding-top: 0.5rem !important; }
 }
@@ -268,14 +285,62 @@ body.dark-mode .skill-tag:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
     border-color: var(--primary-accent); /* Accent border on hover */
 }
+
+.project-card h4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.5rem; /* Increased slightly for better presentation */
+}
+
+.project-card .short-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit summary for alignment */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 4.5rem; /* Ensure consistent text block size */
+}
 body.dark-mode .project-card {
     background-color: var(--main-bg-dark);
     border: 1px solid var(--border-color-dark);
 }
 body.dark-mode .project-card:hover {
-    box-shadow: 0 10px 25px var(--shadow-color-dark);
+    box-shadow: 0px 10px 25px var(--shadow-color-dark);
     border-color: var(--primary-accent-dark); /* Accent border on hover */
 }
+
+/* Featured Project Styling */
+.featured-project-card {
+    border: 2px solid var(--primary-accent) !important;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+}
+body.dark-mode .featured-project-card {
+    border: 2px solid var(--primary-accent-dark) !important;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #f0ad4e, #d9534f);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: pulseFeatured 2s infinite;
+}
+
+@keyframes pulseFeatured {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 /* Project card text color fix */
 .project-card p,
 .project-card ul li {
@@ -288,15 +353,15 @@ body.dark-mode .project-card ul li {
 .project-image {
     border-radius: 0.75rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 100%;
-    height: 10rem; /* Reduced desktop height */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Consistent aspect ratio */
     object-fit: cover;
     margin-bottom: 0.75rem;
 }
 
 @media (max-width: 639px) {
     .project-image {
-        height: 5.5rem; /* Drastic reduction for 2-column view */
+        aspect-ratio: 4 / 3; /* Slightly taller for smaller cards */
         margin-bottom: 0.5rem;
     }
 }
@@ -1077,9 +1142,27 @@ body.dark-mode .btn-primary-small:hover {
 
 /* NEW: Project card action icons (GitHub/Live Demo on card) */
 .project-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Fix for small screens like 300px width */
+    gap: 0.5rem;
     /* Ensures this area transitions colors properly */
     transition: border-color 0.4s ease, background-color 0.4s ease;
 }
+
+@media (max-width: 400px) {
+    .project-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .project-card-actions > div {
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.25rem;
+    }
+}
+
 .project-action-icon {
     color: var(--text-color-light); /* Default icon color */
     transition: color 0.3s ease, transform 0.2s ease;

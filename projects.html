@@ -88,12 +88,12 @@
             </div>
 
             <h3 class="text-xl md:text-3xl font-bold mb-3 md:mb-4" id="individualProjectsHeader">Individual Projects</h3>
-            <div id="individual-projects-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
+            <div id="individual-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
                 <!-- Project cards will be dynamically inserted here -->
             </div>
 
             <h3 class="text-xl md:text-3xl font-bold mt-8 md:mt-10 mb-3 md:mb-4" id="teamProjectsHeader">Team Projects</h3>
-            <div id="team-projects-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
+            <div id="team-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
                 <!-- Team project cards will be dynamically inserted here -->
             </div>
         </section>
@@ -209,14 +209,15 @@
         function createProjectCard(project) {
             const card = document.createElement('div');
             // Ensure every card has the 'all' tag for the default filter
-            card.className = 'project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0';
+            card.className = `project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0 relative ${project.featured ? 'featured-project-card' : ''}`;
             card.dataset.tags = project.tags.join(' ') + ' all'; 
 
             card.innerHTML = `
+                ${project.featured ? '<div class="featured-badge">FEATURED</div>' : ''}
                 ${project.livedemo ? `<a href="${project.livedemo}" target="_blank" aria-label="Live demo of ${project.title}" class="block">` : ''}
                     <img src="${project.image}" alt="${project.title}" loading="lazy" class="project-image">
                 ${project.livedemo ? `</a>` : ''}
-                <h4 class="text-xl font-semibold mb-3 break-words">${project.title}</h4>
+                <h4 class="text-xl font-semibold mb-3 break-words ${project.featured ? 'text-blue-600 dark:text-primary-accent-dark' : ''}">${project.title}</h4>
                 <p class="short-summary text-base mb-2 flex-grow break-words">${project.shortDescription}</p>
                 <div class="project-card-actions flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 transition-colors-shadow">
                     <button class="btn-secondary-small toggle-project-details" data-project-id="${project.id}">Details</button>
@@ -241,8 +242,11 @@
             individualGrid.innerHTML = '';
             teamGrid.innerHTML = '';
 
-            // Sort projects by date in descending order (most recent first)
+            // Sort projects by priority: Featured first, then by date descending
             const sortedProjects = [...projectsToRender].sort((a, b) => {
+                if (a.featured && !b.featured) return -1;
+                if (!a.featured && b.featured) return 1;
+                
                 const dateA = new Date(a.date.replace(/ \(.*\)/, ''));
                 const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
                 return dateB - dateA;
