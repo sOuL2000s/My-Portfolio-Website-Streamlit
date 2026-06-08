@@ -1210,10 +1210,10 @@ body.dark-mode .project-action-icon:hover {
     border-bottom: none;
 }
 
-.suggestion-item:hover {
+.suggestion-item:hover, .suggestion-item.selected {
     background-color: var(--skill-tag-bg); /* Use light background for hover */
 }
-body.dark-mode .suggestion-item:hover {
+body.dark-mode .suggestion-item:hover, body.dark-mode .suggestion-item.selected {
     background-color: var(--skill-tag-bg-dark); /* Use darker background for hover */
 }
 
