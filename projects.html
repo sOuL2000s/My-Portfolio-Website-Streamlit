@@ -63,7 +63,7 @@
             <div class="mb-6 md:mb-8 max-w-2xl mx-auto relative">
                 <div class="relative">
                     <input type="text" id="projectSearchInput" placeholder="Search projects..." 
-                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off">
+                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off" disabled>
                     <!-- NEW CLEAR BUTTON -->
                     <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 md:mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
                         <i class="fas fa-times-circle text-lg md:text-xl"></i>
@@ -362,29 +362,35 @@
         // State to track view and cached data for separate search logic
         let currentView = 'static'; // 'static' or 'github'
         let cachedGithubRepos = [];
+        let githubReposLoading = false; // Track GitHub loading state
         let selectedSuggestionIndex = -1;
         let currentMatches = [];
 
-        function getSearchMatches(query) {
+        function getSearchMatches(query, limit = 10) {
             if (!query) return [];
             const lowerQuery = query.toLowerCase();
             
+            // For GitHub repos, normalize the query to match against repo names that might have hyphens
+            const normalizedQueryForGithub = lowerQuery.replace(/ /g, '-');
+
+            let results = [];
             if (currentView === 'static') {
-                return projectsData.filter(project => 
+                results = projectsData.filter(project => 
                     project.title.toLowerCase().includes(lowerQuery) ||
                     (project.shortDescription && project.shortDescription.toLowerCase().includes(lowerQuery)) ||
                     (project.fullDescription && project.fullDescription.toLowerCase().includes(lowerQuery)) ||
                     project.tools.some(tool => tool.toLowerCase().includes(lowerQuery)) ||
                     project.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
-                ).slice(0, 10);
-            } else {
-                // Search within fetched GitHub repositories
-                return cachedGithubRepos.filter(repo => 
-                    repo.name.toLowerCase().includes(lowerQuery) ||
-                    (repo.description && repo.description.toLowerCase().includes(lowerQuery)) ||
-                    (repo.language && repo.language.toLowerCase().includes(lowerQuery))
-                ).slice(0, 10);
+                );
+            } else { // currentView === 'github'
+                results = cachedGithubRepos.filter(repo => {
+                    return repo.name.toLowerCase().includes(lowerQuery) || 
+                           repo.name.toLowerCase().includes(normalizedQueryForGithub) ||
+                           (repo.description && repo.description.toLowerCase().includes(lowerQuery)) ||
+                           (repo.language && repo.language.toLowerCase().includes(lowerQuery));
+                });
             }
+            return limit ? results.slice(0, limit) : results;
         }
 
         function renderSuggestions(matches) {
@@ -406,19 +412,22 @@
                 suggestionItem.dataset.index = index;
                 
                 // Adaptive mapping for suggestions based on current view
-                const title = currentView === 'static' ? item.title : item.name.replace(/-/g, ' ');
+                const displayTitle = currentView === 'static' ? item.title : item.name.replace(/-/g, ' ');
+                // Use the original repo.name for the actual search query, not the display name
+                const actualSearchTerm = currentView === 'static' ? item.title : item.name;
+                
                 const desc = currentView === 'static' ? (item.shortDescription || item.type) : (item.description || item.language || 'GitHub Repository');
                 const img = currentView === 'static' ? item.image : `https://opengraph.githubassets.com/1/sOuL2000s/${item.name}`;
 
                 suggestionItem.addEventListener('click', () => {
-                    projectSearchInput.value = title;
-                    handleSearchExecution(title);
+                    projectSearchInput.value = actualSearchTerm;
+                    handleSearchExecution(actualSearchTerm);
                 });
 
                 suggestionItem.innerHTML = `
-                    <img src="${img}" alt="${title}" class="suggestion-item-image">
+                    <img src="${img}" alt="${displayTitle}" class="suggestion-item-image">
                     <div class="flex flex-col min-w-0">
-                        <div class="suggestion-item-title">${title}</div>
+                        <div class="suggestion-item-title">${displayTitle}</div>
                         <div class="suggestion-item-description">${desc}</div>
                     </div>
                 `;
@@ -458,6 +467,15 @@
         function handleSearchInput() {
             const query = projectSearchInput.value.trim();
             
+            // Prevent suggestions if GitHub repos are still loading
+            if (currentView === 'github' && githubReposLoading) {
+                searchSuggestionsContainer.classList.add('hidden');
+                if (clearSearchBtn) {
+                    query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
+                }
+                return;
+            }
+
             if (clearSearchBtn) {
                 query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
             }
@@ -473,12 +491,20 @@
         }
         
         function handleSearchExecution(query) {
-            const matches = getSearchMatches(query);
+            // Prevent search execution if GitHub repos are still loading
+            if (currentView === 'github' && githubReposLoading) {
+                console.warn('GitHub repos still loading, search ignored.');
+                searchSuggestionsContainer.classList.add('hidden');
+                return;
+            }
+
+            const matches = getSearchMatches(query, null); // Pass null to get all matches
             searchSuggestionsContainer.classList.add('hidden');
 
             if (currentView === 'static') {
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelector(`.filter-btn[data-filter="all"]`).classList.add('active');
+                const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                if (allBtn) allBtn.classList.add('active');
                 renderProjects(matches);
             } else {
                 renderGithubProjects(matches);
@@ -491,6 +517,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof projectsData !== 'undefined') {
                 renderProjects(projectsData);
+            }
+
+            // Enable search input for static view (default)
+            if (projectSearchInput) {
+                projectSearchInput.disabled = false;
             }
 
             const staticViewBtn = document.getElementById('staticViewBtn');
@@ -517,6 +548,7 @@
                     githubViewBtn.classList.remove('bg-blue-600', 'text-white');
                     githubViewBtn.classList.add('dark:bg-gray-800');
                     renderProjects(projectsData); // Re-render default projects
+                    if (projectSearchInput) projectSearchInput.disabled = false;
                 } else {
                     staticView.classList.add('hidden');
                     githubView.classList.remove('hidden');
@@ -567,19 +599,32 @@
             }
 
             async function fetchGitHubRepos() {
+                const currentQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
+                
+                if (projectSearchInput) projectSearchInput.disabled = true;
+                githubReposLoading = true;
+                githubLoading.classList.remove('hidden');
+
                 if (cachedGithubRepos.length > 0) {
                     renderGithubProjects(cachedGithubRepos);
+                    if (currentQuery) {
+                        handleSearchExecution(currentQuery);
+                    }
+                    if (projectSearchInput) projectSearchInput.disabled = false;
+                    githubReposLoading = false;
+                    githubLoading.classList.add('hidden');
                     return;
                 }
 
                 try {
-                    githubLoading.classList.remove('hidden');
+                    githubGrid.innerHTML = '';
                     let allRepos = [];
                     let page = 1;
                     let fetchMore = true;
 
                     while (fetchMore) {
                         const response = await fetch(`https://api.github.com/users/sOuL2000s/repos?sort=updated&per_page=100&page=${page}`);
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                         const repos = await response.json();
                         
                         if (Array.isArray(repos) && repos.length > 0) {
@@ -593,11 +638,18 @@
 
                     cachedGithubRepos = allRepos.filter(repo => !repo.fork);
                     renderGithubProjects(cachedGithubRepos);
+
+                    if (currentQuery) {
+                        if (projectSearchInput) projectSearchInput.value = currentQuery;
+                        handleSearchExecution(currentQuery);
+                    }
                 } catch (error) {
                     console.error('GitHub API error:', error);
-                    githubGrid.innerHTML = '<p class="text-center col-span-full py-10 text-red-500">Failed to sync with GitHub. Please try again later.</p>';
+                    githubGrid.innerHTML = `<p class="text-center col-span-full py-10 text-red-500">Failed to sync with GitHub. Please try again later. (Error: ${error.message})</p>`;
                 } finally {
                     githubLoading.classList.add('hidden');
+                    if (projectSearchInput) projectSearchInput.disabled = false;
+                    githubReposLoading = false;
                 }
             }
             
@@ -630,9 +682,10 @@
                         e.preventDefault();
                         if (selectedSuggestionIndex >= 0 && selectedSuggestionIndex < currentMatches.length) {
                             const item = currentMatches[selectedSuggestionIndex];
-                            const title = currentView === 'static' ? item.title : item.name.replace(/-/g, ' ');
-                            projectSearchInput.value = title;
-                            handleSearchExecution(title);
+                            // Use the original repo.name for GitHub projects for actual search
+                            const actualSearchTerm = currentView === 'static' ? item.title : item.name;
+                            projectSearchInput.value = actualSearchTerm;
+                            handleSearchExecution(actualSearchTerm);
                         } else {
                             handleSearchExecution(projectSearchInput.value.trim());
                         }
@@ -668,6 +721,17 @@
             if (projectSearchInput) {
                 projectSearchInput.addEventListener('focus', handleSearchInput);
             }
+
+            // Keyboard shortcut '/' to focus search
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                    if (projectSearchInput) {
+                        projectSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        projectSearchInput.focus();
+                    }
+                }
+            });
         });
 
         // Project Modal Logic
