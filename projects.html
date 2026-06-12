@@ -63,7 +63,11 @@
             <div class="mb-6 md:mb-8 max-w-2xl mx-auto relative">
                 <div class="relative">
                     <input type="text" id="projectSearchInput" placeholder="Search projects..." 
-                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off" disabled>
+                        class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off">
+                    <!-- NEW SEARCH LOADING SPINNER (Hidden by default) -->
+                    <div id="searchLoadingIndicator" class="absolute right-10 md:right-12 top-1/2 transform -translate-y-1/2 text-blue-500 hidden" aria-hidden="true">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                    </div>
                     <!-- NEW CLEAR BUTTON -->
                     <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 md:mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
                         <i class="fas fa-times-circle text-lg md:text-xl"></i>
@@ -413,16 +417,18 @@
                 
                 // Adaptive mapping for suggestions based on current view
                 const displayTitle = currentView === 'static' ? item.title : item.name.replace(/-/g, ' ');
-                // Use the original repo.name for the actual search query, not the display name
-                const actualSearchTerm = currentView === 'static' ? item.title : item.name;
+                
+                // Store unique identifier for exact filtering
+                // For static projects, use 'id'. For GitHub repos, use 'full_name' which is unique.
+                const uniqueId = currentView === 'static' ? item.id : item.full_name; 
+                // Store the descriptive title/name to populate the input field accurately
+                const searchTermForInput = currentView === 'static' ? item.title : item.name;
+
+                suggestionItem.dataset.uniqueId = uniqueId; 
+                suggestionItem.dataset.searchTermForInput = searchTermForInput; 
                 
                 const desc = currentView === 'static' ? (item.shortDescription || item.type) : (item.description || item.language || 'GitHub Repository');
                 const img = currentView === 'static' ? item.image : `https://opengraph.githubassets.com/1/sOuL2000s/${item.name}`;
-
-                suggestionItem.addEventListener('click', () => {
-                    projectSearchInput.value = actualSearchTerm;
-                    handleSearchExecution(actualSearchTerm);
-                });
 
                 suggestionItem.innerHTML = `
                     <img src="${img}" alt="${displayTitle}" class="suggestion-item-image">
@@ -450,7 +456,7 @@
         }
         
         function handleClearSearch() {
-            if (!projectSearchInput) return;
+            if (!projectSearchInput || projectSearchInput.readOnly) return;
             projectSearchInput.value = '';
             clearSearchBtn.classList.add('hidden');
             searchSuggestionsContainer.classList.add('hidden');
@@ -460,24 +466,28 @@
             if (currentView === 'static') {
                 handleFiltering('all'); 
             } else {
-                renderGithubProjects(cachedGithubRepos);
+                // Ensure we show all fetched repos if available
+                if (cachedGithubRepos.length > 0) {
+                    renderGithubProjects(cachedGithubRepos);
+                } else {
+                    fetchGitHubRepos();
+                }
             }
         }
 
         function handleSearchInput() {
+            if (!projectSearchInput) return;
             const query = projectSearchInput.value.trim();
             
-            // Prevent suggestions if GitHub repos are still loading
-            if (currentView === 'github' && githubReposLoading) {
-                searchSuggestionsContainer.classList.add('hidden');
-                if (clearSearchBtn) {
-                    query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
-                }
-                return;
-            }
-
+            // Handle clear button visibility
             if (clearSearchBtn) {
                 query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
+            }
+
+            // Prevent suggestions if GitHub repos are still loading OR input is readOnly
+            if (projectSearchInput.readOnly || (currentView === 'github' && githubReposLoading)) {
+                searchSuggestionsContainer.classList.add('hidden');
+                return;
             }
             
             if (query.length >= MIN_SEARCH_LENGTH) {
@@ -491,9 +501,10 @@
         }
         
         function handleSearchExecution(query) {
-            // Prevent search execution if GitHub repos are still loading
-            if (currentView === 'github' && githubReposLoading) {
-                console.warn('GitHub repos still loading, search ignored.');
+            // Prevent search execution ONLY if GitHub repos are still loading from scratch
+            // but allow it if we are just filtering cached repos
+            if (currentView === 'github' && githubReposLoading && cachedGithubRepos.length === 0) {
+                console.warn('GitHub repos still loading from API, search ignored.');
                 searchSuggestionsContainer.classList.add('hidden');
                 return;
             }
@@ -519,26 +530,20 @@
                 renderProjects(projectsData);
             }
 
-            // Enable search input for static view (default)
-            if (projectSearchInput) {
-                projectSearchInput.disabled = false;
-            }
-
             const staticViewBtn = document.getElementById('staticViewBtn');
             const githubViewBtn = document.getElementById('githubViewBtn');
             const staticView = document.getElementById('staticProjectsView');
             const githubView = document.getElementById('githubProjectsView');
             const githubGrid = document.getElementById('github-projects-grid');
             const githubLoading = document.getElementById('github-loading');
+            const searchLoadingIndicator = document.getElementById('searchLoadingIndicator');
 
             const toggleView = (view) => {
                 currentView = view;
-                // Clear search state when switching views
-                if (projectSearchInput) {
-                    projectSearchInput.value = '';
-                    if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
-                }
+                
+                // Persistence: Hide suggestions when switching, but keep query
                 searchSuggestionsContainer.classList.add('hidden');
+                const query = projectSearchInput ? projectSearchInput.value.trim() : '';
 
                 if (view === 'static') {
                     staticView.classList.remove('hidden');
@@ -547,8 +552,13 @@
                     staticViewBtn.classList.remove('dark:bg-gray-800');
                     githubViewBtn.classList.remove('bg-blue-600', 'text-white');
                     githubViewBtn.classList.add('dark:bg-gray-800');
-                    renderProjects(projectsData); // Re-render default projects
-                    if (projectSearchInput) projectSearchInput.disabled = false;
+                    
+                    if (query) {
+                        handleSearchExecution(query);
+                    } else {
+                        handleFiltering('all');
+                    }
+                    if (projectSearchInput) projectSearchInput.readOnly = false;
                 } else {
                     staticView.classList.add('hidden');
                     githubView.classList.remove('hidden');
@@ -556,6 +566,7 @@
                     githubViewBtn.classList.remove('dark:bg-gray-800');
                     staticViewBtn.classList.remove('bg-blue-600', 'text-white');
                     staticViewBtn.classList.add('dark:bg-gray-800');
+                    
                     fetchGitHubRepos();
                 }
             };
@@ -601,7 +612,10 @@
             async function fetchGitHubRepos() {
                 const currentQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
                 
-                if (projectSearchInput) projectSearchInput.disabled = true;
+                // Visual Loading State for Search Input
+                if (projectSearchInput) projectSearchInput.readOnly = true;
+                if (searchLoadingIndicator) searchLoadingIndicator.classList.remove('hidden');
+                
                 githubReposLoading = true;
                 githubLoading.classList.remove('hidden');
 
@@ -610,7 +624,10 @@
                     if (currentQuery) {
                         handleSearchExecution(currentQuery);
                     }
-                    if (projectSearchInput) projectSearchInput.disabled = false;
+                    
+                    // Cleanup Loading State
+                    if (projectSearchInput) projectSearchInput.readOnly = false;
+                    if (searchLoadingIndicator) searchLoadingIndicator.classList.add('hidden');
                     githubReposLoading = false;
                     githubLoading.classList.add('hidden');
                     return;
@@ -639,16 +656,19 @@
                     cachedGithubRepos = allRepos.filter(repo => !repo.fork);
                     renderGithubProjects(cachedGithubRepos);
 
-                    if (currentQuery) {
-                        if (projectSearchInput) projectSearchInput.value = currentQuery;
-                        handleSearchExecution(currentQuery);
+                    // Re-apply search after fetching
+                    const finalQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
+                    if (finalQuery) {
+                        handleSearchExecution(finalQuery);
                     }
                 } catch (error) {
                     console.error('GitHub API error:', error);
                     githubGrid.innerHTML = `<p class="text-center col-span-full py-10 text-red-500">Failed to sync with GitHub. Please try again later. (Error: ${error.message})</p>`;
                 } finally {
                     githubLoading.classList.add('hidden');
-                    if (projectSearchInput) projectSearchInput.disabled = false;
+                    // Cleanup Loading State
+                    if (projectSearchInput) projectSearchInput.readOnly = false;
+                    if (searchLoadingIndicator) searchLoadingIndicator.classList.add('hidden');
                     githubReposLoading = false;
                 }
             }
@@ -681,11 +701,26 @@
                     } else if (e.key === 'Enter') {
                         e.preventDefault();
                         if (selectedSuggestionIndex >= 0 && selectedSuggestionIndex < currentMatches.length) {
+                            // A suggestion is highlighted, perform exact filter by unique ID
                             const item = currentMatches[selectedSuggestionIndex];
-                            // Use the original repo.name for GitHub projects for actual search
-                            const actualSearchTerm = currentView === 'static' ? item.title : item.name;
-                            projectSearchInput.value = actualSearchTerm;
-                            handleSearchExecution(actualSearchTerm);
+                            const uniqueId = currentView === 'static' ? item.id : item.full_name;
+                            const searchTermForInput = currentView === 'static' ? item.title : item.name;
+
+                            if (projectSearchInput) {
+                                projectSearchInput.value = searchTermForInput;
+                                if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
+                            }
+                            searchSuggestionsContainer.classList.add('hidden'); // Hide suggestions
+
+                            let filteredResults = [];
+                            if (currentView === 'static') {
+                                filteredResults = projectsData.filter(p => p.id === uniqueId);
+                                renderProjects(filteredResults);
+                            } else { // currentView === 'github'
+                                filteredResults = cachedGithubRepos.filter(r => r.full_name === uniqueId);
+                                renderGithubProjects(filteredResults);
+                            }
+                            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active')); // Deactivate filter buttons
                         } else {
                             handleSearchExecution(projectSearchInput.value.trim());
                         }
@@ -704,6 +739,36 @@
                         clearSearchBtn.classList.remove('hidden');
                     }
                 }
+            }
+
+            // Event delegation for search suggestions selection
+            if (searchSuggestionsContainer) {
+                searchSuggestionsContainer.addEventListener('click', (e) => {
+                    const suggestionItem = e.target.closest('.suggestion-item');
+                    if (suggestionItem) {
+                        const uniqueId = suggestionItem.dataset.uniqueId; // Get the unique ID
+                        const searchTermForInput = suggestionItem.dataset.searchTermForInput; // Get the text for input field
+
+                        if (projectSearchInput) {
+                            projectSearchInput.value = searchTermForInput; // Set input field to the descriptive name
+                            if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
+                        }
+                        searchSuggestionsContainer.classList.add('hidden'); // Hide suggestions
+
+                        // Filter directly by unique ID to show ONLY the selected project/repo
+                        let filteredResults = [];
+                        if (currentView === 'static') {
+                            filteredResults = projectsData.filter(p => p.id === uniqueId);
+                            renderProjects(filteredResults);
+                        } else { // currentView === 'github'
+                            filteredResults = cachedGithubRepos.filter(r => r.full_name === uniqueId);
+                            renderGithubProjects(filteredResults);
+                        }
+                        
+                        // Ensure filter buttons are deactivated as a direct search has been made
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    }
+                });
             }
 
             // Hide suggestions when clicking outside
