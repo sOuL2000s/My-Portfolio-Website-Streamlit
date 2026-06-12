@@ -107,7 +107,28 @@
 
                 <h3 class="text-xl md:text-3xl font-bold mb-3 md:mb-4" id="individualProjectsHeader">Individual Projects</h3>
                 <div id="individual-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-                    <!-- Project cards will be dynamically inserted here -->
+                    <!-- Skeletons for initial perceived speed -->
+                    <div class="skeleton-card project-card rounded-lg p-6">
+                        <div class="skeleton skeleton-image mb-4"></div>
+                        <div class="skeleton skeleton-text w-3/4 mb-4"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-1/2 mt-4"></div>
+                    </div>
+                    <div class="skeleton-card project-card rounded-lg p-6">
+                        <div class="skeleton skeleton-image mb-4"></div>
+                        <div class="skeleton skeleton-text w-3/4 mb-4"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-1/2 mt-4"></div>
+                    </div>
+                    <div class="skeleton-card project-card rounded-lg p-6">
+                        <div class="skeleton skeleton-image mb-4"></div>
+                        <div class="skeleton skeleton-text w-3/4 mb-4"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-full mb-2"></div>
+                        <div class="skeleton skeleton-text w-1/2 mt-4"></div>
+                    </div>
                 </div>
 
                 <h3 class="text-xl md:text-3xl font-bold mt-8 md:mt-10 mb-3 md:mb-4" id="teamProjectsHeader">Team Projects</h3>
@@ -122,9 +143,16 @@
                     <h3 class="text-2xl font-bold dark:text-white">All Public Repositories</h3>
                     <p class="text-gray-600 dark:text-gray-400">Fetched directly from GitHub API</p>
                 </div>
-                <div id="github-loading" class="text-center py-12">
-                    <i class="fas fa-circle-notch fa-spin text-4xl text-blue-500"></i>
-                    <p class="mt-4 dark:text-white">Syncing with GitHub...</p>
+                <div id="github-loading" class="text-center py-12 flex flex-col items-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full text-left">
+                        <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
+                        <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
+                        <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
+                    </div>
+                    <div class="mt-8">
+                        <i class="fas fa-circle-notch fa-spin text-4xl text-blue-500"></i>
+                        <p class="mt-4 dark:text-white">Syncing with GitHub...</p>
+                    </div>
                 </div>
                 <div id="github-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
                     <!-- GitHub cards will be dynamically inserted here -->

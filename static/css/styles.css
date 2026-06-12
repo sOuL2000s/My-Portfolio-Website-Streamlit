@@ -59,6 +59,26 @@ body.dark-mode {
     --caret-color: var(--primary-accent-dark);
 }
 
+/* Subtle background texture overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    /* Ultra-subtle dot pattern for depth */
+    background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1.2px, transparent 1.2px);
+    background-size: 28px 28px;
+    transition: background-image 0.4s ease;
+}
+
+body.dark-mode::before {
+    background-image: radial-gradient(rgba(241, 245, 249, 0.03) 1.2px, transparent 1.2px);
+}
+
 /* Custom Scrollbar Styling - Standardized and forced visibility */
 ::-webkit-scrollbar {
     width: 12px; /* Slightly wider for better visibility */
@@ -475,6 +495,53 @@ body.dark-mode .profile-img {
     100% { transform: translateY(0px); }
 }
 
+/* Skeleton Loading & Shimmer Effects */
+.skeleton {
+    background: #e2e8f0;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 0.5rem;
+}
+
+.dark-mode .skeleton {
+    background: #334155;
+    background: linear-gradient(110deg, #1e293b 8%, #334155 18%, #1e293b 33%);
+    background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.skeleton-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 0.75rem;
+}
+
+.skeleton-profile {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.loading-placeholder {
+    display: block;
+}
+
+.content-loaded {
+    display: none;
+}
+
 /* Section fade-in on scroll */
 .fade-in-section {
     opacity: 0;
@@ -736,28 +803,32 @@ body.dark-mode #siteAssistantBtn:hover {
 
 /* Site Assistant Project List Modal (NEW) */
 .site-assistant-modal-content {
-    background-color: var(--main-bg-light);
-    padding: 2.5rem;
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
     border-radius: 1.5rem;
-    max-width: 90%; /* Wider modal */
-    width: 700px; /* Fixed width for larger screens */
-    max-height: 90vh;
+    max-width: 90%;
+    width: 700px;
+    max-height: 85vh;
     overflow-y: auto;
     position: relative;
-    transform: translateY(20px);
+    transform: scale(0.95) translateY(30px);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    border: 1px solid var(--border-color-light);
-    box-shadow: 0 10px 30px var(--shadow-color-light);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    line-height: 1.7;
 }
 .modal-overlay.show .site-assistant-modal-content {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
 }
 body.dark-mode .site-assistant-modal-content {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-    box-shadow: 0 10px 30px var(--shadow-color-dark);
+    background-color: #1e293b;
+    background-image: linear-gradient(#1e293b, #1e293b), linear-gradient(135deg, var(--primary-accent-dark), var(--secondary-accent-dark));
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .site-assistant-modal-close-btn {
@@ -827,9 +898,9 @@ body.dark-mode .site-assistant-project-item:hover {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     .site-assistant-modal-content {
-        padding: 1.5rem;
+        padding: 2rem 1.25rem;
         max-width: 95%;
-        width: auto; /* Allow content to dictate width more */
+        width: auto;
     }
     #siteAssistantBtn {
         left: 1rem;
@@ -966,16 +1037,16 @@ body.dark-mode .read-more-btn:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 50;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-overlay.show {
@@ -984,27 +1055,30 @@ body.dark-mode .read-more-btn:hover {
 }
 
 .modal-content {
-    background-color: var(--main-bg-light);
-    padding: 2.5rem;
-    border-radius: 1.5rem;
+    background-color: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 2rem;
     max-width: 900px;
-    max-height: 90vh; /* Max height to allow scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 85vh;
+    overflow-y: auto;
     position: relative;
-    transform: translateY(20px);
+    transform: scale(0.9) translateY(40px);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    border: 1px solid var(--border-color-light);
-    box-shadow: 0 10px 30px var(--shadow-color-light);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
 }
 .modal-overlay.show .modal-content {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
 }
 body.dark-mode .modal-content {
-    background-color: var(--main-bg-dark);
-    border: 1px solid var(--border-color-dark);
-    box-shadow: 0 10px 30px var(--shadow-color-dark);
+    background-color: #1e293b;
+    background-image: linear-gradient(#1e293b, #1e293b), linear-gradient(135deg, var(--primary-accent-dark), var(--secondary-accent-dark));
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
 .modal-close-btn {
@@ -1047,9 +1121,10 @@ body.dark-mode .modal-image {
 }
 /* Ensure text wraps correctly */
 .project-card .short-summary, .project-card .full-description p,
-#projectModal .modal-project-description {
+#projectModal #modal-project-description {
     word-break: break-word;
     overflow-wrap: break-word;
+    line-height: 1.8; /* Increased for better readability in detail modal */
 }
 
 /* Toast Message for Contact Form */

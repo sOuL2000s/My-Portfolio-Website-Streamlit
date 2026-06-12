@@ -696,6 +696,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedDarkMode = localStorage.getItem('darkMode') !== 'false';
     applyDarkMode(savedDarkMode);
     populateSiteAssistantProjects(); // Populate for the site assistant modal
+
+    // Handle Profile Image Skeleton
+    const profileImg = document.getElementById('profileImage');
+    const profileSkeleton = document.getElementById('profileSkeleton');
+    if (profileImg && profileSkeleton) {
+        if (profileImg.complete) {
+            profileSkeleton.style.display = 'none';
+            profileImg.classList.remove('opacity-0');
+        } else {
+            profileImg.onload = () => {
+                profileSkeleton.style.display = 'none';
+                profileImg.classList.remove('opacity-0');
+            };
+        }
+    }
 });
 
 // Event listener for desktop dark mode toggle
