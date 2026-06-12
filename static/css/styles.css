@@ -43,12 +43,55 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto; /* Explicitly ensure vertical scroll */
-    line-height: 1.6; /* More compact reading */
+    line-height: 1.7; /* Increased for better legibility and flow */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (max-width: 767px) { /* Apply padding only on mobile */
     body {
-        padding-bottom: 4rem; /* Height of the mobile fixed nav */
+        padding-bottom: 5rem; /* Increased padding to prevent fixed nav from obscuring footer content */
+    }
+
+    /* Refine mobile fixed navigation items */
+    #mobileFixedNav .nav-item {
+        padding: 0.6rem 0.15rem;
+        transition: all 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        min-width: 0;
+    }
+
+    #mobileFixedNav .nav-item span {
+        font-size: 0.72rem; /* Optimized for legibility while preventing overflow */
+        font-weight: 600;
+        margin-top: 0.25rem;
+        white-space: nowrap;
+        letter-spacing: -0.01em;
+    }
+
+    #mobileFixedNav .nav-item i {
+        font-size: 1.35rem; /* More prominent icons */
+    }
+
+    /* Enhanced prominence for Mobile Dark Mode Toggle button */
+    #mobileDarkModeToggle {
+        position: relative;
+        background-color: rgba(37, 99, 235, 0.04) !important; /* Extremely subtle tint */
+        border-radius: 0.75rem;
+        margin: 0 0.25rem;
+    }
+
+    body.dark-mode #mobileDarkModeToggle {
+        background-color: rgba(96, 165, 250, 0.08) !important;
+    }
+
+    #mobileDarkModeToggle:active {
+        transform: scale(0.92);
+        background-color: rgba(37, 99, 235, 0.1) !important;
     }
 }
 
@@ -140,6 +183,18 @@ body.no-scroll {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Enhanced Focus States for Accessibility */
+:focus-visible {
+    outline: 3px solid var(--primary-accent);
+    outline-offset: 2px;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+}
+
+body.dark-mode :focus-visible {
+    outline-color: var(--primary-accent-dark);
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
 /* Main content area styling - Compact */
 .main-content-card {
     background-color: var(--main-bg-light);
@@ -171,16 +226,55 @@ body.dark-mode .main-content-card:hover {
 }
 
 
-/* Headings */
+/* Refined Typography Scale & Hierarchy */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color-light);
-    letter-spacing: -0.02em; /* Slightly tighter letter-spacing */
+    letter-spacing: -0.025em; /* Tighter for high-end feel */
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.35rem; }
 }
 
 @media (max-width: 639px) {
-    h1 { font-size: 1.5rem !important; line-height: 1.2 !important; }
-    h2 { font-size: 1.25rem !important; line-height: 1.2 !important; }
-    h3 { font-size: 1.1rem !important; line-height: 1.2 !important; }
+    h1 { font-size: 1.75rem !important; line-height: 1.2 !important; }
+    h2 { font-size: 1.5rem !important; line-height: 1.2 !important; }
+    h3 { font-size: 1.25rem !important; line-height: 1.2 !important; }
+    h4 { font-size: 1.1rem !important; }
+    body { font-size: 0.9375rem; line-height: 1.6; }
 }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
     color: var(--heading-color-dark);
@@ -214,7 +308,7 @@ a:hover {
     position: relative;
     overflow: hidden;
 }
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus-visible {
     background-color: var(--primary-accent-darker);
     transform: translateY(-3px) scale(1.01); /* More pronounced lift + scale */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Even deeper shadow on hover */
@@ -226,7 +320,7 @@ a:hover {
 body.dark-mode .btn-primary {
     background-color: var(--button-bg-color-dark);
 }
-body.dark-mode .btn-primary:hover {
+body.dark-mode .btn-primary:hover, body.dark-mode .btn-primary:focus-visible {
     background-color: var(--button-hover-bg-color-dark);
 }
 
@@ -249,7 +343,7 @@ body.dark-mode .btn-primary:hover {
         font-size: 0.65rem;
     }
 }
-.skill-tag:hover {
+.skill-tag:hover, .skill-tag:focus-visible {
     transform: translateY(-3px) scale(1.02); /* More pronounced lift + scale */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
     background-color: var(--primary-accent); /* Highlight on hover */
@@ -260,45 +354,57 @@ body.dark-mode .skill-tag {
     color: var(--text-color-dark);
     border: 1px solid var(--skill-tag-border-dark);
 }
-body.dark-mode .skill-tag:hover {
+body.dark-mode .skill-tag:hover, body.dark-mode .skill-tag:focus-visible {
     background-color: var(--primary-accent-dark);
     color: #121212; /* Dark text on light hover for contrast */
 }
 
-/* Project Card */
+/* Project Card Typography Refinement */
 .project-card {
     background-color: var(--main-bg-light);
     border: 1px solid var(--border-color-light);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     border-radius: 1rem;
-    padding: 1rem !important; /* Force tight padding */
+    padding: 1.25rem !important; /* Slightly more room for readability */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
+.project-card h4 {
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.project-card .short-summary {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    opacity: 0.9;
+}
+
 @media (max-width: 639px) {
     .project-card h4 { 
-        font-size: 0.9rem !important; 
-        margin-bottom: 0.25rem !important; 
-        line-height: 1.2 !important;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* Limit title to 2 lines */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        min-height: 2.4em; /* Ensure consistent title height */
-    }
-    .project-card .short-summary { 
-        font-size: 0.75rem !important; 
-        margin-bottom: 0.25rem !important; 
+        font-size: 1rem !important; 
+        margin-bottom: 0.5rem !important; 
         line-height: 1.3 !important;
         display: -webkit-box;
-        -webkit-line-clamp: 3; /* Limit summary to 3 lines on mobile */
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.6em;
+    }
+    .project-card .short-summary { 
+        font-size: 0.85rem !important; 
+        margin-bottom: 0.5rem !important; 
+        line-height: 1.5 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    .project-card { padding: 0.5rem !important; }
-    .project-card .project-card-actions { padding-top: 0.5rem !important; }
+    .project-card { padding: 1rem !important; }
+    .project-card .project-card-actions { padding-top: 0.75rem !important; }
 }
 .project-card:hover {
     transform: translateY(-5px) scale(1.01); /* More subtle lift + scale */
@@ -400,8 +506,9 @@ body.dark-mode .project-image {
 }
 .form-input:focus {
     border-color: var(--primary-accent);
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2), 0 0 10px rgba(37, 99, 235, 0.1);
     background-color: var(--main-bg-light);
+    outline: none; /* Managed by box-shadow for inputs */
 }
 .form-input::placeholder {
     color: var(--text-color-light);
@@ -414,8 +521,9 @@ body.dark-mode .form-input {
 }
 body.dark-mode .form-input:focus {
     border-color: var(--primary-accent-dark);
-    box-shadow: 0 0 0 4px rgba(139, 233, 253, 0.25);
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2), 0 0 10px rgba(96, 165, 250, 0.1);
     background-color: var(--main-bg-dark);
+    outline: none;
 }
 body.dark-mode .form-input::placeholder {
     color: var(--text-color-dark);
@@ -720,15 +828,36 @@ body.dark-mode header {
     background-color: var(--navbar-bg-dark); /* Use variable for dark mode */
 }
 
-/* Navbar active link highlighting */
-.nav-links-desktop a.active, .nav-item.active-nav-link { /* Adjusted for new mobile nav */
-    color: var(--primary-accent) !important; /* Force accent color */
+/* Navbar active link highlighting - Desktop */
+.nav-links-desktop a.active, .nav-links-desktop a:focus-visible { 
+    color: var(--primary-accent) !important;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
 }
-body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-item.active-nav-link {
+
+/* Mobile Nav Active Item Styling - Refined for Icons */
+#mobileFixedNav .nav-item.active-nav-link {
+    color: var(--primary-accent) !important;
+    background-color: rgba(37, 99, 235, 0.06);
+    border-radius: 0.5rem;
+}
+
+#mobileFixedNav .nav-item.active-nav-link span {
+    font-weight: 800;
+}
+
+#mobileFixedNav .nav-item.active-nav-link i {
+    transform: translateY(-1px);
+}
+
+body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-links-desktop a:focus-visible {
     color: var(--primary-accent-dark) !important;
+}
+
+body.dark-mode #mobileFixedNav .nav-item.active-nav-link {
+    color: var(--primary-accent-dark) !important;
+    background-color: rgba(96, 165, 250, 0.12);
 }
 
 /* Scroll-to-top button */
@@ -751,7 +880,7 @@ body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-item.active-nav-
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease;
     z-index: 30;
 }
-#scrollToTopBtn:hover {
+#scrollToTopBtn:hover, #scrollToTopBtn:focus-visible {
     background-color: var(--primary-accent-darker);
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -759,7 +888,7 @@ body.dark-mode .nav-links-desktop a.active, body.dark-mode .nav-item.active-nav-
 body.dark-mode #scrollToTopBtn {
     background-color: var(--primary-accent-dark);
 }
-body.dark-mode #scrollToTopBtn:hover {
+body.dark-mode #scrollToTopBtn:hover, body.dark-mode #scrollToTopBtn:focus-visible {
     background-color: var(--primary-accent-dark-hover);
 }
 #scrollToTopBtn.show {
@@ -787,7 +916,7 @@ body.dark-mode #scrollToTopBtn:hover {
     opacity: 1; /* Always visible */
     visibility: visible;
 }
-#siteAssistantBtn:hover {
+#siteAssistantBtn:hover, #siteAssistantBtn:focus-visible {
     background-color: #ec971f; /* Darker on hover */
     transform: translateY(-5px) scale(1.05); /* More pronounced lift and scale */
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -796,7 +925,7 @@ body.dark-mode #siteAssistantBtn {
     background-color: #ffc107; /* Brighter yellow for dark mode */
     color: #1a1a1a; /* Dark text on bright button */
 }
-body.dark-mode #siteAssistantBtn:hover {
+body.dark-mode #siteAssistantBtn:hover, body.dark-mode #siteAssistantBtn:focus-visible {
     background-color: #e0a800; /* Darker yellow on hover */
     color: #1a1a1a;
 }
@@ -961,6 +1090,26 @@ body.dark-mode .hero-section-bg::before {
     to { transform: rotate(360deg); }
 }
 
+/* Wave emoji animation */
+@keyframes wave {
+    0% { transform: rotate( 0.0deg) }
+    10% { transform: rotate(14.0deg) }
+    20% { transform: rotate(-8.0deg) }
+    30% { transform: rotate(14.0deg) }
+    40% { transform: rotate(-4.0deg) }
+    50% { transform: rotate(10.0deg) }
+    60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
+}
+
+.wave-emoji {
+    animation-name: wave;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
 /* Typewriter effect */
 .typewriter-text {
     border-right: 2px solid;
@@ -1014,7 +1163,7 @@ body.dark-mode .hero-section-bg::before {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.read-more-btn:hover {
+.read-more-btn:hover, .read-more-btn:focus-visible {
     background-color: var(--primary-accent);
     color: white;
     border-color: var(--primary-accent);
@@ -1024,7 +1173,7 @@ body.dark-mode .read-more-btn {
     color: var(--text-color-dark);
     border: 1px solid var(--skill-tag-border-dark);
 }
-body.dark-mode .read-more-btn:hover {
+body.dark-mode .read-more-btn:hover, body.dark-mode .read-more-btn:focus-visible {
     background-color: var(--primary-accent-dark);
     color: #121212;
     border-color: var(--primary-accent-dark);
@@ -1119,38 +1268,67 @@ body.dark-mode .modal-image {
 .modal-links a:last-child {
     margin-right: 0;
 }
-/* Ensure text wraps correctly */
-.project-card .short-summary, .project-card .full-description p,
-#projectModal #modal-project-description {
+/* Ensure text wraps correctly and has consistent readability */
+.project-card .short-summary, 
+.project-card .full-description p,
+#projectModal #modal-project-description,
+.about-me-content p {
     word-break: break-word;
     overflow-wrap: break-word;
-    line-height: 1.8; /* Increased for better readability in detail modal */
+    line-height: 1.8; /* Generous spacing for dense text blocks */
 }
 
-/* Toast Message for Contact Form */
+/* Spinner animation for buttons */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+.spinner {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Toast Message - Improved Animations & Styling */
 .toast-message {
     position: fixed;
     bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: #28a745; /* Green for success */
+    transform: translateX(-50%) translateY(100px); /* Start off-screen */
+    background-color: #10b981; /* Emerald 500 (Success) */
     color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s ease, visibility 0.4s ease;
     z-index: 100;
-    text-align: center;
-    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    min-width: 300px;
+    max-width: 90vw;
 }
-.toast-message.error {
-    background-color: #dc3545; /* Red for error */
-}
+
 .toast-message.show {
     opacity: 1;
     visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-message.error {
+    background-color: #ef4444; /* Red 500 (Error) */
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+}
+
+.toast-message i {
+    font-size: 1.5rem;
 }
 
 /* NEW: Small button style for modal nav and project card details */
@@ -1176,7 +1354,8 @@ body.dark-mode .modal-image {
         font-size: 0.7rem;
     }
 }
-.btn-secondary-small:hover, .btn-primary-small:hover {
+.btn-secondary-small:hover, .btn-primary-small:hover,
+.btn-secondary-small:focus-visible, .btn-primary-small:focus-visible {
     background-color: var(--primary-accent);
     color: white;
     border-color: var(--primary-accent);
@@ -1188,7 +1367,8 @@ body.dark-mode .btn-secondary-small, body.dark-mode .btn-primary-small {
     color: var(--text-color-dark);
     border: 1px solid var(--skill-tag-border-dark);
 }
-body.dark-mode .btn-secondary-small:hover, body.dark-mode .btn-primary-small:hover {
+body.dark-mode .btn-secondary-small:hover, body.dark-mode .btn-primary-small:hover,
+body.dark-mode .btn-secondary-small:focus-visible, body.dark-mode .btn-primary-small:focus-visible {
     background-color: var(--primary-accent-dark);
     color: #121212;
     border-color: var(--primary-accent-dark);
@@ -1209,7 +1389,7 @@ body.dark-mode .btn-primary-small {
     color: #121212; /* Dark text on light accent */
     border-color: var(--primary-accent-dark);
 }
-body.dark-mode .btn-primary-small:hover {
+body.dark-mode .btn-primary-small:hover, body.dark-mode .btn-primary-small:focus-visible {
     background-color: var(--primary-accent-dark-hover);
     border-color: var(--primary-accent-dark-hover);
     color: #121212;
@@ -1256,7 +1436,7 @@ body.dark-mode .btn-primary-small:hover {
         font-size: 0.9rem;
     }
 }
-.project-action-icon:hover {
+.project-action-icon:hover, .project-action-icon:focus-visible {
     color: var(--primary-accent); /* Accent color on hover */
     transform: translateY(-2px) scale(1.1); /* Subtle lift and scale */
     text-decoration: none; /* No underline on icon hover */
@@ -1264,7 +1444,7 @@ body.dark-mode .btn-primary-small:hover {
 body.dark-mode .project-action-icon {
     color: var(--text-color-dark);
 }
-body.dark-mode .project-action-icon:hover {
+body.dark-mode .project-action-icon:hover, body.dark-mode .project-action-icon:focus-visible {
     color: var(--primary-accent-dark);
 }
 
@@ -1285,10 +1465,10 @@ body.dark-mode .project-action-icon:hover {
     border-bottom: none;
 }
 
-.suggestion-item:hover, .suggestion-item.selected {
+.suggestion-item:hover, .suggestion-item.selected, .suggestion-item:focus-visible {
     background-color: var(--skill-tag-bg); /* Use light background for hover */
 }
-body.dark-mode .suggestion-item:hover, body.dark-mode .suggestion-item.selected {
+body.dark-mode .suggestion-item:hover, body.dark-mode .suggestion-item.selected, body.dark-mode .suggestion-item:focus-visible {
     background-color: var(--skill-tag-bg-dark); /* Use darker background for hover */
 }
 
