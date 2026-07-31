@@ -670,17 +670,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Dark Mode Toggle Logic
-const darkModeToggle = document.getElementById('darkModeToggle'); // Desktop header toggle
-// Site Assistant (NEW)
+const darkModeToggle = document.getElementById('darkModeToggle');
 const siteAssistantBtn = document.getElementById('siteAssistantBtn');
 const siteAssistantModal = document.getElementById('siteAssistantModal');
 const siteAssistantModalCloseBtn = document.querySelector('.site-assistant-modal-close-btn');
 const siteAssistantProjectList = document.getElementById('site-assistant-project-list');
-const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle'); // Mobile fixed nav toggle
+const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
 
 const applyDarkMode = (isDark) => {
     if (isDark) {
-        document.documentElement.classList.add('dark-mode'); // Apply to html for global styles like scrollbars
+        document.documentElement.classList.add('dark-mode');
         document.body.classList.add('dark-mode');
         if (darkModeToggle) darkModeToggle.classList.add('dark');
     } else {
@@ -692,10 +691,9 @@ const applyDarkMode = (isDark) => {
 
 // Apply saved dark mode preference on load
 document.addEventListener('DOMContentLoaded', () => {
-    // Default to dark mode if no preference is saved (localStorage returns null)
     const savedDarkMode = localStorage.getItem('darkMode') !== 'false';
     applyDarkMode(savedDarkMode);
-    populateSiteAssistantProjects(); // Populate for the site assistant modal
+    populateSiteAssistantProjects();
 
     // Handle Profile Image Skeleton
     const profileImg = document.getElementById('profileImage');
@@ -731,8 +729,7 @@ if (mobileDarkModeToggle) {
     });
 }
 
-
-// Smooth scrolling for internal anchor links (excluding multi-page navigation)
+// Smooth scrolling for internal anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const currentFileName = window.location.pathname.split("/").pop();
@@ -754,6 +751,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Debounce function for search input
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // Intersection Observer for fade-in effect
 const fadeInSections = document.querySelectorAll('.fade-in-section');
 const observerOptions = {
@@ -765,9 +775,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // observer.unobserve(entry.target); // Uncomment to animate only once
-        } else {
-            // entry.target.classList.remove('is-visible'); // Uncomment to re-animate on scroll
         }
     });
 }, observerOptions);
@@ -775,42 +782,54 @@ fadeInSections.forEach(section => {
     observer.observe(section);
 });
 
-// Highlight active navigation link based on current page
+// Highlight active navigation link
 const setActiveNav = () => {
-    const path = window.location.pathname.split("/").pop(); // Get filename
+    const path = window.location.pathname.split("/").pop();
     const desktopNavLinks = document.querySelectorAll('#navLinksDesktop a');
-    const mobileNavItems = document.querySelectorAll('#mobileFixedNav .nav-item'); // New selector for mobile
+    const mobileNavItems = document.querySelectorAll('#mobileFixedNav .nav-item');
 
     [...desktopNavLinks, ...mobileNavItems].forEach(link => {
-        link.classList.remove('active'); // For desktop nav links
-        link.classList.remove('active-nav-link'); // For mobile nav items
+        link.classList.remove('active');
+        link.classList.remove('active-nav-link');
 
         let linkPath = link.getAttribute('href');
-        if (linkPath) { // Check if href exists
+        if (linkPath) {
             linkPath = linkPath.split("/").pop();
-
             if (linkPath === path || (path === "" && linkPath === "index.html")) {
-                link.classList.add('active'); // Applies to both desktop and mobile for consistent styling
-                link.classList.add('active-nav-link'); // Specific for mobile bottom nav
+                link.classList.add('active');
+                link.classList.add('active-nav-link');
             }
         }
     });
 };
-document.addEventListener('DOMContentLoaded', setActiveNav); // Run on page load
+document.addEventListener('DOMContentLoaded', setActiveNav);
 
-
-// Scroll to Top Button functionality
+// Scroll to Top Button
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-// --- Site Assistant Functionality (NEW) ---
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add("show");
+    } else {
+        scrollToTopBtn.classList.remove("show");
+    }
+});
 
-// Function to populate the project list in the Site Assistant modal
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
+// Site Assistant Functionality
 const populateSiteAssistantProjects = () => {
-    if (!siteAssistantProjectList) return; // Ensure element exists
+    if (!siteAssistantProjectList) return;
 
-    siteAssistantProjectList.innerHTML = ''; // Clear previous list
+    siteAssistantProjectList.innerHTML = '';
 
-    // Sort projects: Featured first, then by date descending
     const sortedProjects = [...projectsData].sort((a, b) => {
         if (a.featured && !b.featured) return -1;
         if (!a.featured && b.featured) return 1;
@@ -820,7 +839,6 @@ const populateSiteAssistantProjects = () => {
     });
 
     sortedProjects.forEach(project => {
-        // Only display projects with a live demo link
         if (project.livedemo) {
             const projectItem = document.createElement('a');
             projectItem.href = project.livedemo;
@@ -831,30 +849,27 @@ const populateSiteAssistantProjects = () => {
                 <i class="fas fa-external-link-alt project-link-icon"></i>
             `;
             projectItem.addEventListener('click', () => {
-                closeSiteAssistantModal(); // Close modal when a project is clicked
+                closeSiteAssistantModal();
             });
             siteAssistantProjectList.appendChild(projectItem);
         }
     });
 };
 
-// Function to open the Site Assistant modal
 const openSiteAssistantModal = () => {
     if (!siteAssistantModal) return;
-    populateSiteAssistantProjects(); // Populate list every time it opens
+    populateSiteAssistantProjects();
     siteAssistantModal.classList.add('show');
     toggleNoScroll(true);
-    siteAssistantModal.focus(); // For accessibility
+    siteAssistantModal.focus();
 };
 
-// Function to close the Site Assistant modal
 const closeSiteAssistantModal = () => {
     if (!siteAssistantModal) return;
     siteAssistantModal.classList.remove('show');
     toggleNoScroll(false);
 };
 
-// Event listeners for Site Assistant
 if (siteAssistantBtn) {
     siteAssistantBtn.addEventListener('click', openSiteAssistantModal);
 }
@@ -863,7 +878,7 @@ if (siteAssistantModalCloseBtn) {
 }
 if (siteAssistantModal) {
     siteAssistantModal.addEventListener('click', (e) => {
-        if (e.target === siteAssistantModal) { // Close only if clicking on overlay
+        if (e.target === siteAssistantModal) {
             closeSiteAssistantModal();
         }
     });
@@ -874,7 +889,6 @@ if (siteAssistantModal) {
     });
 }
 
-// Function to manage no-scroll class, handling multiple modals
 let openModalCount = 0;
 const toggleNoScroll = (add) => {
     if (add) {
@@ -884,22 +898,147 @@ const toggleNoScroll = (add) => {
         openModalCount--;
         if (openModalCount <= 0) {
             document.body.classList.remove('no-scroll');
-            openModalCount = 0; // Ensure it doesn't go negative
+            openModalCount = 0;
         }
     }
 };
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        scrollToTopBtn.classList.add("show");
-    } else {
-        scrollToTopBtn.classList.remove("show");
+// Export for use in other pages (if needed)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        projectsData,
+        applyDarkMode,
+        debounce
+    };
+}
+
+// ===== New Features =====
+
+// Scroll Progress Bar
+const scrollProgress = document.createElement('div');
+scrollProgress.className = 'scroll-progress';
+scrollProgress.id = 'scrollProgress';
+document.body.prepend(scrollProgress);
+
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById('scrollProgress');
+    if (progressBar) {
+        progressBar.style.width = scrolled + '%';
     }
 });
 
-scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+// PWA Installation Banner
+let deferredPrompt;
+let pwaBanner;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Create banner if it doesn't exist
+    if (!pwaBanner) {
+        pwaBanner = document.createElement('div');
+        pwaBanner.className = 'pwa-install-banner';
+        pwaBanner.innerHTML = `
+            <p>📱 Install Souparna Paul's Portfolio for the best experience!</p>
+            <button id="installPWA">Install</button>
+            <button id="dismissPWA" style="background: transparent; color: inherit; padding: 0.5rem; min-width: auto;">✕</button>
+        `;
+        document.body.appendChild(pwaBanner);
+        
+        document.getElementById('installPWA')?.addEventListener('click', installPWA);
+        document.getElementById('dismissPWA')?.addEventListener('click', () => {
+            pwaBanner.classList.remove('show');
+        });
+    }
+    
+    pwaBanner.classList.add('show');
 });
+
+async function installPWA() {
+    if (!deferredPrompt) return;
+    
+    deferredPrompt.prompt();
+    const result = await deferredPrompt.userChoice;
+    
+    if (result.outcome === 'accepted') {
+        console.log('PWA installed successfully');
+        if (pwaBanner) pwaBanner.classList.remove('show');
+    } else {
+        console.log('PWA installation dismissed');
+    }
+    
+    deferredPrompt = null;
+}
+
+// Detect if app is installed and hide banner
+window.addEventListener('appinstalled', () => {
+    if (pwaBanner) pwaBanner.classList.remove('show');
+});
+
+// Keyboard shortcut for search (already implemented, but adding global shortcut)
+document.addEventListener('keydown', (e) => {
+    // Ctrl/Cmd + K for search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('projectSearchInput');
+        if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+        }
+    }
+});
+
+// Add smooth page transitions
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('main')?.classList.add('page-transition');
+});
+
+// Error tracking
+window.addEventListener('error', (e) => {
+    console.error('Global error:', e.message, e.filename, e.lineno);
+    
+    // Send to analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'exception', {
+            description: `${e.message} at ${e.filename}:${e.lineno}`,
+            fatal: false
+        });
+    }
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    console.error('Unhandled rejection:', e.reason);
+    
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'exception', {
+            description: `Unhandled rejection: ${e.reason}`,
+            fatal: true
+        });
+    }
+});
+
+// Core Web Vitals monitoring
+if ('performance' in window && performance.getEntriesByType) {
+    try {
+        const observer = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const lastEntry = entries[entries.length - 1];
+            console.log('LCP:', lastEntry.startTime);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'web_vitals', {
+                    'metric': 'LCP',
+                    'value': Math.round(lastEntry.startTime)
+                });
+            }
+        });
+        observer.observe({type: 'largest-contentful-paint', buffered: true});
+    } catch (e) {
+        // PerformanceObserver might not be supported
+        console.log('PerformanceObserver not supported');
+    }
+}

@@ -1,0 +1,27 @@
+[build]
+    command = "npm run build"
+    publish = "."
+
+[[headers]]
+    for = "/*"
+    [headers.values]
+        X-Content-Type-Options = "nosniff"
+        X-Frame-Options = "DENY"
+        Referrer-Policy = "strict-origin-when-cross-origin"
+        Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+    for = "/manifest.json"
+    [headers.values]
+        Content-Type = "application/json"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+# Service worker needs to be at the root and not cached
+[[headers]]
+    for = "/sw.js"
+    [headers.values]
+        Cache-Control = "no-cache"

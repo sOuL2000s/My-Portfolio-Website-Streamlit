@@ -2,28 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Souparna Paul - AI & Full-Stack Developer Portfolio</title>
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications. Explore projects like BTC Probo Predictor, Smart Agritech, and Tournament Manager.">
     <meta name="keywords" content="Souparna Paul, portfolio, AI developer, full-stack developer, Python, Machine Learning, Streamlit, React, Firebase, web development, Kolkata, India, software developer, data science, projects, resume">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Open Graph -->
     <meta property="og:title" content="Souparna Paul - AI & Full-Stack Developer Portfolio">
     <meta property="og:description" content="Souparna Paul is a passionate AI & Full-Stack Developer from Kolkata, specializing in Python, Machine Learning, Web Development (Streamlit, React, Firebase), and data-driven applications.">
-    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/"> <!-- Replace with your live site URL -->
+    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png">
+    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-
-    <!-- Favicon - Replace with your actual favicon.ico or .png -->
+    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Souparna Paul",
+        "jobTitle": "AI & Full-Stack Developer",
+        "url": "https://souparna-paul-portfolio.netlify.app",
+        "email": "souparnopaulreborn@gmail.com",
+        "image": "https://souparna-paul-portfolio.netlify.app/profile.png",
+        "description": "AI & Full-Stack Developer specializing in Python, Machine Learning, and Web Development",
+        "sameAs": [
+            "https://www.linkedin.com/in/souparna-paul-28a75524b/",
+            "https://github.com/sOuL2000s",
+            "https://www.youtube.com/c/SouparnoPaulOfficial"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolkata",
+            "addressCountry": "India"
+        }
+    }
+    </script>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
     <link rel="icon" href="profile.png" type="image/png">
     
-    <!-- Preconnect for Google Fonts to improve loading speed -->
+    <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -344,5 +382,20 @@
             });
         }
     </script>
+
+<!-- Register Service Worker -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registered successfully');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed:', err);
+                });
+        });
+    }
+</script>
 </body>
 </html>

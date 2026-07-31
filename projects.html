@@ -9,21 +9,21 @@
     <meta name="keywords" content="Souparna Paul projects, AI projects, full-stack projects, Python projects, Machine Learning projects, Streamlit projects, React projects, web development projects, portfolio projects">
     <meta property="og:title" content="Souparna Paul - Projects">
     <meta property="og:description" content="Explore Souparna Paul's AI and Full-Stack development projects.">
-    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
-    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/projects.html"> <!-- Replace with your live site URL -->
+    <meta property="og:image" content="https://souparna-paul-portfolio.netlify.app/profile.png">
+    <meta property="og:url" content="https://souparna-paul-portfolio.netlify.app/projects.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png"> <!-- Replace with your live site's profile image URL -->
+    <meta name="twitter:image" content="https://souparna-paul-portfolio.netlify.app/profile.png">
 
-    <!-- Favicon - Replace with your actual favicon.ico or .png -->
+    <!-- Favicon -->
     <link rel="icon" href="profile.png" type="image/png">
 
-    <!-- Preconnect for Google Fonts to improve loading speed -->
+    <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-    <!-- NOTE: For faster loading, please optimize all images (compress, consider WebP format) -->
-
     <!-- Header/Navigation Bar -->
     <header class="shadow-lg py-4 sticky top-0 z-20 transition-colors-shadow dark:shadow-none">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -59,16 +57,16 @@
         <section id="projects" class="main-content-card rounded-xl p-6 md:p-10 mb-8 md:mb-12 transition-colors-shadow fade-in-section">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">My Projects</h2>
 
-            <!-- NEW: Search Bar and Suggestions Container -->
+            <!-- Search Bar and Suggestions Container -->
             <div class="mb-6 md:mb-8 max-w-2xl mx-auto relative">
                 <div class="relative">
-                    <input type="text" id="projectSearchInput" placeholder="Search projects..." 
+                    <input type="text" id="projectSearchInput" placeholder="Search projects... (press '/' to focus)" 
                         class="form-input w-full rounded-md border focus:ring-2 focus:ring-blue-500 outline-none transition-colors-shadow py-2 px-3 md:py-3 md:px-4 pr-10 md:pr-12 text-sm md:text-base" autocomplete="off">
-                    <!-- NEW SEARCH LOADING SPINNER (Hidden by default) -->
+                    <!-- Search Loading Spinner -->
                     <div id="searchLoadingIndicator" class="absolute right-10 md:right-12 top-1/2 transform -translate-y-1/2 text-blue-500 hidden" aria-hidden="true">
                         <i class="fas fa-circle-notch fa-spin"></i>
                     </div>
-                    <!-- NEW CLEAR BUTTON -->
+                    <!-- Clear Button -->
                     <button id="clearSearchBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 md:mr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden" aria-label="Clear search input">
                         <i class="fas fa-times-circle text-lg md:text-xl"></i>
                     </button>
@@ -83,15 +81,15 @@
             <div class="flex justify-center mb-8">
                 <div class="inline-flex rounded-md shadow-sm" role="group">
                     <button type="button" id="staticViewBtn" class="px-4 py-2 text-sm font-medium border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white bg-blue-600 text-white">
-                        Curated Projects
+                        <i class="fas fa-star mr-2"></i> Curated Projects
                     </button>
                     <button type="button" id="githubViewBtn" class="px-4 py-2 text-sm font-medium border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                        GitHub Live Sync
+                        <i class="fab fa-github mr-2"></i> GitHub Live Sync
                     </button>
                 </div>
             </div>
 
-            <!-- Static View Container (Current Content) -->
+            <!-- Static View Container -->
             <div id="staticProjectsView">
                 <!-- Project Filter Buttons -->
                 <div class="mb-8 flex flex-wrap gap-3 justify-center md:justify-start">
@@ -107,7 +105,7 @@
 
                 <h3 class="text-xl md:text-3xl font-bold mb-3 md:mb-4" id="individualProjectsHeader">Individual Projects</h3>
                 <div id="individual-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-                    <!-- Skeletons for initial perceived speed -->
+                    <!-- Skeletons -->
                     <div class="skeleton-card project-card rounded-lg p-6">
                         <div class="skeleton skeleton-image mb-4"></div>
                         <div class="skeleton skeleton-text w-3/4 mb-4"></div>
@@ -143,13 +141,13 @@
                     <h3 class="text-2xl font-bold dark:text-white">All Public Repositories</h3>
                     <p class="text-gray-600 dark:text-gray-400">Fetched directly from GitHub API</p>
                 </div>
-                <div id="github-loading" class="text-center py-12 flex flex-col items-center">
+                <div id="github-loading" class="text-center py-12">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full text-left">
                         <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
                         <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
                         <div class="project-card rounded-lg p-6"><div class="skeleton skeleton-image mb-4"></div><div class="skeleton skeleton-text w-3/4"></div><div class="skeleton skeleton-text w-full"></div></div>
                     </div>
-                    <div class="mt-8">
+                    <div class="mt-8 flex flex-col items-center">
                         <i class="fas fa-circle-notch fa-spin text-4xl text-blue-500"></i>
                         <p class="mt-4 dark:text-white">Syncing with GitHub...</p>
                     </div>
@@ -190,18 +188,18 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Site Assistant Floating Button (NEW) -->
+    <!-- Site Assistant Floating Button -->
     <button id="siteAssistantBtn" aria-label="Explore Projects">
-        <i class="fas fa-th-list"></i> <!-- Using a list icon for project navigation -->
+        <i class="fas fa-th-list"></i>
     </button>
 
-    <!-- Site Assistant Project List Modal (NEW) -->
+    <!-- Site Assistant Project List Modal -->
     <div id="siteAssistantModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="site-assistant-modal-title">
         <div class="site-assistant-modal-content transition-colors-shadow">
             <button class="site-assistant-modal-close-btn" aria-label="Close project list"><i class="fas fa-times"></i></button>
             <h3 id="site-assistant-modal-title" class="text-3xl md:text-4xl font-bold mb-6 text-center dark:text-heading-color-dark">Explore Projects</h3>
             <div id="site-assistant-project-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Project list items will be dynamically inserted here by JavaScript -->
+                <!-- Project list items will be dynamically inserted here -->
             </div>
         </div>
     </div>
@@ -260,19 +258,24 @@
     <script src="static/js/scripts.js" defer></script>
     <!-- Page-specific Scripts -->
     <script>
-        // --- Project Data Access ---
-        // projectsData is defined in scripts.js and should be globally available here.
-        
-        // Global variables to store current index and filtered project list for modal navigation
-        let currentModalProjectIndex = -1;
-        let currentlyFilteredProjects = [];
+        // Debounced search function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
 
-        // Function to create a project card HTML element (Slightly modified to include 'all' tag)
+        // Function to create a project card HTML element
         function createProjectCard(project) {
             const card = document.createElement('div');
-            // Ensure every card has the 'all' tag for the default filter
             card.className = `project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0 relative ${project.featured ? 'featured-project-card' : ''}`;
-            card.dataset.tags = project.tags.join(' ') + ' all'; 
+            card.dataset.tags = project.tags.join(' ') + ' all';
 
             card.innerHTML = `
                 ${project.featured ? '<div class="featured-badge">FEATURED</div>' : ''}
@@ -298,34 +301,31 @@
             const teamGrid = document.getElementById('team-projects-grid');
             const individualHeader = document.getElementById('individualProjectsHeader');
             const teamHeader = document.getElementById('teamProjectsHeader');
-            
+
             if (!individualGrid || !teamGrid) return;
 
             individualGrid.innerHTML = '';
             teamGrid.innerHTML = '';
 
-            // Sort projects by priority: Featured first, then by date descending
             const sortedProjects = [...projectsToRender].sort((a, b) => {
                 if (a.featured && !b.featured) return -1;
                 if (!a.featured && b.featured) return 1;
-                
                 const dateA = new Date(a.date.replace(/ \(.*\)/, ''));
                 const dateB = new Date(b.date.replace(/ \(.*\)/, ''));
                 return dateB - dateA;
             });
 
             currentlyFilteredProjects = sortedProjects;
-            
+
             if (currentlyFilteredProjects.length === 0) {
                 individualGrid.innerHTML = '<p class="text-lg text-center col-span-full py-10 dark:text-text-color-dark">No projects match your current criteria.</p>';
                 individualHeader.style.display = 'none';
                 teamHeader.style.display = 'none';
                 return;
             }
-            
+
             individualHeader.style.display = 'block';
             teamHeader.style.display = 'block';
-
 
             let hasIndividual = false;
             let hasTeam = false;
@@ -340,13 +340,10 @@
                     hasTeam = true;
                 }
             });
-            
-            // Show/Hide headers based on filtered content
+
             individualHeader.style.display = hasIndividual ? 'block' : 'none';
             teamHeader.style.display = hasTeam ? 'block' : 'none';
 
-
-            // Re-attach event listeners for dynamically created buttons
             document.querySelectorAll('.toggle-project-details').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const projectId = e.target.dataset.projectId;
@@ -358,17 +355,14 @@
             });
         }
 
-
-        // --- 1. Filtering Logic (Fix) ---
-
+        // Filtering Logic
         function handleFiltering(filterTag) {
-            // Clear search input if filtering
             if (projectSearchInput) {
                 projectSearchInput.value = '';
                 if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
             }
             document.getElementById('searchSuggestions').classList.add('hidden');
-            
+
             const filterBtns = document.querySelectorAll('.filter-btn');
             filterBtns.forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.filter-btn[data-filter="${filterTag}"]`).classList.add('active');
@@ -379,47 +373,42 @@
             } else {
                 filtered = projectsData.filter(project => project.tags.includes(filterTag));
             }
-            
+
             renderProjects(filtered);
         }
 
-
-        // --- 2. Search Logic and Suggestions (New Feature) ---
-
+        // Search Logic
         const projectSearchInput = document.getElementById('projectSearchInput');
         const searchSuggestionsContainer = document.getElementById('searchSuggestions');
-        const clearSearchBtn = document.getElementById('clearSearchBtn'); 
-        const MIN_SEARCH_LENGTH = 1; 
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        const MIN_SEARCH_LENGTH = 1;
 
-        // State to track view and cached data for separate search logic
-        let currentView = 'static'; // 'static' or 'github'
+        let currentView = 'static';
         let cachedGithubRepos = [];
-        let githubReposLoading = false; // Track GitHub loading state
+        let githubReposLoading = false;
         let selectedSuggestionIndex = -1;
         let currentMatches = [];
 
         function getSearchMatches(query, limit = 10) {
             if (!query) return [];
             const lowerQuery = query.toLowerCase();
-            
-            // For GitHub repos, normalize the query to match against repo names that might have hyphens
             const normalizedQueryForGithub = lowerQuery.replace(/ /g, '-');
 
             let results = [];
             if (currentView === 'static') {
-                results = projectsData.filter(project => 
+                results = projectsData.filter(project =>
                     project.title.toLowerCase().includes(lowerQuery) ||
                     (project.shortDescription && project.shortDescription.toLowerCase().includes(lowerQuery)) ||
                     (project.fullDescription && project.fullDescription.toLowerCase().includes(lowerQuery)) ||
                     project.tools.some(tool => tool.toLowerCase().includes(lowerQuery)) ||
                     project.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
                 );
-            } else { // currentView === 'github'
+            } else {
                 results = cachedGithubRepos.filter(repo => {
-                    return repo.name.toLowerCase().includes(lowerQuery) || 
-                           repo.name.toLowerCase().includes(normalizedQueryForGithub) ||
-                           (repo.description && repo.description.toLowerCase().includes(lowerQuery)) ||
-                           (repo.language && repo.language.toLowerCase().includes(lowerQuery));
+                    return repo.name.toLowerCase().includes(lowerQuery) ||
+                        repo.name.toLowerCase().includes(normalizedQueryForGithub) ||
+                        (repo.description && repo.description.toLowerCase().includes(lowerQuery)) ||
+                        (repo.language && repo.language.toLowerCase().includes(lowerQuery));
                 });
             }
             return limit ? results.slice(0, limit) : results;
@@ -429,7 +418,7 @@
             searchSuggestionsContainer.innerHTML = '';
             currentMatches = matches;
             selectedSuggestionIndex = -1;
-            
+
             if (matches.length === 0) {
                 searchSuggestionsContainer.innerHTML = `
                     <div class="p-4 text-center dark:text-text-color-dark">No matching results found.</div>
@@ -442,19 +431,14 @@
                 const suggestionItem = document.createElement('div');
                 suggestionItem.className = 'suggestion-item';
                 suggestionItem.dataset.index = index;
-                
-                // Adaptive mapping for suggestions based on current view
+
                 const displayTitle = currentView === 'static' ? item.title : item.name.replace(/-/g, ' ');
-                
-                // Store unique identifier for exact filtering
-                // For static projects, use 'id'. For GitHub repos, use 'full_name' which is unique.
-                const uniqueId = currentView === 'static' ? item.id : item.full_name; 
-                // Store the descriptive title/name to populate the input field accurately
+                const uniqueId = currentView === 'static' ? item.id : item.full_name;
                 const searchTermForInput = currentView === 'static' ? item.title : item.name;
 
-                suggestionItem.dataset.uniqueId = uniqueId; 
-                suggestionItem.dataset.searchTermForInput = searchTermForInput; 
-                
+                suggestionItem.dataset.uniqueId = uniqueId;
+                suggestionItem.dataset.searchTermForInput = searchTermForInput;
+
                 const desc = currentView === 'static' ? (item.shortDescription || item.type) : (item.description || item.language || 'GitHub Repository');
                 const img = currentView === 'static' ? item.image : `https://opengraph.githubassets.com/1/sOuL2000s/${item.name}`;
 
@@ -482,7 +466,7 @@
                 }
             });
         }
-        
+
         function handleClearSearch() {
             if (!projectSearchInput || projectSearchInput.readOnly) return;
             projectSearchInput.value = '';
@@ -490,11 +474,10 @@
             searchSuggestionsContainer.classList.add('hidden');
             currentMatches = [];
             selectedSuggestionIndex = -1;
-            
+
             if (currentView === 'static') {
-                handleFiltering('all'); 
+                handleFiltering('all');
             } else {
-                // Ensure we show all fetched repos if available
                 if (cachedGithubRepos.length > 0) {
                     renderGithubProjects(cachedGithubRepos);
                 } else {
@@ -503,21 +486,11 @@
             }
         }
 
-        function handleSearchInput() {
+        // Debounced search handler
+        const debouncedSearchHandler = debounce(() => {
             if (!projectSearchInput) return;
             const query = projectSearchInput.value.trim();
-            
-            // Handle clear button visibility
-            if (clearSearchBtn) {
-                query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
-            }
 
-            // Prevent suggestions if GitHub repos are still loading OR input is readOnly
-            if (projectSearchInput.readOnly || (currentView === 'github' && githubReposLoading)) {
-                searchSuggestionsContainer.classList.add('hidden');
-                return;
-            }
-            
             if (query.length >= MIN_SEARCH_LENGTH) {
                 const matches = getSearchMatches(query);
                 renderSuggestions(matches);
@@ -526,18 +499,32 @@
                 currentMatches = [];
                 selectedSuggestionIndex = -1;
             }
+        }, 300);
+
+        function handleSearchInput() {
+            if (!projectSearchInput) return;
+            const query = projectSearchInput.value.trim();
+
+            if (clearSearchBtn) {
+                query.length > 0 ? clearSearchBtn.classList.remove('hidden') : clearSearchBtn.classList.add('hidden');
+            }
+
+            if (projectSearchInput.readOnly || (currentView === 'github' && githubReposLoading)) {
+                searchSuggestionsContainer.classList.add('hidden');
+                return;
+            }
+
+            debouncedSearchHandler();
         }
-        
+
         function handleSearchExecution(query) {
-            // Prevent search execution ONLY if GitHub repos are still loading from scratch
-            // but allow it if we are just filtering cached repos
             if (currentView === 'github' && githubReposLoading && cachedGithubRepos.length === 0) {
                 console.warn('GitHub repos still loading from API, search ignored.');
                 searchSuggestionsContainer.classList.add('hidden');
                 return;
             }
 
-            const matches = getSearchMatches(query, null); // Pass null to get all matches
+            const matches = getSearchMatches(query, null);
             searchSuggestionsContainer.classList.add('hidden');
 
             if (currentView === 'static') {
@@ -550,9 +537,120 @@
             }
         }
 
+        // GitHub Functions
+        function renderGithubProjects(repos) {
+            const githubGrid = document.getElementById('github-projects-grid');
+            const githubLoading = document.getElementById('github-loading');
+            
+            githubLoading.classList.add('hidden');
+            githubGrid.innerHTML = '';
 
-        // --- 3. Initialization and Modal Logic ---
+            if (repos.length === 0) {
+                githubGrid.innerHTML = '<p class="text-center col-span-full py-10 dark:text-text-color-dark">No repositories match your search.</p>';
+                return;
+            }
 
+            repos.forEach(repo => {
+                const card = document.createElement('div');
+                card.className = 'project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0 border-2 border-gray-200 dark:border-gray-700';
+                const imageUrl = `https://opengraph.githubassets.com/1/sOuL2000s/${repo.name}`;
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-semibold bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-full text-gray-700 dark:text-gray-300">
+                            <i class="fab fa-github mr-1"></i> GitHub Repo
+                        </span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">⭐ ${repo.stargazers_count}</span>
+                    </div>
+                    <a href="${repo.html_url}" target="_blank" class="block">
+                        <img src="${imageUrl}" alt="${repo.name}" class="project-image">
+                    </a>
+                    <h4 class="text-xl font-semibold mb-3 truncate dark:text-white">${repo.name.replace(/-/g, ' ')}</h4>
+                    <p class="short-summary text-base mb-2 flex-grow dark:text-gray-300">
+                        ${repo.description || 'No description available for this repository.'}
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${repo.language ? `<span class="skill-tag text-xs">${repo.language}</span>` : ''}
+                        <span class="skill-tag text-xs">🔄 Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                    </div>
+                    <div class="project-card-actions flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="${repo.html_url}" target="_blank" class="btn-secondary-small">View on GitHub</a>
+                        <div class="flex space-x-3 text-xl">
+                            <a href="${repo.html_url}" target="_blank" class="project-action-icon"><i class="fab fa-github"></i></a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="project-action-icon"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                        </div>
+                    </div>
+                `;
+                githubGrid.appendChild(card);
+            });
+        }
+
+        async function fetchGitHubRepos() {
+            const githubGrid = document.getElementById('github-projects-grid');
+            const githubLoading = document.getElementById('github-loading');
+            const searchLoadingIndicator = document.getElementById('searchLoadingIndicator');
+            const currentQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
+
+            if (projectSearchInput) projectSearchInput.readOnly = true;
+            if (searchLoadingIndicator) searchLoadingIndicator.classList.remove('hidden');
+
+            githubReposLoading = true;
+            githubLoading.classList.remove('hidden');
+            githubGrid.innerHTML = '';
+
+            // Check cache first via the function's built-in cache
+            try {
+                let allRepos = [];
+                let page = 1;
+                let fetchMore = true;
+
+                while (fetchMore) {
+                    const response = await fetch(`/.netlify/functions/github-repos?page=${page}&per_page=100`);
+                    
+                    if (!response.ok) {
+                        const errorDetails = await response.json();
+                        throw new Error(`Proxy error! Status: ${response.status}, Message: ${errorDetails.message || response.statusText}`);
+                    }
+                    
+                    const repos = await response.json();
+                    
+                    if (Array.isArray(repos) && repos.length > 0) {
+                        allRepos = allRepos.concat(repos);
+                        fetchMore = (repos.length === 100);
+                        page++;
+                    } else {
+                        fetchMore = false;
+                    }
+                }
+
+                cachedGithubRepos = allRepos.filter(repo => !repo.fork);
+                renderGithubProjects(cachedGithubRepos);
+
+                const finalQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
+                if (finalQuery) {
+                    handleSearchExecution(finalQuery);
+                }
+            } catch (error) {
+                console.error('GitHub API error:', error);
+                githubGrid.innerHTML = `
+                    <div class="col-span-full text-center py-10">
+                        <i class="fas fa-exclamation-circle text-4xl text-red-500 mb-4"></i>
+                        <p class="text-red-500 dark:text-red-400">Failed to sync with GitHub. Please try again later.</p>
+                        <button id="githubRetryBtn" class="btn-primary mt-4">
+                            <i class="fas fa-sync mr-2"></i> Retry
+                        </button>
+                    </div>
+                `;
+                document.getElementById('githubRetryBtn')?.addEventListener('click', fetchGitHubRepos);
+            } finally {
+                githubLoading.classList.add('hidden');
+                if (projectSearchInput) projectSearchInput.readOnly = false;
+                if (searchLoadingIndicator) searchLoadingIndicator.classList.add('hidden');
+                githubReposLoading = false;
+            }
+        }
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof projectsData !== 'undefined') {
                 renderProjects(projectsData);
@@ -562,25 +660,18 @@
             const githubViewBtn = document.getElementById('githubViewBtn');
             const staticView = document.getElementById('staticProjectsView');
             const githubView = document.getElementById('githubProjectsView');
-            const githubGrid = document.getElementById('github-projects-grid');
-            const githubLoading = document.getElementById('github-loading');
-            const searchLoadingIndicator = document.getElementById('searchLoadingIndicator');
 
             const toggleView = (view) => {
                 currentView = view;
-                
-                // Persistence: Hide suggestions when switching, but keep query
                 searchSuggestionsContainer.classList.add('hidden');
                 const query = projectSearchInput ? projectSearchInput.value.trim() : '';
 
                 if (view === 'static') {
                     staticView.classList.remove('hidden');
                     githubView.classList.add('hidden');
-                    staticViewBtn.classList.add('bg-blue-600', 'text-white');
-                    staticViewBtn.classList.remove('dark:bg-gray-800');
-                    githubViewBtn.classList.remove('bg-blue-600', 'text-white');
-                    githubViewBtn.classList.add('dark:bg-gray-800');
-                    
+                    staticViewBtn.className = 'px-4 py-2 text-sm font-medium border border-gray-200 rounded-l-lg bg-blue-600 text-white hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-500';
+                    githubViewBtn.className = 'px-4 py-2 text-sm font-medium border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white';
+
                     if (query) {
                         handleSearchExecution(query);
                     } else {
@@ -590,11 +681,9 @@
                 } else {
                     staticView.classList.add('hidden');
                     githubView.classList.remove('hidden');
-                    githubViewBtn.classList.add('bg-blue-600', 'text-white');
-                    githubViewBtn.classList.remove('dark:bg-gray-800');
-                    staticViewBtn.classList.remove('bg-blue-600', 'text-white');
-                    staticViewBtn.classList.add('dark:bg-gray-800');
-                    
+                    githubViewBtn.className = 'px-4 py-2 text-sm font-medium border border-gray-200 rounded-r-lg bg-blue-600 text-white hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-500';
+                    staticViewBtn.className = 'px-4 py-2 text-sm font-medium border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white';
+
                     fetchGitHubRepos();
                 }
             };
@@ -602,108 +691,6 @@
             staticViewBtn.addEventListener('click', () => toggleView('static'));
             githubViewBtn.addEventListener('click', () => toggleView('github'));
 
-            function renderGithubProjects(repos) {
-                githubGrid.innerHTML = '';
-                if (repos.length === 0) {
-                    githubGrid.innerHTML = '<p class="text-center col-span-full py-10 dark:text-text-color-dark">No repositories match your search.</p>';
-                    return;
-                }
-                repos.forEach(repo => {
-                    const card = document.createElement('div');
-                    card.className = 'project-card rounded-lg p-6 transition-colors-shadow flex flex-col min-w-0';
-                    const imageUrl = `https://opengraph.githubassets.com/1/sOuL2000s/${repo.name}`;
-
-                    card.innerHTML = `
-                        <a href="${repo.html_url}" target="_blank" class="block">
-                            <img src="${imageUrl}" alt="${repo.name}" class="project-image">
-                        </a>
-                        <h4 class="text-xl font-semibold mb-3 truncate dark:text-white">${repo.name.replace(/-/g, ' ')}</h4>
-                        <p class="short-summary text-base mb-2 flex-grow dark:text-gray-300">
-                            ${repo.description || 'No description available for this repository.'}
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            ${repo.language ? `<span class="skill-tag text-xs">${repo.language}</span>` : ''}
-                            <span class="skill-tag text-xs">⭐ ${repo.stargazers_count}</span>
-                        </div>
-                        <div class="project-card-actions flex items-center justify-between mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
-                            <a href="${repo.html_url}" target="_blank" class="btn-secondary-small">Repo Details</a>
-                            <div class="flex space-x-3 text-xl">
-                                <a href="${repo.html_url}" target="_blank" class="project-action-icon"><i class="fab fa-github"></i></a>
-                                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="project-action-icon"><i class="fas fa-external-link-alt"></i></a>` : ''}
-                            </div>
-                        </div>
-                    `;
-                    githubGrid.appendChild(card);
-                });
-            }
-
-            async function fetchGitHubRepos() {
-                const currentQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
-                
-                // Visual Loading State for Search Input
-                if (projectSearchInput) projectSearchInput.readOnly = true;
-                if (searchLoadingIndicator) searchLoadingIndicator.classList.remove('hidden');
-                
-                githubReposLoading = true;
-                githubLoading.classList.remove('hidden');
-
-                // Only use cache if no search query and cache exists
-                if (cachedGithubRepos.length > 0 && !currentQuery) { 
-                    renderGithubProjects(cachedGithubRepos);
-                    
-                    // Cleanup Loading State
-                    if (projectSearchInput) projectSearchInput.readOnly = false;
-                    if (searchLoadingIndicator) searchLoadingIndicator.classList.add('hidden');
-                    githubReposLoading = false;
-                    githubLoading.classList.add('hidden');
-                    return;
-                }
-
-                try {
-                    githubGrid.innerHTML = '';
-                    let allRepos = [];
-                    let page = 1;
-                    let fetchMore = true;
-
-                    while (fetchMore) {
-                        // Call Netlify Function Proxy instead of direct GitHub API
-                        const response = await fetch(`/.netlify/functions/github-repos?page=${page}&per_page=100`);
-                        
-                        if (!response.ok) {
-                            const errorDetails = await response.json();
-                            throw new Error(`Proxy error! Status: ${response.status}, Message: ${errorDetails.message || response.statusText}`);
-                        }
-                        const repos = await response.json();
-                        
-                        if (Array.isArray(repos) && repos.length > 0) {
-                            allRepos = allRepos.concat(repos);
-                            fetchMore = (repos.length === 100);
-                            page++;
-                        } else {
-                            fetchMore = false;
-                        }
-                    }
-
-                    cachedGithubRepos = allRepos.filter(repo => !repo.fork);
-                    renderGithubProjects(cachedGithubRepos);
-
-                    // Re-apply search after fetching if a query exists
-                    const finalQuery = projectSearchInput ? projectSearchInput.value.trim() : '';
-                    if (finalQuery) {
-                        handleSearchExecution(finalQuery);
-                    }
-                } catch (error) {
-                    console.error('GitHub API error:', error);
-                    githubGrid.innerHTML = `<p class="text-center col-span-full py-10 text-red-500">Failed to sync with GitHub. Please try again later. (Error: ${error.message})</p>`;
-                } finally {
-                    githubLoading.classList.add('hidden');
-                    // Cleanup Loading State
-                    if (projectSearchInput) projectSearchInput.readOnly = false;
-                    if (searchLoadingIndicator) searchLoadingIndicator.classList.add('hidden');
-                    githubReposLoading = false;
-                }
-            }
-            
             // Attach filtering listeners
             document.querySelectorAll('.filter-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -714,8 +701,7 @@
             // Attach search listeners
             if (projectSearchInput) {
                 projectSearchInput.addEventListener('input', handleSearchInput);
-                
-                // Search execution and keyboard navigation
+
                 projectSearchInput.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowDown') {
                         e.preventDefault();
@@ -732,7 +718,6 @@
                     } else if (e.key === 'Enter') {
                         e.preventDefault();
                         if (selectedSuggestionIndex >= 0 && selectedSuggestionIndex < currentMatches.length) {
-                            // A suggestion is highlighted, perform exact filter by unique ID
                             const item = currentMatches[selectedSuggestionIndex];
                             const uniqueId = currentView === 'static' ? item.id : item.full_name;
                             const searchTermForInput = currentView === 'static' ? item.title : item.name;
@@ -741,17 +726,17 @@
                                 projectSearchInput.value = searchTermForInput;
                                 if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
                             }
-                            searchSuggestionsContainer.classList.add('hidden'); // Hide suggestions
+                            searchSuggestionsContainer.classList.add('hidden');
 
                             let filteredResults = [];
                             if (currentView === 'static') {
                                 filteredResults = projectsData.filter(p => p.id === uniqueId);
                                 renderProjects(filteredResults);
-                            } else { // currentView === 'github'
+                            } else {
                                 filteredResults = cachedGithubRepos.filter(r => r.full_name === uniqueId);
                                 renderGithubProjects(filteredResults);
                             }
-                            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active')); // Deactivate filter buttons
+                            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                         } else {
                             handleSearchExecution(projectSearchInput.value.trim());
                         }
@@ -760,12 +745,9 @@
                         selectedSuggestionIndex = -1;
                     }
                 });
-                
-                // Attach clear button listener (NEW)
+
                 if (clearSearchBtn) {
                     clearSearchBtn.addEventListener('click', handleClearSearch);
-                    
-                    // Initial check for clear button visibility
                     if (projectSearchInput.value.trim().length > 0) {
                         clearSearchBtn.classList.remove('hidden');
                     }
@@ -777,26 +759,24 @@
                 searchSuggestionsContainer.addEventListener('click', (e) => {
                     const suggestionItem = e.target.closest('.suggestion-item');
                     if (suggestionItem) {
-                        const uniqueId = suggestionItem.dataset.uniqueId; // Get the unique ID
-                        const searchTermForInput = suggestionItem.dataset.searchTermForInput; // Get the text for input field
+                        const uniqueId = suggestionItem.dataset.uniqueId;
+                        const searchTermForInput = suggestionItem.dataset.searchTermForInput;
 
                         if (projectSearchInput) {
-                            projectSearchInput.value = searchTermForInput; // Set input field to the descriptive name
+                            projectSearchInput.value = searchTermForInput;
                             if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
                         }
-                        searchSuggestionsContainer.classList.add('hidden'); // Hide suggestions
+                        searchSuggestionsContainer.classList.add('hidden');
 
-                        // Filter directly by unique ID to show ONLY the selected project/repo
                         let filteredResults = [];
                         if (currentView === 'static') {
                             filteredResults = projectsData.filter(p => p.id === uniqueId);
                             renderProjects(filteredResults);
-                        } else { // currentView === 'github'
+                        } else {
                             filteredResults = cachedGithubRepos.filter(r => r.full_name === uniqueId);
                             renderGithubProjects(filteredResults);
                         }
-                        
-                        // Ensure filter buttons are deactivated as a direct search has been made
+
                         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                     }
                 });
@@ -804,19 +784,13 @@
 
             // Hide suggestions when clicking outside
             document.addEventListener('click', (e) => {
-                if (projectSearchInput && searchSuggestionsContainer && 
-                    !projectSearchInput.contains(e.target) && 
+                if (projectSearchInput && searchSuggestionsContainer &&
+                    !projectSearchInput.contains(e.target) &&
                     !searchSuggestionsContainer.contains(e.target) &&
-                    (!clearSearchBtn || !clearSearchBtn.contains(e.target))) // Check clear button too
-                {
+                    (!clearSearchBtn || !clearSearchBtn.contains(e.target))) {
                     searchSuggestionsContainer.classList.add('hidden');
                 }
             });
-            
-            // Re-show suggestions if user focuses back on input
-            if (projectSearchInput) {
-                projectSearchInput.addEventListener('focus', handleSearchInput);
-            }
 
             // Keyboard shortcut '/' to focus search
             document.addEventListener('keydown', (e) => {
@@ -825,12 +799,16 @@
                     if (projectSearchInput) {
                         projectSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         projectSearchInput.focus();
+                        projectSearchInput.select();
                     }
                 }
             });
         });
 
         // Project Modal Logic
+        let currentModalProjectIndex = -1;
+        let currentlyFilteredProjects = [];
+
         const projectModal = document.getElementById('projectModal');
         const modalCloseBtn = projectModal.querySelector('.modal-close-btn');
         const modalImage = document.getElementById('modal-project-image');
@@ -842,7 +820,6 @@
         const modalLivedemoLink = document.getElementById('modal-livedemo-link');
         const modalPrevBtn = document.getElementById('modal-prev-btn');
         const modalNextBtn = document.getElementById('modal-next-btn');
-
 
         function openProjectModal(projectData) {
             modalImage.src = projectData.image;
@@ -874,7 +851,6 @@
 
             currentModalProjectIndex = currentlyFilteredProjects.findIndex(p => p.id === projectData.id);
 
-            // Previous Button
             if (currentModalProjectIndex > 0) {
                 modalPrevBtn.style.display = 'flex';
                 modalPrevBtn.onclick = () => {
@@ -884,7 +860,6 @@
                 modalPrevBtn.style.display = 'none';
             }
 
-            // Next Button
             if (currentModalProjectIndex < currentlyFilteredProjects.length - 1) {
                 modalNextBtn.style.display = 'flex';
                 modalNextBtn.onclick = () => {

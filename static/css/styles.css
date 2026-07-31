@@ -1522,3 +1522,182 @@ body.dark-mode .suggestion-item-description {
     /* Override tailwind default padding if necessary for consistency */
     padding: 0.9rem 1.2rem;
 }
+
+/* ===== New Styles for High Priority Improvements ===== */
+
+/* Better touch targets for mobile */
+@media (max-width: 639px) {
+    button, 
+    a, 
+    .clickable,
+    .skill-tag,
+    .btn-primary,
+    .btn-secondary-small,
+    .project-action-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .skill-tag {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    .btn-primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .project-action-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Smooth theme transitions */
+.theme-transition,
+body,
+.main-content-card,
+header,
+footer,
+.project-card,
+.modal-content,
+.site-assistant-modal-content {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Page transition animation */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply to all main content */
+main {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(to right, #2563eb, #6366f1);
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+body.dark-mode .scroll-progress {
+    background: linear-gradient(to right, #60a5fa, #818cf8);
+}
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-accent-darker);
+    text-decoration: underline;
+}
+
+body.dark-mode .breadcrumb a {
+    color: var(--primary-accent-dark);
+}
+
+.breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: var(--text-color-light);
+    opacity: 0.5;
+}
+
+body.dark-mode .breadcrumb .separator {
+    color: var(--text-color-dark);
+}
+
+/* Image optimization hint */
+img[loading="lazy"] {
+    will-change: transform;
+}
+
+/* PWA installation banner style */
+.pwa-install-banner {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--main-bg-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    max-width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+body.dark-mode .pwa-install-banner {
+    background: var(--main-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+.pwa-install-banner.show {
+    display: flex;
+}
+
+.pwa-install-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.pwa-install-banner button {
+    background: var(--primary-accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.pwa-install-banner button:hover {
+    background: var(--primary-accent-darker);
+}
+
+body.dark-mode .pwa-install-banner button {
+    background: var(--primary-accent-dark);
+}
+
+body.dark-mode .pwa-install-banner button:hover {
+    background: var(--primary-accent-dark-hover);
+}

@@ -4,12 +4,18 @@
   "description": "Website : https://souparna-paul-portfolio.netlify.app/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-cache": "^5.1.2",
     "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^7.0.0"
   }
 }
